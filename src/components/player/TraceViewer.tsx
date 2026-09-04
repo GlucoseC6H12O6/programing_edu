@@ -179,7 +179,19 @@ export function TraceViewer({ doc, gridSize, edit }: Props) {
         </button>
       </div>
 
-      <div className="grid-3">
+      {/*
+        2x2다. DOM 순서가 보이는 순서와 같아야 키보드와 스크린 리더가 화면과
+        어긋나지 않으므로, 감싸는 열 없이 네 패널을 그대로 늘어놓는다.
+
+          CODE      STATE
+          EXECUTION OUTPUT
+
+        3열이던 동안 가운데 열이 EXECUTION 위에 OUTPUT을 쌓고 있었다. 즉 행은
+        이미 둘이었고, 2x2는 없던 행을 만드는 것이 아니라 그 스택을 옮긴 것이다.
+        그래서 폭이 1452px에서 1000px로 줄어도 코드 한 줄에 들어가는 글자 수는
+        46자에서 53자로 오히려 늘었다.
+      */}
+      <div className="panel-grid">
         <CodePanel
           panelId={panelId("code")}
           edit={edit}
@@ -189,20 +201,19 @@ export function TraceViewer({ doc, gridSize, edit }: Props) {
           breakpoints={api.breakpoints}
           onToggleBreakpoint={api.toggleBreakpoint}
         />
-        <div className="col-exec">
-          <ExecutionPanel
-            panelId={panelId("exec")}
-            player={api.player}
-            cursor={api.cursor}
-            state={state}
-            event={event}
-            gridSize={gridSize}
-          />
-          <OutputPanel panelId={panelId("output")} state={state} doc={doc} />
-          {/* 파일을 다루지 않는 레슨에는 이 패널이 없다 */}
-          {state.files.length > 0 && <FilePanel state={state} />}
-        </div>
         <StatePanel panelId={panelId("state")} state={state} />
+        <ExecutionPanel
+          panelId={panelId("exec")}
+          player={api.player}
+          cursor={api.cursor}
+          state={state}
+          event={event}
+          gridSize={gridSize}
+        />
+        <OutputPanel panelId={panelId("output")} state={state} doc={doc} />
+        {/* 파일을 다루지 않는 레슨에는 이 패널이 없다. 다섯 번째라 짝이 없어
+            아래 행을 통째로 쓴다. */}
+        {state.files.length > 0 && <FilePanel state={state} />}
       </div>
 
       <Controls {...api} />

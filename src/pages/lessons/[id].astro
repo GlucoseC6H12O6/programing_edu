@@ -45,12 +45,36 @@ const prerequisites = lesson.prerequisites.map((id) => ({ id, title: titles.get(
 const book = lesson.textbook;
 const section = (n: number) => book!.sections[n - 1]!;
 
+/** 첫 화면의 안내 줄에 적을 규모. 플레이어를 §8 뒤로 내렸으므로 숫자로 존재를 알린다. */
+const events = lesson.traces.reduce((n, trace) => n + trace.doc.events.length, 0);
+
 /**
  * 학습자 화면에서 접어 두는 절.
  *  §10은 시각화를 어떻게 그릴지 적은 제작 노트라 학습 흐름에 끼면 방해가 된다.
  *  §16은 바로 위 §15 확인 문제의 정답이다. 펼쳐 두면 문제가 문제가 아니게 된다.
  */
 const FOLDED: Record<number, string> = { 10: "제작 노트 보기", 16: "정답 보기" };
+
+/**
+ * 사이드바의 묶음.
+ *
+ * 18개를 평평하게 늘어놓으면 그 자체가 또 하나의 읽을거리다. 이름은 새로
+ * 짓지 않고 이 사이트가 이미 쓰는 세 낱말을 그대로 쓴다 — 레슨 머리의
+ * "읽기 12 · 단계 실행 8 · 연습 20"과 같은 말이라야 둘이 같은 것을 가리키는
+ * 줄 안다. §17·§18은 셋 중 무엇도 아니라 따로 둔다.
+ */
+const RAIL_GROUPS = [
+  { label: "읽기", first: 2, last: 7 },
+  { label: "단계 실행", first: 8, last: 12 },
+  { label: "연습", first: 13, last: 16 },
+  { label: "정리", first: 17, last: 18 },
+];
+const railGroups = book
+  ? RAIL_GROUPS.map((group) => ({
+      ...group,
+      parts: book.sections.filter((part) => part.n >= group.first && part.n <= group.last),
+    })).filter((group) => group.parts.length > 0)
+  : [];
 ---
 
 <Base title={`${lesson.title} — ${bookTitle}`}>
@@ -59,6 +83,41 @@ const FOLDED: Record<number, string> = { 10: "제작 노트 보기", 16: "정답
       <a href="/">← 레슨 목록</a>
       <a href={`/guide/${lesson.track}`}>{bookTitle} 시작하기</a>
     </p>
+
+    {/*
+      절 사이드바. 왼쪽 여백에 18개 절을 묶음별로 세워 두고, 읽는 내내 현재
+      위치를 켜 둔다. 아래 차례(toc-fold)와 목록이 같지만 하는 일이 다르다 —
+      차례는 접혀 있고 스크롤을 따라오지 않아서 읽는 중에는 없는 것과 같다.
+      그래서 사이드바가 켜지는 폭에서는 차례를 숨긴다(중복이다).
+
+      읽기 순서에서도 앞에 둔다. 키보드로 들어온 사람이 18개 절을 지나기 전에
+      건너뛸 수단을 먼저 만나야 한다.
+    */}
+    {railGroups.length > 0 && (
+      <nav class="rail" aria-label="절 바로가기">
+        <div class="rail-inner">
+          {railGroups.map((group, index) => (
+            <>
+              <p class="rail-group">{String(index + 1).padStart(2, "0")} · {group.label}</p>
+              {group.parts.map((part) => (
+                <>
+                  <a href={`#s${part.n}`} data-rail={`s${part.n}`} data-label={part.title}>
+                    <span class="rail-n">{part.n}</span>
+                    <span class="rail-t">{part.title}</span>
+                  </a>
+                  {part.n === 8 && variants.length > 0 && (
+                    <a class="rail-run" href="#run" data-rail="run" data-label="단계 실행">
+                      <span class="rail-n">▶</span>
+                      <span class="rail-t">단계 실행</span>
+                    </a>
+                  )}
+                </>
+              ))}
+            </>
+          ))}
+        </div>
+      </nav>
+    )}
 
     <header class="page-head">
       <p class="eyebrow">
@@ -107,9 +166,13 @@ const FOLDED: Record<number, string> = { 10: "제작 노트 보기", 16: "정답
         <details class="toc-fold">
           <summary>이 레슨의 차례 · {book.sections.length}개 절</summary>
           <nav class="toc" aria-label="이 레슨의 차례">
-            {variants.length > 0 && <a href="#run">▶ 단계 실행</a>}
             {book.sections.slice(1).map((part) => (
-              <a href={`#s${part.n}`}>{part.n}. {part.title}</a>
+              <>
+                <a href={`#s${part.n}`}>{part.n}. {part.title}</a>
+                {part.n === 8 && variants.length > 0 && (
+                  <a class="toc-run" href="#run">▶ 단계 실행</a>
+                )}
+              </>
             ))}
           </nav>
         </details>
@@ -118,27 +181,26 @@ const FOLDED: Record<number, string> = { 10: "제작 노트 보기", 16: "정답
         <section class="lead"><Fragment set:html={section(1).html} /></section>
 
         {/*
-          실행기는 첫 화면에 있어야 한다. 레슨 한 편이 18개 절이라, 원래 자리인
-          §8 뒤에 두면 이 사이트에서 유일하게 움직이는 것이 글 스무 화면 아래에
-          묻힌다. 레슨을 열었을 때 "이건 읽는 페이지가 아니라 돌려 보는 페이지"임을
-          먼저 알아야 한다.
+          첫 화면에는 플레이어가 아니라 안내 줄만 둔다.
 
-          그래도 §8은 예측 문제고 §9는 그 코드를 한 단계씩 따라가는 절이라,
-          플레이어가 필요한 순간은 여전히 §8이다. 그 자리에는 앵커만 남긴다.
-          아일랜드를 두 번 그리면 트레이스 JSON도 두 벌 실린다 — P11의 9×9는
-          그것만 427KB다.
+          플레이어의 기본 예제는 §8 예측 문제다. 그것을 §8 위에 두면 질문을 읽기
+          전에 답을 돌려 볼 수 있어, 이 교재의 방법인 "예측 → Step → 관찰"의 첫
+          단계가 페이지 구조 때문에 사라진다. §16 정답을 접어 두는 것과 같은 이유다.
+
+          그렇다고 비워 둘 수는 없다 — §8은 4~11화면 아래고(p24는 11.5화면),
+          이 사이트에서 움직이는 것은 플레이어뿐이다. 규모를 숫자로 적고 그리로
+          보낸다. 링크라서 아일랜드가 두 번 그려지지 않는다 — 그랬다면 트레이스
+          JSON도 두 벌 실린다. P11의 9×9는 그것만 427KB다.
         */}
         {variants.length > 0 && (
-          <section class="lesson-block lesson-run" id="run">
-            <h2 class="block-title"><span class="block-n">▶</span>이 레슨의 프로그램 · 단계 실행</h2>
-            <p class="run-lead">
-              §8에서 결과를 먼저 예측한 뒤 <kbd>Step</kbd>으로 확인하면 가장 잘 남습니다.
-              {/* 여기까지 §8에서 올라왔다면 다음에 읽을 것은 §9다. 이 링크가 없으면
-                  §2~§8을 다시 지나 내려가야 한다. 왕복이 여기서 닫힌다. */}
-              <a class="run-back" href="#s9">↓ §9 단계 실행 Walkthrough로</a>
-            </p>
-            <LessonPlayer client:load variants={variants} switchLabel="예제" />
-          </section>
+          <p class="run-notice">
+            <strong>읽고 끝내는 페이지가 아닙니다.</strong>
+            §8에서 결과를 먼저 적고, 단계 실행으로 한 사건씩 확인합니다.
+            <span class="run-notice-meta">
+              단계 실행 {variants.length}개 · {events.toLocaleString()}개 이벤트
+              <a href="#s8">↓ §8에서 예측하고 실행하기</a>
+            </span>
+          </p>
         )}
 
         {book.sections.slice(1).map((part) => (
@@ -157,16 +219,22 @@ const FOLDED: Record<number, string> = { 10: "제작 노트 보기", 16: "정답
               )}
             </section>
 
-            {/* 예측을 적었으면 여기서 실행기로 돌아간다. §9의 글이 그 뒤를 잇는다. */}
-            {part.n === 8 && (
-              <p class="run-jump">
-                {variants.length > 0 ? (
-                  <a href="#run">↑ 실행기로 돌아가 Step으로 확인하기</a>
-                ) : (
-                  "이 레슨의 예제는 아직 단계 실행이 준비되지 않았습니다. 아래 Walkthrough를 따라 읽어 주세요."
-                )}
-              </p>
-            )}
+            {/* 예측을 적은 바로 다음이 실행기 자리다. §9의 글이 그 뒤를 잇는다. */}
+            {part.n === 8 &&
+              (variants.length > 0 ? (
+                <section class="lesson-block lesson-run" id="run">
+                  <h2 class="block-title"><span class="block-n">▶</span>이 레슨의 프로그램 · 단계 실행</h2>
+                  <p class="run-lead">
+                    위 §8에 예측을 적었으면 <kbd>Step</kbd>으로 한 사건씩 확인합니다.
+                    바로 아래 §9가 같은 과정을 글로 따라갑니다.
+                  </p>
+                  <LessonPlayer client:load variants={variants} switchLabel="예제" />
+                </section>
+              ) : (
+                <p class="run-jump">
+                  이 레슨의 예제는 아직 단계 실행이 준비되지 않았습니다. 아래 Walkthrough를 따라 읽어 주세요.
+                </p>
+              ))}
           </>
         ))}
       </>
@@ -244,3 +312,166 @@ const FOLDED: Record<number, string> = { 10: "제작 노트 보기", 16: "정답
     </nav>
   </main>
 </Base>
+
+<script>
+  /*
+    레일의 "지금 여기"를 스크롤에 맞춘다.
+
+    IntersectionObserver가 아니라 화면 위쪽 140px에 그은 선을 쓴다. §6처럼
+    한 화면을 넘는 절과 §3처럼 세 줄짜리 절이 섞여 있어서, "가장 많이 보이는
+    절"은 짧은 절들이 지나갈 때 값이 튄다. "그 선을 마지막으로 지난 절"은
+    절의 길이와 무관하게 한 방향으로만 움직인다.
+  */
+  const rail = document.querySelector<HTMLElement>(".rail-inner");
+  if (rail) {
+    const links = new Map(
+      [...rail.querySelectorAll<HTMLAnchorElement>("a[data-rail]")].map((a) => [a.dataset.rail!, a]),
+    );
+    // 플레이어의 네 패널도 id를 가진 <section>이다. 걸러 내지 않으면 격자를
+    // 지나는 동안 고른 id에 짝이 되는 칸이 없어 사이드바가 통째로 꺼진다 —
+    // 하필 화면을 제일 오래 채우는 구간에서. 칸이 있는 절만 후보로 둔다.
+    const targets = [...document.querySelectorAll<HTMLElement>("main.page section[id]")].filter(
+      (section) => links.has(section.id),
+    );
+    const LINE = 140;
+    let active = "";
+
+    /*
+      눌러서 온 절은 스크롤 계산을 이긴다.
+
+      §16·§17은 페이지 끝에 붙어 있어 아무리 굴려도 선까지 올라오지 못한다.
+      즉 눌러서 그리로 가더라도 브라우저는 바닥까지밖에 못 가고, 계산은 늘
+      §18을 고른다 — 누른 곳과 켜지는 곳이 끝내 어긋난다. 누른 절을 붙잡아
+      두고, 사용자가 스스로 굴리기 시작하면 놓는다. 레일뿐 아니라 차례와
+      본문의 #링크도 같이 걸리도록 hashchange로 받는다.
+    */
+    let pinned = "";
+    let pinnedAt = -1;
+
+    const paint = () => {
+      const tops = targets.map((section) => section.getBoundingClientRect().top);
+
+      /*
+        페이지 끝의 몇 절은 선까지 올라오지 못한다. §16~§18은 셋을 합쳐도 한
+        화면이 안 되어 아무리 굴려도 위쪽 140px에 닿지 않는다 — 선만 보고
+        있으면 §18에 도착해도 레일은 §15에 켜져 있다.
+
+        그래서 두 구간으로 나눈다. 선에 닿을 수 있는 절들이 남아 있는 동안은
+        선이 전부다. 닿을 수 있는 마지막 절이 선에 닿고 나면, 거기서 바닥까지
+        남은 스크롤을 그 절과 못 닿는 절들이 똑같이 나눠 갖는다.
+
+        예전에는 선을 "바닥까지 한 화면 남았을 때"부터 아래로 내리는 방식이었다.
+        그러면 아직 선에 닿을 수 있는 절이 남아 있는데도 선이 내려간다 — §14를
+        눌러 멈춰 서면 바닥까지 511px뿐이라 선은 이미 468px까지 내려와 있고,
+        그 아래 걸린 §15가 §14를 이겼다.
+      */
+      const max = Math.max(0, document.documentElement.scrollHeight - innerHeight);
+      let last = 0;
+      for (let i = 0; i < targets.length; i++) {
+        if (tops[i]! + scrollY - LINE <= max) last = i;
+      }
+      const from = tops[last]! + scrollY - LINE;
+      const rest = targets.length - 1 - last;
+
+      let id: string;
+      if (rest > 0 && max > from && scrollY > from) {
+        /*
+          남은 스크롤이 14px뿐일 때도 있다(창이 클수록 그렇다). 그러면 마지막
+          절들은 몇 px씩만 켜졌다 지나간다 — 앞당겨 켜 주고 싶지만, 그러면 아직
+          제 차례인 절의 차례를 뺏는 수밖에 없다. 바로 그것이 §14를 §15가
+          이기던 원인이었다. 게다가 선에 못 닿는다는 것은 그 절들이 이미 한
+          화면에 다 들어와 있다는 뜻이라, 어느 쪽이 켜지든 눈으로는 다 보인다.
+          그래서 있는 만큼만 나눈다.
+        */
+        const share = ((scrollY - from) / (max - from)) * (rest + 1);
+        id = targets[last + Math.min(rest, Math.floor(share))]!.id;
+      } else {
+        id = targets[0]?.id ?? "";
+        for (let i = 0; i < targets.length; i++) {
+          if (tops[i]! <= LINE) id = targets[i]!.id;
+        }
+      }
+
+      if (pinned) {
+        // 계산이 같은 답을 내놓으면(=자리가 맞으면) 놓고, 사용자가 40px 넘게
+        // 굴렸어도 놓는다. pinnedAt이 -1인 동안은 그 이동이 아직 끝나지 않은
+        // 것이라 무조건 붙잡아 둔다.
+        if (pinnedAt >= 0 && (id === pinned || Math.abs(scrollY - pinnedAt) > 40)) {
+          pinned = "";
+        } else {
+          id = pinned;
+        }
+      }
+
+      if (id === active) return;
+      if (active) links.get(active)?.removeAttribute("aria-current");
+      active = id;
+      const chip = links.get(id);
+      if (!chip) return;
+      chip.setAttribute("aria-current", "true");
+      // 세로가 짧은 창에서는 레일 자체가 스크롤된다. 켜진 칸이 그 밖에 있으면
+      // 표시가 있으나 마나이므로 가운데로 끌어온다. 페이지는 건드리지 않는다.
+      if (rail.scrollHeight > rail.clientHeight + 1) {
+        rail.scrollTop = Math.max(0, chip.offsetTop - rail.clientHeight / 2 + chip.offsetHeight / 2);
+      }
+    };
+
+    // 스크롤마다 19개 절의 위치를 읽으므로 프레임당 한 번으로 묶는다.
+    let queued = false;
+    addEventListener(
+      "scroll",
+      () => {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(() => {
+          queued = false;
+          paint();
+        });
+      },
+      { passive: true },
+    );
+
+    let settle = 0;
+    const pinTo = (raw: string) => {
+      const id = raw.replace(/^#/, "");
+      if (!links.has(id)) return;
+      pinned = id;
+      pinnedAt = -1;
+      paint();
+      /*
+        미끄러지는 동안 scrollY는 계속 바뀐다. 그 변화를 "사용자가 스스로
+        굴렸다"로 읽으면 이동이 끝나기도 전에 붙잡은 것을 놓아 버린다. 멈춘
+        자리를 기준점으로 삼는다 — 그때까지 pinnedAt은 -1이고, paint는 -1인
+        동안 무조건 붙잡아 둔다.
+      */
+      clearTimeout(settle);
+      let y = NaN;
+      const wait = () => {
+        if (scrollY === y) {
+          pinnedAt = scrollY;
+          paint();
+          return;
+        }
+        y = scrollY;
+        settle = setTimeout(wait, 90);
+      };
+      wait();
+    };
+    addEventListener("hashchange", () => pinTo(location.hash));
+
+    // 손으로 굴리기 시작하면 그 자리에서 놓는다. 미끄러지는 중이어도 마찬가지다 —
+    // 휠을 굴린 순간 브라우저도 그 이동을 멈춘다.
+    const release = () => {
+      if (!pinned) return;
+      pinned = "";
+      clearTimeout(settle);
+      paint();
+    };
+    addEventListener("wheel", release, { passive: true });
+    addEventListener("touchstart", release, { passive: true });
+
+    paint();
+    // /lessons/x#s17로 바로 들어온 경우
+    if (location.hash) pinTo(location.hash);
+  }
+</script>

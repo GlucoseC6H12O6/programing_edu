@@ -34,7 +34,9 @@ export function LessonPlayer({ variants, switchLabel = "예제" }: Props) {
   const { doc, version, api: edit } = useEditableCode(variant.doc);
 
   return (
-    <>
+    /* 폭을 묶는 자리. 예제 전환 줄과 RunHere도 격자와 같은 폭이어야 한다 —
+       뷰어에만 걸면 그 둘만 1450px로 남아 아래위가 어긋난다. */
+    <div className="player">
       {variants.length > 1 && (
         <div className="demo-switch">
           <span>{switchLabel}</span>
@@ -60,6 +62,6 @@ export function LessonPlayer({ variants, switchLabel = "예제" }: Props) {
       />
       {/* 원본이 커밋된 트레이스와 같은지 확인하는 자리. 편집본과는 다른 일이다. */}
       <RunHere golden={variant.doc} />
-    </>
+    </div>
   );
 }
