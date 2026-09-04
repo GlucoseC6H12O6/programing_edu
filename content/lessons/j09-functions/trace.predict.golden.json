@@ -1,0 +1,610 @@
+{
+  "version": 1,
+  "lessonId": "j09-functions",
+  "source": {
+    "path": "predict.js",
+    "language": "javascript",
+    "lines": [
+      "function isInRange(value, lower = 90.0, upper = 100.0) {",
+      "  return value >= lower && value <= upper;",
+      "}",
+      "",
+      "console.log(isInRange(94.2));",
+      "console.log(isInRange(94.2, 95.0));",
+      "console.log(isInRange(94.2, 90.0, 94.0));",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "function",
+        "id": "fn:isInRange",
+        "name": "isInRange",
+        "params": [
+          {
+            "name": "value"
+          },
+          {
+            "name": "lower"
+          },
+          {
+            "name": "upper"
+          }
+        ],
+        "defLine": 1
+      },
+      "step": 1
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "isInRange",
+      "heapId": "fn:isInRange",
+      "params": [
+        {
+          "name": "value"
+        },
+        {
+          "name": "lower"
+        },
+        {
+          "name": "upper"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 2
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 29
+      },
+      "step": 3
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "isInRange",
+      "substituted": "isInRange(94.2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "94.2"
+          }
+        }
+      ],
+      "targetFrameId": "isInRange#1",
+      "span": {
+        "startCol": 12,
+        "endCol": 27
+      },
+      "step": 4
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "isInRange#1",
+      "name": "isInRange",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 5,
+      "step": 5
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "isInRange#1",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "step": 6
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "isInRange#1",
+      "name": "lower",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "90"
+      },
+      "step": 7
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "isInRange#1",
+      "name": "upper",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "100"
+      },
+      "step": 8
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "isInRange#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 42
+      },
+      "step": 9
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "isInRange#1",
+      "expression": "value >= lower",
+      "substituted": "94.2 >= 90",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 9,
+        "endCol": 23
+      },
+      "step": 10
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "isInRange#1",
+      "expression": "value <= upper",
+      "substituted": "94.2 <= 100",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 27,
+        "endCol": 41
+      },
+      "step": 11
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "isInRange#1",
+      "expression": "value >= lower && value <= upper",
+      "substituted": "value >= lower && value <= upper",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "step": 12
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "isInRange#1",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "toLine": 5,
+      "step": 13
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "isInRange#1",
+      "step": 14
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "true",
+      "step": 15
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 35
+      },
+      "step": 16
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "isInRange",
+      "substituted": "isInRange(94.2, 95)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "94.2"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "95"
+          }
+        }
+      ],
+      "targetFrameId": "isInRange#2",
+      "span": {
+        "startCol": 12,
+        "endCol": 33
+      },
+      "step": 17
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "isInRange#2",
+      "name": "isInRange",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 6,
+      "step": 18
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "isInRange#2",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "step": 19
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "isInRange#2",
+      "name": "lower",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "95"
+      },
+      "step": 20
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "isInRange#2",
+      "name": "upper",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "100"
+      },
+      "step": 21
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "isInRange#2",
+      "span": {
+        "startCol": 2,
+        "endCol": 42
+      },
+      "step": 22
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "isInRange#2",
+      "expression": "value >= lower",
+      "substituted": "94.2 >= 95",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 9,
+        "endCol": 23
+      },
+      "step": 23
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "isInRange#2",
+      "expression": "value >= lower && value <= upper",
+      "substituted": "value >= lower",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "step": 24,
+      "message": "2번 줄의 `value >= lower && value <= upper`에서 앞쪽 결과만으로 값이 정해져 `value <= upper`은 계산하지 않았습니다."
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "isInRange#2",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "toLine": 6,
+      "step": 25
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "isInRange#2",
+      "step": 26
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "false",
+      "step": 27
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 41
+      },
+      "step": 28
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 7,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "isInRange",
+      "substituted": "isInRange(94.2, 90, 94)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "94.2"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "90"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "94"
+          }
+        }
+      ],
+      "targetFrameId": "isInRange#3",
+      "span": {
+        "startCol": 12,
+        "endCol": 39
+      },
+      "step": 29
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "isInRange#3",
+      "name": "isInRange",
+      "callNumber": 3,
+      "parentFrameId": "global",
+      "returnLine": 7,
+      "step": 30
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "isInRange#3",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "step": 31
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "isInRange#3",
+      "name": "lower",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "90"
+      },
+      "step": 32
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "isInRange#3",
+      "name": "upper",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "94"
+      },
+      "step": 33
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "isInRange#3",
+      "span": {
+        "startCol": 2,
+        "endCol": 42
+      },
+      "step": 34
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "isInRange#3",
+      "expression": "value >= lower",
+      "substituted": "94.2 >= 90",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 9,
+        "endCol": 23
+      },
+      "step": 35
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "isInRange#3",
+      "expression": "value <= upper",
+      "substituted": "94.2 <= 94",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 27,
+        "endCol": 41
+      },
+      "step": 36
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "isInRange#3",
+      "expression": "value >= lower && value <= upper",
+      "substituted": "value >= lower && value <= upper",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "step": 37
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "isInRange#3",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "toLine": 7,
+      "step": 38
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "isInRange#3",
+      "step": 39
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 7,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "false",
+      "step": 40
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 41
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "true\nfalse\nfalse\n"
+  }
+}

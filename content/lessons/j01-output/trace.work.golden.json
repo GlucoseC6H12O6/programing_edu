@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "lessonId": "j01-output",
+  "source": {
+    "path": "work.js",
+    "language": "javascript",
+    "lines": [
+      "console.log(\"Measurement check\");",
+      "console.log(\"Lot:\", \"L07\");",
+      "console.log(\"Equipment:\", \"EQ-02\");",
+      "console.log(\"Status:\", \"READY\");",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 33
+      },
+      "step": 1
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "Measurement check",
+      "step": 2
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 27
+      },
+      "step": 3
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "Lot: L07",
+      "step": 4
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 35
+      },
+      "step": 5
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "Equipment: EQ-02",
+      "step": 6
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 32
+      },
+      "step": 7
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 4,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "Status: READY",
+      "step": 8
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 9
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "Measurement check\nLot: L07\nEquipment: EQ-02\nStatus: READY\n"
+  }
+}

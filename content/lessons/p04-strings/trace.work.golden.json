@@ -1,0 +1,144 @@
+{
+  "version": 1,
+  "lessonId": "p04-strings",
+  "source": {
+    "path": "work.py",
+    "language": "python",
+    "lines": [
+      "lot = \"L08\"",
+      "wafer = 3",
+      "measurement = 9.876",
+      "print(f\"{lot} W{wafer:02d}: {measurement:.2f} nm\")"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 11
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "lot",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'L08'"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 11
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 3,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 9
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "name": "wafer",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 9
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 5,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 6,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "name": "measurement",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.876"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 7,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 50
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 8,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "L08 W03: 9.88 nm"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 9,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "L08 W03: 9.88 nm\n"
+  }
+}

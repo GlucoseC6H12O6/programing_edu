@@ -1,0 +1,475 @@
+{
+  "version": 1,
+  "lessonId": "p17-sorting",
+  "source": {
+    "path": "work.py",
+    "language": "python",
+    "lines": [
+      "records = [",
+      "    {\"wafer\": \"W01\", \"value\": 10.1},",
+      "    {\"wafer\": \"W02\", \"value\": 10.8},",
+      "    {\"wafer\": \"W03\", \"value\": 9.7},",
+      "]",
+      "highest_first = sorted(records, key=lambda r: r[\"value\"], reverse=True)"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "dict@2",
+        "label": "dict",
+        "entries": [
+          {
+            "key": "wafer",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W01'"
+            }
+          },
+          {
+            "key": "value",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "10.1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 3,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "dict@3",
+        "label": "dict",
+        "entries": [
+          {
+            "key": "wafer",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W02'"
+            }
+          },
+          {
+            "key": "value",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "10.8"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 4,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "dict@4",
+        "label": "dict",
+        "entries": [
+          {
+            "key": "wafer",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W03'"
+            }
+          },
+          {
+            "key": "value",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "9.7"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 5,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "ref",
+            "id": "dict@2"
+          },
+          {
+            "kind": "ref",
+            "id": "dict@3"
+          },
+          {
+            "kind": "ref",
+            "id": "dict@4"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 6,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "records",
+      "value": {
+        "kind": "ref",
+        "id": "list@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 7,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 71
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 8,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "lambda",
+      "substituted": "lambda({wafer: 'W01', value: 10.1})",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "dict@2"
+          }
+        }
+      ],
+      "targetFrameId": "lambda#1",
+      "span": {
+        "startCol": 36,
+        "endCol": 56
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 9,
+      "line": 6,
+      "frameId": "lambda#1",
+      "detail": "expression",
+      "name": "lambda",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 6
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 10,
+      "line": 6,
+      "frameId": "lambda#1",
+      "detail": "core",
+      "name": "r",
+      "value": {
+        "kind": "ref",
+        "id": "dict@2"
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 11,
+      "line": 6,
+      "frameId": "lambda#1",
+      "detail": "expression",
+      "target": "dict@2",
+      "key": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.1"
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 12,
+      "line": 6,
+      "frameId": "lambda#1",
+      "detail": "core",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.1"
+      },
+      "toLine": 6
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 13,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "lambda#1"
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 14,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "lambda",
+      "substituted": "lambda({wafer: 'W02', value: 10.8})",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "dict@3"
+          }
+        }
+      ],
+      "targetFrameId": "lambda#2",
+      "span": {
+        "startCol": 36,
+        "endCol": 56
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 15,
+      "line": 6,
+      "frameId": "lambda#2",
+      "detail": "expression",
+      "name": "lambda",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 6
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 16,
+      "line": 6,
+      "frameId": "lambda#2",
+      "detail": "core",
+      "name": "r",
+      "value": {
+        "kind": "ref",
+        "id": "dict@3"
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 17,
+      "line": 6,
+      "frameId": "lambda#2",
+      "detail": "expression",
+      "target": "dict@3",
+      "key": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.8"
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 18,
+      "line": 6,
+      "frameId": "lambda#2",
+      "detail": "core",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.8"
+      },
+      "toLine": 6
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 19,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "lambda#2"
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 20,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "lambda",
+      "substituted": "lambda({wafer: 'W03', value: 9.7})",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "dict@4"
+          }
+        }
+      ],
+      "targetFrameId": "lambda#3",
+      "span": {
+        "startCol": 36,
+        "endCol": 56
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 21,
+      "line": 6,
+      "frameId": "lambda#3",
+      "detail": "expression",
+      "name": "lambda",
+      "callNumber": 3,
+      "parentFrameId": "global",
+      "returnLine": 6
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 22,
+      "line": 6,
+      "frameId": "lambda#3",
+      "detail": "core",
+      "name": "r",
+      "value": {
+        "kind": "ref",
+        "id": "dict@4"
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 23,
+      "line": 6,
+      "frameId": "lambda#3",
+      "detail": "expression",
+      "target": "dict@4",
+      "key": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.7"
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 24,
+      "line": 6,
+      "frameId": "lambda#3",
+      "detail": "core",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.7"
+      },
+      "toLine": 6
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 25,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "lambda#3"
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 26,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@5",
+        "label": "list",
+        "items": [
+          {
+            "kind": "ref",
+            "id": "dict@3"
+          },
+          {
+            "kind": "ref",
+            "id": "dict@2"
+          },
+          {
+            "kind": "ref",
+            "id": "dict@4"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 27,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "name": "highest_first",
+      "value": {
+        "kind": "ref",
+        "id": "list@5"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 71
+      }
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 28,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": ""
+  }
+}

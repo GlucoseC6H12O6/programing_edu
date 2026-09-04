@@ -1,0 +1,548 @@
+{
+  "version": 1,
+  "lessonId": "p10-while",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "n = 0",
+      "total = 0",
+      "",
+      "while n < 5:",
+      "    n += 1",
+      "    if n == 2:",
+      "        continue",
+      "    if n == 4:",
+      "        break",
+      "    total += n",
+      "",
+      "print(n, total)"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 5
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "n",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 5
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 3,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 9
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "name": "total",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 9
+      }
+    },
+    {
+      "type": "LOOP_START",
+      "step": 5,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:while@4",
+      "varNames": [],
+      "track": []
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 6,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "n < 5",
+      "substituted": "0 < 5",
+      "result": true
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 7,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:while@4",
+      "index": 0
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 8,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 10
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 9,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "name": "n",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 10
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 10,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "n == 2",
+      "substituted": "1 == 2",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 11,
+      "line": 8,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "n == 4",
+      "substituted": "1 == 4",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 13
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 12,
+      "line": 10,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 14
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 13,
+      "line": 10,
+      "frameId": "global",
+      "detail": "core",
+      "name": "total",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 14
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 14,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "n < 5",
+      "substituted": "1 < 5",
+      "result": true
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 15,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:while@4",
+      "index": 1
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 16,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 10
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 17,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "name": "n",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 10
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 18,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "n == 2",
+      "substituted": "2 == 2",
+      "result": true,
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 19,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 7
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 20,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "n < 5",
+      "substituted": "2 < 5",
+      "result": true
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 21,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:while@4",
+      "index": 2
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 22,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 10
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 23,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "name": "n",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 10
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 24,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "n == 2",
+      "substituted": "3 == 2",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 25,
+      "line": 8,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "n == 4",
+      "substituted": "3 == 4",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 13
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 26,
+      "line": 10,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 14
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 27,
+      "line": 10,
+      "frameId": "global",
+      "detail": "core",
+      "name": "total",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 14
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 28,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "n < 5",
+      "substituted": "3 < 5",
+      "result": true
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 29,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:while@4",
+      "index": 3
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 30,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 10
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 31,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "name": "n",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 10
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 32,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "n == 2",
+      "substituted": "4 == 2",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 33,
+      "line": 8,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "n == 4",
+      "substituted": "4 == 4",
+      "result": true,
+      "span": {
+        "startCol": 4,
+        "endCol": 13
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 34,
+      "line": 8,
+      "frameId": "global",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 9
+    },
+    {
+      "type": "LOOP_END",
+      "step": 35,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:while@4",
+      "reason": "break"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 36,
+      "line": 12,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 15
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 37,
+      "line": 12,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "4 4"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 38,
+      "line": 12,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "4 4\n"
+  }
+}

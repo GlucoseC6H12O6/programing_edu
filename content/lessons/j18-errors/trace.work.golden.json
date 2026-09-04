@@ -1,0 +1,1328 @@
+{
+  "version": 1,
+  "lessonId": "j18-errors",
+  "source": {
+    "path": "work.js",
+    "language": "javascript",
+    "lines": [
+      "function readMeasurement(row) {",
+      "  if (row === null || row === undefined) {",
+      "    throw new TypeError(\"행이 없습니다\");",
+      "  }",
+      "  const value = Number(row.measurement);",
+      "  if (!Number.isFinite(value)) {",
+      "    throw new RangeError(`숫자가 아닙니다: ${row.measurement}`);",
+      "  }",
+      "  return value;",
+      "}",
+      "",
+      "const rows = [",
+      "  { id: \"W01\", measurement: \"94.2\" },",
+      "  { id: \"W02\", measurement: \"N/A\" },",
+      "  null,",
+      "];",
+      "",
+      "let ok = 0;",
+      "const failures = [];",
+      "",
+      "for (const row of rows) {",
+      "  try {",
+      "    const value = readMeasurement(row);",
+      "    ok = ok + 1;",
+      "    console.log(\"OK\", value);",
+      "  } catch (error) {",
+      "    failures.push(error.name);",
+      "  }",
+      "}",
+      "",
+      "console.log(\"성공\", ok, \"실패\", failures);",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "function",
+        "id": "fn:readMeasurement",
+        "name": "readMeasurement",
+        "params": [
+          {
+            "name": "row"
+          }
+        ],
+        "defLine": 1
+      },
+      "step": 1
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "readMeasurement",
+      "heapId": "fn:readMeasurement",
+      "params": [
+        {
+          "name": "row"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 2
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 2
+      },
+      "step": 3
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@2",
+        "label": "object",
+        "entries": [
+          {
+            "key": "id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W01'"
+            }
+          },
+          {
+            "key": "measurement",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'94.2'"
+            }
+          }
+        ]
+      },
+      "step": 4
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@3",
+        "label": "object",
+        "entries": [
+          {
+            "key": "id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W02'"
+            }
+          },
+          {
+            "key": "measurement",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'N/A'"
+            }
+          }
+        ]
+      },
+      "step": 5
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@1",
+        "label": "array",
+        "items": [
+          {
+            "kind": "ref",
+            "id": "Object@2"
+          },
+          {
+            "kind": "ref",
+            "id": "Object@3"
+          },
+          {
+            "kind": "primitive",
+            "type": "null",
+            "repr": "null"
+          }
+        ]
+      },
+      "step": 6
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 12,
+      "detail": "core",
+      "frameId": "global",
+      "name": "rows",
+      "value": {
+        "kind": "ref",
+        "id": "Array@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 2
+      },
+      "step": 7
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 18,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 11
+      },
+      "step": 8
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 18,
+      "detail": "core",
+      "frameId": "global",
+      "name": "ok",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 11
+      },
+      "step": 9
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 19,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 20
+      },
+      "step": 10
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 19,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@4",
+        "label": "array",
+        "items": []
+      },
+      "step": 11
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 19,
+      "detail": "core",
+      "frameId": "global",
+      "name": "failures",
+      "value": {
+        "kind": "ref",
+        "id": "Array@4"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 20
+      },
+      "step": 12
+    },
+    {
+      "type": "LOOP_START",
+      "line": 21,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:row@21",
+      "varNames": [
+        "row"
+      ],
+      "track": [
+        "{id: 'W01', measurement: '94.2'}",
+        "{id: 'W02', measurement: 'N/A'}",
+        "null"
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 13
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 21,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "row",
+      "value": {
+        "kind": "ref",
+        "id": "Object@2"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "rows"
+      },
+      "step": 14
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 21,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:row@21",
+      "index": 0,
+      "step": 15
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 39
+      },
+      "step": 16
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "row",
+      "result": {
+        "kind": "ref",
+        "id": "Object@2"
+      },
+      "span": {
+        "startCol": 34,
+        "endCol": 37
+      },
+      "step": 17
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 23,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "readMeasurement",
+      "substituted": "readMeasurement({id: 'W01', measurement: '94.2'})",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "Object@2"
+          },
+          "from": "global.row"
+        }
+      ],
+      "targetFrameId": "readMeasurement#1",
+      "span": {
+        "startCol": 18,
+        "endCol": 38
+      },
+      "step": 18
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "readMeasurement#1",
+      "name": "readMeasurement",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 23,
+      "step": 19
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "readMeasurement#1",
+      "name": "row",
+      "value": {
+        "kind": "ref",
+        "id": "Object@2"
+      },
+      "from": "global.row",
+      "step": 20
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "readMeasurement#1",
+      "expression": "row === null",
+      "substituted": "{id: 'W01', measurement: '94.2'} === null",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 6,
+        "endCol": 18
+      },
+      "step": 21
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "readMeasurement#1",
+      "expression": "row === undefined",
+      "substituted": "{id: 'W01', measurement: '94.2'} === undefined",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 22,
+        "endCol": 39
+      },
+      "step": 22
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "readMeasurement#1",
+      "expression": "row === null || row === undefined",
+      "substituted": "row === null || row === undefined",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "step": 23
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 2,
+      "detail": "core",
+      "frameId": "readMeasurement#1",
+      "expression": "row === null || row === undefined",
+      "result": false,
+      "span": {
+        "startCol": 2,
+        "endCol": 3
+      },
+      "step": 24
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "readMeasurement#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 40
+      },
+      "step": 25
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "readMeasurement#1",
+      "target": "Object@2",
+      "key": "measurement",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'94.2'"
+      },
+      "step": 26
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 5,
+      "detail": "core",
+      "frameId": "readMeasurement#1",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 40
+      },
+      "step": 27
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 6,
+      "detail": "core",
+      "frameId": "readMeasurement#1",
+      "expression": "!Number.isFinite(value)",
+      "substituted": "!true",
+      "result": false,
+      "span": {
+        "startCol": 2,
+        "endCol": 3
+      },
+      "step": 28
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "readMeasurement#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 15
+      },
+      "step": 29
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "readMeasurement#1",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "toLine": 23,
+      "step": 30
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "readMeasurement#1",
+      "step": 31
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 23,
+      "detail": "core",
+      "frameId": "global",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "readMeasurement#1"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 39
+      },
+      "step": 32
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 24,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      },
+      "step": 33
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 24,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "ok + 1",
+      "substituted": "0 + 1",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "span": {
+        "startCol": 9,
+        "endCol": 15
+      },
+      "step": 34
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 24,
+      "detail": "core",
+      "frameId": "global",
+      "name": "ok",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      },
+      "step": 35
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 25,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 29
+      },
+      "step": 36
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 25,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "OK 94.2",
+      "step": 37
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 21,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "row",
+      "before": {
+        "kind": "ref",
+        "id": "Object@2"
+      },
+      "after": {
+        "kind": "ref",
+        "id": "Object@3"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "rows"
+      },
+      "step": 38
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 21,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:row@21",
+      "index": 1,
+      "step": 39
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 39
+      },
+      "step": 40
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "row",
+      "result": {
+        "kind": "ref",
+        "id": "Object@3"
+      },
+      "span": {
+        "startCol": 34,
+        "endCol": 37
+      },
+      "step": 41
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 23,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "readMeasurement",
+      "substituted": "readMeasurement({id: 'W02', measurement: 'N/A'})",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "Object@3"
+          },
+          "from": "global.row"
+        }
+      ],
+      "targetFrameId": "readMeasurement#2",
+      "span": {
+        "startCol": 18,
+        "endCol": 38
+      },
+      "step": 42
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "readMeasurement#2",
+      "name": "readMeasurement",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 23,
+      "step": 43
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "readMeasurement#2",
+      "name": "row",
+      "value": {
+        "kind": "ref",
+        "id": "Object@3"
+      },
+      "from": "global.row",
+      "step": 44
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "readMeasurement#2",
+      "expression": "row === null",
+      "substituted": "{id: 'W02', measurement: 'N/A'} === null",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 6,
+        "endCol": 18
+      },
+      "step": 45
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "readMeasurement#2",
+      "expression": "row === undefined",
+      "substituted": "{id: 'W02', measurement: 'N/A'} === undefined",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 22,
+        "endCol": 39
+      },
+      "step": 46
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "readMeasurement#2",
+      "expression": "row === null || row === undefined",
+      "substituted": "row === null || row === undefined",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "step": 47
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 2,
+      "detail": "core",
+      "frameId": "readMeasurement#2",
+      "expression": "row === null || row === undefined",
+      "result": false,
+      "span": {
+        "startCol": 2,
+        "endCol": 3
+      },
+      "step": 48
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "readMeasurement#2",
+      "span": {
+        "startCol": 2,
+        "endCol": 40
+      },
+      "step": 49
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "readMeasurement#2",
+      "target": "Object@3",
+      "key": "measurement",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'N/A'"
+      },
+      "step": 50
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 5,
+      "detail": "core",
+      "frameId": "readMeasurement#2",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "nan",
+        "repr": "NaN"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 40
+      },
+      "step": 51
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 6,
+      "detail": "core",
+      "frameId": "readMeasurement#2",
+      "expression": "!Number.isFinite(value)",
+      "substituted": "!false",
+      "result": true,
+      "span": {
+        "startCol": 2,
+        "endCol": 3
+      },
+      "step": 52
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "readMeasurement#2",
+      "label": "if",
+      "targetLine": 7,
+      "step": 53
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "readMeasurement#2",
+      "span": {
+        "startCol": 4,
+        "endCol": 57
+      },
+      "step": 54
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "readMeasurement#2",
+      "target": "Object@3",
+      "key": "measurement",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'N/A'"
+      },
+      "step": 55
+    },
+    {
+      "type": "ERROR_THROW",
+      "line": 7,
+      "detail": "core",
+      "frameId": "readMeasurement#2",
+      "name": "RangeError",
+      "message": "숫자가 아닙니다: N/A",
+      "step": 56
+    },
+    {
+      "type": "ERROR_PROPAGATE",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "readMeasurement#2",
+      "fromFrameId": "readMeasurement#2",
+      "toFrameId": "global",
+      "step": 57
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "readMeasurement#2",
+      "step": 58
+    },
+    {
+      "type": "ERROR_CATCH",
+      "line": 26,
+      "detail": "core",
+      "frameId": "global",
+      "handlerLine": 26,
+      "step": 59
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 27,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 30
+      },
+      "step": 60
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 27,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "RangeError@5",
+        "label": "instance",
+        "className": "RangeError",
+        "entries": []
+      },
+      "step": 61
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 27,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "RangeError@5",
+      "key": "name",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'RangeError'"
+      },
+      "step": 62
+    },
+    {
+      "type": "ITEM_APPEND",
+      "line": 27,
+      "detail": "core",
+      "frameId": "global",
+      "target": "Array@4",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'RangeError'"
+      },
+      "step": 63
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 27,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@4",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'RangeError'"
+          }
+        ]
+      },
+      "step": 64
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 21,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "row",
+      "before": {
+        "kind": "ref",
+        "id": "Object@3"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "null",
+        "repr": "null"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "rows"
+      },
+      "step": 65
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 21,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:row@21",
+      "index": 2,
+      "step": 66
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 39
+      },
+      "step": 67
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "row",
+      "result": {
+        "kind": "primitive",
+        "type": "null",
+        "repr": "null"
+      },
+      "span": {
+        "startCol": 34,
+        "endCol": 37
+      },
+      "step": 68
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 23,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "readMeasurement",
+      "substituted": "readMeasurement(null)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "null",
+            "repr": "null"
+          },
+          "from": "global.row"
+        }
+      ],
+      "targetFrameId": "readMeasurement#3",
+      "span": {
+        "startCol": 18,
+        "endCol": 38
+      },
+      "step": 69
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "readMeasurement#3",
+      "name": "readMeasurement",
+      "callNumber": 3,
+      "parentFrameId": "global",
+      "returnLine": 23,
+      "step": 70
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "readMeasurement#3",
+      "name": "row",
+      "value": {
+        "kind": "primitive",
+        "type": "null",
+        "repr": "null"
+      },
+      "from": "global.row",
+      "step": 71
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "readMeasurement#3",
+      "expression": "row === null",
+      "substituted": "null === null",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 6,
+        "endCol": 18
+      },
+      "step": 72
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "readMeasurement#3",
+      "expression": "row === null || row === undefined",
+      "substituted": "row === null",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "step": 73,
+      "message": "2번 줄의 `row === null || row === undefined`에서 앞쪽 결과만으로 값이 정해져 `row === undefined`은 계산하지 않았습니다."
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 2,
+      "detail": "core",
+      "frameId": "readMeasurement#3",
+      "expression": "row === null || row === undefined",
+      "result": true,
+      "span": {
+        "startCol": 2,
+        "endCol": 3
+      },
+      "step": 74
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "readMeasurement#3",
+      "label": "if",
+      "targetLine": 3,
+      "step": 75
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "readMeasurement#3",
+      "span": {
+        "startCol": 4,
+        "endCol": 35
+      },
+      "step": 76
+    },
+    {
+      "type": "ERROR_THROW",
+      "line": 3,
+      "detail": "core",
+      "frameId": "readMeasurement#3",
+      "name": "TypeError",
+      "message": "행이 없습니다",
+      "step": 77
+    },
+    {
+      "type": "ERROR_PROPAGATE",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "readMeasurement#3",
+      "fromFrameId": "readMeasurement#3",
+      "toFrameId": "global",
+      "step": 78
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "readMeasurement#3",
+      "step": 79
+    },
+    {
+      "type": "ERROR_CATCH",
+      "line": 26,
+      "detail": "core",
+      "frameId": "global",
+      "handlerLine": 26,
+      "step": 80
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 27,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 30
+      },
+      "step": 81
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 27,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "TypeError@6",
+        "label": "instance",
+        "className": "TypeError",
+        "entries": []
+      },
+      "step": 82
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 27,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "TypeError@6",
+      "key": "name",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'TypeError'"
+      },
+      "step": 83
+    },
+    {
+      "type": "ITEM_APPEND",
+      "line": 27,
+      "detail": "core",
+      "frameId": "global",
+      "target": "Array@4",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'TypeError'"
+      },
+      "step": 84
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 27,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@4",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'RangeError'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'TypeError'"
+          }
+        ]
+      },
+      "step": 85
+    },
+    {
+      "type": "LOOP_END",
+      "line": 21,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:row@21",
+      "reason": "exhausted",
+      "step": 86
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 31,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 38
+      },
+      "step": 87
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 31,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "성공 1 실패 [ 'RangeError', 'TypeError' ]",
+      "step": 88
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 31,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 89
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "OK 94.2\n성공 1 실패 [ 'RangeError', 'TypeError' ]\n"
+  }
+}

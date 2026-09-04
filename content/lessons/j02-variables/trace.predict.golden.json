@@ -1,0 +1,328 @@
+{
+  "version": 1,
+  "lessonId": "j02-variables",
+  "source": {
+    "path": "predict.js",
+    "language": "javascript",
+    "lines": [
+      "let count = 1;",
+      "count = count + 1;",
+      "const values = [];",
+      "values.push(3);",
+      "values.push(4);",
+      "console.log(count, values);",
+      "console.log(typeof count, typeof values);",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 14
+      },
+      "step": 1
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "count",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 14
+      },
+      "step": 2
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 18
+      },
+      "step": 3
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "count + 1",
+      "substituted": "1 + 1",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 17
+      },
+      "step": 4
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 2,
+      "detail": "core",
+      "frameId": "global",
+      "name": "count",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 18
+      },
+      "step": 5
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 18
+      },
+      "step": 6
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@1",
+        "label": "array",
+        "items": []
+      },
+      "step": 7
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "name": "values",
+      "value": {
+        "kind": "ref",
+        "id": "Array@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 18
+      },
+      "step": 8
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 15
+      },
+      "step": 9
+    },
+    {
+      "type": "ITEM_APPEND",
+      "line": 4,
+      "detail": "core",
+      "frameId": "global",
+      "target": "Array@1",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "step": 10
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@1",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "3"
+          }
+        ]
+      },
+      "step": 11
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 15
+      },
+      "step": 12
+    },
+    {
+      "type": "ITEM_APPEND",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "target": "Array@1",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "step": 13
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@1",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "3"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "4"
+          }
+        ]
+      },
+      "step": 14
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 27
+      },
+      "step": 15
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "2 [ 3, 4 ]",
+      "step": 16
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 41
+      },
+      "step": 17
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "typeof count",
+      "substituted": "typeof 2",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'number'"
+      },
+      "span": {
+        "startCol": 12,
+        "endCol": 24
+      },
+      "step": 18
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "typeof values",
+      "substituted": "typeof [3, 4]",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'object'"
+      },
+      "span": {
+        "startCol": 26,
+        "endCol": 39
+      },
+      "step": 19
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 7,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "number object",
+      "step": 20
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 21
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "2 [ 3, 4 ]\nnumber object\n"
+  }
+}

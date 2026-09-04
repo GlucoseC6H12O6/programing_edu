@@ -1,0 +1,230 @@
+{
+  "version": 1,
+  "lessonId": "p13-scope",
+  "source": {
+    "path": "work.py",
+    "language": "python",
+    "lines": [
+      "def classify(value, lower_limit, upper_limit):",
+      "    if lower_limit <= value <= upper_limit:",
+      "        return \"PASS\"",
+      "    return \"REVIEW\"",
+      "",
+      "status = classify(10.2, 9.5, 10.5)"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "FUNCTION_DEFINE",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "classify",
+      "heapId": "fn:classify",
+      "params": [
+        {
+          "name": "value"
+        },
+        {
+          "name": "lower_limit"
+        },
+        {
+          "name": "upper_limit"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 2,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 34
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 3,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "classify",
+      "substituted": "classify(10.2, 9.5, 10.5)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.2"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "9.5"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.5"
+          }
+        }
+      ],
+      "targetFrameId": "classify#1",
+      "span": {
+        "startCol": 9,
+        "endCol": 34
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 4,
+      "line": 1,
+      "frameId": "classify#1",
+      "detail": "expression",
+      "name": "classify",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 6
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 5,
+      "line": 1,
+      "frameId": "classify#1",
+      "detail": "expression",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      }
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 6,
+      "line": 1,
+      "frameId": "classify#1",
+      "detail": "expression",
+      "name": "lower_limit",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.5"
+      }
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 7,
+      "line": 1,
+      "frameId": "classify#1",
+      "detail": "core",
+      "name": "upper_limit",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.5"
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 8,
+      "line": 2,
+      "frameId": "classify#1",
+      "detail": "core",
+      "expression": "lower_limit <= value <= upper_limit",
+      "result": true,
+      "span": {
+        "startCol": 4,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 9,
+      "line": 2,
+      "frameId": "classify#1",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 3
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 10,
+      "line": 3,
+      "frameId": "classify#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 11,
+      "line": 3,
+      "frameId": "classify#1",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'PASS'"
+      },
+      "toLine": 6
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 12,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "classify#1"
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 13,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "name": "status",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'PASS'"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "classify#1"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 34
+      }
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 14,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": ""
+  }
+}

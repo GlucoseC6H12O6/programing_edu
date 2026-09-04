@@ -1,0 +1,253 @@
+{
+  "version": 1,
+  "lessonId": "j03-operators",
+  "source": {
+    "path": "predict.js",
+    "language": "javascript",
+    "lines": [
+      "console.log(\"2\" + 3);",
+      "console.log(Number(\"2\") + 3);",
+      "console.log(\"2\" === 2);",
+      "console.log(\"2\" == 2);",
+      "const bad = Number(\"N/A\");",
+      "console.log(bad === NaN, Number.isFinite(bad));",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 21
+      },
+      "step": 1
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "\"2\" + 3",
+      "substituted": "'2' + 3",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'23'"
+      },
+      "span": {
+        "startCol": 12,
+        "endCol": 19
+      },
+      "step": 2
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "23",
+      "step": 3
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 29
+      },
+      "step": 4
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "Number(\"2\") + 3",
+      "substituted": "2 + 3",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "5"
+      },
+      "span": {
+        "startCol": 12,
+        "endCol": 27
+      },
+      "step": 5
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "5",
+      "step": 6
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 23
+      },
+      "step": 7
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "\"2\" === 2",
+      "substituted": "'2' === 2",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 12,
+        "endCol": 21
+      },
+      "step": 8
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "false",
+      "step": 9
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 22
+      },
+      "step": 10
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "\"2\" == 2",
+      "substituted": "'2' == 2",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 12,
+        "endCol": 20
+      },
+      "step": 11
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 4,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "true",
+      "step": 12
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 26
+      },
+      "step": 13
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "name": "bad",
+      "value": {
+        "kind": "primitive",
+        "type": "nan",
+        "repr": "NaN"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 26
+      },
+      "step": 14
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 47
+      },
+      "step": 15
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "bad === NaN",
+      "substituted": "NaN === NaN",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 12,
+        "endCol": 23
+      },
+      "step": 16
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "false false",
+      "step": 17
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 18
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "23\n5\nfalse\ntrue\nfalse false\n"
+  }
+}

@@ -1,0 +1,11 @@
+# 제목과 본문은 content/python-visible-textbook-p01-p24.md 가 단일 출처다.
+# 여기에는 기계가 쓰는 사실만 둔다.
+id: p22-csv-json
+track: python
+stage: 응용 문법
+prerequisites: [p07-dict-set, p18-files]
+code: code/predict.py
+traces:
+  # §13은 함수 정의와 json.dump 조각이라 그대로 돌릴 프로그램이 아니다.
+  # 돌아가는 것은 §8 하나뿐이므로 그것만 싣는다.
+  - { id: "predict", file: trace.predict.golden.json, source: code/predict.py }

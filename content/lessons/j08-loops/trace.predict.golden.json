@@ -1,0 +1,751 @@
+{
+  "version": 1,
+  "lessonId": "j08-loops",
+  "source": {
+    "path": "predict.js",
+    "language": "javascript",
+    "lines": [
+      "const wafers = [\"W01\", \"W02\", \"W03\"];",
+      "let bodyRuns = 0;",
+      "let lastIndex = -1;",
+      "",
+      "for (let index = 0; index < wafers.length; index += 1) {",
+      "  bodyRuns = bodyRuns + 1;",
+      "  lastIndex = index;",
+      "  console.log(index, wafers[index]);",
+      "}",
+      "",
+      "console.log(\"본문\", bodyRuns, \"회 / 마지막 index\", lastIndex);",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 37
+      },
+      "step": 1
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@1",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W01'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W02'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W03'"
+          }
+        ]
+      },
+      "step": 2
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "wafers",
+      "value": {
+        "kind": "ref",
+        "id": "Array@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 37
+      },
+      "step": 3
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 17
+      },
+      "step": 4
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 2,
+      "detail": "core",
+      "frameId": "global",
+      "name": "bodyRuns",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 17
+      },
+      "step": 5
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 19
+      },
+      "step": 6
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "-1",
+      "substituted": "-1",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "-1"
+      },
+      "span": {
+        "startCol": 16,
+        "endCol": 18
+      },
+      "step": 7
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "name": "lastIndex",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "-1"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 19
+      },
+      "step": 8
+    },
+    {
+      "type": "LOOP_START",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:index@5",
+      "varNames": [
+        "index"
+      ],
+      "track": [],
+      "step": 9
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "name": "index",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 9,
+        "endCol": 18
+      },
+      "step": 10
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "index < wafers.length",
+      "substituted": "0 < 3",
+      "result": true,
+      "step": 11
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:index@5",
+      "index": 0,
+      "step": 12
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 2,
+        "endCol": 26
+      },
+      "step": 13
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "bodyRuns + 1",
+      "substituted": "0 + 1",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "span": {
+        "startCol": 13,
+        "endCol": 25
+      },
+      "step": 14
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "name": "bodyRuns",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 26
+      },
+      "step": 15
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 2,
+        "endCol": 20
+      },
+      "step": 16
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 7,
+      "detail": "core",
+      "frameId": "global",
+      "name": "lastIndex",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "-1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 20
+      },
+      "step": 17
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 2,
+        "endCol": 36
+      },
+      "step": 18
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "Array@1",
+      "key": "0",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W01'"
+      },
+      "step": 19
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 8,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "0 W01",
+      "step": 20
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "name": "index",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 21
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "index < wafers.length",
+      "substituted": "1 < 3",
+      "result": true,
+      "step": 22
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:index@5",
+      "index": 1,
+      "step": 23
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 2,
+        "endCol": 26
+      },
+      "step": 24
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "bodyRuns + 1",
+      "substituted": "1 + 1",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "span": {
+        "startCol": 13,
+        "endCol": 25
+      },
+      "step": 25
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "name": "bodyRuns",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 26
+      },
+      "step": 26
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 2,
+        "endCol": 20
+      },
+      "step": 27
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 7,
+      "detail": "core",
+      "frameId": "global",
+      "name": "lastIndex",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 20
+      },
+      "step": 28
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 2,
+        "endCol": 36
+      },
+      "step": 29
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "Array@1",
+      "key": "1",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W02'"
+      },
+      "step": 30
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 8,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "1 W02",
+      "step": 31
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "name": "index",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 32
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "index < wafers.length",
+      "substituted": "2 < 3",
+      "result": true,
+      "step": 33
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:index@5",
+      "index": 2,
+      "step": 34
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 2,
+        "endCol": 26
+      },
+      "step": 35
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "bodyRuns + 1",
+      "substituted": "2 + 1",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "span": {
+        "startCol": 13,
+        "endCol": 25
+      },
+      "step": 36
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "name": "bodyRuns",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 26
+      },
+      "step": 37
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 2,
+        "endCol": 20
+      },
+      "step": 38
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 7,
+      "detail": "core",
+      "frameId": "global",
+      "name": "lastIndex",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 20
+      },
+      "step": 39
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 2,
+        "endCol": 36
+      },
+      "step": 40
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "Array@1",
+      "key": "2",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W03'"
+      },
+      "step": 41
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 8,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "2 W03",
+      "step": 42
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "name": "index",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 43
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "index < wafers.length",
+      "substituted": "3 < 3",
+      "result": false,
+      "step": 44
+    },
+    {
+      "type": "LOOP_END",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:index@5",
+      "reason": "exhausted",
+      "step": 45
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 56
+      },
+      "step": 46
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 11,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "본문 3 회 / 마지막 index 2",
+      "step": 47
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 11,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 48
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "0 W01\n1 W02\n2 W03\n본문 3 회 / 마지막 index 2\n"
+  }
+}

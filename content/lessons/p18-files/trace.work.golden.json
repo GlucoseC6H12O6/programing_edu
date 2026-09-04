@@ -1,0 +1,681 @@
+{
+  "version": 1,
+  "lessonId": "p18-files",
+  "source": {
+    "path": "work.py",
+    "language": "python",
+    "lines": [
+      "values = []",
+      "with open(\"measurements.txt\", encoding=\"utf-8\") as file:",
+      "    for line in file:",
+      "        text = line.strip()",
+      "        if text:",
+      "            values.append(float(text))"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {
+    "measurements.txt": "10.1\n10.3\n\n9.8\n"
+  },
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 11
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": []
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 3,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "values",
+      "value": {
+        "kind": "ref",
+        "id": "list@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 11
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 38
+      }
+    },
+    {
+      "type": "FILE_OPEN",
+      "step": 5,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "path": "measurements.txt",
+      "mode": "r",
+      "encoding": "utf-8",
+      "cursor": 0,
+      "content": "10.1\n10.3\n\n9.8\n"
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 6,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "name": "file",
+      "value": {
+        "kind": "primitive",
+        "type": "file",
+        "repr": "<measurements.txt 통로, r 모드>"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 38
+      }
+    },
+    {
+      "type": "LOOP_START",
+      "step": 7,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:line@3",
+      "varNames": [
+        "line"
+      ],
+      "track": [
+        "'10.1\\n'",
+        "'10.3\\n'",
+        "'\\n'",
+        "'9.8\\n'"
+      ],
+      "span": {
+        "startCol": 4,
+        "endCol": 38
+      }
+    },
+    {
+      "type": "FILE_READ",
+      "step": 8,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "path": "measurements.txt",
+      "text": "10.1\n",
+      "cursor": 5
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 9,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "line",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'10.1\\n'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "file"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 10,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:line@3",
+      "index": 0
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 11,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 12,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'10.1'"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 13,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "text",
+      "result": true,
+      "span": {
+        "startCol": 8,
+        "endCol": 38
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 14,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 6
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 15,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 12,
+        "endCol": 38
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 16,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "target": "list@1",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.1"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 17,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.1"
+          }
+        ]
+      }
+    },
+    {
+      "type": "FILE_READ",
+      "step": 18,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "path": "measurements.txt",
+      "text": "10.3\n",
+      "cursor": 10
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 19,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "line",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'10.1\\n'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'10.3\\n'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "file"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 20,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:line@3",
+      "index": 1
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 21,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 22,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "name": "text",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'10.1'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'10.3'"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 23,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "text",
+      "result": true,
+      "span": {
+        "startCol": 8,
+        "endCol": 38
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 24,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 6
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 25,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 12,
+        "endCol": 38
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 26,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "target": "list@1",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.3"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 27,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.1"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.3"
+          }
+        ]
+      }
+    },
+    {
+      "type": "FILE_READ",
+      "step": 28,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "path": "measurements.txt",
+      "text": "\n",
+      "cursor": 11
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 29,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "line",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'10.3\\n'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'\\n'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "file"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 30,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:line@3",
+      "index": 2
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 31,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 32,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "name": "text",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'10.3'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "''"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 33,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "text",
+      "result": false,
+      "span": {
+        "startCol": 8,
+        "endCol": 38
+      }
+    },
+    {
+      "type": "FILE_READ",
+      "step": 34,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "path": "measurements.txt",
+      "text": "9.8\n",
+      "cursor": 15
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 35,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "line",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'\\n'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'9.8\\n'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "file"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 36,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:line@3",
+      "index": 3
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 37,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 38,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "name": "text",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "''"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'9.8'"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 39,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "text",
+      "result": true,
+      "span": {
+        "startCol": 8,
+        "endCol": 38
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 40,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 6
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 41,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 12,
+        "endCol": 38
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 42,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "target": "list@1",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.8"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 43,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.1"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.3"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "9.8"
+          }
+        ]
+      }
+    },
+    {
+      "type": "LOOP_END",
+      "step": 44,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:line@3",
+      "reason": "exhausted"
+    },
+    {
+      "type": "FILE_CLOSE",
+      "step": 45,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "path": "measurements.txt",
+      "content": "10.1\n10.3\n\n9.8\n"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 46,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": ""
+  }
+}

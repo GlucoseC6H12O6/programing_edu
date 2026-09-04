@@ -1,0 +1,254 @@
+{
+  "version": 1,
+  "lessonId": "p12-functions",
+  "source": {
+    "path": "work.py",
+    "language": "python",
+    "lines": [
+      "def correct_value(raw_value, offset):",
+      "    corrected = raw_value + offset",
+      "    return corrected",
+      "",
+      "measurement = correct_value(10.2, 0.3)",
+      "print(measurement)  # 10.5"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "FUNCTION_DEFINE",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "correct_value",
+      "heapId": "fn:correct_value",
+      "params": [
+        {
+          "name": "raw_value"
+        },
+        {
+          "name": "offset"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 20
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 2,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 38
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 3,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "correct_value",
+      "substituted": "correct_value(10.2, 0.3)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.2"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "0.3"
+          }
+        }
+      ],
+      "targetFrameId": "correct_value#1",
+      "span": {
+        "startCol": 14,
+        "endCol": 38
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 4,
+      "line": 1,
+      "frameId": "correct_value#1",
+      "detail": "expression",
+      "name": "correct_value",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 5
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 5,
+      "line": 1,
+      "frameId": "correct_value#1",
+      "detail": "expression",
+      "name": "raw_value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      }
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 6,
+      "line": 1,
+      "frameId": "correct_value#1",
+      "detail": "core",
+      "name": "offset",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "0.3"
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 7,
+      "line": 2,
+      "frameId": "correct_value#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 34
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 8,
+      "line": 2,
+      "frameId": "correct_value#1",
+      "detail": "expression",
+      "expression": "raw_value + offset",
+      "substituted": "10.2 + 0.3",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.5"
+      },
+      "span": {
+        "startCol": 16,
+        "endCol": 34
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 9,
+      "line": 2,
+      "frameId": "correct_value#1",
+      "detail": "core",
+      "name": "corrected",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.5"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 34
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 10,
+      "line": 3,
+      "frameId": "correct_value#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 20
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 11,
+      "line": 3,
+      "frameId": "correct_value#1",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.5"
+      },
+      "toLine": 5
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 12,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "correct_value#1"
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 13,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "name": "measurement",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.5"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "correct_value#1"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 38
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 14,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 15,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "10.5"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 16,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "10.5\n"
+  }
+}

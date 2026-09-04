@@ -1,0 +1,380 @@
+{
+  "version": 1,
+  "lessonId": "p15-comprehension",
+  "source": {
+    "path": "work.py",
+    "language": "python",
+    "lines": [
+      "wafer_ids = [f\"W{number:02d}\" for number in range(1, 4)]",
+      "# ['W01', 'W02', 'W03']"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 56
+      }
+    },
+    {
+      "type": "LOOP_START",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "comp:number@1",
+      "varNames": [
+        "number"
+      ],
+      "track": [
+        "1",
+        "2",
+        "3"
+      ],
+      "span": {
+        "startCol": 12,
+        "endCol": 56
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 3,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "builder@1",
+        "label": "list",
+        "items": []
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 4,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "number",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "입력"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 5,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "comp:number@1",
+      "index": 0
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 6,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "f\"W{number:02d}\"",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W01'"
+      },
+      "span": {
+        "startCol": 13,
+        "endCol": 29
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 7,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "builder@1",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W01'"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 8,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "builder@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W01'"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 9,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "number",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "입력"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 10,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "comp:number@1",
+      "index": 1
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 11,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "f\"W{number:02d}\"",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W02'"
+      },
+      "span": {
+        "startCol": 13,
+        "endCol": 29
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 12,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "builder@1",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W02'"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 13,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "builder@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W01'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W02'"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 14,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "number",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "입력"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 15,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "comp:number@1",
+      "index": 2
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 16,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "f\"W{number:02d}\"",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W03'"
+      },
+      "span": {
+        "startCol": 13,
+        "endCol": 29
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 17,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "builder@1",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W03'"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 18,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "builder@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W01'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W02'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W03'"
+          }
+        ]
+      }
+    },
+    {
+      "type": "LOOP_END",
+      "step": 19,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "comp:number@1",
+      "reason": "exhausted"
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 20,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@2",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W01'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W02'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W03'"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 21,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "wafer_ids",
+      "value": {
+        "kind": "ref",
+        "id": "list@2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 56
+      }
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 22,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": ""
+  }
+}

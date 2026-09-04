@@ -1,0 +1,347 @@
+{
+  "version": 1,
+  "lessonId": "p16-enumerate-zip",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "names = [\"A\", \"B\", \"C\"]",
+      "values = [10, 20]",
+      "",
+      "for index, (name, value) in enumerate(zip(names, values), start=1):",
+      "    print(index, name, value)"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'A'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'B'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'C'"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 3,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "names",
+      "value": {
+        "kind": "ref",
+        "id": "list@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 17
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 5,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@2",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "10"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "20"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 6,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "name": "values",
+      "value": {
+        "kind": "ref",
+        "id": "list@2"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 17
+      }
+    },
+    {
+      "type": "LOOP_START",
+      "step": 7,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:index-name-value@4",
+      "varNames": [
+        "index",
+        "name",
+        "value"
+      ],
+      "track": [],
+      "span": {
+        "startCol": 0,
+        "endCol": 29
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 8,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "index",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 9,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "name",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'A'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 10,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 11,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:index-name-value@4",
+      "index": 0
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 12,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 29
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 13,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "1 A 10"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 14,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "index",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 15,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "name",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'A'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'B'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 16,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "20"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 17,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:index-name-value@4",
+      "index": 1
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 18,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 29
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 19,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "2 B 20"
+    },
+    {
+      "type": "LOOP_END",
+      "step": 20,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:index-name-value@4",
+      "reason": "exhausted"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 21,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "1 A 10\n2 B 20\n"
+  }
+}

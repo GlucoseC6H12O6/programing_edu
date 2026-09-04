@@ -1,0 +1,1655 @@
+{
+  "version": 1,
+  "lessonId": "j13-filter-find",
+  "source": {
+    "path": "predict.js",
+    "language": "javascript",
+    "lines": [
+      "const values = [94.2, 101.3, 96.0, 88.7];",
+      "",
+      "const passed = values.filter((value) => value >= 90 && value <= 100);",
+      "const firstHigh = values.find((value) => value > 100);",
+      "const negative = values.filter((value) => value < 0);",
+      "const firstNegative = values.find((value) => value < 0);",
+      "",
+      "console.log(passed);",
+      "console.log(firstHigh);",
+      "console.log(negative, negative.length);",
+      "console.log(firstNegative);",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 41
+      },
+      "step": 1
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@1",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "94.2"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "101.3"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "96"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "88.7"
+          }
+        ]
+      },
+      "step": 2
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "values",
+      "value": {
+        "kind": "ref",
+        "id": "Array@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 41
+      },
+      "step": 3
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 69
+      },
+      "step": 4
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "filter 콜백",
+      "substituted": "filter 콜백(94.2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "94.2"
+          }
+        }
+      ],
+      "targetFrameId": "filter 콜백#1",
+      "span": {
+        "startCol": 29,
+        "endCol": 67
+      },
+      "step": 5
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "filter 콜백#1",
+      "name": "filter 콜백",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 3,
+      "step": 6
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 3,
+      "detail": "core",
+      "frameId": "filter 콜백#1",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "step": 7
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "filter 콜백#1",
+      "expression": "value >= 90",
+      "substituted": "94.2 >= 90",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 40,
+        "endCol": 51
+      },
+      "step": 8
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "filter 콜백#1",
+      "expression": "value <= 100",
+      "substituted": "94.2 <= 100",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 55,
+        "endCol": 67
+      },
+      "step": 9
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "filter 콜백#1",
+      "expression": "value >= 90 && value <= 100",
+      "substituted": "value >= 90 && value <= 100",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "step": 10
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "filter 콜백#1",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "toLine": 3,
+      "step": 11
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "filter 콜백#1",
+      "step": 12
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "filter 콜백",
+      "substituted": "filter 콜백(101.3)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "101.3"
+          }
+        }
+      ],
+      "targetFrameId": "filter 콜백#2",
+      "span": {
+        "startCol": 29,
+        "endCol": 67
+      },
+      "step": 13
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "filter 콜백#2",
+      "name": "filter 콜백",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 3,
+      "step": 14
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 3,
+      "detail": "core",
+      "frameId": "filter 콜백#2",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "step": 15
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "filter 콜백#2",
+      "expression": "value >= 90",
+      "substituted": "101.3 >= 90",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 40,
+        "endCol": 51
+      },
+      "step": 16
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "filter 콜백#2",
+      "expression": "value <= 100",
+      "substituted": "101.3 <= 100",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 55,
+        "endCol": 67
+      },
+      "step": 17
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "filter 콜백#2",
+      "expression": "value >= 90 && value <= 100",
+      "substituted": "value >= 90 && value <= 100",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "step": 18
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "filter 콜백#2",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "toLine": 3,
+      "step": 19
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "filter 콜백#2",
+      "step": 20
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "filter 콜백",
+      "substituted": "filter 콜백(96)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "96"
+          }
+        }
+      ],
+      "targetFrameId": "filter 콜백#3",
+      "span": {
+        "startCol": 29,
+        "endCol": 67
+      },
+      "step": 21
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "filter 콜백#3",
+      "name": "filter 콜백",
+      "callNumber": 3,
+      "parentFrameId": "global",
+      "returnLine": 3,
+      "step": 22
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 3,
+      "detail": "core",
+      "frameId": "filter 콜백#3",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "96"
+      },
+      "step": 23
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "filter 콜백#3",
+      "expression": "value >= 90",
+      "substituted": "96 >= 90",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 40,
+        "endCol": 51
+      },
+      "step": 24
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "filter 콜백#3",
+      "expression": "value <= 100",
+      "substituted": "96 <= 100",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 55,
+        "endCol": 67
+      },
+      "step": 25
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "filter 콜백#3",
+      "expression": "value >= 90 && value <= 100",
+      "substituted": "value >= 90 && value <= 100",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "step": 26
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "filter 콜백#3",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "toLine": 3,
+      "step": 27
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "filter 콜백#3",
+      "step": 28
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "filter 콜백",
+      "substituted": "filter 콜백(88.7)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "88.7"
+          }
+        }
+      ],
+      "targetFrameId": "filter 콜백#4",
+      "span": {
+        "startCol": 29,
+        "endCol": 67
+      },
+      "step": 29
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "filter 콜백#4",
+      "name": "filter 콜백",
+      "callNumber": 4,
+      "parentFrameId": "global",
+      "returnLine": 3,
+      "step": 30
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 3,
+      "detail": "core",
+      "frameId": "filter 콜백#4",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "88.7"
+      },
+      "step": 31
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "filter 콜백#4",
+      "expression": "value >= 90",
+      "substituted": "88.7 >= 90",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 40,
+        "endCol": 51
+      },
+      "step": 32
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "filter 콜백#4",
+      "expression": "value >= 90 && value <= 100",
+      "substituted": "value >= 90",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "step": 33,
+      "message": "3번 줄의 `value >= 90 && value <= 100`에서 앞쪽 결과만으로 값이 정해져 `value <= 100`은 계산하지 않았습니다."
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "filter 콜백#4",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "toLine": 3,
+      "step": 34
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "filter 콜백#4",
+      "step": 35
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@2",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "94.2"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "96"
+          }
+        ]
+      },
+      "step": 36
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "name": "passed",
+      "value": {
+        "kind": "ref",
+        "id": "Array@2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 69
+      },
+      "step": 37
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 54
+      },
+      "step": 38
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 4,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "find 콜백",
+      "substituted": "find 콜백(94.2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "94.2"
+          }
+        }
+      ],
+      "targetFrameId": "find 콜백#1",
+      "span": {
+        "startCol": 30,
+        "endCol": 52
+      },
+      "step": 39
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "find 콜백#1",
+      "name": "find 콜백",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 4,
+      "step": 40
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 4,
+      "detail": "core",
+      "frameId": "find 콜백#1",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "step": 41
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 4,
+      "detail": "core",
+      "frameId": "find 콜백#1",
+      "expression": "value > 100",
+      "substituted": "94.2 > 100",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 41,
+        "endCol": 52
+      },
+      "step": 42
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "find 콜백#1",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "toLine": 4,
+      "step": 43
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "find 콜백#1",
+      "step": 44
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 4,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "find 콜백",
+      "substituted": "find 콜백(101.3)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "101.3"
+          }
+        }
+      ],
+      "targetFrameId": "find 콜백#2",
+      "span": {
+        "startCol": 30,
+        "endCol": 52
+      },
+      "step": 45
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "find 콜백#2",
+      "name": "find 콜백",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 4,
+      "step": 46
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 4,
+      "detail": "core",
+      "frameId": "find 콜백#2",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "step": 47
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 4,
+      "detail": "core",
+      "frameId": "find 콜백#2",
+      "expression": "value > 100",
+      "substituted": "101.3 > 100",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 41,
+        "endCol": 52
+      },
+      "step": 48
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "find 콜백#2",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "toLine": 4,
+      "step": 49
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "find 콜백#2",
+      "step": 50
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 4,
+      "detail": "core",
+      "frameId": "global",
+      "name": "firstHigh",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 54
+      },
+      "step": 51
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 53
+      },
+      "step": 52
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "filter 콜백",
+      "substituted": "filter 콜백(94.2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "94.2"
+          }
+        }
+      ],
+      "targetFrameId": "filter 콜백#5",
+      "span": {
+        "startCol": 31,
+        "endCol": 51
+      },
+      "step": 53
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "filter 콜백#5",
+      "name": "filter 콜백",
+      "callNumber": 5,
+      "parentFrameId": "global",
+      "returnLine": 5,
+      "step": 54
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 5,
+      "detail": "core",
+      "frameId": "filter 콜백#5",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "step": 55
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 5,
+      "detail": "core",
+      "frameId": "filter 콜백#5",
+      "expression": "value < 0",
+      "substituted": "94.2 < 0",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 42,
+        "endCol": 51
+      },
+      "step": 56
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "filter 콜백#5",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "toLine": 5,
+      "step": 57
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "filter 콜백#5",
+      "step": 58
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "filter 콜백",
+      "substituted": "filter 콜백(101.3)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "101.3"
+          }
+        }
+      ],
+      "targetFrameId": "filter 콜백#6",
+      "span": {
+        "startCol": 31,
+        "endCol": 51
+      },
+      "step": 59
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "filter 콜백#6",
+      "name": "filter 콜백",
+      "callNumber": 6,
+      "parentFrameId": "global",
+      "returnLine": 5,
+      "step": 60
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 5,
+      "detail": "core",
+      "frameId": "filter 콜백#6",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "step": 61
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 5,
+      "detail": "core",
+      "frameId": "filter 콜백#6",
+      "expression": "value < 0",
+      "substituted": "101.3 < 0",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 42,
+        "endCol": 51
+      },
+      "step": 62
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "filter 콜백#6",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "toLine": 5,
+      "step": 63
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "filter 콜백#6",
+      "step": 64
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "filter 콜백",
+      "substituted": "filter 콜백(96)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "96"
+          }
+        }
+      ],
+      "targetFrameId": "filter 콜백#7",
+      "span": {
+        "startCol": 31,
+        "endCol": 51
+      },
+      "step": 65
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "filter 콜백#7",
+      "name": "filter 콜백",
+      "callNumber": 7,
+      "parentFrameId": "global",
+      "returnLine": 5,
+      "step": 66
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 5,
+      "detail": "core",
+      "frameId": "filter 콜백#7",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "96"
+      },
+      "step": 67
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 5,
+      "detail": "core",
+      "frameId": "filter 콜백#7",
+      "expression": "value < 0",
+      "substituted": "96 < 0",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 42,
+        "endCol": 51
+      },
+      "step": 68
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "filter 콜백#7",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "toLine": 5,
+      "step": 69
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "filter 콜백#7",
+      "step": 70
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "filter 콜백",
+      "substituted": "filter 콜백(88.7)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "88.7"
+          }
+        }
+      ],
+      "targetFrameId": "filter 콜백#8",
+      "span": {
+        "startCol": 31,
+        "endCol": 51
+      },
+      "step": 71
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "filter 콜백#8",
+      "name": "filter 콜백",
+      "callNumber": 8,
+      "parentFrameId": "global",
+      "returnLine": 5,
+      "step": 72
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 5,
+      "detail": "core",
+      "frameId": "filter 콜백#8",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "88.7"
+      },
+      "step": 73
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 5,
+      "detail": "core",
+      "frameId": "filter 콜백#8",
+      "expression": "value < 0",
+      "substituted": "88.7 < 0",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 42,
+        "endCol": 51
+      },
+      "step": 74
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "filter 콜백#8",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "toLine": 5,
+      "step": 75
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "filter 콜백#8",
+      "step": 76
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@3",
+        "label": "array",
+        "items": []
+      },
+      "step": 77
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "name": "negative",
+      "value": {
+        "kind": "ref",
+        "id": "Array@3"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 53
+      },
+      "step": 78
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 56
+      },
+      "step": 79
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "find 콜백",
+      "substituted": "find 콜백(94.2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "94.2"
+          }
+        }
+      ],
+      "targetFrameId": "find 콜백#3",
+      "span": {
+        "startCol": 34,
+        "endCol": 54
+      },
+      "step": 80
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "find 콜백#3",
+      "name": "find 콜백",
+      "callNumber": 3,
+      "parentFrameId": "global",
+      "returnLine": 6,
+      "step": 81
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 6,
+      "detail": "core",
+      "frameId": "find 콜백#3",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "step": 82
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 6,
+      "detail": "core",
+      "frameId": "find 콜백#3",
+      "expression": "value < 0",
+      "substituted": "94.2 < 0",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 45,
+        "endCol": 54
+      },
+      "step": 83
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "find 콜백#3",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "toLine": 6,
+      "step": 84
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "find 콜백#3",
+      "step": 85
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "find 콜백",
+      "substituted": "find 콜백(101.3)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "101.3"
+          }
+        }
+      ],
+      "targetFrameId": "find 콜백#4",
+      "span": {
+        "startCol": 34,
+        "endCol": 54
+      },
+      "step": 86
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "find 콜백#4",
+      "name": "find 콜백",
+      "callNumber": 4,
+      "parentFrameId": "global",
+      "returnLine": 6,
+      "step": 87
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 6,
+      "detail": "core",
+      "frameId": "find 콜백#4",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "step": 88
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 6,
+      "detail": "core",
+      "frameId": "find 콜백#4",
+      "expression": "value < 0",
+      "substituted": "101.3 < 0",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 45,
+        "endCol": 54
+      },
+      "step": 89
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "find 콜백#4",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "toLine": 6,
+      "step": 90
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "find 콜백#4",
+      "step": 91
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "find 콜백",
+      "substituted": "find 콜백(96)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "96"
+          }
+        }
+      ],
+      "targetFrameId": "find 콜백#5",
+      "span": {
+        "startCol": 34,
+        "endCol": 54
+      },
+      "step": 92
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "find 콜백#5",
+      "name": "find 콜백",
+      "callNumber": 5,
+      "parentFrameId": "global",
+      "returnLine": 6,
+      "step": 93
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 6,
+      "detail": "core",
+      "frameId": "find 콜백#5",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "96"
+      },
+      "step": 94
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 6,
+      "detail": "core",
+      "frameId": "find 콜백#5",
+      "expression": "value < 0",
+      "substituted": "96 < 0",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 45,
+        "endCol": 54
+      },
+      "step": 95
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "find 콜백#5",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "toLine": 6,
+      "step": 96
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "find 콜백#5",
+      "step": 97
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "find 콜백",
+      "substituted": "find 콜백(88.7)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "88.7"
+          }
+        }
+      ],
+      "targetFrameId": "find 콜백#6",
+      "span": {
+        "startCol": 34,
+        "endCol": 54
+      },
+      "step": 98
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "find 콜백#6",
+      "name": "find 콜백",
+      "callNumber": 6,
+      "parentFrameId": "global",
+      "returnLine": 6,
+      "step": 99
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 6,
+      "detail": "core",
+      "frameId": "find 콜백#6",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "88.7"
+      },
+      "step": 100
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 6,
+      "detail": "core",
+      "frameId": "find 콜백#6",
+      "expression": "value < 0",
+      "substituted": "88.7 < 0",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 45,
+        "endCol": 54
+      },
+      "step": 101
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "find 콜백#6",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "toLine": 6,
+      "step": 102
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "find 콜백#6",
+      "step": 103
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "name": "firstNegative",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 56
+      },
+      "step": 104
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 20
+      },
+      "step": 105
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 8,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "[ 94.2, 96 ]",
+      "step": 106
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 23
+      },
+      "step": 107
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 9,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "101.3",
+      "step": 108
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 39
+      },
+      "step": 109
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 10,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "[] 0",
+      "step": 110
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 27
+      },
+      "step": 111
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 11,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "undefined",
+      "step": 112
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 11,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 113
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "[ 94.2, 96 ]\n101.3\n[] 0\nundefined\n"
+  }
+}

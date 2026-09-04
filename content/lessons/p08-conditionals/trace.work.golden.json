@@ -1,0 +1,191 @@
+{
+  "version": 1,
+  "lessonId": "p08-conditionals",
+  "source": {
+    "path": "work.py",
+    "language": "python",
+    "lines": [
+      "value = 10.8",
+      "",
+      "if value < 9.5 or value > 10.5:",
+      "    status = \"FAIL\"",
+      "elif value < 9.7 or value > 10.3:",
+      "    status = \"REVIEW\"",
+      "else:",
+      "    status = \"PASS\"",
+      "",
+      "print(status)  # FAIL"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 12
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.8"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 12
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 3,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value < 9.5",
+      "substituted": "10.8 < 9.5",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 3,
+        "endCol": 14
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 4,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value > 10.5",
+      "substituted": "10.8 > 10.5",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      },
+      "span": {
+        "startCol": 18,
+        "endCol": 30
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 5,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value < 9.5 or value > 10.5",
+      "substituted": "value < 9.5 or value > 10.5",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 6,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "value < 9.5 or value > 10.5",
+      "result": true,
+      "span": {
+        "startCol": 0,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 7,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 4
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 8,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 9,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "name": "status",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'FAIL'"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 10,
+      "line": 10,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 13
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 11,
+      "line": 10,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "FAIL"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 12,
+      "line": 10,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "FAIL\n"
+  }
+}

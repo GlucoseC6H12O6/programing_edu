@@ -1,0 +1,624 @@
+{
+  "version": 1,
+  "lessonId": "p09-for-range",
+  "source": {
+    "path": "work.py",
+    "language": "python",
+    "lines": [
+      "values = [9.8, 10.2, 10.7, 9.4]",
+      "out_count = 0",
+      "",
+      "for value in values:",
+      "    if value < 9.5 or value > 10.5:",
+      "        out_count += 1",
+      "",
+      "print(out_count)  # 2"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 31
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "9.8"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.2"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.7"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "9.4"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 3,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "values",
+      "value": {
+        "kind": "ref",
+        "id": "list@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 31
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 13
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 5,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "name": "out_count",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 13
+      }
+    },
+    {
+      "type": "LOOP_START",
+      "step": 6,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:value@4",
+      "varNames": [
+        "value"
+      ],
+      "track": [
+        "9.8",
+        "10.2",
+        "10.7",
+        "9.4"
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 7,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.8"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "values"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 8,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:value@4",
+      "index": 0
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 9,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value < 9.5",
+      "substituted": "9.8 < 9.5",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 7,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 10,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value > 10.5",
+      "substituted": "9.8 > 10.5",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 22,
+        "endCol": 34
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 11,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value < 9.5 or value > 10.5",
+      "substituted": "value < 9.5 or value > 10.5",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 12,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "value < 9.5 or value > 10.5",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 13,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.8"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "values"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 14,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:value@4",
+      "index": 1
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 15,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value < 9.5",
+      "substituted": "10.2 < 9.5",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 7,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 16,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value > 10.5",
+      "substituted": "10.2 > 10.5",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 22,
+        "endCol": 34
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 17,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value < 9.5 or value > 10.5",
+      "substituted": "value < 9.5 or value > 10.5",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 18,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "value < 9.5 or value > 10.5",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 19,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.7"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "values"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 20,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:value@4",
+      "index": 2
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 21,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value < 9.5",
+      "substituted": "10.7 < 9.5",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 7,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 22,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value > 10.5",
+      "substituted": "10.7 > 10.5",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      },
+      "span": {
+        "startCol": 22,
+        "endCol": 34
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 23,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value < 9.5 or value > 10.5",
+      "substituted": "value < 9.5 or value > 10.5",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 24,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "value < 9.5 or value > 10.5",
+      "result": true,
+      "span": {
+        "startCol": 4,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 25,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 6
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 26,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 27,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "name": "out_count",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 28,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.7"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.4"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "values"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 29,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:value@4",
+      "index": 3
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 30,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value < 9.5",
+      "substituted": "9.4 < 9.5",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      },
+      "span": {
+        "startCol": 7,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 31,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value < 9.5 or value > 10.5",
+      "substituted": "value < 9.5",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      },
+      "message": "5번 줄의 `value < 9.5 or value > 10.5`에서 앞쪽 결과만으로 값이 정해져 `value > 10.5`은 계산하지 않았습니다."
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 32,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "value < 9.5 or value > 10.5",
+      "result": true,
+      "span": {
+        "startCol": 4,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 33,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 6
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 34,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 35,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "name": "out_count",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "LOOP_END",
+      "step": 36,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:value@4",
+      "reason": "exhausted"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 37,
+      "line": 8,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 38,
+      "line": 8,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "2"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 39,
+      "line": 8,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "2\n"
+  }
+}

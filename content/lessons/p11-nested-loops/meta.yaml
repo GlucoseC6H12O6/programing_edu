@@ -1,0 +1,16 @@
+# 제목과 본문은 content/python-visible-textbook-p01-p24.md 가 단일 출처다.
+# 여기에는 기계가 쓰는 사실만 둔다.
+id: p11-nested-loops
+track: python
+stage: 흐름 제어
+# P12를 선행으로 두지 않는다. §9 장면 C와 §14가 `mul(a, b)`를 쓰지만 그것은
+# "함수 호출도 Call Stack에 프레임으로 보인다"를 한 번 보여 주는 장면이고,
+# 정의·매개변수·return의 규칙은 §12 오해 4가 적은 대로 P12~P13이 가르친다.
+# P12를 먼저 요구하면 흐름 제어(P09~P11)를 끝내기 전에 함수로 건너뛰게 된다.
+prerequisites: [p09-for-range]
+code: code/predict.py
+traces:
+  - { id: "predict", file: trace.predict.golden.json, source: code/predict.py }
+  - { id: "work", file: trace.work.golden.json, source: code/work.py }
+  - { id: "mul3", file: trace.mul3.golden.json, source: code/mul_3x3.py, gridSize: 3 }
+  - { id: "mul9", file: trace.mul9.golden.json, source: code/mul_9x9.py, gridSize: 9 }

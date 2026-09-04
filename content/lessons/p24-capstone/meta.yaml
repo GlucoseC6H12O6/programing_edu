@@ -1,0 +1,11 @@
+# 제목과 본문은 content/python-visible-textbook-p01-p24.md 가 단일 출처다.
+# 여기에는 기계가 쓰는 사실만 둔다.
+id: p24-capstone
+track: python
+stage: 종합 실습
+prerequisites: [p19-exceptions, p14-loop-patterns, p12-functions]
+code: code/predict.py
+traces:
+  # 교재 §6이 6.1~6.5로 나눠 실은 프로그램 전체다 (sync-textbook의 OVERRIDES 참고).
+  # §7의 "전체 프로그램의 큰 순서"와 §9의 8단계가 이 트레이스를 가리킨다.
+  - { id: "predict", file: trace.predict.golden.json, source: code/predict.py }

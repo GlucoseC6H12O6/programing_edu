@@ -1,0 +1,590 @@
+{
+  "version": 1,
+  "lessonId": "j21-promise",
+  "source": {
+    "path": "predict.js",
+    "language": "javascript",
+    "lines": [
+      "function delay(ms, value) {",
+      "  return new Promise((resolve) => {",
+      "    setTimeout(() => resolve(value), ms);",
+      "  });",
+      "}",
+      "",
+      "console.log(\"A 시작\");",
+      "",
+      "const task = delay(10, \"결과\");",
+      "console.log(\"B 만든 직후:\", task);",
+      "",
+      "task.then((value) => {",
+      "  console.log(\"D 도착:\", value);",
+      "});",
+      "",
+      "console.log(\"C 동기 끝\");",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "function",
+        "id": "fn:delay",
+        "name": "delay",
+        "params": [
+          {
+            "name": "ms"
+          },
+          {
+            "name": "value"
+          }
+        ],
+        "defLine": 1
+      },
+      "step": 1
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "delay",
+      "heapId": "fn:delay",
+      "params": [
+        {
+          "name": "ms"
+        },
+        {
+          "name": "value"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 2
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 20
+      },
+      "step": 3
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 7,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "A 시작",
+      "step": 4
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 29
+      },
+      "step": 5
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 9,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "delay",
+      "substituted": "delay(10, '결과')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "10"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'결과'"
+          }
+        }
+      ],
+      "targetFrameId": "delay#1",
+      "span": {
+        "startCol": 13,
+        "endCol": 28
+      },
+      "step": 6
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "delay#1",
+      "name": "delay",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 9,
+      "step": 7
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "delay#1",
+      "name": "ms",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "step": 8
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "delay#1",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'결과'"
+      },
+      "step": 9
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "delay#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 5
+      },
+      "step": 10
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 2,
+      "detail": "core",
+      "frameId": "delay#1",
+      "callee": "콜백",
+      "substituted": "콜백(<fn:anonymous>)",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "fn:anonymous"
+          }
+        }
+      ],
+      "targetFrameId": "콜백#1",
+      "span": {
+        "startCol": 21,
+        "endCol": 3
+      },
+      "step": 11
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "콜백#1",
+      "name": "콜백",
+      "callNumber": 1,
+      "parentFrameId": "delay#1",
+      "returnLine": 2,
+      "step": 12
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "콜백#1",
+      "name": "resolve",
+      "value": {
+        "kind": "ref",
+        "id": "fn:anonymous"
+      },
+      "step": 13
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#1",
+      "span": {
+        "startCol": 4,
+        "endCol": 41
+      },
+      "step": 14
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#1",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 2,
+      "step": 15
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "delay#1",
+      "poppedFrameId": "콜백#1",
+      "step": 16
+    },
+    {
+      "type": "TASK_CREATE",
+      "line": 2,
+      "detail": "core",
+      "frameId": "delay#1",
+      "taskId": "task1",
+      "label": "new Promise",
+      "step": 17
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "delay#1",
+      "taskId": "task1",
+      "state": "pending",
+      "step": 18
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "delay#1",
+      "object": {
+        "kind": "mapping",
+        "id": "Promise@1",
+        "label": "instance",
+        "className": "Promise",
+        "entries": [
+          {
+            "key": "상태",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "pending"
+            }
+          }
+        ]
+      },
+      "step": 19
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "delay#1",
+      "value": {
+        "kind": "ref",
+        "id": "Promise@1"
+      },
+      "toLine": 9,
+      "step": 20
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "delay#1",
+      "step": 21
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 9,
+      "detail": "core",
+      "frameId": "global",
+      "name": "task",
+      "value": {
+        "kind": "ref",
+        "id": "Promise@1"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "delay#1"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 29
+      },
+      "step": 22
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 30
+      },
+      "step": 23
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 10,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "B 만든 직후: Promise { <pending> }",
+      "step": 24
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 3
+      },
+      "step": 25
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 16,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 22
+      },
+      "step": 26
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 16,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "C 동기 끝",
+      "step": 27
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "콜백",
+      "substituted": "콜백()",
+      "args": [],
+      "targetFrameId": "콜백#2",
+      "span": {
+        "startCol": 15,
+        "endCol": 35
+      },
+      "step": 28
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#2",
+      "name": "콜백",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 3,
+      "step": 29
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 3,
+      "detail": "core",
+      "frameId": "콜백#2",
+      "taskId": "task1",
+      "state": "fulfilled",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'결과'"
+      },
+      "step": 30
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#2",
+      "object": {
+        "kind": "mapping",
+        "id": "Promise@1",
+        "label": "instance",
+        "className": "Promise",
+        "entries": [
+          {
+            "key": "상태",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "fulfilled"
+            }
+          },
+          {
+            "key": "값",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'결과'"
+            }
+          }
+        ]
+      },
+      "step": 31
+    },
+    {
+      "type": "TASK_COMPLETE",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#2",
+      "taskId": "task1",
+      "step": 32
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#2",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 3,
+      "step": 33
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "콜백#2",
+      "step": 34
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 12,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "then 콜백",
+      "substituted": "then 콜백('결과')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'결과'"
+          }
+        }
+      ],
+      "targetFrameId": "then 콜백#1",
+      "span": {
+        "startCol": 10,
+        "endCol": 1
+      },
+      "step": 35
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "then 콜백#1",
+      "name": "then 콜백",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 12,
+      "step": 36
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 12,
+      "detail": "core",
+      "frameId": "then 콜백#1",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'결과'"
+      },
+      "step": 37
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 13,
+      "detail": "expression",
+      "frameId": "then 콜백#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 30
+      },
+      "step": 38
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 13,
+      "detail": "core",
+      "frameId": "then 콜백#1",
+      "stream": "stdout",
+      "text": "D 도착: 결과",
+      "step": 39
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 13,
+      "detail": "expression",
+      "frameId": "then 콜백#1",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 12,
+      "step": 40
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "then 콜백#1",
+      "step": 41
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 12,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 42
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "A 시작\nB 만든 직후: Promise { <pending> }\nC 동기 끝\nD 도착: 결과\n"
+  }
+}

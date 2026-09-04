@@ -1,0 +1,230 @@
+{
+  "version": 1,
+  "lessonId": "p23-functional",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "def checks():",
+      "    print(\"A\")",
+      "    yield True",
+      "    print(\"B\")",
+      "    yield False",
+      "",
+      "result = all(checks())",
+      "print(\"result\", result)"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "FUNCTION_DEFINE",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "checks",
+      "heapId": "fn:checks",
+      "params": [],
+      "span": {
+        "startCol": 0,
+        "endCol": 15
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 2,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "GENERATOR_CREATE",
+      "step": 3,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "name": "checks",
+      "substituted": "checks()",
+      "targetFrameId": "checks#1",
+      "span": {
+        "startCol": 13,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 4,
+      "line": 1,
+      "frameId": "checks#1",
+      "detail": "expression",
+      "name": "checks",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 7
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 5,
+      "line": 2,
+      "frameId": "checks#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 14
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 6,
+      "line": 2,
+      "frameId": "checks#1",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "A"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 7,
+      "line": 3,
+      "frameId": "checks#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 14
+      }
+    },
+    {
+      "type": "GENERATOR_YIELD",
+      "step": 8,
+      "line": 3,
+      "frameId": "checks#1",
+      "detail": "core",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      },
+      "toFrameId": "global"
+    },
+    {
+      "type": "GENERATOR_RESUME",
+      "step": 9,
+      "line": 3,
+      "frameId": "checks#1",
+      "detail": "core",
+      "fromFrameId": "global"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 10,
+      "line": 4,
+      "frameId": "checks#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 14
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 11,
+      "line": 4,
+      "frameId": "checks#1",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "B"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 12,
+      "line": 5,
+      "frameId": "checks#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 15
+      }
+    },
+    {
+      "type": "GENERATOR_YIELD",
+      "step": 13,
+      "line": 5,
+      "frameId": "checks#1",
+      "detail": "core",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "toFrameId": "global"
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 14,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "name": "result",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 15,
+      "line": 8,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 16,
+      "line": 8,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "result False"
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 17,
+      "line": 8,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "checks#1",
+      "reason": "abandoned"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 18,
+      "line": 8,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "A\nB\nresult False\n"
+  }
+}

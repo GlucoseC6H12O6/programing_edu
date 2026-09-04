@@ -1,0 +1,793 @@
+{
+  "version": 1,
+  "lessonId": "p14-loop-patterns",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "values = [1, 2, 3, 4]",
+      "selected = []",
+      "total = 0",
+      "",
+      "for value in values:",
+      "    doubled = value * 2",
+      "    if doubled > 4:",
+      "        selected.append(doubled)",
+      "        total += doubled",
+      "",
+      "print(selected, total)"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "3"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "4"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 3,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "values",
+      "value": {
+        "kind": "ref",
+        "id": "list@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 13
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 5,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@2",
+        "label": "list",
+        "items": []
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 6,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "name": "selected",
+      "value": {
+        "kind": "ref",
+        "id": "list@2"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 13
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 7,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 9
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 8,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "name": "total",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 9
+      }
+    },
+    {
+      "type": "LOOP_START",
+      "step": 9,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:value@5",
+      "varNames": [
+        "value"
+      ],
+      "track": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 10,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "values"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 11,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:value@5",
+      "index": 0
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 12,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 13,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value * 2",
+      "substituted": "1 * 2",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "span": {
+        "startCol": 14,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 14,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "name": "doubled",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 15,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "doubled > 4",
+      "substituted": "2 > 4",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 16,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "values"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 17,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:value@5",
+      "index": 1
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 18,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 19,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value * 2",
+      "substituted": "2 * 2",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "span": {
+        "startCol": 14,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 20,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "name": "doubled",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 21,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "doubled > 4",
+      "substituted": "4 > 4",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 22,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "values"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 23,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:value@5",
+      "index": 2
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 24,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 25,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value * 2",
+      "substituted": "3 * 2",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "6"
+      },
+      "span": {
+        "startCol": 14,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 26,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "name": "doubled",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "6"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 27,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "doubled > 4",
+      "substituted": "6 > 4",
+      "result": true,
+      "span": {
+        "startCol": 4,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 28,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 8
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 29,
+      "line": 8,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 30,
+      "line": 8,
+      "frameId": "global",
+      "detail": "core",
+      "target": "list@2",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "6"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 31,
+      "line": 8,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@2",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "6"
+          }
+        ]
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 32,
+      "line": 9,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 33,
+      "line": 9,
+      "frameId": "global",
+      "detail": "core",
+      "name": "total",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "6"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 34,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "values"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 35,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:value@5",
+      "index": 3
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 36,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 37,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value * 2",
+      "substituted": "4 * 2",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "8"
+      },
+      "span": {
+        "startCol": 14,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 38,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "name": "doubled",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "6"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "8"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 39,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "doubled > 4",
+      "substituted": "8 > 4",
+      "result": true,
+      "span": {
+        "startCol": 4,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 40,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 8
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 41,
+      "line": 8,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 42,
+      "line": 8,
+      "frameId": "global",
+      "detail": "core",
+      "target": "list@2",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "8"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 43,
+      "line": 8,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@2",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "6"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "8"
+          }
+        ]
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 44,
+      "line": 9,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 45,
+      "line": 9,
+      "frameId": "global",
+      "detail": "core",
+      "name": "total",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "6"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "14"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "LOOP_END",
+      "step": 46,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:value@5",
+      "reason": "exhausted"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 47,
+      "line": 11,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 48,
+      "line": 11,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "[6, 8] 14"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 49,
+      "line": 11,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "[6, 8] 14\n"
+  }
+}

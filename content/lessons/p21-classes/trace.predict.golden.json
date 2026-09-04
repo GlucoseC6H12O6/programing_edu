@@ -1,0 +1,1076 @@
+{
+  "version": 1,
+  "lessonId": "p21-classes",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "class Device:",
+      "    def __init__(self, name):",
+      "        self.name = name",
+      "        self.count = 0",
+      "",
+      "    def run(self):",
+      "        self.count += 1",
+      "",
+      "a = Device(\"A\")",
+      "b = Device(\"B\")",
+      "a.run()",
+      "a.run()",
+      "b.run()",
+      "print(a.count, b.count)"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "class",
+        "id": "class:Device",
+        "name": "Device",
+        "methods": [
+          {
+            "name": "__init__",
+            "params": [
+              "self",
+              "name"
+            ]
+          },
+          {
+            "name": "run",
+            "params": [
+              "self"
+            ]
+          }
+        ],
+        "attributes": [],
+        "initRule": [
+          "name",
+          "count"
+        ]
+      }
+    },
+    {
+      "type": "CLASS_DEFINE",
+      "step": 3,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "Device",
+      "heapId": "class:Device",
+      "methods": [
+        "__init__",
+        "run"
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 4,
+      "line": 9,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 15
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 5,
+      "line": 9,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "Device",
+      "substituted": "Device('A')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'A'"
+          }
+        }
+      ],
+      "targetFrameId": "Device.__init__#1",
+      "span": {
+        "startCol": 4,
+        "endCol": 15
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 6,
+      "line": 9,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "Device@1",
+        "label": "instance",
+        "className": "Device",
+        "entries": []
+      }
+    },
+    {
+      "type": "INSTANCE_CREATE",
+      "step": 7,
+      "line": 9,
+      "frameId": "global",
+      "detail": "core",
+      "heapId": "Device@1",
+      "className": "Device",
+      "classHeapId": "class:Device",
+      "span": {
+        "startCol": 4,
+        "endCol": 15
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 8,
+      "line": 2,
+      "frameId": "Device.__init__#1",
+      "detail": "expression",
+      "name": "Device.__init__",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 9
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 9,
+      "line": 2,
+      "frameId": "Device.__init__#1",
+      "detail": "expression",
+      "name": "self",
+      "value": {
+        "kind": "ref",
+        "id": "Device@1"
+      }
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 10,
+      "line": 2,
+      "frameId": "Device.__init__#1",
+      "detail": "core",
+      "name": "name",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'A'"
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 11,
+      "line": 3,
+      "frameId": "Device.__init__#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 12,
+      "line": 3,
+      "frameId": "Device.__init__#1",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "Device@1",
+        "label": "instance",
+        "className": "Device",
+        "entries": [
+          {
+            "key": "name",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'A'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "ATTR_WRITE",
+      "step": 13,
+      "line": 3,
+      "frameId": "Device.__init__#1",
+      "detail": "core",
+      "target": "Device@1",
+      "attr": "name",
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'A'"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 14,
+      "line": 4,
+      "frameId": "Device.__init__#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 15,
+      "line": 4,
+      "frameId": "Device.__init__#1",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "Device@1",
+        "label": "instance",
+        "className": "Device",
+        "entries": [
+          {
+            "key": "name",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'A'"
+            }
+          },
+          {
+            "key": "count",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "0"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "ATTR_WRITE",
+      "step": 16,
+      "line": 4,
+      "frameId": "Device.__init__#1",
+      "detail": "core",
+      "target": "Device@1",
+      "attr": "count",
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 17,
+      "line": 4,
+      "frameId": "Device.__init__#1",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "toLine": 9
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 18,
+      "line": 9,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "Device.__init__#1"
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 19,
+      "line": 9,
+      "frameId": "global",
+      "detail": "core",
+      "name": "a",
+      "value": {
+        "kind": "ref",
+        "id": "Device@1"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 15
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 20,
+      "line": 10,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 15
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 21,
+      "line": 10,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "Device",
+      "substituted": "Device('B')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'B'"
+          }
+        }
+      ],
+      "targetFrameId": "Device.__init__#2",
+      "span": {
+        "startCol": 4,
+        "endCol": 15
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 22,
+      "line": 10,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "Device@2",
+        "label": "instance",
+        "className": "Device",
+        "entries": []
+      }
+    },
+    {
+      "type": "INSTANCE_CREATE",
+      "step": 23,
+      "line": 10,
+      "frameId": "global",
+      "detail": "core",
+      "heapId": "Device@2",
+      "className": "Device",
+      "classHeapId": "class:Device",
+      "span": {
+        "startCol": 4,
+        "endCol": 15
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 24,
+      "line": 2,
+      "frameId": "Device.__init__#2",
+      "detail": "expression",
+      "name": "Device.__init__",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 10
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 25,
+      "line": 2,
+      "frameId": "Device.__init__#2",
+      "detail": "expression",
+      "name": "self",
+      "value": {
+        "kind": "ref",
+        "id": "Device@2"
+      }
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 26,
+      "line": 2,
+      "frameId": "Device.__init__#2",
+      "detail": "core",
+      "name": "name",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'B'"
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 27,
+      "line": 3,
+      "frameId": "Device.__init__#2",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 28,
+      "line": 3,
+      "frameId": "Device.__init__#2",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "Device@2",
+        "label": "instance",
+        "className": "Device",
+        "entries": [
+          {
+            "key": "name",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'B'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "ATTR_WRITE",
+      "step": 29,
+      "line": 3,
+      "frameId": "Device.__init__#2",
+      "detail": "core",
+      "target": "Device@2",
+      "attr": "name",
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'B'"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 30,
+      "line": 4,
+      "frameId": "Device.__init__#2",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 31,
+      "line": 4,
+      "frameId": "Device.__init__#2",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "Device@2",
+        "label": "instance",
+        "className": "Device",
+        "entries": [
+          {
+            "key": "name",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'B'"
+            }
+          },
+          {
+            "key": "count",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "0"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "ATTR_WRITE",
+      "step": 32,
+      "line": 4,
+      "frameId": "Device.__init__#2",
+      "detail": "core",
+      "target": "Device@2",
+      "attr": "count",
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 33,
+      "line": 4,
+      "frameId": "Device.__init__#2",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "toLine": 10
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 34,
+      "line": 10,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "Device.__init__#2"
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 35,
+      "line": 10,
+      "frameId": "global",
+      "detail": "core",
+      "name": "b",
+      "value": {
+        "kind": "ref",
+        "id": "Device@2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 15
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 36,
+      "line": 11,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 7
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 37,
+      "line": 11,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "a.run",
+      "substituted": "a.run()",
+      "args": [],
+      "targetFrameId": "Device.run#1",
+      "receiver": {
+        "kind": "ref",
+        "id": "Device@1"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 7
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 38,
+      "line": 6,
+      "frameId": "Device.run#1",
+      "detail": "expression",
+      "name": "Device.run",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 11
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 39,
+      "line": 6,
+      "frameId": "Device.run#1",
+      "detail": "core",
+      "name": "self",
+      "value": {
+        "kind": "ref",
+        "id": "Device@1"
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 40,
+      "line": 7,
+      "frameId": "Device.run#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 41,
+      "line": 7,
+      "frameId": "Device.run#1",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "Device@1",
+        "label": "instance",
+        "className": "Device",
+        "entries": [
+          {
+            "key": "name",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'A'"
+            }
+          },
+          {
+            "key": "count",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "ATTR_WRITE",
+      "step": 42,
+      "line": 7,
+      "frameId": "Device.run#1",
+      "detail": "core",
+      "target": "Device@1",
+      "attr": "count",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 43,
+      "line": 7,
+      "frameId": "Device.run#1",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "toLine": 11
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 44,
+      "line": 11,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "Device.run#1"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 45,
+      "line": 12,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 7
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 46,
+      "line": 12,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "a.run",
+      "substituted": "a.run()",
+      "args": [],
+      "targetFrameId": "Device.run#2",
+      "receiver": {
+        "kind": "ref",
+        "id": "Device@1"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 7
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 47,
+      "line": 6,
+      "frameId": "Device.run#2",
+      "detail": "expression",
+      "name": "Device.run",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 12
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 48,
+      "line": 6,
+      "frameId": "Device.run#2",
+      "detail": "core",
+      "name": "self",
+      "value": {
+        "kind": "ref",
+        "id": "Device@1"
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 49,
+      "line": 7,
+      "frameId": "Device.run#2",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 50,
+      "line": 7,
+      "frameId": "Device.run#2",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "Device@1",
+        "label": "instance",
+        "className": "Device",
+        "entries": [
+          {
+            "key": "name",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'A'"
+            }
+          },
+          {
+            "key": "count",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "2"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "ATTR_WRITE",
+      "step": 51,
+      "line": 7,
+      "frameId": "Device.run#2",
+      "detail": "core",
+      "target": "Device@1",
+      "attr": "count",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 52,
+      "line": 7,
+      "frameId": "Device.run#2",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "toLine": 12
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 53,
+      "line": 12,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "Device.run#2"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 54,
+      "line": 13,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 7
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 55,
+      "line": 13,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "b.run",
+      "substituted": "b.run()",
+      "args": [],
+      "targetFrameId": "Device.run#3",
+      "receiver": {
+        "kind": "ref",
+        "id": "Device@2"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 7
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 56,
+      "line": 6,
+      "frameId": "Device.run#3",
+      "detail": "expression",
+      "name": "Device.run",
+      "callNumber": 3,
+      "parentFrameId": "global",
+      "returnLine": 13
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 57,
+      "line": 6,
+      "frameId": "Device.run#3",
+      "detail": "core",
+      "name": "self",
+      "value": {
+        "kind": "ref",
+        "id": "Device@2"
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 58,
+      "line": 7,
+      "frameId": "Device.run#3",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 59,
+      "line": 7,
+      "frameId": "Device.run#3",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "Device@2",
+        "label": "instance",
+        "className": "Device",
+        "entries": [
+          {
+            "key": "name",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'B'"
+            }
+          },
+          {
+            "key": "count",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "ATTR_WRITE",
+      "step": 60,
+      "line": 7,
+      "frameId": "Device.run#3",
+      "detail": "core",
+      "target": "Device@2",
+      "attr": "count",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 61,
+      "line": 7,
+      "frameId": "Device.run#3",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "toLine": 13
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 62,
+      "line": 13,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "Device.run#3"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 63,
+      "line": 14,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "ATTR_READ",
+      "step": 64,
+      "line": 14,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "Device@1",
+      "attr": "count",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "owner": "instance",
+      "span": {
+        "startCol": 6,
+        "endCol": 13
+      }
+    },
+    {
+      "type": "ATTR_READ",
+      "step": 65,
+      "line": 14,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "Device@2",
+      "attr": "count",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "owner": "instance",
+      "span": {
+        "startCol": 15,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 66,
+      "line": 14,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "2 1"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 67,
+      "line": 14,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "2 1\n"
+  }
+}

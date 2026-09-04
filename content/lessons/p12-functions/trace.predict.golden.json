@@ -1,0 +1,240 @@
+{
+  "version": 1,
+  "lessonId": "p12-functions",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "def show_double(value):",
+      "    doubled = value * 2",
+      "    print(doubled)",
+      "",
+      "result = show_double(5)",
+      "print(\"result:\", result)"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "FUNCTION_DEFINE",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "show_double",
+      "heapId": "fn:show_double",
+      "params": [
+        {
+          "name": "value"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 2,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 3,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "show_double",
+      "substituted": "show_double(5)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "5"
+          }
+        }
+      ],
+      "targetFrameId": "show_double#1",
+      "span": {
+        "startCol": 9,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 4,
+      "line": 1,
+      "frameId": "show_double#1",
+      "detail": "expression",
+      "name": "show_double",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 5
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 5,
+      "line": 1,
+      "frameId": "show_double#1",
+      "detail": "core",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "5"
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 6,
+      "line": 2,
+      "frameId": "show_double#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 7,
+      "line": 2,
+      "frameId": "show_double#1",
+      "detail": "expression",
+      "expression": "value * 2",
+      "substituted": "5 * 2",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "span": {
+        "startCol": 14,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 8,
+      "line": 2,
+      "frameId": "show_double#1",
+      "detail": "core",
+      "name": "doubled",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 9,
+      "line": 3,
+      "frameId": "show_double#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 10,
+      "line": 3,
+      "frameId": "show_double#1",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "10"
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 11,
+      "line": 3,
+      "frameId": "show_double#1",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "toLine": 5
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 12,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "show_double#1"
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 13,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "name": "result",
+      "value": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "show_double#1"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 14,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 15,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "result: None"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 16,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "10\nresult: None\n"
+  }
+}

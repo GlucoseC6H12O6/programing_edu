@@ -1,0 +1,674 @@
+{
+  "version": 1,
+  "lessonId": "p11-nested-loops",
+  "source": {
+    "path": "work.py",
+    "language": "python",
+    "lines": [
+      "lots = [\"L01\", \"L02\"]",
+      "wafers = [\"W01\", \"W02\", \"W03\"]",
+      "",
+      "for lot in lots:",
+      "    print(f\"[{lot} start]\")",
+      "    for wafer in wafers:",
+      "        print(f\"check {lot}-{wafer}\")",
+      "    print(f\"[{lot} complete]\")"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'L01'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'L02'"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 3,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "lots",
+      "value": {
+        "kind": "ref",
+        "id": "list@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 30
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 5,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@2",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W01'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W02'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W03'"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 6,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "name": "wafers",
+      "value": {
+        "kind": "ref",
+        "id": "list@2"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 30
+      }
+    },
+    {
+      "type": "LOOP_START",
+      "step": 7,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:lot@4",
+      "varNames": [
+        "lot"
+      ],
+      "track": [
+        "'L01'",
+        "'L02'"
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 30
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 8,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "lot",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'L01'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "lots"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 9,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:lot@4",
+      "index": 0
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 10,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 11,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "[L01 start]"
+    },
+    {
+      "type": "LOOP_START",
+      "step": 12,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:wafer@6",
+      "varNames": [
+        "wafer"
+      ],
+      "track": [
+        "'W01'",
+        "'W02'",
+        "'W03'"
+      ],
+      "parentLoopId": "loop:lot@4",
+      "span": {
+        "startCol": 4,
+        "endCol": 37
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 13,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "wafer",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W01'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "wafers"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 14,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:wafer@6",
+      "index": 0
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 15,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 37
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 16,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "check L01-W01"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 17,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "wafer",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W01'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W02'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "wafers"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 18,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:wafer@6",
+      "index": 1
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 19,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 37
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 20,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "check L01-W02"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 21,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "wafer",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W02'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W03'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "wafers"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 22,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:wafer@6",
+      "index": 2
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 23,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 37
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 24,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "check L01-W03"
+    },
+    {
+      "type": "LOOP_END",
+      "step": 25,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:wafer@6",
+      "reason": "exhausted"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 26,
+      "line": 8,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 30
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 27,
+      "line": 8,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "[L01 complete]"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 28,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "lot",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'L01'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'L02'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "lots"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 29,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:lot@4",
+      "index": 1
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 30,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 31,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "[L02 start]"
+    },
+    {
+      "type": "LOOP_START",
+      "step": 32,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:wafer@6",
+      "varNames": [
+        "wafer"
+      ],
+      "track": [
+        "'W01'",
+        "'W02'",
+        "'W03'"
+      ],
+      "parentLoopId": "loop:lot@4",
+      "span": {
+        "startCol": 4,
+        "endCol": 37
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 33,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "wafer",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W03'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W01'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "wafers"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 34,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:wafer@6",
+      "index": 0
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 35,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 37
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 36,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "check L02-W01"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 37,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "wafer",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W01'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W02'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "wafers"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 38,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:wafer@6",
+      "index": 1
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 39,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 37
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 40,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "check L02-W02"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 41,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "wafer",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W02'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W03'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "wafers"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 42,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:wafer@6",
+      "index": 2
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 43,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 37
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 44,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "check L02-W03"
+    },
+    {
+      "type": "LOOP_END",
+      "step": 45,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:wafer@6",
+      "reason": "exhausted"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 46,
+      "line": 8,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 30
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 47,
+      "line": 8,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "[L02 complete]"
+    },
+    {
+      "type": "LOOP_END",
+      "step": 48,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:lot@4",
+      "reason": "exhausted"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 49,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "[L01 start]\ncheck L01-W01\ncheck L01-W02\ncheck L01-W03\n[L01 complete]\n[L02 start]\ncheck L02-W01\ncheck L02-W02\ncheck L02-W03\n[L02 complete]\n"
+  }
+}

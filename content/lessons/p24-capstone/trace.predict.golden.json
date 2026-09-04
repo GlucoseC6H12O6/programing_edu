@@ -1,0 +1,5462 @@
+{
+  "version": 1,
+  "lessonId": "p24-capstone",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "raw_measurements = [",
+      "    10.2,     # 이미 숫자",
+      "    \"9.8\",    # 숫자로 바꿀 수 있는 문자열",
+      "    \"N/A\",    # 명시적 결측",
+      "    None,     # 값 없음",
+      "    \"bad\",    # 변환할 수 없는 문자열",
+      "    10.7,     # 숫자지만 가상 범위 밖",
+      "    \"10.0\",   # 범위 안 숫자 문자열",
+      "]",
+      "",
+      "import math",
+      "",
+      "",
+      "def parse_value(raw: object) -> float | None:",
+      "    \"\"\"지원하는 입력을 유한한 float로 정규화하고, 실패하면 None을 반환한다.\"\"\"",
+      "    if raw is None or isinstance(raw, bool):",
+      "        return None",
+      "",
+      "    if isinstance(raw, str):",
+      "        text = raw.strip()",
+      "        if text == \"\" or text.upper() == \"N/A\":",
+      "            return None",
+      "    else:",
+      "        text = raw",
+      "",
+      "    try:",
+      "        value = float(text)",
+      "    except (TypeError, ValueError):",
+      "        return None",
+      "",
+      "    if not math.isfinite(value):",
+      "        return None",
+      "",
+      "    return value",
+      "",
+      "def classify_value(value: float, low: float, high: float) -> str:",
+      "    \"\"\"유효 숫자를 학습용 범위에 따라 PASS 또는 REVIEW로 판정한다.\"\"\"",
+      "    if low <= value <= high:",
+      "        return \"PASS\"",
+      "    return \"REVIEW\"",
+      "",
+      "def summarize(",
+      "    raw_values: list[object],",
+      "    low: float = 9.5,",
+      "    high: float = 10.5,",
+      ") -> dict[str, object]:",
+      "    if low > high:",
+      "        raise ValueError(\"low must be less than or equal to high\")",
+      "",
+      "    valid_values: list[float] = []",
+      "    invalid_count = 0",
+      "    pass_count = 0",
+      "    review_count = 0",
+      "    review_indices: list[int] = []",
+      "",
+      "    for index, raw in enumerate(raw_values):",
+      "        value = parse_value(raw)",
+      "",
+      "        if value is None:",
+      "            invalid_count += 1",
+      "            continue",
+      "",
+      "        valid_values.append(value)",
+      "        status = classify_value(value, low, high)",
+      "",
+      "        if status == \"PASS\":",
+      "            pass_count += 1",
+      "        else:",
+      "            review_count += 1",
+      "            review_indices.append(index)",
+      "",
+      "    valid_count = len(valid_values)",
+      "",
+      "    if valid_count == 0:",
+      "        average = None",
+      "        minimum = None",
+      "        maximum = None",
+      "    else:",
+      "        average = sum(valid_values) / valid_count",
+      "        minimum = min(valid_values)",
+      "        maximum = max(valid_values)",
+      "",
+      "    return {",
+      "        \"valid_count\": valid_count,",
+      "        \"invalid_count\": invalid_count,",
+      "        \"pass_count\": pass_count,",
+      "        \"review_count\": review_count,",
+      "        \"average\": average,",
+      "        \"minimum\": minimum,",
+      "        \"maximum\": maximum,",
+      "        \"review_indices\": review_indices,",
+      "    }",
+      "",
+      "summary = summarize(raw_measurements)",
+      "",
+      "print(f\"valid_count={summary['valid_count']}\")",
+      "print(f\"invalid_count={summary['invalid_count']}\")",
+      "print(f\"pass_count={summary['pass_count']}\")",
+      "print(f\"review_count={summary['review_count']}\")",
+      "",
+      "if summary[\"average\"] is None:",
+      "    print(\"average=N/A\")",
+      "    print(\"minimum=N/A\")",
+      "    print(\"maximum=N/A\")",
+      "else:",
+      "    print(f\"average={summary['average']:.2f}\")",
+      "    print(f\"minimum={summary['minimum']:.2f}\")",
+      "    print(f\"maximum={summary['maximum']:.2f}\")",
+      "",
+      "print(f\"review_indices={summary['review_indices']}\")"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.2"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'9.8'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'N/A'"
+          },
+          {
+            "kind": "primitive",
+            "type": "none",
+            "repr": "None"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'bad'"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.7"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'10.0'"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 3,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "raw_measurements",
+      "value": {
+        "kind": "ref",
+        "id": "list@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 4,
+      "line": 11,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 11
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 5,
+      "line": 11,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "module",
+        "id": "module:math",
+        "name": "math",
+        "names": [
+          {
+            "key": "sqrt",
+            "value": {
+              "kind": "ref",
+              "id": "fn:sqrt"
+            }
+          },
+          {
+            "key": "floor",
+            "value": {
+              "kind": "ref",
+              "id": "fn:floor"
+            }
+          },
+          {
+            "key": "ceil",
+            "value": {
+              "kind": "ref",
+              "id": "fn:ceil"
+            }
+          },
+          {
+            "key": "fabs",
+            "value": {
+              "kind": "ref",
+              "id": "fn:fabs"
+            }
+          },
+          {
+            "key": "pow",
+            "value": {
+              "kind": "ref",
+              "id": "fn:pow"
+            }
+          },
+          {
+            "key": "isnan",
+            "value": {
+              "kind": "ref",
+              "id": "fn:isnan"
+            }
+          },
+          {
+            "key": "isinf",
+            "value": {
+              "kind": "ref",
+              "id": "fn:isinf"
+            }
+          },
+          {
+            "key": "isfinite",
+            "value": {
+              "kind": "ref",
+              "id": "fn:isfinite"
+            }
+          },
+          {
+            "key": "inf",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "inf"
+            }
+          },
+          {
+            "key": "nan",
+            "value": {
+              "kind": "primitive",
+              "type": "nan",
+              "repr": "nan"
+            }
+          },
+          {
+            "key": "pi",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "3.141592653589793"
+            }
+          },
+          {
+            "key": "e",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "2.718281828459045"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "MODULE_IMPORT",
+      "step": 6,
+      "line": 11,
+      "frameId": "global",
+      "detail": "core",
+      "module": "math",
+      "heapId": "module:math",
+      "binds": [
+        "math"
+      ],
+      "cached": false,
+      "span": {
+        "startCol": 0,
+        "endCol": 11
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 7,
+      "line": 11,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "math",
+      "value": {
+        "kind": "ref",
+        "id": "module:math"
+      },
+      "origin": {
+        "kind": "import",
+        "label": "math"
+      }
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "step": 8,
+      "line": 14,
+      "frameId": "global",
+      "detail": "core",
+      "name": "parse_value",
+      "heapId": "fn:parse_value",
+      "params": [
+        {
+          "name": "raw"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "step": 9,
+      "line": 36,
+      "frameId": "global",
+      "detail": "core",
+      "name": "classify_value",
+      "heapId": "fn:classify_value",
+      "params": [
+        {
+          "name": "value"
+        },
+        {
+          "name": "low"
+        },
+        {
+          "name": "high"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "step": 10,
+      "line": 42,
+      "frameId": "global",
+      "detail": "core",
+      "name": "summarize",
+      "heapId": "fn:summarize",
+      "params": [
+        {
+          "name": "raw_values"
+        },
+        {
+          "name": "low"
+        },
+        {
+          "name": "high"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 5
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 11,
+      "line": 94,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 37
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 12,
+      "line": 94,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "raw_measurements",
+      "result": {
+        "kind": "ref",
+        "id": "list@1"
+      },
+      "span": {
+        "startCol": 20,
+        "endCol": 36
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 13,
+      "line": 94,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "summarize",
+      "substituted": "summarize([10.2, '9.8', 'N/A', None, 'bad', 10.7])",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "list@1"
+          },
+          "from": "global.raw_measurements"
+        }
+      ],
+      "targetFrameId": "summarize#1",
+      "span": {
+        "startCol": 10,
+        "endCol": 37
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 14,
+      "line": 42,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "name": "summarize",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 94
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 15,
+      "line": 42,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "name": "raw_values",
+      "value": {
+        "kind": "ref",
+        "id": "list@1"
+      },
+      "from": "global.raw_measurements"
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 16,
+      "line": 42,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "name": "low",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.5"
+      }
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 17,
+      "line": 42,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "high",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.5"
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 18,
+      "line": 47,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "expression": "low > high",
+      "substituted": "9.5 > 10.5",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 66
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 19,
+      "line": 51,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 20,
+      "line": 51,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "invalid_count",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 21,
+      "line": 52,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 22,
+      "line": 52,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "pass_count",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 23,
+      "line": 53,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 20
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 24,
+      "line": 53,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "review_count",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 20
+      }
+    },
+    {
+      "type": "LOOP_START",
+      "step": 25,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "loopId": "loop:index-raw@56",
+      "varNames": [
+        "index",
+        "raw"
+      ],
+      "track": [],
+      "span": {
+        "startCol": 4,
+        "endCol": 40
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 26,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "name": "index",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 27,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "name": "raw",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 28,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "loopId": "loop:index-raw@56",
+      "index": 0
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 29,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 30,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "expression": "raw",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      },
+      "span": {
+        "startCol": 28,
+        "endCol": 31
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 31,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "callee": "parse_value",
+      "substituted": "parse_value(10.2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.2"
+          },
+          "from": "summarize#1.raw"
+        }
+      ],
+      "targetFrameId": "parse_value#1",
+      "span": {
+        "startCol": 16,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 32,
+      "line": 14,
+      "frameId": "parse_value#1",
+      "detail": "expression",
+      "name": "parse_value",
+      "callNumber": 1,
+      "parentFrameId": "summarize#1",
+      "returnLine": 57
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 33,
+      "line": 14,
+      "frameId": "parse_value#1",
+      "detail": "core",
+      "name": "raw",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      },
+      "from": "summarize#1.raw"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 34,
+      "line": 15,
+      "frameId": "parse_value#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 103
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 35,
+      "line": 16,
+      "frameId": "parse_value#1",
+      "detail": "expression",
+      "expression": "raw is None",
+      "substituted": "10.2 is None",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 7,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 36,
+      "line": 16,
+      "frameId": "parse_value#1",
+      "detail": "expression",
+      "expression": "raw is None or isinstance(raw, bool)",
+      "substituted": "raw is None or isinstance(raw, bool)",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 37,
+      "line": 16,
+      "frameId": "parse_value#1",
+      "detail": "core",
+      "expression": "raw is None or isinstance(raw, bool)",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 38,
+      "line": 19,
+      "frameId": "parse_value#1",
+      "detail": "core",
+      "expression": "isinstance(raw, str)",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 39,
+      "line": 19,
+      "frameId": "parse_value#1",
+      "detail": "expression",
+      "label": "else",
+      "targetLine": 24
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 40,
+      "line": 24,
+      "frameId": "parse_value#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 41,
+      "line": 24,
+      "frameId": "parse_value#1",
+      "detail": "core",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 42,
+      "line": 27,
+      "frameId": "parse_value#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 43,
+      "line": 27,
+      "frameId": "parse_value#1",
+      "detail": "core",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 44,
+      "line": 31,
+      "frameId": "parse_value#1",
+      "detail": "core",
+      "expression": "not math.isfinite(value)",
+      "substituted": "not True",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 45,
+      "line": 34,
+      "frameId": "parse_value#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 46,
+      "line": 34,
+      "frameId": "parse_value#1",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      },
+      "toLine": 57
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 47,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "poppedFrameId": "parse_value#1"
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 48,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "parse_value#1"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 49,
+      "line": 59,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "expression": "value is None",
+      "substituted": "10.2 is None",
+      "result": false,
+      "span": {
+        "startCol": 8,
+        "endCol": 20
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 50,
+      "line": 63,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 34
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 51,
+      "line": 63,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@2",
+        "label": "list",
+        "items": []
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 52,
+      "line": 63,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "target": "list@2",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 53,
+      "line": 63,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@2",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.2"
+          }
+        ]
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 54,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 49
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 55,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "expression": "value",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      },
+      "span": {
+        "startCol": 32,
+        "endCol": 37
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 56,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "expression": "low",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.5"
+      },
+      "span": {
+        "startCol": 39,
+        "endCol": 42
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 57,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "expression": "high",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.5"
+      },
+      "span": {
+        "startCol": 44,
+        "endCol": 48
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 58,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "callee": "classify_value",
+      "substituted": "classify_value(10.2, 9.5, 10.5)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.2"
+          },
+          "from": "summarize#1.value"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "9.5"
+          },
+          "from": "summarize#1.low"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.5"
+          },
+          "from": "summarize#1.high"
+        }
+      ],
+      "targetFrameId": "classify_value#1",
+      "span": {
+        "startCol": 17,
+        "endCol": 49
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 59,
+      "line": 36,
+      "frameId": "classify_value#1",
+      "detail": "expression",
+      "name": "classify_value",
+      "callNumber": 1,
+      "parentFrameId": "summarize#1",
+      "returnLine": 64
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 60,
+      "line": 36,
+      "frameId": "classify_value#1",
+      "detail": "expression",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      },
+      "from": "summarize#1.value"
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 61,
+      "line": 36,
+      "frameId": "classify_value#1",
+      "detail": "expression",
+      "name": "low",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.5"
+      },
+      "from": "summarize#1.low"
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 62,
+      "line": 36,
+      "frameId": "classify_value#1",
+      "detail": "core",
+      "name": "high",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.5"
+      },
+      "from": "summarize#1.high"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 63,
+      "line": 37,
+      "frameId": "classify_value#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 89
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 64,
+      "line": 38,
+      "frameId": "classify_value#1",
+      "detail": "core",
+      "expression": "low <= value <= high",
+      "result": true,
+      "span": {
+        "startCol": 4,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 65,
+      "line": 38,
+      "frameId": "classify_value#1",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 39
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 66,
+      "line": 39,
+      "frameId": "classify_value#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 67,
+      "line": 39,
+      "frameId": "classify_value#1",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'PASS'"
+      },
+      "toLine": 64
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 68,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "poppedFrameId": "classify_value#1"
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 69,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "status",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'PASS'"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "classify_value#1"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 49
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 70,
+      "line": 66,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "expression": "status == \"PASS\"",
+      "substituted": "'PASS' == 'PASS'",
+      "result": true,
+      "span": {
+        "startCol": 8,
+        "endCol": 40
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 71,
+      "line": 66,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 67
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 72,
+      "line": 67,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 12,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 73,
+      "line": 67,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "pass_count",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 12,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 74,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "name": "index",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 75,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "name": "raw",
+      "before": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'9.8'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 76,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "loopId": "loop:index-raw@56",
+      "index": 1
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 77,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 78,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "expression": "raw",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'9.8'"
+      },
+      "span": {
+        "startCol": 28,
+        "endCol": 31
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 79,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "callee": "parse_value",
+      "substituted": "parse_value('9.8')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'9.8'"
+          },
+          "from": "summarize#1.raw"
+        }
+      ],
+      "targetFrameId": "parse_value#2",
+      "span": {
+        "startCol": 16,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 80,
+      "line": 14,
+      "frameId": "parse_value#2",
+      "detail": "expression",
+      "name": "parse_value",
+      "callNumber": 2,
+      "parentFrameId": "summarize#1",
+      "returnLine": 57
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 81,
+      "line": 14,
+      "frameId": "parse_value#2",
+      "detail": "core",
+      "name": "raw",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'9.8'"
+      },
+      "from": "summarize#1.raw"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 82,
+      "line": 15,
+      "frameId": "parse_value#2",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 103
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 83,
+      "line": 16,
+      "frameId": "parse_value#2",
+      "detail": "expression",
+      "expression": "raw is None",
+      "substituted": "'9.8' is None",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 7,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 84,
+      "line": 16,
+      "frameId": "parse_value#2",
+      "detail": "expression",
+      "expression": "raw is None or isinstance(raw, bool)",
+      "substituted": "raw is None or isinstance(raw, bool)",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 85,
+      "line": 16,
+      "frameId": "parse_value#2",
+      "detail": "core",
+      "expression": "raw is None or isinstance(raw, bool)",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 86,
+      "line": 19,
+      "frameId": "parse_value#2",
+      "detail": "core",
+      "expression": "isinstance(raw, str)",
+      "result": true,
+      "span": {
+        "startCol": 4,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 87,
+      "line": 19,
+      "frameId": "parse_value#2",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 20
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 88,
+      "line": 20,
+      "frameId": "parse_value#2",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 89,
+      "line": 20,
+      "frameId": "parse_value#2",
+      "detail": "core",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'9.8'"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 90,
+      "line": 21,
+      "frameId": "parse_value#2",
+      "detail": "expression",
+      "expression": "text == \"\"",
+      "substituted": "'9.8' == ''",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 91,
+      "line": 21,
+      "frameId": "parse_value#2",
+      "detail": "expression",
+      "expression": "text.upper() == \"N/A\"",
+      "substituted": "'9.8' == 'N/A'",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 25,
+        "endCol": 46
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 92,
+      "line": 21,
+      "frameId": "parse_value#2",
+      "detail": "expression",
+      "expression": "text == \"\" or text.upper() == \"N/A\"",
+      "substituted": "text == \"\" or text.upper() == \"N/A\"",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 93,
+      "line": 21,
+      "frameId": "parse_value#2",
+      "detail": "core",
+      "expression": "text == \"\" or text.upper() == \"N/A\"",
+      "result": false,
+      "span": {
+        "startCol": 8,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 94,
+      "line": 27,
+      "frameId": "parse_value#2",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 95,
+      "line": 27,
+      "frameId": "parse_value#2",
+      "detail": "core",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.8"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 96,
+      "line": 31,
+      "frameId": "parse_value#2",
+      "detail": "core",
+      "expression": "not math.isfinite(value)",
+      "substituted": "not True",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 97,
+      "line": 34,
+      "frameId": "parse_value#2",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 98,
+      "line": 34,
+      "frameId": "parse_value#2",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.8"
+      },
+      "toLine": 57
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 99,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "poppedFrameId": "parse_value#2"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 100,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.8"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "parse_value#2"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 101,
+      "line": 59,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "expression": "value is None",
+      "substituted": "9.8 is None",
+      "result": false,
+      "span": {
+        "startCol": 8,
+        "endCol": 20
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 102,
+      "line": 63,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 34
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 103,
+      "line": 63,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "target": "list@2",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.8"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 104,
+      "line": 63,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@2",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.2"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "9.8"
+          }
+        ]
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 105,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 49
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 106,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "expression": "value",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.8"
+      },
+      "span": {
+        "startCol": 32,
+        "endCol": 37
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 107,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "expression": "low",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.5"
+      },
+      "span": {
+        "startCol": 39,
+        "endCol": 42
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 108,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "expression": "high",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.5"
+      },
+      "span": {
+        "startCol": 44,
+        "endCol": 48
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 109,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "callee": "classify_value",
+      "substituted": "classify_value(9.8, 9.5, 10.5)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "9.8"
+          },
+          "from": "summarize#1.value"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "9.5"
+          },
+          "from": "summarize#1.low"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.5"
+          },
+          "from": "summarize#1.high"
+        }
+      ],
+      "targetFrameId": "classify_value#2",
+      "span": {
+        "startCol": 17,
+        "endCol": 49
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 110,
+      "line": 36,
+      "frameId": "classify_value#2",
+      "detail": "expression",
+      "name": "classify_value",
+      "callNumber": 2,
+      "parentFrameId": "summarize#1",
+      "returnLine": 64
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 111,
+      "line": 36,
+      "frameId": "classify_value#2",
+      "detail": "expression",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.8"
+      },
+      "from": "summarize#1.value"
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 112,
+      "line": 36,
+      "frameId": "classify_value#2",
+      "detail": "expression",
+      "name": "low",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.5"
+      },
+      "from": "summarize#1.low"
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 113,
+      "line": 36,
+      "frameId": "classify_value#2",
+      "detail": "core",
+      "name": "high",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.5"
+      },
+      "from": "summarize#1.high"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 114,
+      "line": 37,
+      "frameId": "classify_value#2",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 89
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 115,
+      "line": 38,
+      "frameId": "classify_value#2",
+      "detail": "core",
+      "expression": "low <= value <= high",
+      "result": true,
+      "span": {
+        "startCol": 4,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 116,
+      "line": 38,
+      "frameId": "classify_value#2",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 39
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 117,
+      "line": 39,
+      "frameId": "classify_value#2",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 118,
+      "line": 39,
+      "frameId": "classify_value#2",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'PASS'"
+      },
+      "toLine": 64
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 119,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "poppedFrameId": "classify_value#2"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 120,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "status",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'PASS'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'PASS'"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "classify_value#2"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 49
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 121,
+      "line": 66,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "expression": "status == \"PASS\"",
+      "substituted": "'PASS' == 'PASS'",
+      "result": true,
+      "span": {
+        "startCol": 8,
+        "endCol": 40
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 122,
+      "line": 66,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 67
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 123,
+      "line": 67,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 12,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 124,
+      "line": 67,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "pass_count",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 12,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 125,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "name": "index",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 126,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "name": "raw",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'9.8'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'N/A'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 127,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "loopId": "loop:index-raw@56",
+      "index": 2
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 128,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 129,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "expression": "raw",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'N/A'"
+      },
+      "span": {
+        "startCol": 28,
+        "endCol": 31
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 130,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "callee": "parse_value",
+      "substituted": "parse_value('N/A')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'N/A'"
+          },
+          "from": "summarize#1.raw"
+        }
+      ],
+      "targetFrameId": "parse_value#3",
+      "span": {
+        "startCol": 16,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 131,
+      "line": 14,
+      "frameId": "parse_value#3",
+      "detail": "expression",
+      "name": "parse_value",
+      "callNumber": 3,
+      "parentFrameId": "summarize#1",
+      "returnLine": 57
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 132,
+      "line": 14,
+      "frameId": "parse_value#3",
+      "detail": "core",
+      "name": "raw",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'N/A'"
+      },
+      "from": "summarize#1.raw"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 133,
+      "line": 15,
+      "frameId": "parse_value#3",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 103
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 134,
+      "line": 16,
+      "frameId": "parse_value#3",
+      "detail": "expression",
+      "expression": "raw is None",
+      "substituted": "'N/A' is None",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 7,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 135,
+      "line": 16,
+      "frameId": "parse_value#3",
+      "detail": "expression",
+      "expression": "raw is None or isinstance(raw, bool)",
+      "substituted": "raw is None or isinstance(raw, bool)",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 136,
+      "line": 16,
+      "frameId": "parse_value#3",
+      "detail": "core",
+      "expression": "raw is None or isinstance(raw, bool)",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 137,
+      "line": 19,
+      "frameId": "parse_value#3",
+      "detail": "core",
+      "expression": "isinstance(raw, str)",
+      "result": true,
+      "span": {
+        "startCol": 4,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 138,
+      "line": 19,
+      "frameId": "parse_value#3",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 20
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 139,
+      "line": 20,
+      "frameId": "parse_value#3",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 140,
+      "line": 20,
+      "frameId": "parse_value#3",
+      "detail": "core",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'N/A'"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 141,
+      "line": 21,
+      "frameId": "parse_value#3",
+      "detail": "expression",
+      "expression": "text == \"\"",
+      "substituted": "'N/A' == ''",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 142,
+      "line": 21,
+      "frameId": "parse_value#3",
+      "detail": "expression",
+      "expression": "text.upper() == \"N/A\"",
+      "substituted": "'N/A' == 'N/A'",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      },
+      "span": {
+        "startCol": 25,
+        "endCol": 46
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 143,
+      "line": 21,
+      "frameId": "parse_value#3",
+      "detail": "expression",
+      "expression": "text == \"\" or text.upper() == \"N/A\"",
+      "substituted": "text == \"\" or text.upper() == \"N/A\"",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 144,
+      "line": 21,
+      "frameId": "parse_value#3",
+      "detail": "core",
+      "expression": "text == \"\" or text.upper() == \"N/A\"",
+      "result": true,
+      "span": {
+        "startCol": 8,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 145,
+      "line": 21,
+      "frameId": "parse_value#3",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 22
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 146,
+      "line": 22,
+      "frameId": "parse_value#3",
+      "detail": "expression",
+      "span": {
+        "startCol": 12,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 147,
+      "line": 22,
+      "frameId": "parse_value#3",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "toLine": 57
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 148,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "poppedFrameId": "parse_value#3"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 149,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.8"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "parse_value#3"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 150,
+      "line": 59,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "expression": "value is None",
+      "substituted": "None is None",
+      "result": true,
+      "span": {
+        "startCol": 8,
+        "endCol": 20
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 151,
+      "line": 59,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 60
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 152,
+      "line": 60,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 12,
+        "endCol": 30
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 153,
+      "line": 60,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "invalid_count",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 12,
+        "endCol": 30
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 154,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "name": "index",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 155,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "name": "raw",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'N/A'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 156,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "loopId": "loop:index-raw@56",
+      "index": 3
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 157,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 158,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "expression": "raw",
+      "result": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "span": {
+        "startCol": 28,
+        "endCol": 31
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 159,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "callee": "parse_value",
+      "substituted": "parse_value(None)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "none",
+            "repr": "None"
+          },
+          "from": "summarize#1.raw"
+        }
+      ],
+      "targetFrameId": "parse_value#4",
+      "span": {
+        "startCol": 16,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 160,
+      "line": 14,
+      "frameId": "parse_value#4",
+      "detail": "expression",
+      "name": "parse_value",
+      "callNumber": 4,
+      "parentFrameId": "summarize#1",
+      "returnLine": 57
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 161,
+      "line": 14,
+      "frameId": "parse_value#4",
+      "detail": "core",
+      "name": "raw",
+      "value": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "from": "summarize#1.raw"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 162,
+      "line": 15,
+      "frameId": "parse_value#4",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 103
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 163,
+      "line": 16,
+      "frameId": "parse_value#4",
+      "detail": "expression",
+      "expression": "raw is None",
+      "substituted": "None is None",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      },
+      "span": {
+        "startCol": 7,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 164,
+      "line": 16,
+      "frameId": "parse_value#4",
+      "detail": "expression",
+      "expression": "raw is None or isinstance(raw, bool)",
+      "substituted": "raw is None",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      },
+      "message": "16번 줄의 `raw is None or isinstance(raw, bool)`에서 앞쪽 결과만으로 값이 정해져 `isinstance(raw, bool)`은 계산하지 않았습니다."
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 165,
+      "line": 16,
+      "frameId": "parse_value#4",
+      "detail": "core",
+      "expression": "raw is None or isinstance(raw, bool)",
+      "result": true,
+      "span": {
+        "startCol": 4,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 166,
+      "line": 16,
+      "frameId": "parse_value#4",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 17
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 167,
+      "line": 17,
+      "frameId": "parse_value#4",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 168,
+      "line": 17,
+      "frameId": "parse_value#4",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "toLine": 57
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 169,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "poppedFrameId": "parse_value#4"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 170,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "parse_value#4"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 171,
+      "line": 59,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "expression": "value is None",
+      "substituted": "None is None",
+      "result": true,
+      "span": {
+        "startCol": 8,
+        "endCol": 20
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 172,
+      "line": 59,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 60
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 173,
+      "line": 60,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 12,
+        "endCol": 30
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 174,
+      "line": 60,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "invalid_count",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 12,
+        "endCol": 30
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 175,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "name": "index",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 176,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "name": "raw",
+      "before": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'bad'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 177,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "loopId": "loop:index-raw@56",
+      "index": 4
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 178,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 179,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "expression": "raw",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'bad'"
+      },
+      "span": {
+        "startCol": 28,
+        "endCol": 31
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 180,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "callee": "parse_value",
+      "substituted": "parse_value('bad')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'bad'"
+          },
+          "from": "summarize#1.raw"
+        }
+      ],
+      "targetFrameId": "parse_value#5",
+      "span": {
+        "startCol": 16,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 181,
+      "line": 14,
+      "frameId": "parse_value#5",
+      "detail": "expression",
+      "name": "parse_value",
+      "callNumber": 5,
+      "parentFrameId": "summarize#1",
+      "returnLine": 57
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 182,
+      "line": 14,
+      "frameId": "parse_value#5",
+      "detail": "core",
+      "name": "raw",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'bad'"
+      },
+      "from": "summarize#1.raw"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 183,
+      "line": 15,
+      "frameId": "parse_value#5",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 103
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 184,
+      "line": 16,
+      "frameId": "parse_value#5",
+      "detail": "expression",
+      "expression": "raw is None",
+      "substituted": "'bad' is None",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 7,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 185,
+      "line": 16,
+      "frameId": "parse_value#5",
+      "detail": "expression",
+      "expression": "raw is None or isinstance(raw, bool)",
+      "substituted": "raw is None or isinstance(raw, bool)",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 186,
+      "line": 16,
+      "frameId": "parse_value#5",
+      "detail": "core",
+      "expression": "raw is None or isinstance(raw, bool)",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 187,
+      "line": 19,
+      "frameId": "parse_value#5",
+      "detail": "core",
+      "expression": "isinstance(raw, str)",
+      "result": true,
+      "span": {
+        "startCol": 4,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 188,
+      "line": 19,
+      "frameId": "parse_value#5",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 20
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 189,
+      "line": 20,
+      "frameId": "parse_value#5",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 190,
+      "line": 20,
+      "frameId": "parse_value#5",
+      "detail": "core",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'bad'"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 191,
+      "line": 21,
+      "frameId": "parse_value#5",
+      "detail": "expression",
+      "expression": "text == \"\"",
+      "substituted": "'bad' == ''",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 192,
+      "line": 21,
+      "frameId": "parse_value#5",
+      "detail": "expression",
+      "expression": "text.upper() == \"N/A\"",
+      "substituted": "'BAD' == 'N/A'",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 25,
+        "endCol": 46
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 193,
+      "line": 21,
+      "frameId": "parse_value#5",
+      "detail": "expression",
+      "expression": "text == \"\" or text.upper() == \"N/A\"",
+      "substituted": "text == \"\" or text.upper() == \"N/A\"",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 194,
+      "line": 21,
+      "frameId": "parse_value#5",
+      "detail": "core",
+      "expression": "text == \"\" or text.upper() == \"N/A\"",
+      "result": false,
+      "span": {
+        "startCol": 8,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 195,
+      "line": 27,
+      "frameId": "parse_value#5",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "ERROR_THROW",
+      "step": 196,
+      "line": 27,
+      "frameId": "parse_value#5",
+      "detail": "core",
+      "name": "ValueError",
+      "message": "could not convert string to float: 'bad'"
+    },
+    {
+      "type": "ERROR_CATCH",
+      "step": 197,
+      "line": 28,
+      "frameId": "parse_value#5",
+      "detail": "core",
+      "handlerLine": 28
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 198,
+      "line": 29,
+      "frameId": "parse_value#5",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 199,
+      "line": 29,
+      "frameId": "parse_value#5",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "toLine": 57
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 200,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "poppedFrameId": "parse_value#5"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 201,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "parse_value#5"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 202,
+      "line": 59,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "expression": "value is None",
+      "substituted": "None is None",
+      "result": true,
+      "span": {
+        "startCol": 8,
+        "endCol": 20
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 203,
+      "line": 59,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 60
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 204,
+      "line": 60,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 12,
+        "endCol": 30
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 205,
+      "line": 60,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "invalid_count",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 12,
+        "endCol": 30
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 206,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "name": "index",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "5"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 207,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "name": "raw",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'bad'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.7"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 208,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "loopId": "loop:index-raw@56",
+      "index": 5
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 209,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 210,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "expression": "raw",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.7"
+      },
+      "span": {
+        "startCol": 28,
+        "endCol": 31
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 211,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "callee": "parse_value",
+      "substituted": "parse_value(10.7)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.7"
+          },
+          "from": "summarize#1.raw"
+        }
+      ],
+      "targetFrameId": "parse_value#6",
+      "span": {
+        "startCol": 16,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 212,
+      "line": 14,
+      "frameId": "parse_value#6",
+      "detail": "expression",
+      "name": "parse_value",
+      "callNumber": 6,
+      "parentFrameId": "summarize#1",
+      "returnLine": 57
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 213,
+      "line": 14,
+      "frameId": "parse_value#6",
+      "detail": "core",
+      "name": "raw",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.7"
+      },
+      "from": "summarize#1.raw"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 214,
+      "line": 15,
+      "frameId": "parse_value#6",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 103
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 215,
+      "line": 16,
+      "frameId": "parse_value#6",
+      "detail": "expression",
+      "expression": "raw is None",
+      "substituted": "10.7 is None",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 7,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 216,
+      "line": 16,
+      "frameId": "parse_value#6",
+      "detail": "expression",
+      "expression": "raw is None or isinstance(raw, bool)",
+      "substituted": "raw is None or isinstance(raw, bool)",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 217,
+      "line": 16,
+      "frameId": "parse_value#6",
+      "detail": "core",
+      "expression": "raw is None or isinstance(raw, bool)",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 218,
+      "line": 19,
+      "frameId": "parse_value#6",
+      "detail": "core",
+      "expression": "isinstance(raw, str)",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 219,
+      "line": 19,
+      "frameId": "parse_value#6",
+      "detail": "expression",
+      "label": "else",
+      "targetLine": 24
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 220,
+      "line": 24,
+      "frameId": "parse_value#6",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 221,
+      "line": 24,
+      "frameId": "parse_value#6",
+      "detail": "core",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.7"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 222,
+      "line": 27,
+      "frameId": "parse_value#6",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 223,
+      "line": 27,
+      "frameId": "parse_value#6",
+      "detail": "core",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.7"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 224,
+      "line": 31,
+      "frameId": "parse_value#6",
+      "detail": "core",
+      "expression": "not math.isfinite(value)",
+      "substituted": "not True",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 225,
+      "line": 34,
+      "frameId": "parse_value#6",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 226,
+      "line": 34,
+      "frameId": "parse_value#6",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.7"
+      },
+      "toLine": 57
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 227,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "poppedFrameId": "parse_value#6"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 228,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.7"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "parse_value#6"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 229,
+      "line": 59,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "expression": "value is None",
+      "substituted": "10.7 is None",
+      "result": false,
+      "span": {
+        "startCol": 8,
+        "endCol": 20
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 230,
+      "line": 63,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 34
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 231,
+      "line": 63,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "target": "list@2",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.7"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 232,
+      "line": 63,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@2",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.2"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "9.8"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.7"
+          }
+        ]
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 233,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 49
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 234,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "expression": "value",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.7"
+      },
+      "span": {
+        "startCol": 32,
+        "endCol": 37
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 235,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "expression": "low",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.5"
+      },
+      "span": {
+        "startCol": 39,
+        "endCol": 42
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 236,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "expression": "high",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.5"
+      },
+      "span": {
+        "startCol": 44,
+        "endCol": 48
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 237,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "callee": "classify_value",
+      "substituted": "classify_value(10.7, 9.5, 10.5)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.7"
+          },
+          "from": "summarize#1.value"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "9.5"
+          },
+          "from": "summarize#1.low"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.5"
+          },
+          "from": "summarize#1.high"
+        }
+      ],
+      "targetFrameId": "classify_value#3",
+      "span": {
+        "startCol": 17,
+        "endCol": 49
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 238,
+      "line": 36,
+      "frameId": "classify_value#3",
+      "detail": "expression",
+      "name": "classify_value",
+      "callNumber": 3,
+      "parentFrameId": "summarize#1",
+      "returnLine": 64
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 239,
+      "line": 36,
+      "frameId": "classify_value#3",
+      "detail": "expression",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.7"
+      },
+      "from": "summarize#1.value"
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 240,
+      "line": 36,
+      "frameId": "classify_value#3",
+      "detail": "expression",
+      "name": "low",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.5"
+      },
+      "from": "summarize#1.low"
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 241,
+      "line": 36,
+      "frameId": "classify_value#3",
+      "detail": "core",
+      "name": "high",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.5"
+      },
+      "from": "summarize#1.high"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 242,
+      "line": 37,
+      "frameId": "classify_value#3",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 89
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 243,
+      "line": 38,
+      "frameId": "classify_value#3",
+      "detail": "core",
+      "expression": "low <= value <= high",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 244,
+      "line": 40,
+      "frameId": "classify_value#3",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 245,
+      "line": 40,
+      "frameId": "classify_value#3",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'REVIEW'"
+      },
+      "toLine": 64
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 246,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "poppedFrameId": "classify_value#3"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 247,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "status",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'PASS'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'REVIEW'"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "classify_value#3"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 49
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 248,
+      "line": 66,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "expression": "status == \"PASS\"",
+      "substituted": "'REVIEW' == 'PASS'",
+      "result": false,
+      "span": {
+        "startCol": 8,
+        "endCol": 40
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 249,
+      "line": 66,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "label": "else",
+      "targetLine": 69
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 250,
+      "line": 69,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 12,
+        "endCol": 29
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 251,
+      "line": 69,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "review_count",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 12,
+        "endCol": 29
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 252,
+      "line": 70,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 12,
+        "endCol": 40
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 253,
+      "line": 70,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@3",
+        "label": "list",
+        "items": []
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 254,
+      "line": 70,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "target": "list@3",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "5"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 255,
+      "line": 70,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@3",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "5"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 256,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "name": "index",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "5"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "6"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 257,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "name": "raw",
+      "before": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.7"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'10.0'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 258,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "loopId": "loop:index-raw@56",
+      "index": 6
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 259,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 260,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "expression": "raw",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'10.0'"
+      },
+      "span": {
+        "startCol": 28,
+        "endCol": 31
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 261,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "callee": "parse_value",
+      "substituted": "parse_value('10.0')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'10.0'"
+          },
+          "from": "summarize#1.raw"
+        }
+      ],
+      "targetFrameId": "parse_value#7",
+      "span": {
+        "startCol": 16,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 262,
+      "line": 14,
+      "frameId": "parse_value#7",
+      "detail": "expression",
+      "name": "parse_value",
+      "callNumber": 7,
+      "parentFrameId": "summarize#1",
+      "returnLine": 57
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 263,
+      "line": 14,
+      "frameId": "parse_value#7",
+      "detail": "core",
+      "name": "raw",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'10.0'"
+      },
+      "from": "summarize#1.raw"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 264,
+      "line": 15,
+      "frameId": "parse_value#7",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 103
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 265,
+      "line": 16,
+      "frameId": "parse_value#7",
+      "detail": "expression",
+      "expression": "raw is None",
+      "substituted": "'10.0' is None",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 7,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 266,
+      "line": 16,
+      "frameId": "parse_value#7",
+      "detail": "expression",
+      "expression": "raw is None or isinstance(raw, bool)",
+      "substituted": "raw is None or isinstance(raw, bool)",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 267,
+      "line": 16,
+      "frameId": "parse_value#7",
+      "detail": "core",
+      "expression": "raw is None or isinstance(raw, bool)",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 268,
+      "line": 19,
+      "frameId": "parse_value#7",
+      "detail": "core",
+      "expression": "isinstance(raw, str)",
+      "result": true,
+      "span": {
+        "startCol": 4,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 269,
+      "line": 19,
+      "frameId": "parse_value#7",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 20
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 270,
+      "line": 20,
+      "frameId": "parse_value#7",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 271,
+      "line": 20,
+      "frameId": "parse_value#7",
+      "detail": "core",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'10.0'"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 272,
+      "line": 21,
+      "frameId": "parse_value#7",
+      "detail": "expression",
+      "expression": "text == \"\"",
+      "substituted": "'10.0' == ''",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 273,
+      "line": 21,
+      "frameId": "parse_value#7",
+      "detail": "expression",
+      "expression": "text.upper() == \"N/A\"",
+      "substituted": "'10.0' == 'N/A'",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 25,
+        "endCol": 46
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 274,
+      "line": 21,
+      "frameId": "parse_value#7",
+      "detail": "expression",
+      "expression": "text == \"\" or text.upper() == \"N/A\"",
+      "substituted": "text == \"\" or text.upper() == \"N/A\"",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 275,
+      "line": 21,
+      "frameId": "parse_value#7",
+      "detail": "core",
+      "expression": "text == \"\" or text.upper() == \"N/A\"",
+      "result": false,
+      "span": {
+        "startCol": 8,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 276,
+      "line": 27,
+      "frameId": "parse_value#7",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 277,
+      "line": 27,
+      "frameId": "parse_value#7",
+      "detail": "core",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.0"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 278,
+      "line": 31,
+      "frameId": "parse_value#7",
+      "detail": "core",
+      "expression": "not math.isfinite(value)",
+      "substituted": "not True",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 279,
+      "line": 34,
+      "frameId": "parse_value#7",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 280,
+      "line": 34,
+      "frameId": "parse_value#7",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.0"
+      },
+      "toLine": 57
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 281,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "poppedFrameId": "parse_value#7"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 282,
+      "line": 57,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.7"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.0"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "parse_value#7"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 283,
+      "line": 59,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "expression": "value is None",
+      "substituted": "10.0 is None",
+      "result": false,
+      "span": {
+        "startCol": 8,
+        "endCol": 20
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 284,
+      "line": 63,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 34
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 285,
+      "line": 63,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "target": "list@2",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.0"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 286,
+      "line": 63,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@2",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.2"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "9.8"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.7"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.0"
+          }
+        ]
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 287,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 49
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 288,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "expression": "value",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.0"
+      },
+      "span": {
+        "startCol": 32,
+        "endCol": 37
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 289,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "expression": "low",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.5"
+      },
+      "span": {
+        "startCol": 39,
+        "endCol": 42
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 290,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "expression": "high",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.5"
+      },
+      "span": {
+        "startCol": 44,
+        "endCol": 48
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 291,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "callee": "classify_value",
+      "substituted": "classify_value(10.0, 9.5, 10.5)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.0"
+          },
+          "from": "summarize#1.value"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "9.5"
+          },
+          "from": "summarize#1.low"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.5"
+          },
+          "from": "summarize#1.high"
+        }
+      ],
+      "targetFrameId": "classify_value#4",
+      "span": {
+        "startCol": 17,
+        "endCol": 49
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 292,
+      "line": 36,
+      "frameId": "classify_value#4",
+      "detail": "expression",
+      "name": "classify_value",
+      "callNumber": 4,
+      "parentFrameId": "summarize#1",
+      "returnLine": 64
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 293,
+      "line": 36,
+      "frameId": "classify_value#4",
+      "detail": "expression",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.0"
+      },
+      "from": "summarize#1.value"
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 294,
+      "line": 36,
+      "frameId": "classify_value#4",
+      "detail": "expression",
+      "name": "low",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.5"
+      },
+      "from": "summarize#1.low"
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 295,
+      "line": 36,
+      "frameId": "classify_value#4",
+      "detail": "core",
+      "name": "high",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.5"
+      },
+      "from": "summarize#1.high"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 296,
+      "line": 37,
+      "frameId": "classify_value#4",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 89
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 297,
+      "line": 38,
+      "frameId": "classify_value#4",
+      "detail": "core",
+      "expression": "low <= value <= high",
+      "result": true,
+      "span": {
+        "startCol": 4,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 298,
+      "line": 38,
+      "frameId": "classify_value#4",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 39
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 299,
+      "line": 39,
+      "frameId": "classify_value#4",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 300,
+      "line": 39,
+      "frameId": "classify_value#4",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'PASS'"
+      },
+      "toLine": 64
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 301,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "poppedFrameId": "classify_value#4"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 302,
+      "line": 64,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "status",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'REVIEW'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'PASS'"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "classify_value#4"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 49
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 303,
+      "line": 66,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "expression": "status == \"PASS\"",
+      "substituted": "'PASS' == 'PASS'",
+      "result": true,
+      "span": {
+        "startCol": 8,
+        "endCol": 40
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 304,
+      "line": 66,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 67
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 305,
+      "line": 67,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 12,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 306,
+      "line": 67,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "pass_count",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 12,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "LOOP_END",
+      "step": 307,
+      "line": 56,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "loopId": "loop:index-raw@56",
+      "reason": "exhausted"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 308,
+      "line": 72,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 35
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 309,
+      "line": 72,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "valid_count",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 35
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 310,
+      "line": 74,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "expression": "valid_count == 0",
+      "substituted": "4 == 0",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 35
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 311,
+      "line": 74,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "label": "else",
+      "targetLine": 79
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 312,
+      "line": 79,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 49
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 313,
+      "line": 79,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "expression": "sum(valid_values) / valid_count",
+      "substituted": "40.7 / 4",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.175"
+      },
+      "span": {
+        "startCol": 18,
+        "endCol": 49
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 314,
+      "line": 79,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "average",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.175"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 49
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 315,
+      "line": 80,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 35
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 316,
+      "line": 80,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "minimum",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.8"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 35
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 317,
+      "line": 81,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 35
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 318,
+      "line": 81,
+      "frameId": "summarize#1",
+      "detail": "core",
+      "name": "maximum",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.7"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 35
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 319,
+      "line": 83,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 5
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 320,
+      "line": 83,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "dict@4",
+        "label": "dict",
+        "entries": [
+          {
+            "key": "valid_count",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "4"
+            }
+          },
+          {
+            "key": "invalid_count",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "3"
+            }
+          },
+          {
+            "key": "pass_count",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "3"
+            }
+          },
+          {
+            "key": "review_count",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "1"
+            }
+          },
+          {
+            "key": "average",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "10.175"
+            }
+          },
+          {
+            "key": "minimum",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "9.8"
+            }
+          },
+          {
+            "key": "maximum",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "10.7"
+            }
+          },
+          {
+            "key": "review_indices",
+            "value": {
+              "kind": "ref",
+              "id": "list@3"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 321,
+      "line": 83,
+      "frameId": "summarize#1",
+      "detail": "expression",
+      "value": {
+        "kind": "ref",
+        "id": "dict@4"
+      },
+      "toLine": 94
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 322,
+      "line": 94,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "summarize#1"
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 323,
+      "line": 94,
+      "frameId": "global",
+      "detail": "core",
+      "name": "summary",
+      "value": {
+        "kind": "ref",
+        "id": "dict@4"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "summarize#1"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 37
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 324,
+      "line": 96,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 46
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 325,
+      "line": 96,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "dict@4",
+      "key": "valid_count",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 326,
+      "line": 96,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "valid_count=4"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 327,
+      "line": 97,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 50
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 328,
+      "line": 97,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "dict@4",
+      "key": "invalid_count",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 329,
+      "line": 97,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "invalid_count=3"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 330,
+      "line": 98,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 44
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 331,
+      "line": 98,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "dict@4",
+      "key": "pass_count",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 332,
+      "line": 98,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "pass_count=3"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 333,
+      "line": 99,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 48
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 334,
+      "line": 99,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "dict@4",
+      "key": "review_count",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 335,
+      "line": 99,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "review_count=1"
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 336,
+      "line": 101,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "dict@4",
+      "key": "average",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.175"
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 337,
+      "line": 101,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "summary[\"average\"] is None",
+      "substituted": "10.175 is None",
+      "result": false,
+      "span": {
+        "startCol": 0,
+        "endCol": 46
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 338,
+      "line": 101,
+      "frameId": "global",
+      "detail": "expression",
+      "label": "else",
+      "targetLine": 106
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 339,
+      "line": 106,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 46
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 340,
+      "line": 106,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "dict@4",
+      "key": "average",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.175"
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 341,
+      "line": 106,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "average=10.18"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 342,
+      "line": 107,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 46
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 343,
+      "line": 107,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "dict@4",
+      "key": "minimum",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.8"
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 344,
+      "line": 107,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "minimum=9.80"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 345,
+      "line": 108,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 46
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 346,
+      "line": 108,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "dict@4",
+      "key": "maximum",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.7"
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 347,
+      "line": 108,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "maximum=10.70"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 348,
+      "line": 110,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 52
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 349,
+      "line": 110,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "dict@4",
+      "key": "review_indices",
+      "value": {
+        "kind": "ref",
+        "id": "list@3"
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 350,
+      "line": 110,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "review_indices=[5]"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 351,
+      "line": 110,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "valid_count=4\ninvalid_count=3\npass_count=3\nreview_count=1\naverage=10.18\nminimum=9.80\nmaximum=10.70\nreview_indices=[5]\n"
+  }
+}

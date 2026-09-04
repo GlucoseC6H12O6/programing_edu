@@ -1,0 +1,1068 @@
+{
+  "version": 1,
+  "lessonId": "j12-map",
+  "source": {
+    "path": "predict.js",
+    "language": "javascript",
+    "lines": [
+      "const values = [1, 2, 3];",
+      "const calls = [];",
+      "",
+      "const doubled = values.map((value) => {",
+      "  calls.push(value);",
+      "  return value * 10;",
+      "});",
+      "",
+      "const missing = values.map((value) => {",
+      "  value * 10;",
+      "});",
+      "",
+      "console.log(doubled);",
+      "console.log(missing);",
+      "console.log(\"콜백 호출 횟수:\", calls.length, calls);",
+      "console.log(\"원본:\", values);",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 25
+      },
+      "step": 1
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@1",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "3"
+          }
+        ]
+      },
+      "step": 2
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "values",
+      "value": {
+        "kind": "ref",
+        "id": "Array@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 25
+      },
+      "step": 3
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 17
+      },
+      "step": 4
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@2",
+        "label": "array",
+        "items": []
+      },
+      "step": 5
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 2,
+      "detail": "core",
+      "frameId": "global",
+      "name": "calls",
+      "value": {
+        "kind": "ref",
+        "id": "Array@2"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 17
+      },
+      "step": 6
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 3
+      },
+      "step": 7
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 4,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "map 콜백",
+      "substituted": "map 콜백(1)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          }
+        }
+      ],
+      "targetFrameId": "map 콜백#1",
+      "span": {
+        "startCol": 27,
+        "endCol": 1
+      },
+      "step": 8
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "map 콜백#1",
+      "name": "map 콜백",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 4,
+      "step": 9
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 4,
+      "detail": "core",
+      "frameId": "map 콜백#1",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "step": 10
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "map 콜백#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 20
+      },
+      "step": 11
+    },
+    {
+      "type": "ITEM_APPEND",
+      "line": 5,
+      "detail": "core",
+      "frameId": "map 콜백#1",
+      "target": "Array@2",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "step": 12
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "map 콜백#1",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@2",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          }
+        ]
+      },
+      "step": 13
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "map 콜백#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 20
+      },
+      "step": 14
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 6,
+      "detail": "core",
+      "frameId": "map 콜백#1",
+      "expression": "value * 10",
+      "substituted": "1 * 10",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "span": {
+        "startCol": 9,
+        "endCol": 19
+      },
+      "step": 15
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "map 콜백#1",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "toLine": 4,
+      "step": 16
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "map 콜백#1",
+      "step": 17
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 4,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "map 콜백",
+      "substituted": "map 콜백(2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          }
+        }
+      ],
+      "targetFrameId": "map 콜백#2",
+      "span": {
+        "startCol": 27,
+        "endCol": 1
+      },
+      "step": 18
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "map 콜백#2",
+      "name": "map 콜백",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 4,
+      "step": 19
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 4,
+      "detail": "core",
+      "frameId": "map 콜백#2",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "step": 20
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "map 콜백#2",
+      "span": {
+        "startCol": 2,
+        "endCol": 20
+      },
+      "step": 21
+    },
+    {
+      "type": "ITEM_APPEND",
+      "line": 5,
+      "detail": "core",
+      "frameId": "map 콜백#2",
+      "target": "Array@2",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "step": 22
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "map 콜백#2",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@2",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          }
+        ]
+      },
+      "step": 23
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "map 콜백#2",
+      "span": {
+        "startCol": 2,
+        "endCol": 20
+      },
+      "step": 24
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 6,
+      "detail": "core",
+      "frameId": "map 콜백#2",
+      "expression": "value * 10",
+      "substituted": "2 * 10",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "20"
+      },
+      "span": {
+        "startCol": 9,
+        "endCol": 19
+      },
+      "step": 25
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "map 콜백#2",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "20"
+      },
+      "toLine": 4,
+      "step": 26
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "map 콜백#2",
+      "step": 27
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 4,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "map 콜백",
+      "substituted": "map 콜백(3)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "3"
+          }
+        }
+      ],
+      "targetFrameId": "map 콜백#3",
+      "span": {
+        "startCol": 27,
+        "endCol": 1
+      },
+      "step": 28
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "map 콜백#3",
+      "name": "map 콜백",
+      "callNumber": 3,
+      "parentFrameId": "global",
+      "returnLine": 4,
+      "step": 29
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 4,
+      "detail": "core",
+      "frameId": "map 콜백#3",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "step": 30
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "map 콜백#3",
+      "span": {
+        "startCol": 2,
+        "endCol": 20
+      },
+      "step": 31
+    },
+    {
+      "type": "ITEM_APPEND",
+      "line": 5,
+      "detail": "core",
+      "frameId": "map 콜백#3",
+      "target": "Array@2",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "step": 32
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "map 콜백#3",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@2",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "3"
+          }
+        ]
+      },
+      "step": 33
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "map 콜백#3",
+      "span": {
+        "startCol": 2,
+        "endCol": 20
+      },
+      "step": 34
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 6,
+      "detail": "core",
+      "frameId": "map 콜백#3",
+      "expression": "value * 10",
+      "substituted": "3 * 10",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "30"
+      },
+      "span": {
+        "startCol": 9,
+        "endCol": 19
+      },
+      "step": 35
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "map 콜백#3",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "30"
+      },
+      "toLine": 4,
+      "step": 36
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "map 콜백#3",
+      "step": 37
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@3",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "10"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "20"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "30"
+          }
+        ]
+      },
+      "step": 38
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 4,
+      "detail": "core",
+      "frameId": "global",
+      "name": "doubled",
+      "value": {
+        "kind": "ref",
+        "id": "Array@3"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 3
+      },
+      "step": 39
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 3
+      },
+      "step": 40
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 9,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "map 콜백",
+      "substituted": "map 콜백(1)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          }
+        }
+      ],
+      "targetFrameId": "map 콜백#4",
+      "span": {
+        "startCol": 27,
+        "endCol": 1
+      },
+      "step": 41
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "map 콜백#4",
+      "name": "map 콜백",
+      "callNumber": 4,
+      "parentFrameId": "global",
+      "returnLine": 9,
+      "step": 42
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 9,
+      "detail": "core",
+      "frameId": "map 콜백#4",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "step": 43
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "map 콜백#4",
+      "span": {
+        "startCol": 2,
+        "endCol": 13
+      },
+      "step": 44
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "map 콜백#4",
+      "expression": "value * 10",
+      "substituted": "1 * 10",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 12
+      },
+      "step": 45
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "map 콜백#4",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 9,
+      "step": 46
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "map 콜백#4",
+      "step": 47
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 9,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "map 콜백",
+      "substituted": "map 콜백(2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          }
+        }
+      ],
+      "targetFrameId": "map 콜백#5",
+      "span": {
+        "startCol": 27,
+        "endCol": 1
+      },
+      "step": 48
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "map 콜백#5",
+      "name": "map 콜백",
+      "callNumber": 5,
+      "parentFrameId": "global",
+      "returnLine": 9,
+      "step": 49
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 9,
+      "detail": "core",
+      "frameId": "map 콜백#5",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "step": 50
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "map 콜백#5",
+      "span": {
+        "startCol": 2,
+        "endCol": 13
+      },
+      "step": 51
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "map 콜백#5",
+      "expression": "value * 10",
+      "substituted": "2 * 10",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "20"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 12
+      },
+      "step": 52
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "map 콜백#5",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 9,
+      "step": 53
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "map 콜백#5",
+      "step": 54
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 9,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "map 콜백",
+      "substituted": "map 콜백(3)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "3"
+          }
+        }
+      ],
+      "targetFrameId": "map 콜백#6",
+      "span": {
+        "startCol": 27,
+        "endCol": 1
+      },
+      "step": 55
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "map 콜백#6",
+      "name": "map 콜백",
+      "callNumber": 6,
+      "parentFrameId": "global",
+      "returnLine": 9,
+      "step": 56
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 9,
+      "detail": "core",
+      "frameId": "map 콜백#6",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "step": 57
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "map 콜백#6",
+      "span": {
+        "startCol": 2,
+        "endCol": 13
+      },
+      "step": 58
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "map 콜백#6",
+      "expression": "value * 10",
+      "substituted": "3 * 10",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "30"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 12
+      },
+      "step": 59
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "map 콜백#6",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 9,
+      "step": 60
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "map 콜백#6",
+      "step": 61
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@4",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "undefined",
+            "repr": "undefined"
+          },
+          {
+            "kind": "primitive",
+            "type": "undefined",
+            "repr": "undefined"
+          },
+          {
+            "kind": "primitive",
+            "type": "undefined",
+            "repr": "undefined"
+          }
+        ]
+      },
+      "step": 62
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 9,
+      "detail": "core",
+      "frameId": "global",
+      "name": "missing",
+      "value": {
+        "kind": "ref",
+        "id": "Array@4"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 3
+      },
+      "step": 63
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 13,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 21
+      },
+      "step": 64
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 13,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "[ 10, 20, 30 ]",
+      "step": 65
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 21
+      },
+      "step": 66
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 14,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "[ undefined, undefined, undefined ]",
+      "step": 67
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 15,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 46
+      },
+      "step": 68
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 15,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "콜백 호출 횟수: 3 [ 1, 2, 3 ]",
+      "step": 69
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 16,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 27
+      },
+      "step": 70
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 16,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "원본: [ 1, 2, 3 ]",
+      "step": 71
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 16,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 72
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "[ 10, 20, 30 ]\n[ undefined, undefined, undefined ]\n콜백 호출 횟수: 3 [ 1, 2, 3 ]\n원본: [ 1, 2, 3 ]\n"
+  }
+}

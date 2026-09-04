@@ -1,0 +1,524 @@
+{
+  "version": 1,
+  "lessonId": "p21-classes",
+  "source": {
+    "path": "work.py",
+    "language": "python",
+    "lines": [
+      "class Measurement:",
+      "    def __init__(self, wafer_id, value):",
+      "        self.wafer_id = wafer_id",
+      "        self.value = value",
+      "",
+      "    def is_in_range(self, low, high):",
+      "        return low <= self.value <= high",
+      "",
+      "m = Measurement(\"W03\", 10.2)",
+      "print(m.is_in_range(9.5, 10.5))  # True"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 40
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "class",
+        "id": "class:Measurement",
+        "name": "Measurement",
+        "methods": [
+          {
+            "name": "__init__",
+            "params": [
+              "self",
+              "wafer_id",
+              "value"
+            ]
+          },
+          {
+            "name": "is_in_range",
+            "params": [
+              "self",
+              "low",
+              "high"
+            ]
+          }
+        ],
+        "attributes": [],
+        "initRule": [
+          "wafer_id",
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "CLASS_DEFINE",
+      "step": 3,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "Measurement",
+      "heapId": "class:Measurement",
+      "methods": [
+        "__init__",
+        "is_in_range"
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 40
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 4,
+      "line": 9,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 5,
+      "line": 9,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "Measurement",
+      "substituted": "Measurement('W03', 10.2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W03'"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.2"
+          }
+        }
+      ],
+      "targetFrameId": "Measurement.__init__#1",
+      "span": {
+        "startCol": 4,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 6,
+      "line": 9,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "Measurement@1",
+        "label": "instance",
+        "className": "Measurement",
+        "entries": []
+      }
+    },
+    {
+      "type": "INSTANCE_CREATE",
+      "step": 7,
+      "line": 9,
+      "frameId": "global",
+      "detail": "core",
+      "heapId": "Measurement@1",
+      "className": "Measurement",
+      "classHeapId": "class:Measurement",
+      "span": {
+        "startCol": 4,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 8,
+      "line": 2,
+      "frameId": "Measurement.__init__#1",
+      "detail": "expression",
+      "name": "Measurement.__init__",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 9
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 9,
+      "line": 2,
+      "frameId": "Measurement.__init__#1",
+      "detail": "expression",
+      "name": "self",
+      "value": {
+        "kind": "ref",
+        "id": "Measurement@1"
+      }
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 10,
+      "line": 2,
+      "frameId": "Measurement.__init__#1",
+      "detail": "expression",
+      "name": "wafer_id",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W03'"
+      }
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 11,
+      "line": 2,
+      "frameId": "Measurement.__init__#1",
+      "detail": "core",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 12,
+      "line": 3,
+      "frameId": "Measurement.__init__#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 13,
+      "line": 3,
+      "frameId": "Measurement.__init__#1",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "Measurement@1",
+        "label": "instance",
+        "className": "Measurement",
+        "entries": [
+          {
+            "key": "wafer_id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W03'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "ATTR_WRITE",
+      "step": 14,
+      "line": 3,
+      "frameId": "Measurement.__init__#1",
+      "detail": "core",
+      "target": "Measurement@1",
+      "attr": "wafer_id",
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W03'"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 15,
+      "line": 4,
+      "frameId": "Measurement.__init__#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 16,
+      "line": 4,
+      "frameId": "Measurement.__init__#1",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "Measurement@1",
+        "label": "instance",
+        "className": "Measurement",
+        "entries": [
+          {
+            "key": "wafer_id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W03'"
+            }
+          },
+          {
+            "key": "value",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "10.2"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "ATTR_WRITE",
+      "step": 17,
+      "line": 4,
+      "frameId": "Measurement.__init__#1",
+      "detail": "core",
+      "target": "Measurement@1",
+      "attr": "value",
+      "after": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 18,
+      "line": 4,
+      "frameId": "Measurement.__init__#1",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "toLine": 9
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 19,
+      "line": 9,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "Measurement.__init__#1"
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 20,
+      "line": 9,
+      "frameId": "global",
+      "detail": "core",
+      "name": "m",
+      "value": {
+        "kind": "ref",
+        "id": "Measurement@1"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 21,
+      "line": 10,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 31
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 22,
+      "line": 10,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "m.is_in_range",
+      "substituted": "m.is_in_range(9.5, 10.5)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "9.5"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.5"
+          }
+        }
+      ],
+      "targetFrameId": "Measurement.is_in_range#1",
+      "receiver": {
+        "kind": "ref",
+        "id": "Measurement@1"
+      },
+      "span": {
+        "startCol": 6,
+        "endCol": 30
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 23,
+      "line": 6,
+      "frameId": "Measurement.is_in_range#1",
+      "detail": "expression",
+      "name": "Measurement.is_in_range",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 10
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 24,
+      "line": 6,
+      "frameId": "Measurement.is_in_range#1",
+      "detail": "expression",
+      "name": "self",
+      "value": {
+        "kind": "ref",
+        "id": "Measurement@1"
+      }
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 25,
+      "line": 6,
+      "frameId": "Measurement.is_in_range#1",
+      "detail": "expression",
+      "name": "low",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.5"
+      }
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 26,
+      "line": 6,
+      "frameId": "Measurement.is_in_range#1",
+      "detail": "core",
+      "name": "high",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.5"
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 27,
+      "line": 7,
+      "frameId": "Measurement.is_in_range#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 40
+      }
+    },
+    {
+      "type": "ATTR_READ",
+      "step": 28,
+      "line": 7,
+      "frameId": "Measurement.is_in_range#1",
+      "detail": "expression",
+      "target": "Measurement@1",
+      "attr": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      },
+      "owner": "instance",
+      "span": {
+        "startCol": 22,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 29,
+      "line": 7,
+      "frameId": "Measurement.is_in_range#1",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      },
+      "toLine": 10
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 30,
+      "line": 10,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "Measurement.is_in_range#1"
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 31,
+      "line": 10,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "True"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 32,
+      "line": 10,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "True\n"
+  }
+}

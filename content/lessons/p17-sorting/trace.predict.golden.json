@@ -1,0 +1,939 @@
+{
+  "version": 1,
+  "lessonId": "p17-sorting",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "items = [",
+      "    {\"name\": \"C\", \"score\": 2},",
+      "    {\"name\": \"A\", \"score\": 1},",
+      "    {\"name\": \"B\", \"score\": 2},",
+      "]",
+      "result = sorted(items, key=lambda x: (x[\"score\"], x[\"name\"]))",
+      "print([item[\"name\"] for item in result])"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "dict@2",
+        "label": "dict",
+        "entries": [
+          {
+            "key": "name",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'C'"
+            }
+          },
+          {
+            "key": "score",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "2"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 3,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "dict@3",
+        "label": "dict",
+        "entries": [
+          {
+            "key": "name",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'A'"
+            }
+          },
+          {
+            "key": "score",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 4,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "dict@4",
+        "label": "dict",
+        "entries": [
+          {
+            "key": "name",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'B'"
+            }
+          },
+          {
+            "key": "score",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "2"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 5,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "ref",
+            "id": "dict@2"
+          },
+          {
+            "kind": "ref",
+            "id": "dict@3"
+          },
+          {
+            "kind": "ref",
+            "id": "dict@4"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 6,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "items",
+      "value": {
+        "kind": "ref",
+        "id": "list@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 7,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 61
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 8,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "lambda",
+      "substituted": "lambda({name: 'C', score: 2})",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "dict@2"
+          }
+        }
+      ],
+      "targetFrameId": "lambda#1",
+      "span": {
+        "startCol": 27,
+        "endCol": 60
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 9,
+      "line": 6,
+      "frameId": "lambda#1",
+      "detail": "expression",
+      "name": "lambda",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 6
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 10,
+      "line": 6,
+      "frameId": "lambda#1",
+      "detail": "core",
+      "name": "x",
+      "value": {
+        "kind": "ref",
+        "id": "dict@2"
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 11,
+      "line": 6,
+      "frameId": "lambda#1",
+      "detail": "expression",
+      "target": "dict@2",
+      "key": "score",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 12,
+      "line": 6,
+      "frameId": "lambda#1",
+      "detail": "expression",
+      "target": "dict@2",
+      "key": "name",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'C'"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 13,
+      "line": 6,
+      "frameId": "lambda#1",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "tuple@5",
+        "label": "tuple",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'C'"
+          }
+        ],
+        "frozen": true
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 14,
+      "line": 6,
+      "frameId": "lambda#1",
+      "detail": "core",
+      "value": {
+        "kind": "ref",
+        "id": "tuple@5"
+      },
+      "toLine": 6
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 15,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "lambda#1"
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 16,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "lambda",
+      "substituted": "lambda({name: 'A', score: 1})",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "dict@3"
+          }
+        }
+      ],
+      "targetFrameId": "lambda#2",
+      "span": {
+        "startCol": 27,
+        "endCol": 60
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 17,
+      "line": 6,
+      "frameId": "lambda#2",
+      "detail": "expression",
+      "name": "lambda",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 6
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 18,
+      "line": 6,
+      "frameId": "lambda#2",
+      "detail": "core",
+      "name": "x",
+      "value": {
+        "kind": "ref",
+        "id": "dict@3"
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 19,
+      "line": 6,
+      "frameId": "lambda#2",
+      "detail": "expression",
+      "target": "dict@3",
+      "key": "score",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 20,
+      "line": 6,
+      "frameId": "lambda#2",
+      "detail": "expression",
+      "target": "dict@3",
+      "key": "name",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'A'"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 21,
+      "line": 6,
+      "frameId": "lambda#2",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "tuple@6",
+        "label": "tuple",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'A'"
+          }
+        ],
+        "frozen": true
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 22,
+      "line": 6,
+      "frameId": "lambda#2",
+      "detail": "core",
+      "value": {
+        "kind": "ref",
+        "id": "tuple@6"
+      },
+      "toLine": 6
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 23,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "lambda#2"
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 24,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "lambda",
+      "substituted": "lambda({name: 'B', score: 2})",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "dict@4"
+          }
+        }
+      ],
+      "targetFrameId": "lambda#3",
+      "span": {
+        "startCol": 27,
+        "endCol": 60
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 25,
+      "line": 6,
+      "frameId": "lambda#3",
+      "detail": "expression",
+      "name": "lambda",
+      "callNumber": 3,
+      "parentFrameId": "global",
+      "returnLine": 6
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 26,
+      "line": 6,
+      "frameId": "lambda#3",
+      "detail": "core",
+      "name": "x",
+      "value": {
+        "kind": "ref",
+        "id": "dict@4"
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 27,
+      "line": 6,
+      "frameId": "lambda#3",
+      "detail": "expression",
+      "target": "dict@4",
+      "key": "score",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 28,
+      "line": 6,
+      "frameId": "lambda#3",
+      "detail": "expression",
+      "target": "dict@4",
+      "key": "name",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'B'"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 29,
+      "line": 6,
+      "frameId": "lambda#3",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "tuple@7",
+        "label": "tuple",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'B'"
+          }
+        ],
+        "frozen": true
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 30,
+      "line": 6,
+      "frameId": "lambda#3",
+      "detail": "core",
+      "value": {
+        "kind": "ref",
+        "id": "tuple@7"
+      },
+      "toLine": 6
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 31,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "lambda#3"
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 32,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@8",
+        "label": "list",
+        "items": [
+          {
+            "kind": "ref",
+            "id": "dict@3"
+          },
+          {
+            "kind": "ref",
+            "id": "dict@4"
+          },
+          {
+            "kind": "ref",
+            "id": "dict@2"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 33,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "name": "result",
+      "value": {
+        "kind": "ref",
+        "id": "list@8"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 61
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 34,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 40
+      }
+    },
+    {
+      "type": "LOOP_START",
+      "step": 35,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "comp:item@7",
+      "varNames": [
+        "item"
+      ],
+      "track": [
+        "{name: 'A', score: 1}",
+        "{name: 'B', score: 2}",
+        "{name: 'C', score: 2}"
+      ],
+      "span": {
+        "startCol": 6,
+        "endCol": 39
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 36,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "builder@9",
+        "label": "list",
+        "items": []
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 37,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "item",
+      "value": {
+        "kind": "ref",
+        "id": "dict@3"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "result"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 38,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "comp:item@7",
+      "index": 0
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 39,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "dict@3",
+      "key": "name",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'A'"
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 40,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "item[\"name\"]",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'A'"
+      },
+      "span": {
+        "startCol": 7,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 41,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "builder@9",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'A'"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 42,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "builder@9",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'A'"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 43,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "item",
+      "before": {
+        "kind": "ref",
+        "id": "dict@3"
+      },
+      "after": {
+        "kind": "ref",
+        "id": "dict@4"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "result"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 44,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "comp:item@7",
+      "index": 1
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 45,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "dict@4",
+      "key": "name",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'B'"
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 46,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "item[\"name\"]",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'B'"
+      },
+      "span": {
+        "startCol": 7,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 47,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "builder@9",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'B'"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 48,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "builder@9",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'A'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'B'"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 49,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "item",
+      "before": {
+        "kind": "ref",
+        "id": "dict@4"
+      },
+      "after": {
+        "kind": "ref",
+        "id": "dict@2"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "result"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 50,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "comp:item@7",
+      "index": 2
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 51,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "dict@2",
+      "key": "name",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'C'"
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 52,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "item[\"name\"]",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'C'"
+      },
+      "span": {
+        "startCol": 7,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 53,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "builder@9",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'C'"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 54,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "builder@9",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'A'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'B'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'C'"
+          }
+        ]
+      }
+    },
+    {
+      "type": "LOOP_END",
+      "step": 55,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "comp:item@7",
+      "reason": "exhausted"
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 56,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "['A', 'B', 'C']"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 57,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "['A', 'B', 'C']\n"
+  }
+}

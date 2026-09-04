@@ -1,0 +1,298 @@
+{
+  "version": 1,
+  "lessonId": "p06-list-tuple",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "a = [1, 2]",
+      "b = a",
+      "c = a.copy()",
+      "b[1] = 7",
+      "c.append(3)",
+      "print(a, b, c)"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 10
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 3,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "a",
+      "value": {
+        "kind": "ref",
+        "id": "list@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 10
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 5
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 5,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "name": "b",
+      "value": {
+        "kind": "ref",
+        "id": "list@1"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 5
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 6,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 12
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 7,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@2",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 8,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "name": "c",
+      "value": {
+        "kind": "ref",
+        "id": "list@2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 12
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 9,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 8
+      }
+    },
+    {
+      "type": "ITEM_WRITE",
+      "step": 10,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "target": "list@1",
+      "key": "1",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "7"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 11,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "7"
+          }
+        ]
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 12,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 11
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 13,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "target": "list@2",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 14,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@2",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "3"
+          }
+        ]
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 15,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 14
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 16,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "[1, 7] [1, 7] [1, 2, 3]"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 17,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "[1, 7] [1, 7] [1, 2, 3]\n"
+  }
+}

@@ -1,0 +1,332 @@
+{
+  "version": 1,
+  "lessonId": "p20-modules",
+  "source": {
+    "path": "work.py",
+    "language": "python",
+    "lines": [
+      "# main.py",
+      "import measurement_utils",
+      "",
+      "value = measurement_utils.parse_value(\"10.2\")"
+    ]
+  },
+  "sources": [
+    {
+      "path": "measurement_utils.py",
+      "language": "python",
+      "lines": [
+        "# measurement_utils.py",
+        "def parse_value(raw):",
+        "    if raw is None or raw == \"N/A\":",
+        "        return None",
+        "    return float(raw)"
+      ]
+    }
+  ],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 2,
+      "line": 1,
+      "frameId": "module:measurement_utils",
+      "detail": "core",
+      "source": "measurement_utils.py",
+      "name": "measurement_utils",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 2,
+      "kind": "module"
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "step": 3,
+      "line": 2,
+      "frameId": "module:measurement_utils",
+      "detail": "core",
+      "source": "measurement_utils.py",
+      "name": "parse_value",
+      "heapId": "fn:parse_value",
+      "params": [
+        {
+          "name": "raw"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "module:measurement_utils"
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 5,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "module",
+        "id": "module:measurement_utils",
+        "name": "measurement_utils",
+        "names": [
+          {
+            "key": "parse_value",
+            "value": {
+              "kind": "ref",
+              "id": "fn:parse_value"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "MODULE_IMPORT",
+      "step": 6,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "module": "measurement_utils",
+      "heapId": "module:measurement_utils",
+      "binds": [
+        "measurement_utils"
+      ],
+      "cached": false,
+      "span": {
+        "startCol": 0,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 7,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "measurement_utils",
+      "value": {
+        "kind": "ref",
+        "id": "module:measurement_utils"
+      },
+      "origin": {
+        "kind": "import",
+        "label": "measurement_utils"
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 8,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 45
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 9,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "measurement_utils.parse_value",
+      "substituted": "measurement_utils.parse_value('10.2')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'10.2'"
+          }
+        }
+      ],
+      "targetFrameId": "measurement_utils.parse_value#1",
+      "receiver": {
+        "kind": "ref",
+        "id": "module:measurement_utils"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 45
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 10,
+      "line": 2,
+      "frameId": "measurement_utils.parse_value#1",
+      "detail": "expression",
+      "name": "parse_value",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 4
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 11,
+      "line": 2,
+      "frameId": "measurement_utils.parse_value#1",
+      "detail": "core",
+      "source": "measurement_utils.py",
+      "name": "raw",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'10.2'"
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 12,
+      "line": 3,
+      "frameId": "measurement_utils.parse_value#1",
+      "detail": "expression",
+      "source": "measurement_utils.py",
+      "expression": "raw is None",
+      "substituted": "'10.2' is None",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 7,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 13,
+      "line": 3,
+      "frameId": "measurement_utils.parse_value#1",
+      "detail": "expression",
+      "source": "measurement_utils.py",
+      "expression": "raw == \"N/A\"",
+      "substituted": "'10.2' == 'N/A'",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 22,
+        "endCol": 34
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 14,
+      "line": 3,
+      "frameId": "measurement_utils.parse_value#1",
+      "detail": "expression",
+      "source": "measurement_utils.py",
+      "expression": "raw is None or raw == \"N/A\"",
+      "substituted": "raw is None or raw == \"N/A\"",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 15,
+      "line": 3,
+      "frameId": "measurement_utils.parse_value#1",
+      "detail": "core",
+      "source": "measurement_utils.py",
+      "expression": "raw is None or raw == \"N/A\"",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 16,
+      "line": 5,
+      "frameId": "measurement_utils.parse_value#1",
+      "detail": "expression",
+      "source": "measurement_utils.py",
+      "span": {
+        "startCol": 4,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 17,
+      "line": 5,
+      "frameId": "measurement_utils.parse_value#1",
+      "detail": "expression",
+      "source": "measurement_utils.py",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      },
+      "toLine": 4
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 18,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "measurement_utils.parse_value#1"
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 19,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 45
+      }
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 20,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": ""
+  }
+}

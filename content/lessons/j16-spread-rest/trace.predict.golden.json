@@ -1,0 +1,714 @@
+{
+  "version": 1,
+  "lessonId": "j16-spread-rest",
+  "source": {
+    "path": "predict.js",
+    "language": "javascript",
+    "lines": [
+      "const first = [\"W01\", \"W02\"];",
+      "const second = [\"W03\"];",
+      "const all = [...first, ...second];",
+      "",
+      "const original = { id: \"W01\", measurement: 94.2 };",
+      "const updated = { ...original, measurement: 95.1 };",
+      "const reversed = { measurement: 95.1, ...original };",
+      "",
+      "console.log(all, first);",
+      "console.log(updated.measurement, reversed.measurement);",
+      "",
+      "const source = { details: { status: \"PASS\" } };",
+      "const copy = { ...source };",
+      "copy.details.status = \"REVIEW\";",
+      "console.log(source.details.status, copy.details.status);",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 29
+      },
+      "step": 1
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@1",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W01'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W02'"
+          }
+        ]
+      },
+      "step": 2
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "first",
+      "value": {
+        "kind": "ref",
+        "id": "Array@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 29
+      },
+      "step": 3
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 23
+      },
+      "step": 4
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@2",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W03'"
+          }
+        ]
+      },
+      "step": 5
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 2,
+      "detail": "core",
+      "frameId": "global",
+      "name": "second",
+      "value": {
+        "kind": "ref",
+        "id": "Array@2"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 23
+      },
+      "step": 6
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 34
+      },
+      "step": 7
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@3",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W01'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W02'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W03'"
+          }
+        ]
+      },
+      "step": 8
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "name": "all",
+      "value": {
+        "kind": "ref",
+        "id": "Array@3"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 34
+      },
+      "step": 9
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 50
+      },
+      "step": 10
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@4",
+        "label": "object",
+        "entries": [
+          {
+            "key": "id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W01'"
+            }
+          },
+          {
+            "key": "measurement",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "94.2"
+            }
+          }
+        ]
+      },
+      "step": 11
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "name": "original",
+      "value": {
+        "kind": "ref",
+        "id": "Object@4"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 50
+      },
+      "step": 12
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 51
+      },
+      "step": 13
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@5",
+        "label": "object",
+        "entries": [
+          {
+            "key": "id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W01'"
+            }
+          },
+          {
+            "key": "measurement",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "95.1"
+            }
+          }
+        ]
+      },
+      "step": 14
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "name": "updated",
+      "value": {
+        "kind": "ref",
+        "id": "Object@5"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 51
+      },
+      "step": 15
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 52
+      },
+      "step": 16
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@6",
+        "label": "object",
+        "entries": [
+          {
+            "key": "measurement",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "94.2"
+            }
+          },
+          {
+            "key": "id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W01'"
+            }
+          }
+        ]
+      },
+      "step": 17
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 7,
+      "detail": "core",
+      "frameId": "global",
+      "name": "reversed",
+      "value": {
+        "kind": "ref",
+        "id": "Object@6"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 52
+      },
+      "step": 18
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 24
+      },
+      "step": 19
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 9,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "[ 'W01', 'W02', 'W03' ] [ 'W01', 'W02' ]",
+      "step": 20
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 55
+      },
+      "step": 21
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "Object@5",
+      "key": "measurement",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "95.1"
+      },
+      "step": 22
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "Object@6",
+      "key": "measurement",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "step": 23
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 10,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "95.1 94.2",
+      "step": 24
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 47
+      },
+      "step": 25
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@8",
+        "label": "object",
+        "entries": [
+          {
+            "key": "status",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'PASS'"
+            }
+          }
+        ]
+      },
+      "step": 26
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@7",
+        "label": "object",
+        "entries": [
+          {
+            "key": "details",
+            "value": {
+              "kind": "ref",
+              "id": "Object@8"
+            }
+          }
+        ]
+      },
+      "step": 27
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 12,
+      "detail": "core",
+      "frameId": "global",
+      "name": "source",
+      "value": {
+        "kind": "ref",
+        "id": "Object@7"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 47
+      },
+      "step": 28
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 13,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 27
+      },
+      "step": 29
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 13,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@9",
+        "label": "object",
+        "entries": [
+          {
+            "key": "details",
+            "value": {
+              "kind": "ref",
+              "id": "Object@8"
+            }
+          }
+        ]
+      },
+      "step": 30
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 13,
+      "detail": "core",
+      "frameId": "global",
+      "name": "copy",
+      "value": {
+        "kind": "ref",
+        "id": "Object@9"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 27
+      },
+      "step": 31
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 31
+      },
+      "step": 32
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "Object@9",
+      "key": "details",
+      "value": {
+        "kind": "ref",
+        "id": "Object@8"
+      },
+      "step": 33
+    },
+    {
+      "type": "ITEM_WRITE",
+      "line": 14,
+      "detail": "core",
+      "frameId": "global",
+      "target": "Object@8",
+      "key": "status",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'PASS'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'REVIEW'"
+      },
+      "step": 34
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@8",
+        "label": "object",
+        "entries": [
+          {
+            "key": "status",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'REVIEW'"
+            }
+          }
+        ]
+      },
+      "step": 35
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 15,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 56
+      },
+      "step": 36
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 15,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "Object@7",
+      "key": "details",
+      "value": {
+        "kind": "ref",
+        "id": "Object@8"
+      },
+      "step": 37
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 15,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "Object@8",
+      "key": "status",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'REVIEW'"
+      },
+      "step": 38
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 15,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "Object@9",
+      "key": "details",
+      "value": {
+        "kind": "ref",
+        "id": "Object@8"
+      },
+      "step": 39
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 15,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "Object@8",
+      "key": "status",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'REVIEW'"
+      },
+      "step": 40
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 15,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "REVIEW REVIEW",
+      "step": 41
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 15,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 42
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "[ 'W01', 'W02', 'W03' ] [ 'W01', 'W02' ]\n95.1 94.2\nREVIEW REVIEW\n"
+  }
+}

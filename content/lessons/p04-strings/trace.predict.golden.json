@@ -1,0 +1,144 @@
+{
+  "version": 1,
+  "lessonId": "p04-strings",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "code = \"WAFER\"",
+      "number = 7",
+      "label = f\"{code[0:2]}-{number:02d}\"",
+      "print(label)"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 14
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "code",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'WAFER'"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 14
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 3,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 10
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "name": "number",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "7"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 10
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 5,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 35
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 6,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "name": "label",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'WA-07'"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 35
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 7,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 12
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 8,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "WA-07"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 9,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "WA-07\n"
+  }
+}

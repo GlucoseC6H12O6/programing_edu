@@ -1,0 +1,10 @@
+# 제목과 본문은 content/python-visible-textbook-p01-p24.md 가 단일 출처다.
+# 여기에는 기계가 쓰는 사실만 둔다.
+id: p05-boolean
+track: python
+stage: 기초
+prerequisites: [p03-arithmetic]
+code: code/predict.py
+traces:
+  - { id: "predict", file: trace.predict.golden.json, source: code/predict.py }
+  - { id: "work", file: trace.work.golden.json, source: code/work.py }

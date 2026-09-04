@@ -1,0 +1,672 @@
+{
+  "version": 1,
+  "lessonId": "j15-destructuring",
+  "source": {
+    "path": "work.js",
+    "language": "javascript",
+    "lines": [
+      "const wafers = [",
+      "  { id: \"W01\", measurement: 94.2 },",
+      "  { id: \"W02\", measurement: 101.3, status: \"FAIL\" },",
+      "];",
+      "",
+      "function label({ id, measurement, status = \"UNKNOWN\" }) {",
+      "  return `${id}:${measurement}:${status}`;",
+      "}",
+      "",
+      "for (const wafer of wafers) {",
+      "  console.log(label(wafer));",
+      "}",
+      "",
+      "const [first, second] = wafers;",
+      "console.log(first.id, second.id);",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 2
+      },
+      "step": 1
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@2",
+        "label": "object",
+        "entries": [
+          {
+            "key": "id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W01'"
+            }
+          },
+          {
+            "key": "measurement",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "94.2"
+            }
+          }
+        ]
+      },
+      "step": 2
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@3",
+        "label": "object",
+        "entries": [
+          {
+            "key": "id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W02'"
+            }
+          },
+          {
+            "key": "measurement",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "101.3"
+            }
+          },
+          {
+            "key": "status",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'FAIL'"
+            }
+          }
+        ]
+      },
+      "step": 3
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@1",
+        "label": "array",
+        "items": [
+          {
+            "kind": "ref",
+            "id": "Object@2"
+          },
+          {
+            "kind": "ref",
+            "id": "Object@3"
+          }
+        ]
+      },
+      "step": 4
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "wafers",
+      "value": {
+        "kind": "ref",
+        "id": "Array@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 2
+      },
+      "step": 5
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "function",
+        "id": "fn:label",
+        "name": "label",
+        "params": [
+          {
+            "name": "id"
+          },
+          {
+            "name": "measurement"
+          },
+          {
+            "name": "status"
+          }
+        ],
+        "defLine": 6
+      },
+      "step": 6
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "name": "label",
+      "heapId": "fn:label",
+      "params": [
+        {
+          "name": "id"
+        },
+        {
+          "name": "measurement"
+        },
+        {
+          "name": "status"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 7
+    },
+    {
+      "type": "LOOP_START",
+      "line": 10,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:wafer@10",
+      "varNames": [
+        "wafer"
+      ],
+      "track": [
+        "{id: 'W01', measurement: 94.2}",
+        "{id: 'W02', measurement: 101.3, status: 'FAIL'}"
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 8
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "wafer",
+      "value": {
+        "kind": "ref",
+        "id": "Object@2"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "wafers"
+      },
+      "step": 9
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 10,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:wafer@10",
+      "index": 0,
+      "step": 10
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 2,
+        "endCol": 28
+      },
+      "step": 11
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "wafer",
+      "result": {
+        "kind": "ref",
+        "id": "Object@2"
+      },
+      "span": {
+        "startCol": 20,
+        "endCol": 25
+      },
+      "step": 12
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 11,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "label",
+      "substituted": "label({id: 'W01', measurement: 94.2})",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "Object@2"
+          },
+          "from": "global.wafer"
+        }
+      ],
+      "targetFrameId": "label#1",
+      "span": {
+        "startCol": 14,
+        "endCol": 26
+      },
+      "step": 13
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "label#1",
+      "name": "label",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 11,
+      "step": 14
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "label#1",
+      "name": "id",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W01'"
+      },
+      "from": "global.wafer",
+      "step": 15
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "label#1",
+      "name": "measurement",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "step": 16
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 6,
+      "detail": "core",
+      "frameId": "label#1",
+      "name": "status",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'UNKNOWN'"
+      },
+      "step": 17
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "label#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 42
+      },
+      "step": 18
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "label#1",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W01:94.2:UNKNOWN'"
+      },
+      "toLine": 11,
+      "step": 19
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "label#1",
+      "step": 20
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 11,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "W01:94.2:UNKNOWN",
+      "step": 21
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "wafer",
+      "before": {
+        "kind": "ref",
+        "id": "Object@2"
+      },
+      "after": {
+        "kind": "ref",
+        "id": "Object@3"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "wafers"
+      },
+      "step": 22
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 10,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:wafer@10",
+      "index": 1,
+      "step": 23
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 2,
+        "endCol": 28
+      },
+      "step": 24
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "wafer",
+      "result": {
+        "kind": "ref",
+        "id": "Object@3"
+      },
+      "span": {
+        "startCol": 20,
+        "endCol": 25
+      },
+      "step": 25
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 11,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "label",
+      "substituted": "label({id: 'W02', measurement: 101.3, status: 'FAIL'})",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "Object@3"
+          },
+          "from": "global.wafer"
+        }
+      ],
+      "targetFrameId": "label#2",
+      "span": {
+        "startCol": 14,
+        "endCol": 26
+      },
+      "step": 26
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "label#2",
+      "name": "label",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 11,
+      "step": 27
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "label#2",
+      "name": "id",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W02'"
+      },
+      "from": "global.wafer",
+      "step": 28
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "label#2",
+      "name": "measurement",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "step": 29
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 6,
+      "detail": "core",
+      "frameId": "label#2",
+      "name": "status",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'FAIL'"
+      },
+      "step": 30
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "label#2",
+      "span": {
+        "startCol": 2,
+        "endCol": 42
+      },
+      "step": 31
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "label#2",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W02:101.3:FAIL'"
+      },
+      "toLine": 11,
+      "step": 32
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "label#2",
+      "step": 33
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 11,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "W02:101.3:FAIL",
+      "step": 34
+    },
+    {
+      "type": "LOOP_END",
+      "line": 10,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:wafer@10",
+      "reason": "exhausted",
+      "step": 35
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 31
+      },
+      "step": 36
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 14,
+      "detail": "core",
+      "frameId": "global",
+      "name": "first",
+      "value": {
+        "kind": "ref",
+        "id": "Object@2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 31
+      },
+      "step": 37
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 14,
+      "detail": "core",
+      "frameId": "global",
+      "name": "second",
+      "value": {
+        "kind": "ref",
+        "id": "Object@3"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 31
+      },
+      "step": 38
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 15,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 33
+      },
+      "step": 39
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 15,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "Object@2",
+      "key": "id",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W01'"
+      },
+      "step": 40
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 15,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "Object@3",
+      "key": "id",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W02'"
+      },
+      "step": 41
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 15,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "W01 W02",
+      "step": 42
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 15,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 43
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "W01:94.2:UNKNOWN\nW02:101.3:FAIL\nW01 W02\n"
+  }
+}

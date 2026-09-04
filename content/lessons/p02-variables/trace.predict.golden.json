@@ -1,0 +1,167 @@
+{
+  "version": 1,
+  "lessonId": "p02-variables",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "count = 4",
+      "next_count = count + 1",
+      "count = 10",
+      "print(count, next_count)"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 9
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "count",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 9
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 3,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "count + 1",
+      "substituted": "4 + 1",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "5"
+      },
+      "span": {
+        "startCol": 13,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 5,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "name": "next_count",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "5"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 6,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 10
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 7,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "name": "count",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 10
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 8,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 9,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "10 5"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 10,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "10 5\n"
+  }
+}

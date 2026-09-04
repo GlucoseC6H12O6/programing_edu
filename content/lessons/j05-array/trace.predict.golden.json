@@ -1,0 +1,364 @@
+{
+  "version": 1,
+  "lessonId": "j05-array",
+  "source": {
+    "path": "predict.js",
+    "language": "javascript",
+    "lines": [
+      "const values = [1, 2, 3];",
+      "const result = values.push(4);",
+      "console.log(values, result);",
+      "",
+      "const copied = values.slice(0, 2);",
+      "console.log(copied, values);",
+      "",
+      "const removed = values.splice(0, 2);",
+      "console.log(removed, values);",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 25
+      },
+      "step": 1
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@1",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "3"
+          }
+        ]
+      },
+      "step": 2
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "values",
+      "value": {
+        "kind": "ref",
+        "id": "Array@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 25
+      },
+      "step": 3
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 30
+      },
+      "step": 4
+    },
+    {
+      "type": "ITEM_APPEND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "global",
+      "target": "Array@1",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "step": 5
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@1",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "3"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "4"
+          }
+        ]
+      },
+      "step": 6
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 2,
+      "detail": "core",
+      "frameId": "global",
+      "name": "result",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 30
+      },
+      "step": 7
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 28
+      },
+      "step": 8
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "[ 1, 2, 3, 4 ] 4",
+      "step": 9
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 34
+      },
+      "step": 10
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@2",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          }
+        ]
+      },
+      "step": 11
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "name": "copied",
+      "value": {
+        "kind": "ref",
+        "id": "Array@2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 34
+      },
+      "step": 12
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 28
+      },
+      "step": 13
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "[ 1, 2 ] [ 1, 2, 3, 4 ]",
+      "step": 14
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 36
+      },
+      "step": 15
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@1",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "3"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "4"
+          }
+        ]
+      },
+      "step": 16
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@3",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          }
+        ]
+      },
+      "step": 17
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 8,
+      "detail": "core",
+      "frameId": "global",
+      "name": "removed",
+      "value": {
+        "kind": "ref",
+        "id": "Array@3"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 36
+      },
+      "step": 18
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 29
+      },
+      "step": 19
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 9,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "[ 1, 2 ] [ 3, 4 ]",
+      "step": 20
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 9,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 21
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "[ 1, 2, 3, 4 ] 4\n[ 1, 2 ] [ 1, 2, 3, 4 ]\n[ 1, 2 ] [ 3, 4 ]\n"
+  }
+}

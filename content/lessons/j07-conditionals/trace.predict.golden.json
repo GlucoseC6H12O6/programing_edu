@@ -1,0 +1,495 @@
+{
+  "version": 1,
+  "lessonId": "j07-conditionals",
+  "source": {
+    "path": "predict.js",
+    "language": "javascript",
+    "lines": [
+      "const values = [0, \"0\", \"false\", \"\", null];",
+      "",
+      "for (const value of values) {",
+      "  if (value) {",
+      "    console.log(value, \"→ truthy\");",
+      "  } else {",
+      "    console.log(value, \"→ falsy\");",
+      "  }",
+      "}",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 43
+      },
+      "step": 1
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@1",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "0"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'0'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'false'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "''"
+          },
+          {
+            "kind": "primitive",
+            "type": "null",
+            "repr": "null"
+          }
+        ]
+      },
+      "step": 2
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "values",
+      "value": {
+        "kind": "ref",
+        "id": "Array@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 43
+      },
+      "step": 3
+    },
+    {
+      "type": "LOOP_START",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:value@3",
+      "varNames": [
+        "value"
+      ],
+      "track": [
+        "0",
+        "'0'",
+        "'false'",
+        "''",
+        "null"
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 4
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "values"
+      },
+      "step": 5
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:value@3",
+      "index": 0,
+      "step": 6
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 4,
+      "detail": "core",
+      "frameId": "global",
+      "expression": "value",
+      "result": false,
+      "span": {
+        "startCol": 2,
+        "endCol": 3
+      },
+      "step": 7
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "label": "else",
+      "targetLine": 7,
+      "step": 8
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 34
+      },
+      "step": 9
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 7,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "0 → falsy",
+      "step": 10
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'0'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "values"
+      },
+      "step": 11
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:value@3",
+      "index": 1,
+      "step": 12
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 4,
+      "detail": "core",
+      "frameId": "global",
+      "expression": "value",
+      "result": true,
+      "span": {
+        "startCol": 2,
+        "endCol": 3
+      },
+      "step": 13
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "label": "if",
+      "targetLine": 5,
+      "step": 14
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 35
+      },
+      "step": 15
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "0 → truthy",
+      "step": 16
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'0'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'false'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "values"
+      },
+      "step": 17
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:value@3",
+      "index": 2,
+      "step": 18
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 4,
+      "detail": "core",
+      "frameId": "global",
+      "expression": "value",
+      "result": true,
+      "span": {
+        "startCol": 2,
+        "endCol": 3
+      },
+      "step": 19
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "label": "if",
+      "targetLine": 5,
+      "step": 20
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 35
+      },
+      "step": 21
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "false → truthy",
+      "step": 22
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'false'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "''"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "values"
+      },
+      "step": 23
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:value@3",
+      "index": 3,
+      "step": 24
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 4,
+      "detail": "core",
+      "frameId": "global",
+      "expression": "value",
+      "result": false,
+      "span": {
+        "startCol": 2,
+        "endCol": 3
+      },
+      "step": 25
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "label": "else",
+      "targetLine": 7,
+      "step": 26
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 34
+      },
+      "step": 27
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 7,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": " → falsy",
+      "step": 28
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "''"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "null",
+        "repr": "null"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "values"
+      },
+      "step": 29
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:value@3",
+      "index": 4,
+      "step": 30
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 4,
+      "detail": "core",
+      "frameId": "global",
+      "expression": "value",
+      "result": false,
+      "span": {
+        "startCol": 2,
+        "endCol": 3
+      },
+      "step": 31
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "label": "else",
+      "targetLine": 7,
+      "step": 32
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 34
+      },
+      "step": 33
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 7,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "null → falsy",
+      "step": 34
+    },
+    {
+      "type": "LOOP_END",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:value@3",
+      "reason": "exhausted",
+      "step": 35
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 36
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "0 → falsy\n0 → truthy\nfalse → truthy\n → falsy\nnull → falsy\n"
+  }
+}

@@ -1,0 +1,264 @@
+{
+  "version": 1,
+  "lessonId": "p13-scope",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "threshold = 10",
+      "",
+      "def check(value):",
+      "    threshold = 5",
+      "    return value > threshold",
+      "",
+      "result = check(7)",
+      "print(result, threshold)"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 14
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "threshold",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 14
+      }
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "step": 3,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "name": "check",
+      "heapId": "fn:check",
+      "params": [
+        {
+          "name": "value"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 4,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 17
+      }
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 5,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "check",
+      "substituted": "check(7)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "7"
+          }
+        }
+      ],
+      "targetFrameId": "check#1",
+      "span": {
+        "startCol": 9,
+        "endCol": 17
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 6,
+      "line": 3,
+      "frameId": "check#1",
+      "detail": "expression",
+      "name": "check",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 7
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 7,
+      "line": 3,
+      "frameId": "check#1",
+      "detail": "core",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "7"
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 8,
+      "line": 4,
+      "frameId": "check#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 17
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 9,
+      "line": 4,
+      "frameId": "check#1",
+      "detail": "core",
+      "name": "threshold",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "5"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 17
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 10,
+      "line": 5,
+      "frameId": "check#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 11,
+      "line": 5,
+      "frameId": "check#1",
+      "detail": "core",
+      "expression": "value > threshold",
+      "substituted": "7 > 5",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 12,
+      "line": 5,
+      "frameId": "check#1",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      },
+      "toLine": 7
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 13,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "check#1"
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 14,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "name": "result",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "check#1"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 17
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 15,
+      "line": 8,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 16,
+      "line": 8,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "True 10"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 17,
+      "line": 8,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "True 10\n"
+  }
+}

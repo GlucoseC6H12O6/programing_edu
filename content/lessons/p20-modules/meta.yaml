@@ -1,0 +1,18 @@
+# 제목과 본문은 content/python-visible-textbook-p01-p24.md 가 단일 출처다.
+# 여기에는 기계가 쓰는 사실만 둔다.
+id: p20-modules
+track: python
+stage: 응용 문법
+prerequisites: [p12-functions]
+code: code/predict.py
+traces:
+  # §5가 "두 파일을 나란히 둔다"고 그린 그림 그대로다. modules에 적힌 파일은
+  # import될 때 자기 프레임에서 최상위 코드가 실행된다 (§9 Step 1).
+  - id: "predict"
+    file: trace.predict.golden.json
+    source: code/predict.py
+    modules: { config: code/config.py }
+  - id: "work"
+    file: trace.work.golden.json
+    source: code/work.py
+    modules: { measurement_utils: code/measurement_utils.py }

@@ -1,0 +1,461 @@
+{
+  "version": 1,
+  "lessonId": "j17-json",
+  "source": {
+    "path": "predict.js",
+    "language": "javascript",
+    "lines": [
+      "const text = '{\"id\":\"W01\",\"measurement\":94.2,\"note\":null}';",
+      "const wafer = JSON.parse(text);",
+      "",
+      "console.log(typeof text, typeof wafer);",
+      "console.log(wafer.measurement + 1);",
+      "console.log(wafer.note, wafer.missing);",
+      "",
+      "wafer.checked = undefined;",
+      "wafer.at = \"2026-01-01\";",
+      "console.log(JSON.stringify(wafer));",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 59
+      },
+      "step": 1
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'{\"id\":\"W01\",\"measurement\":94.2,\"note\":null}'"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 59
+      },
+      "step": 2
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 31
+      },
+      "step": 3
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@1",
+        "label": "object",
+        "entries": [
+          {
+            "key": "id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W01'"
+            }
+          },
+          {
+            "key": "measurement",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "94.2"
+            }
+          },
+          {
+            "key": "note",
+            "value": {
+              "kind": "primitive",
+              "type": "null",
+              "repr": "null"
+            }
+          }
+        ]
+      },
+      "step": 4
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 2,
+      "detail": "core",
+      "frameId": "global",
+      "name": "wafer",
+      "value": {
+        "kind": "ref",
+        "id": "Object@1"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 31
+      },
+      "step": 5
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 39
+      },
+      "step": 6
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "typeof text",
+      "substituted": "typeof '{\"id\":\"W01\",\"measurement\":94.2,\"note\":null}'",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'string'"
+      },
+      "span": {
+        "startCol": 12,
+        "endCol": 23
+      },
+      "step": 7
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "typeof wafer",
+      "substituted": "typeof {id: 'W01', measurement: 94.2, note: null}",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'object'"
+      },
+      "span": {
+        "startCol": 25,
+        "endCol": 37
+      },
+      "step": 8
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 4,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "string object",
+      "step": 9
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 35
+      },
+      "step": 10
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "Object@1",
+      "key": "measurement",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "step": 11
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "wafer.measurement + 1",
+      "substituted": "94.2 + 1",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "95.2"
+      },
+      "span": {
+        "startCol": 12,
+        "endCol": 33
+      },
+      "step": 12
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "95.2",
+      "step": 13
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 39
+      },
+      "step": 14
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "Object@1",
+      "key": "note",
+      "value": {
+        "kind": "primitive",
+        "type": "null",
+        "repr": "null"
+      },
+      "step": 15
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "Object@1",
+      "key": "missing",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "step": 16
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "null undefined",
+      "step": 17
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 26
+      },
+      "step": 18
+    },
+    {
+      "type": "ITEM_WRITE",
+      "line": 8,
+      "detail": "core",
+      "frameId": "global",
+      "target": "Object@1",
+      "key": "checked",
+      "after": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "step": 19
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@1",
+        "label": "object",
+        "entries": [
+          {
+            "key": "id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W01'"
+            }
+          },
+          {
+            "key": "measurement",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "94.2"
+            }
+          },
+          {
+            "key": "note",
+            "value": {
+              "kind": "primitive",
+              "type": "null",
+              "repr": "null"
+            }
+          },
+          {
+            "key": "checked",
+            "value": {
+              "kind": "primitive",
+              "type": "undefined",
+              "repr": "undefined"
+            }
+          }
+        ]
+      },
+      "step": 20
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 24
+      },
+      "step": 21
+    },
+    {
+      "type": "ITEM_WRITE",
+      "line": 9,
+      "detail": "core",
+      "frameId": "global",
+      "target": "Object@1",
+      "key": "at",
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'2026-01-01'"
+      },
+      "step": 22
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@1",
+        "label": "object",
+        "entries": [
+          {
+            "key": "id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W01'"
+            }
+          },
+          {
+            "key": "measurement",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "94.2"
+            }
+          },
+          {
+            "key": "note",
+            "value": {
+              "kind": "primitive",
+              "type": "null",
+              "repr": "null"
+            }
+          },
+          {
+            "key": "checked",
+            "value": {
+              "kind": "primitive",
+              "type": "undefined",
+              "repr": "undefined"
+            }
+          },
+          {
+            "key": "at",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'2026-01-01'"
+            }
+          }
+        ]
+      },
+      "step": 23
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 35
+      },
+      "step": 24
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 10,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "{\"id\":\"W01\",\"measurement\":94.2,\"note\":null,\"at\":\"2026-01-01\"}",
+      "step": 25
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 10,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 26
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "string object\n95.2\nnull undefined\n{\"id\":\"W01\",\"measurement\":94.2,\"note\":null,\"at\":\"2026-01-01\"}\n"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "lessonId": "p01-print",
+  "source": {
+    "path": "work.py",
+    "language": "python",
+    "lines": [
+      "print(\"Measurement check\")",
+      "print(\"Lot\", \"L07\", sep=\": \")",
+      "print(\"Equipment\", \"EQ-02\", sep=\": \")",
+      "print(\"Status\", \"READY\", sep=\": \")"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "Measurement check"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 3,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 29
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "Lot: L07"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 5,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 37
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 6,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "Equipment: EQ-02"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 7,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 34
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 8,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "Status: READY"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 9,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "Measurement check\nLot: L07\nEquipment: EQ-02\nStatus: READY\n"
+  }
+}

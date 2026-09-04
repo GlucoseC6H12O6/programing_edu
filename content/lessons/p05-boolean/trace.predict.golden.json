@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "lessonId": "p05-boolean",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "value = None",
+      "result = value is not None and value > 10",
+      "print(result)"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 12
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 12
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 3,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 41
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value is not None",
+      "substituted": "None is not None",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 9,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 5,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value is not None and value > 10",
+      "substituted": "value is not None",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "message": "2번 줄의 `value is not None and value > 10`에서 앞쪽 결과만으로 값이 정해져 `value > 10`은 계산하지 않았습니다."
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 6,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "name": "result",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 41
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 7,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 13
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 8,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "False"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 9,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "False\n"
+  }
+}

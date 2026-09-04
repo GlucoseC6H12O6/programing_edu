@@ -1,0 +1,18 @@
+---
+/**
+ * 레슨 원고의 아주 작은 인라인 마크다운만 처리한다.
+ * `코드`와 **강조**. meta.yaml에 쓴 표기가 화면에 그대로 노출되지 않게 한다.
+ */
+interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+
+const escape = (s: string) =>
+  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+const html = escape(text)
+  .replace(/`([^`]+)`/g, "<code>$1</code>")
+  .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+---
+<Fragment set:html={html} />

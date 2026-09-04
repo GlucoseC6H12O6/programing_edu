@@ -1,0 +1,381 @@
+{
+  "version": 1,
+  "lessonId": "p22-csv-json",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "import json",
+      "",
+      "text = '[{\"id\": \"W01\", \"value\": 10.2}, {\"id\": \"W02\", \"value\": null}]'",
+      "data = json.loads(text)",
+      "print(type(data).__name__)",
+      "print(type(data[0]).__name__)",
+      "print(data[1][\"value\"] is None)"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 11
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "module",
+        "id": "module:json",
+        "name": "json",
+        "names": [
+          {
+            "key": "loads",
+            "value": {
+              "kind": "ref",
+              "id": "fn:loads"
+            }
+          },
+          {
+            "key": "dumps",
+            "value": {
+              "kind": "ref",
+              "id": "fn:dumps"
+            }
+          },
+          {
+            "key": "load",
+            "value": {
+              "kind": "ref",
+              "id": "fn:load"
+            }
+          },
+          {
+            "key": "dump",
+            "value": {
+              "kind": "ref",
+              "id": "fn:dump"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "MODULE_IMPORT",
+      "step": 3,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "module": "json",
+      "heapId": "module:json",
+      "binds": [
+        "json"
+      ],
+      "cached": false,
+      "span": {
+        "startCol": 0,
+        "endCol": 11
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 4,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "json",
+      "value": {
+        "kind": "ref",
+        "id": "module:json"
+      },
+      "origin": {
+        "kind": "import",
+        "label": "json"
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 5,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 69
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 6,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'[{\"id\": \"W01\", \"value\": 10.2}, {\"id\": \"W02\", \"value\": null}]'"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 69
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 7,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 8,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "dict@2",
+        "label": "dict",
+        "entries": [
+          {
+            "key": "id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W01'"
+            }
+          },
+          {
+            "key": "value",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "10.2"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 9,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "dict@3",
+        "label": "dict",
+        "entries": [
+          {
+            "key": "id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W02'"
+            }
+          },
+          {
+            "key": "value",
+            "value": {
+              "kind": "primitive",
+              "type": "none",
+              "repr": "None"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 10,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "ref",
+            "id": "dict@2"
+          },
+          {
+            "kind": "ref",
+            "id": "dict@3"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 11,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "name": "data",
+      "value": {
+        "kind": "ref",
+        "id": "list@1"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 12,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 13,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "list"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 14,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 29
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 15,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "list@1",
+      "key": "0",
+      "value": {
+        "kind": "ref",
+        "id": "dict@2"
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 16,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "dict"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 17,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 31
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 18,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "list@1",
+      "key": "1",
+      "value": {
+        "kind": "ref",
+        "id": "dict@3"
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 19,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "dict@3",
+      "key": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "none",
+        "repr": "None"
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 20,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "data[1][\"value\"] is None",
+      "substituted": "None is None",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      },
+      "span": {
+        "startCol": 6,
+        "endCol": 30
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 21,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "True"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 22,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "list\ndict\nTrue\n"
+  }
+}

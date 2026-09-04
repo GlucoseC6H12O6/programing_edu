@@ -1,0 +1,391 @@
+{
+  "version": 1,
+  "lessonId": "j06-object",
+  "source": {
+    "path": "predict.js",
+    "language": "javascript",
+    "lines": [
+      "const a = { value: 1 };",
+      "const b = a;",
+      "b.value = 2;",
+      "",
+      "const c = { ...a };",
+      "c.value = 3;",
+      "",
+      "console.log(a.value, b.value, c.value);",
+      "console.log(a === b, a === c);",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 23
+      },
+      "step": 1
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@1",
+        "label": "object",
+        "entries": [
+          {
+            "key": "value",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "1"
+            }
+          }
+        ]
+      },
+      "step": 2
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "a",
+      "value": {
+        "kind": "ref",
+        "id": "Object@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 23
+      },
+      "step": 3
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 12
+      },
+      "step": 4
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 2,
+      "detail": "core",
+      "frameId": "global",
+      "name": "b",
+      "value": {
+        "kind": "ref",
+        "id": "Object@1"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 12
+      },
+      "step": 5
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 12
+      },
+      "step": 6
+    },
+    {
+      "type": "ITEM_WRITE",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "target": "Object@1",
+      "key": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "step": 7
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@1",
+        "label": "object",
+        "entries": [
+          {
+            "key": "value",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "2"
+            }
+          }
+        ]
+      },
+      "step": 8
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 19
+      },
+      "step": 9
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@2",
+        "label": "object",
+        "entries": [
+          {
+            "key": "value",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "2"
+            }
+          }
+        ]
+      },
+      "step": 10
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "name": "c",
+      "value": {
+        "kind": "ref",
+        "id": "Object@2"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 19
+      },
+      "step": 11
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 12
+      },
+      "step": 12
+    },
+    {
+      "type": "ITEM_WRITE",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "target": "Object@2",
+      "key": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "step": 13
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@2",
+        "label": "object",
+        "entries": [
+          {
+            "key": "value",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "3"
+            }
+          }
+        ]
+      },
+      "step": 14
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 39
+      },
+      "step": 15
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "Object@1",
+      "key": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "step": 16
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "Object@1",
+      "key": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "step": 17
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "Object@2",
+      "key": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "step": 18
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 8,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "2 2 3",
+      "step": 19
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 30
+      },
+      "step": 20
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "a === b",
+      "substituted": "{value: 2} === {value: 2}",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 12,
+        "endCol": 19
+      },
+      "step": 21
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "a === c",
+      "substituted": "{value: 2} === {value: 3}",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 21,
+        "endCol": 28
+      },
+      "step": 22
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 9,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "true false",
+      "step": 23
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 9,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 24
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "2 2 3\ntrue false\n"
+  }
+}

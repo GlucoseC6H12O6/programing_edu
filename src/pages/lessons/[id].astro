@@ -1,0 +1,246 @@
+---
+import Base from "../../layouts/Base.astro";
+import { LessonPlayer, type Variant } from "../../components/LessonPlayer.tsx";
+import Rich from "../../components/Rich.astro";
+import { loadLessons } from "../../content/lessons.ts";
+import { loadIntros } from "../../content/textbook.ts";
+
+export function getStaticPaths() {
+  return loadLessons().map((lesson) => ({ params: { id: lesson.id }, props: { lesson } }));
+}
+
+const { lesson } = Astro.props;
+
+/**
+ * 같은 트랙 안에서의 자리. 47개 과정에서 "여기가 어디이고 다음이 어디인지"를
+ * 페이지가 말해 주지 않으면, 레슨을 끝낸 사람이 목록으로 나갔다가 다시 세어
+ * 들어와야 한다. 레슨 id가 P01~P24 순서라 정렬만으로 앞뒤가 정해진다.
+ */
+const track = loadLessons().filter((item) => item.track === lesson.track);
+const position = track.findIndex((item) => item.id === lesson.id);
+const previous = track[position - 1];
+const next = track[position + 1];
+
+/** 페이지 제목은 트랙을 따라간다. J01이 "Python 교과서"일 수는 없다. */
+const bookTitle = loadIntros().get(lesson.track)?.title ?? "보이는 교과서";
+
+const LABELS: Record<string, string> = {
+  predict: "예측 문제 (§8)",
+  work: "업무형 예제 (§13)",
+  mul3: "구구단 3×3",
+  mul9: "구구단 9×9",
+  default: "기본",
+};
+const variants: Variant[] = lesson.traces.map((trace) => ({
+  id: trace.id,
+  label: LABELS[trace.id] ?? trace.id,
+  doc: trace.doc,
+  gridSize: trace.gridSize,
+}));
+
+// 선행 레슨은 id가 아니라 제목으로 보여야 읽힌다. 아직 없는 레슨 id면 그대로 둔다.
+const titles = new Map(loadLessons().map((item) => [item.id, item.title]));
+const prerequisites = lesson.prerequisites.map((id) => ({ id, title: titles.get(id) ?? id }));
+
+const book = lesson.textbook;
+const section = (n: number) => book!.sections[n - 1]!;
+
+/**
+ * 학습자 화면에서 접어 두는 절.
+ *  §10은 시각화를 어떻게 그릴지 적은 제작 노트라 학습 흐름에 끼면 방해가 된다.
+ *  §16은 바로 위 §15 확인 문제의 정답이다. 펼쳐 두면 문제가 문제가 아니게 된다.
+ */
+const FOLDED: Record<number, string> = { 10: "제작 노트 보기", 16: "정답 보기" };
+---
+
+<Base title={`${lesson.title} — ${bookTitle}`}>
+  <main class="page page-lesson">
+    <p class="crumb">
+      <a href="/">← 레슨 목록</a>
+      <a href={`/guide/${lesson.track}`}>{bookTitle} 시작하기</a>
+    </p>
+
+    <header class="page-head">
+      <p class="eyebrow">
+        {lesson.id.split("-")[0]!.toUpperCase()} · {lesson.stage} · {track.length}개 중 {position + 1}번째
+      </p>
+      <div class="track-progress" aria-hidden="true">
+        <span style={`width:${((position + 1) / track.length) * 100}%`}></span>
+      </div>
+      <h1>{lesson.title}</h1>
+      <dl class="lesson-facts">
+        {/* 한 덩어리 숫자는 "40분이면 읽고 끝"으로 읽힌다. 이 교재의 한 레슨은
+            읽는 일·눌러 보는 일·직접 해 보는 일 셋이라 셋을 따로 적는다. */}
+        {lesson.time && (
+          <div>
+            <dt>예상 시간</dt>
+            <dd>
+              약 {lesson.time.total}분
+              <span class="time-parts">
+                읽기 {lesson.time.read} · 단계 실행 {lesson.time.run} · 연습 {lesson.time.practice}
+              </span>
+            </dd>
+          </div>
+        )}
+        <div>
+          <dt>선행 레슨</dt>
+          <dd>
+            {prerequisites.length === 0 && "없음"}
+            {prerequisites.map((item, index) => (
+              <>
+                {index > 0 && ", "}
+                {titles.has(item.id) ? <a href={`/lessons/${item.id}`}>{item.title}</a> : item.title}
+              </>
+            ))}
+          </dd>
+        </div>
+      </dl>
+    </header>
+
+    {book ? (
+      <>
+        {/*
+          18개 절짜리 레슨이라 차례가 없으면 "지금 어디쯤인지"를 스크롤 막대로만
+          알 수 있다. 기본은 접어 둔다 — 처음 읽는 사람은 §1부터 순서대로
+          내려가는 것이 맞고, 차례가 필요해지는 것은 되돌아올 때다.
+        */}
+        <details class="toc-fold">
+          <summary>이 레슨의 차례 · {book.sections.length}개 절</summary>
+          <nav class="toc" aria-label="이 레슨의 차례">
+            {variants.length > 0 && <a href="#run">▶ 단계 실행</a>}
+            {book.sections.slice(1).map((part) => (
+              <a href={`#s${part.n}`}>{part.n}. {part.title}</a>
+            ))}
+          </nav>
+        </details>
+
+        {/* §1은 이 레슨이 답하는 질문이라 제목처럼 앞세운다 */}
+        <section class="lead"><Fragment set:html={section(1).html} /></section>
+
+        {/*
+          실행기는 첫 화면에 있어야 한다. 레슨 한 편이 18개 절이라, 원래 자리인
+          §8 뒤에 두면 이 사이트에서 유일하게 움직이는 것이 글 스무 화면 아래에
+          묻힌다. 레슨을 열었을 때 "이건 읽는 페이지가 아니라 돌려 보는 페이지"임을
+          먼저 알아야 한다.
+
+          그래도 §8은 예측 문제고 §9는 그 코드를 한 단계씩 따라가는 절이라,
+          플레이어가 필요한 순간은 여전히 §8이다. 그 자리에는 앵커만 남긴다.
+          아일랜드를 두 번 그리면 트레이스 JSON도 두 벌 실린다 — P11의 9×9는
+          그것만 427KB다.
+        */}
+        {variants.length > 0 && (
+          <section class="lesson-block lesson-run" id="run">
+            <h2 class="block-title"><span class="block-n">▶</span>이 레슨의 프로그램 · 단계 실행</h2>
+            <p class="run-lead">
+              §8에서 결과를 먼저 예측한 뒤 <kbd>Step</kbd>으로 확인하면 가장 잘 남습니다.
+              {/* 여기까지 §8에서 올라왔다면 다음에 읽을 것은 §9다. 이 링크가 없으면
+                  §2~§8을 다시 지나 내려가야 한다. 왕복이 여기서 닫힌다. */}
+              <a class="run-back" href="#s9">↓ §9 단계 실행 Walkthrough로</a>
+            </p>
+            <LessonPlayer client:load variants={variants} switchLabel="예제" />
+          </section>
+        )}
+
+        {book.sections.slice(1).map((part) => (
+          <>
+            <section class="lesson-block" id={`s${part.n}`}>
+              <h2 class="block-title">
+                <span class="block-n">{part.n}</span>{part.title}
+              </h2>
+              {FOLDED[part.n] ? (
+                <details class="folded">
+                  <summary>{FOLDED[part.n]}</summary>
+                  <div class="prose" set:html={part.html} />
+                </details>
+              ) : (
+                <div class="prose" set:html={part.html} />
+              )}
+            </section>
+
+            {/* 예측을 적었으면 여기서 실행기로 돌아간다. §9의 글이 그 뒤를 잇는다. */}
+            {part.n === 8 && (
+              <p class="run-jump">
+                {variants.length > 0 ? (
+                  <a href="#run">↑ 실행기로 돌아가 Step으로 확인하기</a>
+                ) : (
+                  "이 레슨의 예제는 아직 단계 실행이 준비되지 않았습니다. 아래 Walkthrough를 따라 읽어 주세요."
+                )}
+              </p>
+            )}
+          </>
+        ))}
+      </>
+    ) : (
+      <>
+        <header class="page-head">
+          <h2 class="block-title">학습목표</h2>
+          <ul class="bullets">
+            {lesson.objectives.map((item) => <li><Rich text={item} /></li>)}
+          </ul>
+        </header>
+
+        {lesson.concept && (
+          <section class="lesson-block">
+            <h2 class="block-title">핵심 개념</h2>
+            <p class="concept"><Rich text={lesson.concept} /></p>
+          </section>
+        )}
+
+        <section class="lesson-block">
+          <h2 class="block-title">{variants.length > 0 ? "기본 예제 · 단계 실행" : "기본 예제"}</h2>
+          {variants.length > 0 ? (
+            <LessonPlayer client:load variants={variants} switchLabel="예제" />
+          ) : (
+            <pre class="static-code"><code>{lesson.codeText}</code></pre>
+          )}
+        </section>
+
+        <section class="lesson-block">
+          <h2 class="block-title">자주 헷갈리는 부분</h2>
+          <ul class="bullets bullets-warn">
+            {lesson.confusions.map((item) => <li><Rich text={item} /></li>)}
+          </ul>
+        </section>
+
+        {lesson.summary && (
+          <section class="lesson-block">
+            <h2 class="block-title">이제 할 수 있는 것</h2>
+            <ul class="bullets bullets-done">
+              {lesson.summary.map((item) => <li><Rich text={item} /></li>)}
+            </ul>
+          </section>
+        )}
+      </>
+    )}
+
+    {/*
+      §18 "다음 레슨 연결"은 다음에 무엇을 배우는지 설명하는 글일 뿐 링크가
+      아니다. 레슨을 끝낸 사람이 목록으로 나갔다가 다음 번호를 찾아 들어오게
+      두지 않는다. 앞뒤가 없는 자리에서는 각각 시작하기와 목록으로 보낸다.
+    */}
+    <nav class="lesson-nav" aria-label="레슨 이동">
+      {previous ? (
+        <a class="nav-side" href={`/lessons/${previous.id}`}>
+          <span class="nav-dir">← 이전 레슨</span>
+          <strong>{previous.title}</strong>
+        </a>
+      ) : (
+        <a class="nav-side" href={`/guide/${lesson.track}`}>
+          <span class="nav-dir">← 시작하기</span>
+          <strong>{bookTitle}</strong>
+        </a>
+      )}
+      {next ? (
+        <a class="nav-side nav-next" href={`/lessons/${next.id}`}>
+          <span class="nav-dir">다음 레슨 →</span>
+          <strong>{next.title}</strong>
+        </a>
+      ) : (
+        <a class="nav-side nav-next" href="/">
+          <span class="nav-dir">과정 끝 →</span>
+          <strong>레슨 목록으로</strong>
+        </a>
+      )}
+    </nav>
+  </main>
+</Base>

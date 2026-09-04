@@ -1,0 +1,36 @@
+{
+  "name": "programming-fundamentals-edu",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "trace:emit": "node --experimental-strip-types scripts/emit-traces.ts",
+    "trace:check": "node --experimental-strip-types scripts/emit-traces.ts --check",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "trace:show": "node --experimental-strip-types scripts/show-trace.ts",
+    "verify": "npm run typecheck && npm run textbook:check && npm run trace:check && npm run build",
+    "textbook:sync": "node --experimental-strip-types scripts/sync-textbook.ts",
+    "textbook:check": "node --experimental-strip-types scripts/sync-textbook.ts --check"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.4.0",
+    "acorn": "^8.18.0",
+    "astring": "^1.9.0",
+    "astro": "^5.16.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^26.4.1",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "js-yaml": "^5.4.1",
+    "marked": "^18.0.11",
+    "typescript": "^5.9.0"
+  }
+}

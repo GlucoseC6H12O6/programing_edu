@@ -1,0 +1,563 @@
+{
+  "version": 1,
+  "lessonId": "p15-comprehension",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "numbers = [1, 2, 3, 4]",
+      "result = [n + 10 for n in numbers if n % 2 == 0]",
+      "print(result)"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "3"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "4"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 3,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "numbers",
+      "value": {
+        "kind": "ref",
+        "id": "list@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 48
+      }
+    },
+    {
+      "type": "LOOP_START",
+      "step": 5,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "comp:n@2",
+      "varNames": [
+        "n"
+      ],
+      "track": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "span": {
+        "startCol": 9,
+        "endCol": 48
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 6,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "builder@2",
+        "label": "list",
+        "items": []
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 7,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "n",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "numbers"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 8,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "comp:n@2",
+      "index": 0
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 9,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "n % 2",
+      "substituted": "1 % 2",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "span": {
+        "startCol": 37,
+        "endCol": 42
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 10,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "n % 2 == 0",
+      "substituted": "1 == 0",
+      "result": false,
+      "span": {
+        "startCol": 37,
+        "endCol": 47
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 11,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "n",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "numbers"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 12,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "comp:n@2",
+      "index": 1
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 13,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "n % 2",
+      "substituted": "2 % 2",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "span": {
+        "startCol": 37,
+        "endCol": 42
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 14,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "n % 2 == 0",
+      "substituted": "0 == 0",
+      "result": true,
+      "span": {
+        "startCol": 37,
+        "endCol": 47
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 15,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "n + 10",
+      "substituted": "2 + 10",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "12"
+      },
+      "span": {
+        "startCol": 10,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 16,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "builder@2",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "12"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 17,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "builder@2",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "12"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 18,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "n",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "numbers"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 19,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "comp:n@2",
+      "index": 2
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 20,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "n % 2",
+      "substituted": "3 % 2",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "span": {
+        "startCol": 37,
+        "endCol": 42
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 21,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "n % 2 == 0",
+      "substituted": "1 == 0",
+      "result": false,
+      "span": {
+        "startCol": 37,
+        "endCol": 47
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 22,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "n",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "numbers"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 23,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "comp:n@2",
+      "index": 3
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 24,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "n % 2",
+      "substituted": "4 % 2",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "span": {
+        "startCol": 37,
+        "endCol": 42
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 25,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "n % 2 == 0",
+      "substituted": "0 == 0",
+      "result": true,
+      "span": {
+        "startCol": 37,
+        "endCol": 47
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 26,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "n + 10",
+      "substituted": "4 + 10",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "14"
+      },
+      "span": {
+        "startCol": 10,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 27,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "builder@2",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "14"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 28,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "builder@2",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "12"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "14"
+          }
+        ]
+      }
+    },
+    {
+      "type": "LOOP_END",
+      "step": 29,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "comp:n@2",
+      "reason": "exhausted"
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 30,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@3",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "12"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "14"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 31,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "name": "result",
+      "value": {
+        "kind": "ref",
+        "id": "list@3"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 48
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 32,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 13
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 33,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "[12, 14]"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 34,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "[12, 14]\n"
+  }
+}

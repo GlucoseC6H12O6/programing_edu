@@ -1,0 +1,5891 @@
+{
+  "version": 1,
+  "lessonId": "j23-capstone",
+  "source": {
+    "path": "predict.js",
+    "language": "javascript",
+    "lines": [
+      "function loadVirtualData(ms, text) {",
+      "  return new Promise((resolve, reject) => {",
+      "    setTimeout(() => {",
+      "      if (text === null) {",
+      "        reject(new Error(\"로더가 응답하지 않았습니다\"));",
+      "      } else {",
+      "        resolve(text);",
+      "      }",
+      "    }, ms);",
+      "  });",
+      "}",
+      "",
+      "function toMeasurement(raw) {",
+      "  if (raw === null || raw === undefined || raw === \"\") {",
+      "    return null;",
+      "  }",
+      "  const value = Number(raw);",
+      "  return Number.isFinite(value) ? value : null;",
+      "}",
+      "",
+      "function summarize(rows, lower = 90.0, upper = 100.0) {",
+      "  const values = rows",
+      "    .map((row) => toMeasurement(row.measurement))",
+      "    .filter((value) => value !== null);",
+      "",
+      "  const passed = values.filter((value) => value >= lower && value <= upper);",
+      "  const total = values.reduce((sum, value) => sum + value, 0);",
+      "",
+      "  return {",
+      "    validCount: values.length,",
+      "    passCount: passed.length,",
+      "    average: values.length > 0 ? total / values.length : null,",
+      "    error: null,",
+      "  };",
+      "}",
+      "",
+      "async function loadAndSummarize(ms, text) {",
+      "  try {",
+      "    const jsonText = await loadVirtualData(ms, text);",
+      "    const rows = JSON.parse(jsonText);",
+      "    return summarize(rows);",
+      "  } catch (error) {",
+      "    return { validCount: 0, passCount: 0, average: null, error: error.message };",
+      "  }",
+      "}",
+      "",
+      "const GOOD =",
+      "  '[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},' +",
+      "  '{\"wafer\":\"W02\",\"measurement\":\"N/A\"},' +",
+      "  '{\"wafer\":\"W03\",\"measurement\":101.3}]';",
+      "",
+      "async function main() {",
+      "  const ok = await loadAndSummarize(10, GOOD);",
+      "  console.log(\"정상:\", ok.validCount, ok.passCount, ok.average, ok.error);",
+      "",
+      "  const broken = await loadAndSummarize(10, \"{망가진 JSON\");",
+      "  console.log(\"파싱 실패:\", broken.validCount, broken.average, broken.error !== null);",
+      "",
+      "  const down = await loadAndSummarize(10, null);",
+      "  console.log(\"로더 실패:\", down.validCount, down.error);",
+      "",
+      "  const empty = await loadAndSummarize(10, \"[]\");",
+      "  console.log(\"빈 입력:\", empty.validCount, empty.average);",
+      "}",
+      "",
+      "main();",
+      "console.log(\"동기 부분 끝\");",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "function",
+        "id": "fn:loadVirtualData",
+        "name": "loadVirtualData",
+        "params": [
+          {
+            "name": "ms"
+          },
+          {
+            "name": "text"
+          }
+        ],
+        "defLine": 1
+      },
+      "step": 1
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "loadVirtualData",
+      "heapId": "fn:loadVirtualData",
+      "params": [
+        {
+          "name": "ms"
+        },
+        {
+          "name": "text"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 2
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "function",
+        "id": "fn:toMeasurement",
+        "name": "toMeasurement",
+        "params": [
+          {
+            "name": "raw"
+          }
+        ],
+        "defLine": 13
+      },
+      "step": 3
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "line": 13,
+      "detail": "core",
+      "frameId": "global",
+      "name": "toMeasurement",
+      "heapId": "fn:toMeasurement",
+      "params": [
+        {
+          "name": "raw"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 4
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "function",
+        "id": "fn:summarize",
+        "name": "summarize",
+        "params": [
+          {
+            "name": "rows"
+          },
+          {
+            "name": "lower"
+          },
+          {
+            "name": "upper"
+          }
+        ],
+        "defLine": 21
+      },
+      "step": 5
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "line": 21,
+      "detail": "core",
+      "frameId": "global",
+      "name": "summarize",
+      "heapId": "fn:summarize",
+      "params": [
+        {
+          "name": "rows"
+        },
+        {
+          "name": "lower"
+        },
+        {
+          "name": "upper"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 6
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "function",
+        "id": "fn:loadAndSummarize",
+        "name": "loadAndSummarize",
+        "params": [
+          {
+            "name": "ms"
+          },
+          {
+            "name": "text"
+          }
+        ],
+        "defLine": 37
+      },
+      "step": 7
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "line": 37,
+      "detail": "core",
+      "frameId": "global",
+      "name": "loadAndSummarize",
+      "heapId": "fn:loadAndSummarize",
+      "params": [
+        {
+          "name": "ms"
+        },
+        {
+          "name": "text"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 8
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 47,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 41
+      },
+      "step": 9
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 48,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "'[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},' +\n  '{\"wafer\":\"W02\",\"measurement\":\"N/A\"},'",
+      "substituted": "'[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},' + '{\"wafer\":\"W02\",\"measurement\":\"N/A\"},'",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},{\"wafer\":\"W02\",\"measurement\":\"N/A\"},'"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 40
+      },
+      "step": 10
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 48,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "'[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},' +\n  '{\"wafer\":\"W02\",\"measurement\":\"N/A\"},' +\n  '{\"wafer\":\"W03\",\"measurement\":101.3}]'",
+      "substituted": "'[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},{\"wafer\":\"W02\",\"measurement\":\"N/A\"},' + '{\"wafer\":\"W03\",\"measurement\":101.3}]'",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},{\"wafer\":\"W02\",\"measurement\":\"N/A\"},{\"wafer\":\"W03\",\"measurement\":101.3}]'"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 40
+      },
+      "step": 11
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 47,
+      "detail": "core",
+      "frameId": "global",
+      "name": "GOOD",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},{\"wafer\":\"W02\",\"measurement\":\"N/A\"},{\"wafer\":\"W03\",\"measurement\":101.3}]'"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 41
+      },
+      "step": 12
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 47,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "function",
+        "id": "fn:main",
+        "name": "main",
+        "params": [],
+        "defLine": 52
+      },
+      "step": 13
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "line": 52,
+      "detail": "core",
+      "frameId": "global",
+      "name": "main",
+      "heapId": "fn:main",
+      "params": [],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 14
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 66,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 7
+      },
+      "step": 15
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 66,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "main",
+      "substituted": "main()",
+      "args": [],
+      "targetFrameId": "main#1",
+      "span": {
+        "startCol": 0,
+        "endCol": 6
+      },
+      "step": 16
+    },
+    {
+      "type": "TASK_CREATE",
+      "line": 52,
+      "detail": "core",
+      "frameId": "global",
+      "taskId": "task1",
+      "label": "main()",
+      "step": 17
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 52,
+      "detail": "expression",
+      "frameId": "global",
+      "taskId": "task1",
+      "state": "pending",
+      "step": 18
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 52,
+      "detail": "expression",
+      "frameId": "main#1",
+      "name": "main",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 66,
+      "step": 19
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 53,
+      "detail": "expression",
+      "frameId": "main#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 46
+      },
+      "step": 20
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 53,
+      "detail": "expression",
+      "frameId": "main#1",
+      "expression": "GOOD",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},{\"wafer\":\"W02\",\"measurement\":\"N/A\"},{\"wafer\":\"W03\",\"measurement\":101.3}]'"
+      },
+      "span": {
+        "startCol": 40,
+        "endCol": 44
+      },
+      "step": 21
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 53,
+      "detail": "core",
+      "frameId": "main#1",
+      "callee": "loadAndSummarize",
+      "substituted": "loadAndSummarize(10, '[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},{\"wafer\":\"W02\",\"measurement\":\"N/A\"},{\"wafer\":\"W03\",\"measurement\":101.3}]')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "10"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},{\"wafer\":\"W02\",\"measurement\":\"N/A\"},{\"wafer\":\"W03\",\"measurement\":101.3}]'"
+          },
+          "from": "main#1.GOOD"
+        }
+      ],
+      "targetFrameId": "loadAndSummarize#1",
+      "span": {
+        "startCol": 19,
+        "endCol": 45
+      },
+      "step": 22
+    },
+    {
+      "type": "TASK_CREATE",
+      "line": 37,
+      "detail": "core",
+      "frameId": "main#1",
+      "taskId": "task2",
+      "label": "loadAndSummarize()",
+      "step": 23
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 37,
+      "detail": "expression",
+      "frameId": "main#1",
+      "taskId": "task2",
+      "state": "pending",
+      "step": 24
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 37,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#1",
+      "name": "loadAndSummarize",
+      "callNumber": 1,
+      "parentFrameId": "main#1",
+      "returnLine": 53,
+      "step": 25
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 37,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#1",
+      "name": "ms",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "step": 26
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 37,
+      "detail": "core",
+      "frameId": "loadAndSummarize#1",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},{\"wafer\":\"W02\",\"measurement\":\"N/A\"},{\"wafer\":\"W03\",\"measurement\":101.3}]'"
+      },
+      "from": "main#1.GOOD",
+      "step": 27
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 39,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#1",
+      "span": {
+        "startCol": 4,
+        "endCol": 53
+      },
+      "step": 28
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 39,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#1",
+      "expression": "ms",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "span": {
+        "startCol": 43,
+        "endCol": 45
+      },
+      "step": 29
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 39,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#1",
+      "expression": "text",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},{\"wafer\":\"W02\",\"measurement\":\"N/A\"},{\"wafer\":\"W03\",\"measurement\":101.3}]'"
+      },
+      "span": {
+        "startCol": 47,
+        "endCol": 51
+      },
+      "step": 30
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 39,
+      "detail": "core",
+      "frameId": "loadAndSummarize#1",
+      "callee": "loadVirtualData",
+      "substituted": "loadVirtualData(10, '[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},{\"wafer\":\"W02\",\"measurement\":\"N/A\"},{\"wafer\":\"W03\",\"measurement\":101.3}]')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "10"
+          },
+          "from": "loadAndSummarize#1.ms"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},{\"wafer\":\"W02\",\"measurement\":\"N/A\"},{\"wafer\":\"W03\",\"measurement\":101.3}]'"
+          },
+          "from": "loadAndSummarize#1.text"
+        }
+      ],
+      "targetFrameId": "loadVirtualData#1",
+      "span": {
+        "startCol": 27,
+        "endCol": 52
+      },
+      "step": 31
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "loadVirtualData#1",
+      "name": "loadVirtualData",
+      "callNumber": 1,
+      "parentFrameId": "loadAndSummarize#1",
+      "returnLine": 39,
+      "step": 32
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "loadVirtualData#1",
+      "name": "ms",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "from": "loadAndSummarize#1.ms",
+      "step": 33
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "loadVirtualData#1",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},{\"wafer\":\"W02\",\"measurement\":\"N/A\"},{\"wafer\":\"W03\",\"measurement\":101.3}]'"
+      },
+      "from": "loadAndSummarize#1.text",
+      "step": 34
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "loadVirtualData#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 5
+      },
+      "step": 35
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 2,
+      "detail": "core",
+      "frameId": "loadVirtualData#1",
+      "callee": "콜백",
+      "substituted": "콜백(<fn:anonymous>, <fn:anonymous>)",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "fn:anonymous"
+          }
+        },
+        {
+          "value": {
+            "kind": "ref",
+            "id": "fn:anonymous"
+          }
+        }
+      ],
+      "targetFrameId": "콜백#1",
+      "span": {
+        "startCol": 21,
+        "endCol": 3
+      },
+      "step": 36
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "콜백#1",
+      "name": "콜백",
+      "callNumber": 1,
+      "parentFrameId": "loadVirtualData#1",
+      "returnLine": 2,
+      "step": 37
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "콜백#1",
+      "name": "resolve",
+      "value": {
+        "kind": "ref",
+        "id": "fn:anonymous"
+      },
+      "step": 38
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "콜백#1",
+      "name": "reject",
+      "value": {
+        "kind": "ref",
+        "id": "fn:anonymous"
+      },
+      "step": 39
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#1",
+      "span": {
+        "startCol": 4,
+        "endCol": 11
+      },
+      "step": 40
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#1",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 2,
+      "step": 41
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "loadVirtualData#1",
+      "poppedFrameId": "콜백#1",
+      "step": 42
+    },
+    {
+      "type": "TASK_CREATE",
+      "line": 2,
+      "detail": "core",
+      "frameId": "loadVirtualData#1",
+      "taskId": "task3",
+      "label": "new Promise",
+      "step": 43
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "loadVirtualData#1",
+      "taskId": "task3",
+      "state": "pending",
+      "step": 44
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "loadVirtualData#1",
+      "object": {
+        "kind": "mapping",
+        "id": "Promise@1",
+        "label": "instance",
+        "className": "Promise",
+        "entries": [
+          {
+            "key": "상태",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "pending"
+            }
+          }
+        ]
+      },
+      "step": 45
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "loadVirtualData#1",
+      "value": {
+        "kind": "ref",
+        "id": "Promise@1"
+      },
+      "toLine": 39,
+      "step": 46
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 39,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#1",
+      "poppedFrameId": "loadVirtualData#1",
+      "step": 47
+    },
+    {
+      "type": "AWAIT_SUSPEND",
+      "line": 39,
+      "detail": "core",
+      "frameId": "loadAndSummarize#1",
+      "taskId": "task3",
+      "step": 48
+    },
+    {
+      "type": "AWAIT_SUSPEND",
+      "line": 53,
+      "detail": "core",
+      "frameId": "main#1",
+      "taskId": "task2",
+      "step": 49
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 67,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 23
+      },
+      "step": 50
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 67,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "동기 부분 끝",
+      "step": 51
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "콜백",
+      "substituted": "콜백()",
+      "args": [],
+      "targetFrameId": "콜백#2",
+      "span": {
+        "startCol": 15,
+        "endCol": 5
+      },
+      "step": 52
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#2",
+      "name": "콜백",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 3,
+      "step": 53
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 4,
+      "detail": "core",
+      "frameId": "콜백#2",
+      "expression": "text === null",
+      "substituted": "'[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},{\"wafer\":\"W02\",\"measurement\":\"N/A\"},{\"wafer\":\"W03\",\"measurement\":101.3}]' === null",
+      "result": false,
+      "span": {
+        "startCol": 6,
+        "endCol": 7
+      },
+      "step": 54
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "콜백#2",
+      "label": "else",
+      "targetLine": 7,
+      "step": 55
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "콜백#2",
+      "span": {
+        "startCol": 8,
+        "endCol": 22
+      },
+      "step": 56
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 7,
+      "detail": "core",
+      "frameId": "콜백#2",
+      "taskId": "task3",
+      "state": "fulfilled",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},{\"wafer\":\"W02\",\"measurement\":\"N/A\"},{\"wafer\":\"W03\",\"measurement\":101.3}]'"
+      },
+      "step": 57
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "콜백#2",
+      "object": {
+        "kind": "mapping",
+        "id": "Promise@1",
+        "label": "instance",
+        "className": "Promise",
+        "entries": [
+          {
+            "key": "상태",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "fulfilled"
+            }
+          },
+          {
+            "key": "값",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},{\"wafer\":\"W02\",\"measurement\":\"N/A\"},{\"wafer\":\"W03\",\"measurement\":101.3}]'"
+            }
+          }
+        ]
+      },
+      "step": 58
+    },
+    {
+      "type": "TASK_COMPLETE",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "콜백#2",
+      "taskId": "task3",
+      "step": 59
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "콜백#2",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 3,
+      "step": 60
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "콜백#2",
+      "step": 61
+    },
+    {
+      "type": "AWAIT_RESUME",
+      "line": 39,
+      "detail": "core",
+      "frameId": "loadAndSummarize#1",
+      "taskId": "task3",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},{\"wafer\":\"W02\",\"measurement\":\"N/A\"},{\"wafer\":\"W03\",\"measurement\":101.3}]'"
+      },
+      "step": 62
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 39,
+      "detail": "core",
+      "frameId": "loadAndSummarize#1",
+      "name": "jsonText",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'[{\"wafer\":\"W01\",\"measurement\":\"94.2\"},{\"wafer\":\"W02\",\"measurement\":\"N/A\"},{\"wafer\":\"W03\",\"measurement\":101.3}]'"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 53
+      },
+      "step": 63
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 40,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#1",
+      "span": {
+        "startCol": 4,
+        "endCol": 38
+      },
+      "step": 64
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 40,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#1",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@3",
+        "label": "object",
+        "entries": [
+          {
+            "key": "wafer",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W01'"
+            }
+          },
+          {
+            "key": "measurement",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'94.2'"
+            }
+          }
+        ]
+      },
+      "step": 65
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 40,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#1",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@4",
+        "label": "object",
+        "entries": [
+          {
+            "key": "wafer",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W02'"
+            }
+          },
+          {
+            "key": "measurement",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'N/A'"
+            }
+          }
+        ]
+      },
+      "step": 66
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 40,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#1",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@5",
+        "label": "object",
+        "entries": [
+          {
+            "key": "wafer",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W03'"
+            }
+          },
+          {
+            "key": "measurement",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "101.3"
+            }
+          }
+        ]
+      },
+      "step": 67
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 40,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#1",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@2",
+        "label": "array",
+        "items": [
+          {
+            "kind": "ref",
+            "id": "Object@3"
+          },
+          {
+            "kind": "ref",
+            "id": "Object@4"
+          },
+          {
+            "kind": "ref",
+            "id": "Object@5"
+          }
+        ]
+      },
+      "step": 68
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 40,
+      "detail": "core",
+      "frameId": "loadAndSummarize#1",
+      "name": "rows",
+      "value": {
+        "kind": "ref",
+        "id": "Array@2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 38
+      },
+      "step": 69
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 41,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#1",
+      "span": {
+        "startCol": 4,
+        "endCol": 27
+      },
+      "step": 70
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 41,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#1",
+      "expression": "rows",
+      "result": {
+        "kind": "ref",
+        "id": "Array@2"
+      },
+      "span": {
+        "startCol": 21,
+        "endCol": 25
+      },
+      "step": 71
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 41,
+      "detail": "core",
+      "frameId": "loadAndSummarize#1",
+      "callee": "summarize",
+      "substituted": "summarize([…, …, …])",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "Array@2"
+          },
+          "from": "loadAndSummarize#1.rows"
+        }
+      ],
+      "targetFrameId": "summarize#1",
+      "span": {
+        "startCol": 11,
+        "endCol": 26
+      },
+      "step": 72
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 21,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "name": "summarize",
+      "callNumber": 1,
+      "parentFrameId": "loadAndSummarize#1",
+      "returnLine": 41,
+      "step": 73
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 21,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "name": "rows",
+      "value": {
+        "kind": "ref",
+        "id": "Array@2"
+      },
+      "from": "loadAndSummarize#1.rows",
+      "step": 74
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 21,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "name": "lower",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "90"
+      },
+      "step": 75
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 21,
+      "detail": "core",
+      "frameId": "summarize#1",
+      "name": "upper",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "100"
+      },
+      "step": 76
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 22,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 39
+      },
+      "step": 77
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 22,
+      "detail": "core",
+      "frameId": "summarize#1",
+      "callee": "map 콜백",
+      "substituted": "map 콜백({wafer: 'W01', measurement: '94.2'})",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "Object@3"
+          }
+        }
+      ],
+      "targetFrameId": "map 콜백#1",
+      "span": {
+        "startCol": 9,
+        "endCol": 48
+      },
+      "step": 78
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "map 콜백#1",
+      "name": "map 콜백",
+      "callNumber": 1,
+      "parentFrameId": "summarize#1",
+      "returnLine": 22,
+      "step": 79
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 23,
+      "detail": "core",
+      "frameId": "map 콜백#1",
+      "name": "row",
+      "value": {
+        "kind": "ref",
+        "id": "Object@3"
+      },
+      "step": 80
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "map 콜백#1",
+      "target": "Object@3",
+      "key": "measurement",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'94.2'"
+      },
+      "step": 81
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "map 콜백#1",
+      "expression": "row.measurement",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'94.2'"
+      },
+      "span": {
+        "startCol": 32,
+        "endCol": 47
+      },
+      "step": 82
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 23,
+      "detail": "core",
+      "frameId": "map 콜백#1",
+      "callee": "toMeasurement",
+      "substituted": "toMeasurement('94.2')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'94.2'"
+          }
+        }
+      ],
+      "targetFrameId": "toMeasurement#1",
+      "span": {
+        "startCol": 18,
+        "endCol": 48
+      },
+      "step": 83
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 13,
+      "detail": "expression",
+      "frameId": "toMeasurement#1",
+      "name": "toMeasurement",
+      "callNumber": 1,
+      "parentFrameId": "map 콜백#1",
+      "returnLine": 23,
+      "step": 84
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 13,
+      "detail": "core",
+      "frameId": "toMeasurement#1",
+      "name": "raw",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'94.2'"
+      },
+      "step": 85
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "toMeasurement#1",
+      "expression": "raw === null",
+      "substituted": "'94.2' === null",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 6,
+        "endCol": 18
+      },
+      "step": 86
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "toMeasurement#1",
+      "expression": "raw === undefined",
+      "substituted": "'94.2' === undefined",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 22,
+        "endCol": 39
+      },
+      "step": 87
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "toMeasurement#1",
+      "expression": "raw === \"\"",
+      "substituted": "'94.2' === ''",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 43,
+        "endCol": 53
+      },
+      "step": 88
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "toMeasurement#1",
+      "expression": "raw === null || raw === undefined || raw === \"\"",
+      "substituted": "raw === null || raw === undefined || raw === \"\"",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "step": 89
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 14,
+      "detail": "core",
+      "frameId": "toMeasurement#1",
+      "expression": "raw === null || raw === undefined || raw === \"\"",
+      "result": false,
+      "span": {
+        "startCol": 2,
+        "endCol": 3
+      },
+      "step": 90
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 17,
+      "detail": "expression",
+      "frameId": "toMeasurement#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 28
+      },
+      "step": 91
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 17,
+      "detail": "core",
+      "frameId": "toMeasurement#1",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 28
+      },
+      "step": 92
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 18,
+      "detail": "expression",
+      "frameId": "toMeasurement#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 47
+      },
+      "step": 93
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 18,
+      "detail": "expression",
+      "frameId": "toMeasurement#1",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "toLine": 23,
+      "step": 94
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "map 콜백#1",
+      "poppedFrameId": "toMeasurement#1",
+      "step": 95
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "map 콜백#1",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "toLine": 22,
+      "step": 96
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 22,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "poppedFrameId": "map 콜백#1",
+      "step": 97
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 22,
+      "detail": "core",
+      "frameId": "summarize#1",
+      "callee": "map 콜백",
+      "substituted": "map 콜백({wafer: 'W02', measurement: 'N/A'})",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "Object@4"
+          }
+        }
+      ],
+      "targetFrameId": "map 콜백#2",
+      "span": {
+        "startCol": 9,
+        "endCol": 48
+      },
+      "step": 98
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "map 콜백#2",
+      "name": "map 콜백",
+      "callNumber": 2,
+      "parentFrameId": "summarize#1",
+      "returnLine": 22,
+      "step": 99
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 23,
+      "detail": "core",
+      "frameId": "map 콜백#2",
+      "name": "row",
+      "value": {
+        "kind": "ref",
+        "id": "Object@4"
+      },
+      "step": 100
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "map 콜백#2",
+      "target": "Object@4",
+      "key": "measurement",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'N/A'"
+      },
+      "step": 101
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "map 콜백#2",
+      "expression": "row.measurement",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'N/A'"
+      },
+      "span": {
+        "startCol": 32,
+        "endCol": 47
+      },
+      "step": 102
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 23,
+      "detail": "core",
+      "frameId": "map 콜백#2",
+      "callee": "toMeasurement",
+      "substituted": "toMeasurement('N/A')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'N/A'"
+          }
+        }
+      ],
+      "targetFrameId": "toMeasurement#2",
+      "span": {
+        "startCol": 18,
+        "endCol": 48
+      },
+      "step": 103
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 13,
+      "detail": "expression",
+      "frameId": "toMeasurement#2",
+      "name": "toMeasurement",
+      "callNumber": 2,
+      "parentFrameId": "map 콜백#2",
+      "returnLine": 23,
+      "step": 104
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 13,
+      "detail": "core",
+      "frameId": "toMeasurement#2",
+      "name": "raw",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'N/A'"
+      },
+      "step": 105
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "toMeasurement#2",
+      "expression": "raw === null",
+      "substituted": "'N/A' === null",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 6,
+        "endCol": 18
+      },
+      "step": 106
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "toMeasurement#2",
+      "expression": "raw === undefined",
+      "substituted": "'N/A' === undefined",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 22,
+        "endCol": 39
+      },
+      "step": 107
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "toMeasurement#2",
+      "expression": "raw === \"\"",
+      "substituted": "'N/A' === ''",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 43,
+        "endCol": 53
+      },
+      "step": 108
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "toMeasurement#2",
+      "expression": "raw === null || raw === undefined || raw === \"\"",
+      "substituted": "raw === null || raw === undefined || raw === \"\"",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "step": 109
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 14,
+      "detail": "core",
+      "frameId": "toMeasurement#2",
+      "expression": "raw === null || raw === undefined || raw === \"\"",
+      "result": false,
+      "span": {
+        "startCol": 2,
+        "endCol": 3
+      },
+      "step": 110
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 17,
+      "detail": "expression",
+      "frameId": "toMeasurement#2",
+      "span": {
+        "startCol": 2,
+        "endCol": 28
+      },
+      "step": 111
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 17,
+      "detail": "core",
+      "frameId": "toMeasurement#2",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "nan",
+        "repr": "NaN"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 28
+      },
+      "step": 112
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 18,
+      "detail": "expression",
+      "frameId": "toMeasurement#2",
+      "span": {
+        "startCol": 2,
+        "endCol": 47
+      },
+      "step": 113
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 18,
+      "detail": "expression",
+      "frameId": "toMeasurement#2",
+      "value": {
+        "kind": "primitive",
+        "type": "null",
+        "repr": "null"
+      },
+      "toLine": 23,
+      "step": 114
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "map 콜백#2",
+      "poppedFrameId": "toMeasurement#2",
+      "step": 115
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "map 콜백#2",
+      "value": {
+        "kind": "primitive",
+        "type": "null",
+        "repr": "null"
+      },
+      "toLine": 22,
+      "step": 116
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 22,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "poppedFrameId": "map 콜백#2",
+      "step": 117
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 22,
+      "detail": "core",
+      "frameId": "summarize#1",
+      "callee": "map 콜백",
+      "substituted": "map 콜백({wafer: 'W03', measurement: 101.3})",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "Object@5"
+          }
+        }
+      ],
+      "targetFrameId": "map 콜백#3",
+      "span": {
+        "startCol": 9,
+        "endCol": 48
+      },
+      "step": 118
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "map 콜백#3",
+      "name": "map 콜백",
+      "callNumber": 3,
+      "parentFrameId": "summarize#1",
+      "returnLine": 22,
+      "step": 119
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 23,
+      "detail": "core",
+      "frameId": "map 콜백#3",
+      "name": "row",
+      "value": {
+        "kind": "ref",
+        "id": "Object@5"
+      },
+      "step": 120
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "map 콜백#3",
+      "target": "Object@5",
+      "key": "measurement",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "step": 121
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "map 콜백#3",
+      "expression": "row.measurement",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "span": {
+        "startCol": 32,
+        "endCol": 47
+      },
+      "step": 122
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 23,
+      "detail": "core",
+      "frameId": "map 콜백#3",
+      "callee": "toMeasurement",
+      "substituted": "toMeasurement(101.3)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "101.3"
+          }
+        }
+      ],
+      "targetFrameId": "toMeasurement#3",
+      "span": {
+        "startCol": 18,
+        "endCol": 48
+      },
+      "step": 123
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 13,
+      "detail": "expression",
+      "frameId": "toMeasurement#3",
+      "name": "toMeasurement",
+      "callNumber": 3,
+      "parentFrameId": "map 콜백#3",
+      "returnLine": 23,
+      "step": 124
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 13,
+      "detail": "core",
+      "frameId": "toMeasurement#3",
+      "name": "raw",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "step": 125
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "toMeasurement#3",
+      "expression": "raw === null",
+      "substituted": "101.3 === null",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 6,
+        "endCol": 18
+      },
+      "step": 126
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "toMeasurement#3",
+      "expression": "raw === undefined",
+      "substituted": "101.3 === undefined",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 22,
+        "endCol": 39
+      },
+      "step": 127
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "toMeasurement#3",
+      "expression": "raw === \"\"",
+      "substituted": "101.3 === ''",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 43,
+        "endCol": 53
+      },
+      "step": 128
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "toMeasurement#3",
+      "expression": "raw === null || raw === undefined || raw === \"\"",
+      "substituted": "raw === null || raw === undefined || raw === \"\"",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "step": 129
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 14,
+      "detail": "core",
+      "frameId": "toMeasurement#3",
+      "expression": "raw === null || raw === undefined || raw === \"\"",
+      "result": false,
+      "span": {
+        "startCol": 2,
+        "endCol": 3
+      },
+      "step": 130
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 17,
+      "detail": "expression",
+      "frameId": "toMeasurement#3",
+      "span": {
+        "startCol": 2,
+        "endCol": 28
+      },
+      "step": 131
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 17,
+      "detail": "core",
+      "frameId": "toMeasurement#3",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 28
+      },
+      "step": 132
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 18,
+      "detail": "expression",
+      "frameId": "toMeasurement#3",
+      "span": {
+        "startCol": 2,
+        "endCol": 47
+      },
+      "step": 133
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 18,
+      "detail": "expression",
+      "frameId": "toMeasurement#3",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "toLine": 23,
+      "step": 134
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "map 콜백#3",
+      "poppedFrameId": "toMeasurement#3",
+      "step": 135
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "map 콜백#3",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "toLine": 22,
+      "step": 136
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 22,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "poppedFrameId": "map 콜백#3",
+      "step": 137
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 22,
+      "detail": "core",
+      "frameId": "summarize#1",
+      "callee": "filter 콜백",
+      "substituted": "filter 콜백(94.2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "94.2"
+          }
+        }
+      ],
+      "targetFrameId": "filter 콜백#1",
+      "span": {
+        "startCol": 12,
+        "endCol": 37
+      },
+      "step": 138
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 24,
+      "detail": "expression",
+      "frameId": "filter 콜백#1",
+      "name": "filter 콜백",
+      "callNumber": 1,
+      "parentFrameId": "summarize#1",
+      "returnLine": 22,
+      "step": 139
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 24,
+      "detail": "core",
+      "frameId": "filter 콜백#1",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "step": 140
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 24,
+      "detail": "core",
+      "frameId": "filter 콜백#1",
+      "expression": "value !== null",
+      "substituted": "94.2 !== null",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 23,
+        "endCol": 37
+      },
+      "step": 141
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 24,
+      "detail": "expression",
+      "frameId": "filter 콜백#1",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "toLine": 22,
+      "step": 142
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 22,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "poppedFrameId": "filter 콜백#1",
+      "step": 143
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 22,
+      "detail": "core",
+      "frameId": "summarize#1",
+      "callee": "filter 콜백",
+      "substituted": "filter 콜백(null)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "null",
+            "repr": "null"
+          }
+        }
+      ],
+      "targetFrameId": "filter 콜백#2",
+      "span": {
+        "startCol": 12,
+        "endCol": 37
+      },
+      "step": 144
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 24,
+      "detail": "expression",
+      "frameId": "filter 콜백#2",
+      "name": "filter 콜백",
+      "callNumber": 2,
+      "parentFrameId": "summarize#1",
+      "returnLine": 22,
+      "step": 145
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 24,
+      "detail": "core",
+      "frameId": "filter 콜백#2",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "null",
+        "repr": "null"
+      },
+      "step": 146
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 24,
+      "detail": "core",
+      "frameId": "filter 콜백#2",
+      "expression": "value !== null",
+      "substituted": "null !== null",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 23,
+        "endCol": 37
+      },
+      "step": 147
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 24,
+      "detail": "expression",
+      "frameId": "filter 콜백#2",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "toLine": 22,
+      "step": 148
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 22,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "poppedFrameId": "filter 콜백#2",
+      "step": 149
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 22,
+      "detail": "core",
+      "frameId": "summarize#1",
+      "callee": "filter 콜백",
+      "substituted": "filter 콜백(101.3)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "101.3"
+          }
+        }
+      ],
+      "targetFrameId": "filter 콜백#3",
+      "span": {
+        "startCol": 12,
+        "endCol": 37
+      },
+      "step": 150
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 24,
+      "detail": "expression",
+      "frameId": "filter 콜백#3",
+      "name": "filter 콜백",
+      "callNumber": 3,
+      "parentFrameId": "summarize#1",
+      "returnLine": 22,
+      "step": 151
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 24,
+      "detail": "core",
+      "frameId": "filter 콜백#3",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "step": 152
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 24,
+      "detail": "core",
+      "frameId": "filter 콜백#3",
+      "expression": "value !== null",
+      "substituted": "101.3 !== null",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 23,
+        "endCol": 37
+      },
+      "step": 153
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 24,
+      "detail": "expression",
+      "frameId": "filter 콜백#3",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "toLine": 22,
+      "step": 154
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 22,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "poppedFrameId": "filter 콜백#3",
+      "step": 155
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 22,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@6",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "94.2"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "101.3"
+          }
+        ]
+      },
+      "step": 156
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 22,
+      "detail": "core",
+      "frameId": "summarize#1",
+      "name": "values",
+      "value": {
+        "kind": "ref",
+        "id": "Array@6"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 39
+      },
+      "step": 157
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 26,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 76
+      },
+      "step": 158
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 26,
+      "detail": "core",
+      "frameId": "summarize#1",
+      "callee": "filter 콜백",
+      "substituted": "filter 콜백(94.2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "94.2"
+          }
+        }
+      ],
+      "targetFrameId": "filter 콜백#4",
+      "span": {
+        "startCol": 31,
+        "endCol": 74
+      },
+      "step": 159
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 26,
+      "detail": "expression",
+      "frameId": "filter 콜백#4",
+      "name": "filter 콜백",
+      "callNumber": 4,
+      "parentFrameId": "summarize#1",
+      "returnLine": 26,
+      "step": 160
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 26,
+      "detail": "core",
+      "frameId": "filter 콜백#4",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "step": 161
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 26,
+      "detail": "expression",
+      "frameId": "filter 콜백#4",
+      "expression": "value >= lower",
+      "substituted": "94.2 >= 90",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 42,
+        "endCol": 56
+      },
+      "step": 162
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 26,
+      "detail": "expression",
+      "frameId": "filter 콜백#4",
+      "expression": "value <= upper",
+      "substituted": "94.2 <= 100",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 60,
+        "endCol": 74
+      },
+      "step": 163
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 26,
+      "detail": "expression",
+      "frameId": "filter 콜백#4",
+      "expression": "value >= lower && value <= upper",
+      "substituted": "value >= lower && value <= upper",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "step": 164
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 26,
+      "detail": "expression",
+      "frameId": "filter 콜백#4",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "toLine": 26,
+      "step": 165
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 26,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "poppedFrameId": "filter 콜백#4",
+      "step": 166
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 26,
+      "detail": "core",
+      "frameId": "summarize#1",
+      "callee": "filter 콜백",
+      "substituted": "filter 콜백(101.3)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "101.3"
+          }
+        }
+      ],
+      "targetFrameId": "filter 콜백#5",
+      "span": {
+        "startCol": 31,
+        "endCol": 74
+      },
+      "step": 167
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 26,
+      "detail": "expression",
+      "frameId": "filter 콜백#5",
+      "name": "filter 콜백",
+      "callNumber": 5,
+      "parentFrameId": "summarize#1",
+      "returnLine": 26,
+      "step": 168
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 26,
+      "detail": "core",
+      "frameId": "filter 콜백#5",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "step": 169
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 26,
+      "detail": "expression",
+      "frameId": "filter 콜백#5",
+      "expression": "value >= lower",
+      "substituted": "101.3 >= 90",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 42,
+        "endCol": 56
+      },
+      "step": 170
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 26,
+      "detail": "expression",
+      "frameId": "filter 콜백#5",
+      "expression": "value <= upper",
+      "substituted": "101.3 <= 100",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 60,
+        "endCol": 74
+      },
+      "step": 171
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 26,
+      "detail": "expression",
+      "frameId": "filter 콜백#5",
+      "expression": "value >= lower && value <= upper",
+      "substituted": "value >= lower && value <= upper",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "step": 172
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 26,
+      "detail": "expression",
+      "frameId": "filter 콜백#5",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "toLine": 26,
+      "step": 173
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 26,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "poppedFrameId": "filter 콜백#5",
+      "step": 174
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 26,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@7",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "94.2"
+          }
+        ]
+      },
+      "step": 175
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 26,
+      "detail": "core",
+      "frameId": "summarize#1",
+      "name": "passed",
+      "value": {
+        "kind": "ref",
+        "id": "Array@7"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 76
+      },
+      "step": 176
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 27,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 62
+      },
+      "step": 177
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 27,
+      "detail": "core",
+      "frameId": "summarize#1",
+      "callee": "reduce 콜백",
+      "substituted": "reduce 콜백(0, 94.2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "0"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "94.2"
+          }
+        }
+      ],
+      "targetFrameId": "reduce 콜백#1",
+      "span": {
+        "startCol": 30,
+        "endCol": 57
+      },
+      "step": 178
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 27,
+      "detail": "expression",
+      "frameId": "reduce 콜백#1",
+      "name": "reduce 콜백",
+      "callNumber": 1,
+      "parentFrameId": "summarize#1",
+      "returnLine": 27,
+      "step": 179
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 27,
+      "detail": "expression",
+      "frameId": "reduce 콜백#1",
+      "name": "sum",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "step": 180
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 27,
+      "detail": "core",
+      "frameId": "reduce 콜백#1",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "step": 181
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 27,
+      "detail": "core",
+      "frameId": "reduce 콜백#1",
+      "expression": "sum + value",
+      "substituted": "0 + 94.2",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "span": {
+        "startCol": 46,
+        "endCol": 57
+      },
+      "step": 182
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 27,
+      "detail": "expression",
+      "frameId": "reduce 콜백#1",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "toLine": 27,
+      "step": 183
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 27,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "poppedFrameId": "reduce 콜백#1",
+      "step": 184
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 27,
+      "detail": "core",
+      "frameId": "summarize#1",
+      "callee": "reduce 콜백",
+      "substituted": "reduce 콜백(94.2, 101.3)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "94.2"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "101.3"
+          }
+        }
+      ],
+      "targetFrameId": "reduce 콜백#2",
+      "span": {
+        "startCol": 30,
+        "endCol": 57
+      },
+      "step": 185
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 27,
+      "detail": "expression",
+      "frameId": "reduce 콜백#2",
+      "name": "reduce 콜백",
+      "callNumber": 2,
+      "parentFrameId": "summarize#1",
+      "returnLine": 27,
+      "step": 186
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 27,
+      "detail": "expression",
+      "frameId": "reduce 콜백#2",
+      "name": "sum",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "step": 187
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 27,
+      "detail": "core",
+      "frameId": "reduce 콜백#2",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "step": 188
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 27,
+      "detail": "core",
+      "frameId": "reduce 콜백#2",
+      "expression": "sum + value",
+      "substituted": "94.2 + 101.3",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "195.5"
+      },
+      "span": {
+        "startCol": 46,
+        "endCol": 57
+      },
+      "step": 189
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 27,
+      "detail": "expression",
+      "frameId": "reduce 콜백#2",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "195.5"
+      },
+      "toLine": 27,
+      "step": 190
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 27,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "poppedFrameId": "reduce 콜백#2",
+      "step": 191
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 27,
+      "detail": "core",
+      "frameId": "summarize#1",
+      "name": "total",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "195.5"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 62
+      },
+      "step": 192
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 29,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 4
+      },
+      "step": 193
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 32,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "expression": "values.length > 0",
+      "substituted": "2 > 0",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 13,
+        "endCol": 30
+      },
+      "step": 194
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 32,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "expression": "total / values.length",
+      "substituted": "195.5 / 2",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "97.75"
+      },
+      "span": {
+        "startCol": 33,
+        "endCol": 54
+      },
+      "step": 195
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 29,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@8",
+        "label": "object",
+        "entries": [
+          {
+            "key": "validCount",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "2"
+            }
+          },
+          {
+            "key": "passCount",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "1"
+            }
+          },
+          {
+            "key": "average",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "97.75"
+            }
+          },
+          {
+            "key": "error",
+            "value": {
+              "kind": "primitive",
+              "type": "null",
+              "repr": "null"
+            }
+          }
+        ]
+      },
+      "step": 196
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 29,
+      "detail": "expression",
+      "frameId": "summarize#1",
+      "value": {
+        "kind": "ref",
+        "id": "Object@8"
+      },
+      "toLine": 41,
+      "step": 197
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 41,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#1",
+      "poppedFrameId": "summarize#1",
+      "step": 198
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 41,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#1",
+      "value": {
+        "kind": "ref",
+        "id": "Object@8"
+      },
+      "toLine": 53,
+      "step": 199
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 53,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "loadAndSummarize#1",
+      "step": 200
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 67,
+      "detail": "core",
+      "frameId": "global",
+      "taskId": "task2",
+      "state": "fulfilled",
+      "value": {
+        "kind": "ref",
+        "id": "Object@8"
+      },
+      "step": 201
+    },
+    {
+      "type": "TASK_COMPLETE",
+      "line": 67,
+      "detail": "expression",
+      "frameId": "global",
+      "taskId": "task2",
+      "step": 202
+    },
+    {
+      "type": "AWAIT_RESUME",
+      "line": 53,
+      "detail": "core",
+      "frameId": "main#1",
+      "taskId": "task2",
+      "value": {
+        "kind": "ref",
+        "id": "Object@8"
+      },
+      "step": 203
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 53,
+      "detail": "core",
+      "frameId": "main#1",
+      "name": "ok",
+      "value": {
+        "kind": "ref",
+        "id": "Object@8"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 46
+      },
+      "step": 204
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 54,
+      "detail": "expression",
+      "frameId": "main#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 72
+      },
+      "step": 205
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 54,
+      "detail": "expression",
+      "frameId": "main#1",
+      "target": "Object@8",
+      "key": "validCount",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "step": 206
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 54,
+      "detail": "expression",
+      "frameId": "main#1",
+      "target": "Object@8",
+      "key": "passCount",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "step": 207
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 54,
+      "detail": "expression",
+      "frameId": "main#1",
+      "target": "Object@8",
+      "key": "average",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "97.75"
+      },
+      "step": 208
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 54,
+      "detail": "expression",
+      "frameId": "main#1",
+      "target": "Object@8",
+      "key": "error",
+      "value": {
+        "kind": "primitive",
+        "type": "null",
+        "repr": "null"
+      },
+      "step": 209
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 54,
+      "detail": "core",
+      "frameId": "main#1",
+      "stream": "stdout",
+      "text": "정상: 2 1 97.75 null",
+      "step": 210
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 56,
+      "detail": "expression",
+      "frameId": "main#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 57
+      },
+      "step": 211
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 56,
+      "detail": "core",
+      "frameId": "main#1",
+      "callee": "loadAndSummarize",
+      "substituted": "loadAndSummarize(10, '{망가진 JSON')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "10"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'{망가진 JSON'"
+          }
+        }
+      ],
+      "targetFrameId": "loadAndSummarize#2",
+      "span": {
+        "startCol": 23,
+        "endCol": 56
+      },
+      "step": 212
+    },
+    {
+      "type": "TASK_CREATE",
+      "line": 37,
+      "detail": "core",
+      "frameId": "main#1",
+      "taskId": "task4",
+      "label": "loadAndSummarize()",
+      "step": 213
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 37,
+      "detail": "expression",
+      "frameId": "main#1",
+      "taskId": "task4",
+      "state": "pending",
+      "step": 214
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 37,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#2",
+      "name": "loadAndSummarize",
+      "callNumber": 2,
+      "parentFrameId": "main#1",
+      "returnLine": 56,
+      "step": 215
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 37,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#2",
+      "name": "ms",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "step": 216
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 37,
+      "detail": "core",
+      "frameId": "loadAndSummarize#2",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'{망가진 JSON'"
+      },
+      "step": 217
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 39,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#2",
+      "span": {
+        "startCol": 4,
+        "endCol": 53
+      },
+      "step": 218
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 39,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#2",
+      "expression": "ms",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "span": {
+        "startCol": 43,
+        "endCol": 45
+      },
+      "step": 219
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 39,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#2",
+      "expression": "text",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'{망가진 JSON'"
+      },
+      "span": {
+        "startCol": 47,
+        "endCol": 51
+      },
+      "step": 220
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 39,
+      "detail": "core",
+      "frameId": "loadAndSummarize#2",
+      "callee": "loadVirtualData",
+      "substituted": "loadVirtualData(10, '{망가진 JSON')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "10"
+          },
+          "from": "loadAndSummarize#2.ms"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'{망가진 JSON'"
+          },
+          "from": "loadAndSummarize#2.text"
+        }
+      ],
+      "targetFrameId": "loadVirtualData#2",
+      "span": {
+        "startCol": 27,
+        "endCol": 52
+      },
+      "step": 221
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "loadVirtualData#2",
+      "name": "loadVirtualData",
+      "callNumber": 2,
+      "parentFrameId": "loadAndSummarize#2",
+      "returnLine": 39,
+      "step": 222
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "loadVirtualData#2",
+      "name": "ms",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "from": "loadAndSummarize#2.ms",
+      "step": 223
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "loadVirtualData#2",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'{망가진 JSON'"
+      },
+      "from": "loadAndSummarize#2.text",
+      "step": 224
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "loadVirtualData#2",
+      "span": {
+        "startCol": 2,
+        "endCol": 5
+      },
+      "step": 225
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 2,
+      "detail": "core",
+      "frameId": "loadVirtualData#2",
+      "callee": "콜백",
+      "substituted": "콜백(<fn:anonymous>, <fn:anonymous>)",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "fn:anonymous"
+          }
+        },
+        {
+          "value": {
+            "kind": "ref",
+            "id": "fn:anonymous"
+          }
+        }
+      ],
+      "targetFrameId": "콜백#3",
+      "span": {
+        "startCol": 21,
+        "endCol": 3
+      },
+      "step": 226
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "콜백#3",
+      "name": "콜백",
+      "callNumber": 3,
+      "parentFrameId": "loadVirtualData#2",
+      "returnLine": 2,
+      "step": 227
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "콜백#3",
+      "name": "resolve",
+      "value": {
+        "kind": "ref",
+        "id": "fn:anonymous"
+      },
+      "step": 228
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "콜백#3",
+      "name": "reject",
+      "value": {
+        "kind": "ref",
+        "id": "fn:anonymous"
+      },
+      "step": 229
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#3",
+      "span": {
+        "startCol": 4,
+        "endCol": 11
+      },
+      "step": 230
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#3",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 2,
+      "step": 231
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "loadVirtualData#2",
+      "poppedFrameId": "콜백#3",
+      "step": 232
+    },
+    {
+      "type": "TASK_CREATE",
+      "line": 2,
+      "detail": "core",
+      "frameId": "loadVirtualData#2",
+      "taskId": "task5",
+      "label": "new Promise",
+      "step": 233
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "loadVirtualData#2",
+      "taskId": "task5",
+      "state": "pending",
+      "step": 234
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "loadVirtualData#2",
+      "object": {
+        "kind": "mapping",
+        "id": "Promise@9",
+        "label": "instance",
+        "className": "Promise",
+        "entries": [
+          {
+            "key": "상태",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "pending"
+            }
+          }
+        ]
+      },
+      "step": 235
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "loadVirtualData#2",
+      "value": {
+        "kind": "ref",
+        "id": "Promise@9"
+      },
+      "toLine": 39,
+      "step": 236
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 39,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#2",
+      "poppedFrameId": "loadVirtualData#2",
+      "step": 237
+    },
+    {
+      "type": "AWAIT_SUSPEND",
+      "line": 39,
+      "detail": "core",
+      "frameId": "loadAndSummarize#2",
+      "taskId": "task5",
+      "step": 238
+    },
+    {
+      "type": "AWAIT_SUSPEND",
+      "line": 56,
+      "detail": "core",
+      "frameId": "main#1",
+      "taskId": "task4",
+      "step": 239
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "콜백",
+      "substituted": "콜백()",
+      "args": [],
+      "targetFrameId": "콜백#4",
+      "span": {
+        "startCol": 15,
+        "endCol": 5
+      },
+      "step": 240
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#4",
+      "name": "콜백",
+      "callNumber": 4,
+      "parentFrameId": "global",
+      "returnLine": 3,
+      "step": 241
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 4,
+      "detail": "core",
+      "frameId": "콜백#4",
+      "expression": "text === null",
+      "substituted": "'{망가진 JSON' === null",
+      "result": false,
+      "span": {
+        "startCol": 6,
+        "endCol": 7
+      },
+      "step": 242
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "콜백#4",
+      "label": "else",
+      "targetLine": 7,
+      "step": 243
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "콜백#4",
+      "span": {
+        "startCol": 8,
+        "endCol": 22
+      },
+      "step": 244
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 7,
+      "detail": "core",
+      "frameId": "콜백#4",
+      "taskId": "task5",
+      "state": "fulfilled",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'{망가진 JSON'"
+      },
+      "step": 245
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "콜백#4",
+      "object": {
+        "kind": "mapping",
+        "id": "Promise@9",
+        "label": "instance",
+        "className": "Promise",
+        "entries": [
+          {
+            "key": "상태",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "fulfilled"
+            }
+          },
+          {
+            "key": "값",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'{망가진 JSON'"
+            }
+          }
+        ]
+      },
+      "step": 246
+    },
+    {
+      "type": "TASK_COMPLETE",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "콜백#4",
+      "taskId": "task5",
+      "step": 247
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "콜백#4",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 3,
+      "step": 248
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "콜백#4",
+      "step": 249
+    },
+    {
+      "type": "AWAIT_RESUME",
+      "line": 39,
+      "detail": "core",
+      "frameId": "loadAndSummarize#2",
+      "taskId": "task5",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'{망가진 JSON'"
+      },
+      "step": 250
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 39,
+      "detail": "core",
+      "frameId": "loadAndSummarize#2",
+      "name": "jsonText",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'{망가진 JSON'"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 53
+      },
+      "step": 251
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 40,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#2",
+      "span": {
+        "startCol": 4,
+        "endCol": 38
+      },
+      "step": 252
+    },
+    {
+      "type": "ERROR_THROW",
+      "line": 40,
+      "detail": "core",
+      "frameId": "loadAndSummarize#2",
+      "name": "SyntaxError",
+      "message": "Expected property name or '}' in JSON at position 1 (line 1 column 2)",
+      "step": 253
+    },
+    {
+      "type": "ERROR_CATCH",
+      "line": 42,
+      "detail": "core",
+      "frameId": "loadAndSummarize#2",
+      "handlerLine": 42,
+      "step": 254
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 43,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#2",
+      "span": {
+        "startCol": 4,
+        "endCol": 80
+      },
+      "step": 255
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 43,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#2",
+      "object": {
+        "kind": "mapping",
+        "id": "SyntaxError@10",
+        "label": "instance",
+        "className": "SyntaxError",
+        "entries": []
+      },
+      "step": 256
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 43,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#2",
+      "target": "SyntaxError@10",
+      "key": "message",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'Expected property name or \\'}\\' in JSON at position 1 (line 1 column 2)'"
+      },
+      "step": 257
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 43,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#2",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@11",
+        "label": "object",
+        "entries": [
+          {
+            "key": "validCount",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "0"
+            }
+          },
+          {
+            "key": "passCount",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "0"
+            }
+          },
+          {
+            "key": "average",
+            "value": {
+              "kind": "primitive",
+              "type": "null",
+              "repr": "null"
+            }
+          },
+          {
+            "key": "error",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'Expected property name or \\'}\\' in JSON at position 1 (line 1 column 2)'"
+            }
+          }
+        ]
+      },
+      "step": 258
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 43,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#2",
+      "value": {
+        "kind": "ref",
+        "id": "Object@11"
+      },
+      "toLine": 56,
+      "step": 259
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 56,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "loadAndSummarize#2",
+      "step": 260
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 67,
+      "detail": "core",
+      "frameId": "global",
+      "taskId": "task4",
+      "state": "fulfilled",
+      "value": {
+        "kind": "ref",
+        "id": "Object@11"
+      },
+      "step": 261
+    },
+    {
+      "type": "TASK_COMPLETE",
+      "line": 67,
+      "detail": "expression",
+      "frameId": "global",
+      "taskId": "task4",
+      "step": 262
+    },
+    {
+      "type": "AWAIT_RESUME",
+      "line": 56,
+      "detail": "core",
+      "frameId": "main#1",
+      "taskId": "task4",
+      "value": {
+        "kind": "ref",
+        "id": "Object@11"
+      },
+      "step": 263
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 56,
+      "detail": "core",
+      "frameId": "main#1",
+      "name": "broken",
+      "value": {
+        "kind": "ref",
+        "id": "Object@11"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 57
+      },
+      "step": 264
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 57,
+      "detail": "expression",
+      "frameId": "main#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 82
+      },
+      "step": 265
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 57,
+      "detail": "expression",
+      "frameId": "main#1",
+      "target": "Object@11",
+      "key": "validCount",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "step": 266
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 57,
+      "detail": "expression",
+      "frameId": "main#1",
+      "target": "Object@11",
+      "key": "average",
+      "value": {
+        "kind": "primitive",
+        "type": "null",
+        "repr": "null"
+      },
+      "step": 267
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 57,
+      "detail": "expression",
+      "frameId": "main#1",
+      "target": "Object@11",
+      "key": "error",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'Expected property name or \\'}\\' in JSON at position 1 (line 1 column 2)'"
+      },
+      "step": 268
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 57,
+      "detail": "expression",
+      "frameId": "main#1",
+      "expression": "broken.error !== null",
+      "substituted": "'Expected property name or \\'}\\' in JSON at position 1 (line 1 column 2)' !== null",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 59,
+        "endCol": 80
+      },
+      "step": 269
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 57,
+      "detail": "core",
+      "frameId": "main#1",
+      "stream": "stdout",
+      "text": "파싱 실패: 0 null true",
+      "step": 270
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 59,
+      "detail": "expression",
+      "frameId": "main#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 48
+      },
+      "step": 271
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 59,
+      "detail": "core",
+      "frameId": "main#1",
+      "callee": "loadAndSummarize",
+      "substituted": "loadAndSummarize(10, null)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "10"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "null",
+            "repr": "null"
+          }
+        }
+      ],
+      "targetFrameId": "loadAndSummarize#3",
+      "span": {
+        "startCol": 21,
+        "endCol": 47
+      },
+      "step": 272
+    },
+    {
+      "type": "TASK_CREATE",
+      "line": 37,
+      "detail": "core",
+      "frameId": "main#1",
+      "taskId": "task6",
+      "label": "loadAndSummarize()",
+      "step": 273
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 37,
+      "detail": "expression",
+      "frameId": "main#1",
+      "taskId": "task6",
+      "state": "pending",
+      "step": 274
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 37,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#3",
+      "name": "loadAndSummarize",
+      "callNumber": 3,
+      "parentFrameId": "main#1",
+      "returnLine": 59,
+      "step": 275
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 37,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#3",
+      "name": "ms",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "step": 276
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 37,
+      "detail": "core",
+      "frameId": "loadAndSummarize#3",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "null",
+        "repr": "null"
+      },
+      "step": 277
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 39,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#3",
+      "span": {
+        "startCol": 4,
+        "endCol": 53
+      },
+      "step": 278
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 39,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#3",
+      "expression": "ms",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "span": {
+        "startCol": 43,
+        "endCol": 45
+      },
+      "step": 279
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 39,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#3",
+      "expression": "text",
+      "result": {
+        "kind": "primitive",
+        "type": "null",
+        "repr": "null"
+      },
+      "span": {
+        "startCol": 47,
+        "endCol": 51
+      },
+      "step": 280
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 39,
+      "detail": "core",
+      "frameId": "loadAndSummarize#3",
+      "callee": "loadVirtualData",
+      "substituted": "loadVirtualData(10, null)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "10"
+          },
+          "from": "loadAndSummarize#3.ms"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "null",
+            "repr": "null"
+          },
+          "from": "loadAndSummarize#3.text"
+        }
+      ],
+      "targetFrameId": "loadVirtualData#3",
+      "span": {
+        "startCol": 27,
+        "endCol": 52
+      },
+      "step": 281
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "loadVirtualData#3",
+      "name": "loadVirtualData",
+      "callNumber": 3,
+      "parentFrameId": "loadAndSummarize#3",
+      "returnLine": 39,
+      "step": 282
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "loadVirtualData#3",
+      "name": "ms",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "from": "loadAndSummarize#3.ms",
+      "step": 283
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "loadVirtualData#3",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "null",
+        "repr": "null"
+      },
+      "from": "loadAndSummarize#3.text",
+      "step": 284
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "loadVirtualData#3",
+      "span": {
+        "startCol": 2,
+        "endCol": 5
+      },
+      "step": 285
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 2,
+      "detail": "core",
+      "frameId": "loadVirtualData#3",
+      "callee": "콜백",
+      "substituted": "콜백(<fn:anonymous>, <fn:anonymous>)",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "fn:anonymous"
+          }
+        },
+        {
+          "value": {
+            "kind": "ref",
+            "id": "fn:anonymous"
+          }
+        }
+      ],
+      "targetFrameId": "콜백#5",
+      "span": {
+        "startCol": 21,
+        "endCol": 3
+      },
+      "step": 286
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "콜백#5",
+      "name": "콜백",
+      "callNumber": 5,
+      "parentFrameId": "loadVirtualData#3",
+      "returnLine": 2,
+      "step": 287
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "콜백#5",
+      "name": "resolve",
+      "value": {
+        "kind": "ref",
+        "id": "fn:anonymous"
+      },
+      "step": 288
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "콜백#5",
+      "name": "reject",
+      "value": {
+        "kind": "ref",
+        "id": "fn:anonymous"
+      },
+      "step": 289
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#5",
+      "span": {
+        "startCol": 4,
+        "endCol": 11
+      },
+      "step": 290
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#5",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 2,
+      "step": 291
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "loadVirtualData#3",
+      "poppedFrameId": "콜백#5",
+      "step": 292
+    },
+    {
+      "type": "TASK_CREATE",
+      "line": 2,
+      "detail": "core",
+      "frameId": "loadVirtualData#3",
+      "taskId": "task7",
+      "label": "new Promise",
+      "step": 293
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "loadVirtualData#3",
+      "taskId": "task7",
+      "state": "pending",
+      "step": 294
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "loadVirtualData#3",
+      "object": {
+        "kind": "mapping",
+        "id": "Promise@12",
+        "label": "instance",
+        "className": "Promise",
+        "entries": [
+          {
+            "key": "상태",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "pending"
+            }
+          }
+        ]
+      },
+      "step": 295
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "loadVirtualData#3",
+      "value": {
+        "kind": "ref",
+        "id": "Promise@12"
+      },
+      "toLine": 39,
+      "step": 296
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 39,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#3",
+      "poppedFrameId": "loadVirtualData#3",
+      "step": 297
+    },
+    {
+      "type": "AWAIT_SUSPEND",
+      "line": 39,
+      "detail": "core",
+      "frameId": "loadAndSummarize#3",
+      "taskId": "task7",
+      "step": 298
+    },
+    {
+      "type": "AWAIT_SUSPEND",
+      "line": 59,
+      "detail": "core",
+      "frameId": "main#1",
+      "taskId": "task6",
+      "step": 299
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "콜백",
+      "substituted": "콜백()",
+      "args": [],
+      "targetFrameId": "콜백#6",
+      "span": {
+        "startCol": 15,
+        "endCol": 5
+      },
+      "step": 300
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#6",
+      "name": "콜백",
+      "callNumber": 6,
+      "parentFrameId": "global",
+      "returnLine": 3,
+      "step": 301
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 4,
+      "detail": "core",
+      "frameId": "콜백#6",
+      "expression": "text === null",
+      "substituted": "null === null",
+      "result": true,
+      "span": {
+        "startCol": 6,
+        "endCol": 7
+      },
+      "step": 302
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "콜백#6",
+      "label": "if",
+      "targetLine": 5,
+      "step": 303
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "콜백#6",
+      "span": {
+        "startCol": 8,
+        "endCol": 44
+      },
+      "step": 304
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "콜백#6",
+      "object": {
+        "kind": "mapping",
+        "id": "Error@13",
+        "label": "instance",
+        "className": "Error",
+        "entries": []
+      },
+      "step": 305
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 5,
+      "detail": "core",
+      "frameId": "콜백#6",
+      "taskId": "task7",
+      "state": "rejected",
+      "value": {
+        "kind": "ref",
+        "id": "Error@13"
+      },
+      "step": 306
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "콜백#6",
+      "object": {
+        "kind": "mapping",
+        "id": "Promise@12",
+        "label": "instance",
+        "className": "Promise",
+        "entries": [
+          {
+            "key": "상태",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "rejected"
+            }
+          },
+          {
+            "key": "값",
+            "value": {
+              "kind": "ref",
+              "id": "Error@13"
+            }
+          }
+        ]
+      },
+      "step": 307
+    },
+    {
+      "type": "TASK_COMPLETE",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "콜백#6",
+      "taskId": "task7",
+      "step": 308
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "콜백#6",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 3,
+      "step": 309
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "콜백#6",
+      "step": 310
+    },
+    {
+      "type": "AWAIT_RESUME",
+      "line": 39,
+      "detail": "core",
+      "frameId": "loadAndSummarize#3",
+      "taskId": "task7",
+      "value": {
+        "kind": "ref",
+        "id": "Error@13"
+      },
+      "step": 311
+    },
+    {
+      "type": "ERROR_THROW",
+      "line": 39,
+      "detail": "core",
+      "frameId": "loadAndSummarize#3",
+      "name": "Error",
+      "message": "로더가 응답하지 않았습니다",
+      "step": 312
+    },
+    {
+      "type": "ERROR_CATCH",
+      "line": 42,
+      "detail": "core",
+      "frameId": "loadAndSummarize#3",
+      "handlerLine": 42,
+      "step": 313
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 43,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#3",
+      "span": {
+        "startCol": 4,
+        "endCol": 80
+      },
+      "step": 314
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 43,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#3",
+      "target": "Error@13",
+      "key": "message",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'로더가 응답하지 않았습니다'"
+      },
+      "step": 315
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 43,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#3",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@14",
+        "label": "object",
+        "entries": [
+          {
+            "key": "validCount",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "0"
+            }
+          },
+          {
+            "key": "passCount",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "0"
+            }
+          },
+          {
+            "key": "average",
+            "value": {
+              "kind": "primitive",
+              "type": "null",
+              "repr": "null"
+            }
+          },
+          {
+            "key": "error",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'로더가 응답하지 않았습니다'"
+            }
+          }
+        ]
+      },
+      "step": 316
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 43,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#3",
+      "value": {
+        "kind": "ref",
+        "id": "Object@14"
+      },
+      "toLine": 59,
+      "step": 317
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 59,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "loadAndSummarize#3",
+      "step": 318
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 67,
+      "detail": "core",
+      "frameId": "global",
+      "taskId": "task6",
+      "state": "fulfilled",
+      "value": {
+        "kind": "ref",
+        "id": "Object@14"
+      },
+      "step": 319
+    },
+    {
+      "type": "TASK_COMPLETE",
+      "line": 67,
+      "detail": "expression",
+      "frameId": "global",
+      "taskId": "task6",
+      "step": 320
+    },
+    {
+      "type": "AWAIT_RESUME",
+      "line": 59,
+      "detail": "core",
+      "frameId": "main#1",
+      "taskId": "task6",
+      "value": {
+        "kind": "ref",
+        "id": "Object@14"
+      },
+      "step": 321
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 59,
+      "detail": "core",
+      "frameId": "main#1",
+      "name": "down",
+      "value": {
+        "kind": "ref",
+        "id": "Object@14"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 48
+      },
+      "step": 322
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 60,
+      "detail": "expression",
+      "frameId": "main#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 53
+      },
+      "step": 323
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 60,
+      "detail": "expression",
+      "frameId": "main#1",
+      "target": "Object@14",
+      "key": "validCount",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "step": 324
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 60,
+      "detail": "expression",
+      "frameId": "main#1",
+      "target": "Object@14",
+      "key": "error",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'로더가 응답하지 않았습니다'"
+      },
+      "step": 325
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 60,
+      "detail": "core",
+      "frameId": "main#1",
+      "stream": "stdout",
+      "text": "로더 실패: 0 로더가 응답하지 않았습니다",
+      "step": 326
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 62,
+      "detail": "expression",
+      "frameId": "main#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 49
+      },
+      "step": 327
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 62,
+      "detail": "core",
+      "frameId": "main#1",
+      "callee": "loadAndSummarize",
+      "substituted": "loadAndSummarize(10, '[]')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "10"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'[]'"
+          }
+        }
+      ],
+      "targetFrameId": "loadAndSummarize#4",
+      "span": {
+        "startCol": 22,
+        "endCol": 48
+      },
+      "step": 328
+    },
+    {
+      "type": "TASK_CREATE",
+      "line": 37,
+      "detail": "core",
+      "frameId": "main#1",
+      "taskId": "task8",
+      "label": "loadAndSummarize()",
+      "step": 329
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 37,
+      "detail": "expression",
+      "frameId": "main#1",
+      "taskId": "task8",
+      "state": "pending",
+      "step": 330
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 37,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#4",
+      "name": "loadAndSummarize",
+      "callNumber": 4,
+      "parentFrameId": "main#1",
+      "returnLine": 62,
+      "step": 331
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 37,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#4",
+      "name": "ms",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "step": 332
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 37,
+      "detail": "core",
+      "frameId": "loadAndSummarize#4",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'[]'"
+      },
+      "step": 333
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 39,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#4",
+      "span": {
+        "startCol": 4,
+        "endCol": 53
+      },
+      "step": 334
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 39,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#4",
+      "expression": "ms",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "span": {
+        "startCol": 43,
+        "endCol": 45
+      },
+      "step": 335
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 39,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#4",
+      "expression": "text",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'[]'"
+      },
+      "span": {
+        "startCol": 47,
+        "endCol": 51
+      },
+      "step": 336
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 39,
+      "detail": "core",
+      "frameId": "loadAndSummarize#4",
+      "callee": "loadVirtualData",
+      "substituted": "loadVirtualData(10, '[]')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "10"
+          },
+          "from": "loadAndSummarize#4.ms"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'[]'"
+          },
+          "from": "loadAndSummarize#4.text"
+        }
+      ],
+      "targetFrameId": "loadVirtualData#4",
+      "span": {
+        "startCol": 27,
+        "endCol": 52
+      },
+      "step": 337
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "loadVirtualData#4",
+      "name": "loadVirtualData",
+      "callNumber": 4,
+      "parentFrameId": "loadAndSummarize#4",
+      "returnLine": 39,
+      "step": 338
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "loadVirtualData#4",
+      "name": "ms",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "from": "loadAndSummarize#4.ms",
+      "step": 339
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "loadVirtualData#4",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'[]'"
+      },
+      "from": "loadAndSummarize#4.text",
+      "step": 340
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "loadVirtualData#4",
+      "span": {
+        "startCol": 2,
+        "endCol": 5
+      },
+      "step": 341
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 2,
+      "detail": "core",
+      "frameId": "loadVirtualData#4",
+      "callee": "콜백",
+      "substituted": "콜백(<fn:anonymous>, <fn:anonymous>)",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "fn:anonymous"
+          }
+        },
+        {
+          "value": {
+            "kind": "ref",
+            "id": "fn:anonymous"
+          }
+        }
+      ],
+      "targetFrameId": "콜백#7",
+      "span": {
+        "startCol": 21,
+        "endCol": 3
+      },
+      "step": 342
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "콜백#7",
+      "name": "콜백",
+      "callNumber": 7,
+      "parentFrameId": "loadVirtualData#4",
+      "returnLine": 2,
+      "step": 343
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "콜백#7",
+      "name": "resolve",
+      "value": {
+        "kind": "ref",
+        "id": "fn:anonymous"
+      },
+      "step": 344
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "콜백#7",
+      "name": "reject",
+      "value": {
+        "kind": "ref",
+        "id": "fn:anonymous"
+      },
+      "step": 345
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#7",
+      "span": {
+        "startCol": 4,
+        "endCol": 11
+      },
+      "step": 346
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#7",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 2,
+      "step": 347
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "loadVirtualData#4",
+      "poppedFrameId": "콜백#7",
+      "step": 348
+    },
+    {
+      "type": "TASK_CREATE",
+      "line": 2,
+      "detail": "core",
+      "frameId": "loadVirtualData#4",
+      "taskId": "task9",
+      "label": "new Promise",
+      "step": 349
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "loadVirtualData#4",
+      "taskId": "task9",
+      "state": "pending",
+      "step": 350
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "loadVirtualData#4",
+      "object": {
+        "kind": "mapping",
+        "id": "Promise@15",
+        "label": "instance",
+        "className": "Promise",
+        "entries": [
+          {
+            "key": "상태",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "pending"
+            }
+          }
+        ]
+      },
+      "step": 351
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "loadVirtualData#4",
+      "value": {
+        "kind": "ref",
+        "id": "Promise@15"
+      },
+      "toLine": 39,
+      "step": 352
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 39,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#4",
+      "poppedFrameId": "loadVirtualData#4",
+      "step": 353
+    },
+    {
+      "type": "AWAIT_SUSPEND",
+      "line": 39,
+      "detail": "core",
+      "frameId": "loadAndSummarize#4",
+      "taskId": "task9",
+      "step": 354
+    },
+    {
+      "type": "AWAIT_SUSPEND",
+      "line": 62,
+      "detail": "core",
+      "frameId": "main#1",
+      "taskId": "task8",
+      "step": 355
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "콜백",
+      "substituted": "콜백()",
+      "args": [],
+      "targetFrameId": "콜백#8",
+      "span": {
+        "startCol": 15,
+        "endCol": 5
+      },
+      "step": 356
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#8",
+      "name": "콜백",
+      "callNumber": 8,
+      "parentFrameId": "global",
+      "returnLine": 3,
+      "step": 357
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 4,
+      "detail": "core",
+      "frameId": "콜백#8",
+      "expression": "text === null",
+      "substituted": "'[]' === null",
+      "result": false,
+      "span": {
+        "startCol": 6,
+        "endCol": 7
+      },
+      "step": 358
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "콜백#8",
+      "label": "else",
+      "targetLine": 7,
+      "step": 359
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "콜백#8",
+      "span": {
+        "startCol": 8,
+        "endCol": 22
+      },
+      "step": 360
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 7,
+      "detail": "core",
+      "frameId": "콜백#8",
+      "taskId": "task9",
+      "state": "fulfilled",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'[]'"
+      },
+      "step": 361
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "콜백#8",
+      "object": {
+        "kind": "mapping",
+        "id": "Promise@15",
+        "label": "instance",
+        "className": "Promise",
+        "entries": [
+          {
+            "key": "상태",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "fulfilled"
+            }
+          },
+          {
+            "key": "값",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'[]'"
+            }
+          }
+        ]
+      },
+      "step": 362
+    },
+    {
+      "type": "TASK_COMPLETE",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "콜백#8",
+      "taskId": "task9",
+      "step": 363
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "콜백#8",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 3,
+      "step": 364
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "콜백#8",
+      "step": 365
+    },
+    {
+      "type": "AWAIT_RESUME",
+      "line": 39,
+      "detail": "core",
+      "frameId": "loadAndSummarize#4",
+      "taskId": "task9",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'[]'"
+      },
+      "step": 366
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 39,
+      "detail": "core",
+      "frameId": "loadAndSummarize#4",
+      "name": "jsonText",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'[]'"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 53
+      },
+      "step": 367
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 40,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#4",
+      "span": {
+        "startCol": 4,
+        "endCol": 38
+      },
+      "step": 368
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 40,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#4",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@16",
+        "label": "array",
+        "items": []
+      },
+      "step": 369
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 40,
+      "detail": "core",
+      "frameId": "loadAndSummarize#4",
+      "name": "rows",
+      "value": {
+        "kind": "ref",
+        "id": "Array@16"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 38
+      },
+      "step": 370
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 41,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#4",
+      "span": {
+        "startCol": 4,
+        "endCol": 27
+      },
+      "step": 371
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 41,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#4",
+      "expression": "rows",
+      "result": {
+        "kind": "ref",
+        "id": "Array@16"
+      },
+      "span": {
+        "startCol": 21,
+        "endCol": 25
+      },
+      "step": 372
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 41,
+      "detail": "core",
+      "frameId": "loadAndSummarize#4",
+      "callee": "summarize",
+      "substituted": "summarize([])",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "Array@16"
+          },
+          "from": "loadAndSummarize#4.rows"
+        }
+      ],
+      "targetFrameId": "summarize#2",
+      "span": {
+        "startCol": 11,
+        "endCol": 26
+      },
+      "step": 373
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 21,
+      "detail": "expression",
+      "frameId": "summarize#2",
+      "name": "summarize",
+      "callNumber": 2,
+      "parentFrameId": "loadAndSummarize#4",
+      "returnLine": 41,
+      "step": 374
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 21,
+      "detail": "expression",
+      "frameId": "summarize#2",
+      "name": "rows",
+      "value": {
+        "kind": "ref",
+        "id": "Array@16"
+      },
+      "from": "loadAndSummarize#4.rows",
+      "step": 375
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 21,
+      "detail": "expression",
+      "frameId": "summarize#2",
+      "name": "lower",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "90"
+      },
+      "step": 376
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 21,
+      "detail": "core",
+      "frameId": "summarize#2",
+      "name": "upper",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "100"
+      },
+      "step": 377
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 22,
+      "detail": "expression",
+      "frameId": "summarize#2",
+      "span": {
+        "startCol": 2,
+        "endCol": 39
+      },
+      "step": 378
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 22,
+      "detail": "expression",
+      "frameId": "summarize#2",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@17",
+        "label": "array",
+        "items": []
+      },
+      "step": 379
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 22,
+      "detail": "core",
+      "frameId": "summarize#2",
+      "name": "values",
+      "value": {
+        "kind": "ref",
+        "id": "Array@17"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 39
+      },
+      "step": 380
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 26,
+      "detail": "expression",
+      "frameId": "summarize#2",
+      "span": {
+        "startCol": 2,
+        "endCol": 76
+      },
+      "step": 381
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 26,
+      "detail": "expression",
+      "frameId": "summarize#2",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@18",
+        "label": "array",
+        "items": []
+      },
+      "step": 382
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 26,
+      "detail": "core",
+      "frameId": "summarize#2",
+      "name": "passed",
+      "value": {
+        "kind": "ref",
+        "id": "Array@18"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 76
+      },
+      "step": 383
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 27,
+      "detail": "expression",
+      "frameId": "summarize#2",
+      "span": {
+        "startCol": 2,
+        "endCol": 62
+      },
+      "step": 384
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 27,
+      "detail": "core",
+      "frameId": "summarize#2",
+      "name": "total",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 62
+      },
+      "step": 385
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 29,
+      "detail": "expression",
+      "frameId": "summarize#2",
+      "span": {
+        "startCol": 2,
+        "endCol": 4
+      },
+      "step": 386
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 32,
+      "detail": "expression",
+      "frameId": "summarize#2",
+      "expression": "values.length > 0",
+      "substituted": "0 > 0",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 13,
+        "endCol": 30
+      },
+      "step": 387
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 29,
+      "detail": "expression",
+      "frameId": "summarize#2",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@19",
+        "label": "object",
+        "entries": [
+          {
+            "key": "validCount",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "0"
+            }
+          },
+          {
+            "key": "passCount",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "0"
+            }
+          },
+          {
+            "key": "average",
+            "value": {
+              "kind": "primitive",
+              "type": "null",
+              "repr": "null"
+            }
+          },
+          {
+            "key": "error",
+            "value": {
+              "kind": "primitive",
+              "type": "null",
+              "repr": "null"
+            }
+          }
+        ]
+      },
+      "step": 388
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 29,
+      "detail": "expression",
+      "frameId": "summarize#2",
+      "value": {
+        "kind": "ref",
+        "id": "Object@19"
+      },
+      "toLine": 41,
+      "step": 389
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 41,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#4",
+      "poppedFrameId": "summarize#2",
+      "step": 390
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 41,
+      "detail": "expression",
+      "frameId": "loadAndSummarize#4",
+      "value": {
+        "kind": "ref",
+        "id": "Object@19"
+      },
+      "toLine": 62,
+      "step": 391
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 62,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "loadAndSummarize#4",
+      "step": 392
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 67,
+      "detail": "core",
+      "frameId": "global",
+      "taskId": "task8",
+      "state": "fulfilled",
+      "value": {
+        "kind": "ref",
+        "id": "Object@19"
+      },
+      "step": 393
+    },
+    {
+      "type": "TASK_COMPLETE",
+      "line": 67,
+      "detail": "expression",
+      "frameId": "global",
+      "taskId": "task8",
+      "step": 394
+    },
+    {
+      "type": "AWAIT_RESUME",
+      "line": 62,
+      "detail": "core",
+      "frameId": "main#1",
+      "taskId": "task8",
+      "value": {
+        "kind": "ref",
+        "id": "Object@19"
+      },
+      "step": 395
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 62,
+      "detail": "core",
+      "frameId": "main#1",
+      "name": "empty",
+      "value": {
+        "kind": "ref",
+        "id": "Object@19"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 49
+      },
+      "step": 396
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 63,
+      "detail": "expression",
+      "frameId": "main#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 56
+      },
+      "step": 397
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 63,
+      "detail": "expression",
+      "frameId": "main#1",
+      "target": "Object@19",
+      "key": "validCount",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "step": 398
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 63,
+      "detail": "expression",
+      "frameId": "main#1",
+      "target": "Object@19",
+      "key": "average",
+      "value": {
+        "kind": "primitive",
+        "type": "null",
+        "repr": "null"
+      },
+      "step": 399
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 63,
+      "detail": "core",
+      "frameId": "main#1",
+      "stream": "stdout",
+      "text": "빈 입력: 0 null",
+      "step": 400
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 63,
+      "detail": "expression",
+      "frameId": "main#1",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 66,
+      "step": 401
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 66,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "main#1",
+      "step": 402
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 67,
+      "detail": "core",
+      "frameId": "global",
+      "taskId": "task1",
+      "state": "fulfilled",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "step": 403
+    },
+    {
+      "type": "TASK_COMPLETE",
+      "line": 67,
+      "detail": "expression",
+      "frameId": "global",
+      "taskId": "task1",
+      "step": 404
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 67,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 405
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "동기 부분 끝\n정상: 2 1 97.75 null\n파싱 실패: 0 null true\n로더 실패: 0 로더가 응답하지 않았습니다\n빈 입력: 0 null\n"
+  }
+}

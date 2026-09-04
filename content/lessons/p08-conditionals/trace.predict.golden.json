@@ -1,0 +1,142 @@
+{
+  "version": 1,
+  "lessonId": "p08-conditionals",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "value = 10.5",
+      "",
+      "if value >= 9.5:",
+      "    result = \"A\"",
+      "elif value >= 10.0:",
+      "    result = \"B\"",
+      "else:",
+      "    result = \"C\"",
+      "",
+      "print(result)"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 12
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.5"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 12
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 3,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "value >= 9.5",
+      "substituted": "10.5 >= 9.5",
+      "result": true,
+      "span": {
+        "startCol": 0,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 4,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 4
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 5,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 6,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "name": "result",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'A'"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 7,
+      "line": 10,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 13
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 8,
+      "line": 10,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "A"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 9,
+      "line": 10,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "A\n"
+  }
+}

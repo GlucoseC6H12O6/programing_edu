@@ -1,0 +1,613 @@
+{
+  "version": 1,
+  "lessonId": "p16-enumerate-zip",
+  "source": {
+    "path": "work.py",
+    "language": "python",
+    "lines": [
+      "values = [10.1, \"N/A\", 10.8]",
+      "review_indices = []",
+      "",
+      "for index, value in enumerate(values):",
+      "    if value == \"N/A\" or value > 10.5:",
+      "        review_indices.append(index)",
+      "",
+      "print(review_indices)  # [1, 2]"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.1"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'N/A'"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.8"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 3,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "values",
+      "value": {
+        "kind": "ref",
+        "id": "list@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 5,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@2",
+        "label": "list",
+        "items": []
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 6,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "name": "review_indices",
+      "value": {
+        "kind": "ref",
+        "id": "list@2"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "LOOP_START",
+      "step": 7,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:index-value@4",
+      "varNames": [
+        "index",
+        "value"
+      ],
+      "track": [],
+      "span": {
+        "startCol": 0,
+        "endCol": 36
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 8,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "index",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 9,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.1"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 10,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:index-value@4",
+      "index": 0
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 11,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value == \"N/A\"",
+      "substituted": "10.1 == 'N/A'",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 7,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 12,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value > 10.5",
+      "substituted": "10.1 > 10.5",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 25,
+        "endCol": 37
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 13,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value == \"N/A\" or value > 10.5",
+      "substituted": "value == \"N/A\" or value > 10.5",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 14,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "value == \"N/A\" or value > 10.5",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 36
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 15,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "index",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 16,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'N/A'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 17,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:index-value@4",
+      "index": 1
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 18,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value == \"N/A\"",
+      "substituted": "'N/A' == 'N/A'",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      },
+      "span": {
+        "startCol": 7,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 19,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value == \"N/A\" or value > 10.5",
+      "substituted": "value == \"N/A\"",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      },
+      "message": "5번 줄의 `value == \"N/A\" or value > 10.5`에서 앞쪽 결과만으로 값이 정해져 `value > 10.5`은 계산하지 않았습니다."
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 20,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "value == \"N/A\" or value > 10.5",
+      "result": true,
+      "span": {
+        "startCol": 4,
+        "endCol": 36
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 21,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 6
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 22,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 36
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 23,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "target": "list@2",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 24,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@2",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 25,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "index",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 26,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'N/A'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.8"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "enumerate"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 27,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:index-value@4",
+      "index": 2
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 28,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value == \"N/A\"",
+      "substituted": "10.8 == 'N/A'",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "False"
+      },
+      "span": {
+        "startCol": 7,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 29,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value > 10.5",
+      "substituted": "10.8 > 10.5",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      },
+      "span": {
+        "startCol": 25,
+        "endCol": 37
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 30,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value == \"N/A\" or value > 10.5",
+      "substituted": "value == \"N/A\" or value > 10.5",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 31,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "value == \"N/A\" or value > 10.5",
+      "result": true,
+      "span": {
+        "startCol": 4,
+        "endCol": 36
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 32,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 6
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 33,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 36
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 34,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "target": "list@2",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 35,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@2",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          }
+        ]
+      }
+    },
+    {
+      "type": "LOOP_END",
+      "step": 36,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:index-value@4",
+      "reason": "exhausted"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 37,
+      "line": 8,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 38,
+      "line": 8,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "[1, 2]"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 39,
+      "line": 8,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "[1, 2]\n"
+  }
+}

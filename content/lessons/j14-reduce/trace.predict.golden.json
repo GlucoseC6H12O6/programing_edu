@@ -1,0 +1,1229 @@
+{
+  "version": 1,
+  "lessonId": "j14-reduce",
+  "source": {
+    "path": "predict.js",
+    "language": "javascript",
+    "lines": [
+      "const values = [1, 2, 3];",
+      "const total = values.reduce((sum, value) => sum + value, 10);",
+      "console.log(total);",
+      "",
+      "const statuses = [\"PASS\", \"FAIL\", \"PASS\"];",
+      "const counts = statuses.reduce((acc, status) => {",
+      "  acc[status] = (acc[status] ?? 0) + 1;",
+      "  return acc;",
+      "}, {});",
+      "console.log(counts);",
+      "",
+      "const empty = [].reduce((sum, value) => sum + value, 0);",
+      "console.log(empty);",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 25
+      },
+      "step": 1
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@1",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          },
+          {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "3"
+          }
+        ]
+      },
+      "step": 2
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "values",
+      "value": {
+        "kind": "ref",
+        "id": "Array@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 25
+      },
+      "step": 3
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 61
+      },
+      "step": 4
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 2,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "reduce 콜백",
+      "substituted": "reduce 콜백(10, 1)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "10"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          }
+        }
+      ],
+      "targetFrameId": "reduce 콜백#1",
+      "span": {
+        "startCol": 28,
+        "endCol": 55
+      },
+      "step": 5
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "reduce 콜백#1",
+      "name": "reduce 콜백",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 2,
+      "step": 6
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "reduce 콜백#1",
+      "name": "sum",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "step": 7
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "reduce 콜백#1",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "step": 8
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "core",
+      "frameId": "reduce 콜백#1",
+      "expression": "sum + value",
+      "substituted": "10 + 1",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "11"
+      },
+      "span": {
+        "startCol": 44,
+        "endCol": 55
+      },
+      "step": 9
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "reduce 콜백#1",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "11"
+      },
+      "toLine": 2,
+      "step": 10
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "reduce 콜백#1",
+      "step": 11
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 2,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "reduce 콜백",
+      "substituted": "reduce 콜백(11, 2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "11"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          }
+        }
+      ],
+      "targetFrameId": "reduce 콜백#2",
+      "span": {
+        "startCol": 28,
+        "endCol": 55
+      },
+      "step": 12
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "reduce 콜백#2",
+      "name": "reduce 콜백",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 2,
+      "step": 13
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "reduce 콜백#2",
+      "name": "sum",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "11"
+      },
+      "step": 14
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "reduce 콜백#2",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "step": 15
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "core",
+      "frameId": "reduce 콜백#2",
+      "expression": "sum + value",
+      "substituted": "11 + 2",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "13"
+      },
+      "span": {
+        "startCol": 44,
+        "endCol": 55
+      },
+      "step": 16
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "reduce 콜백#2",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "13"
+      },
+      "toLine": 2,
+      "step": 17
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "reduce 콜백#2",
+      "step": 18
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 2,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "reduce 콜백",
+      "substituted": "reduce 콜백(13, 3)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "13"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "3"
+          }
+        }
+      ],
+      "targetFrameId": "reduce 콜백#3",
+      "span": {
+        "startCol": 28,
+        "endCol": 55
+      },
+      "step": 19
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "reduce 콜백#3",
+      "name": "reduce 콜백",
+      "callNumber": 3,
+      "parentFrameId": "global",
+      "returnLine": 2,
+      "step": 20
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "reduce 콜백#3",
+      "name": "sum",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "13"
+      },
+      "step": 21
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "reduce 콜백#3",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "step": 22
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "core",
+      "frameId": "reduce 콜백#3",
+      "expression": "sum + value",
+      "substituted": "13 + 3",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "16"
+      },
+      "span": {
+        "startCol": 44,
+        "endCol": 55
+      },
+      "step": 23
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "reduce 콜백#3",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "16"
+      },
+      "toLine": 2,
+      "step": 24
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "reduce 콜백#3",
+      "step": 25
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 2,
+      "detail": "core",
+      "frameId": "global",
+      "name": "total",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "16"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 61
+      },
+      "step": 26
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 19
+      },
+      "step": 27
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "16",
+      "step": 28
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 42
+      },
+      "step": 29
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@2",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'PASS'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'FAIL'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'PASS'"
+          }
+        ]
+      },
+      "step": 30
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "name": "statuses",
+      "value": {
+        "kind": "ref",
+        "id": "Array@2"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 42
+      },
+      "step": 31
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 7
+      },
+      "step": 32
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@3",
+        "label": "object",
+        "entries": []
+      },
+      "step": 33
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "reduce 콜백",
+      "substituted": "reduce 콜백({}, 'PASS')",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "Object@3"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'PASS'"
+          }
+        }
+      ],
+      "targetFrameId": "reduce 콜백#4",
+      "span": {
+        "startCol": 31,
+        "endCol": 1
+      },
+      "step": 34
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "reduce 콜백#4",
+      "name": "reduce 콜백",
+      "callNumber": 4,
+      "parentFrameId": "global",
+      "returnLine": 6,
+      "step": 35
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "reduce 콜백#4",
+      "name": "acc",
+      "value": {
+        "kind": "ref",
+        "id": "Object@3"
+      },
+      "step": 36
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 6,
+      "detail": "core",
+      "frameId": "reduce 콜백#4",
+      "name": "status",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'PASS'"
+      },
+      "step": 37
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "reduce 콜백#4",
+      "span": {
+        "startCol": 2,
+        "endCol": 39
+      },
+      "step": 38
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "reduce 콜백#4",
+      "target": "Object@3",
+      "key": "PASS",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "step": 39
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "reduce 콜백#4",
+      "expression": "acc[status] ?? 0",
+      "substituted": "acc[status] ?? 0",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "step": 40
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "reduce 콜백#4",
+      "expression": "(acc[status] ?? 0) + 1",
+      "substituted": "0 + 1",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "span": {
+        "startCol": 16,
+        "endCol": 38
+      },
+      "step": 41
+    },
+    {
+      "type": "ITEM_WRITE",
+      "line": 7,
+      "detail": "core",
+      "frameId": "reduce 콜백#4",
+      "target": "Object@3",
+      "key": "PASS",
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "step": 42
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "reduce 콜백#4",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@3",
+        "label": "object",
+        "entries": [
+          {
+            "key": "PASS",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "1"
+            }
+          }
+        ]
+      },
+      "step": 43
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "reduce 콜백#4",
+      "span": {
+        "startCol": 2,
+        "endCol": 13
+      },
+      "step": 44
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "reduce 콜백#4",
+      "value": {
+        "kind": "ref",
+        "id": "Object@3"
+      },
+      "toLine": 6,
+      "step": 45
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "reduce 콜백#4",
+      "step": 46
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "reduce 콜백",
+      "substituted": "reduce 콜백({PASS: 1}, 'FAIL')",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "Object@3"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'FAIL'"
+          }
+        }
+      ],
+      "targetFrameId": "reduce 콜백#5",
+      "span": {
+        "startCol": 31,
+        "endCol": 1
+      },
+      "step": 47
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "reduce 콜백#5",
+      "name": "reduce 콜백",
+      "callNumber": 5,
+      "parentFrameId": "global",
+      "returnLine": 6,
+      "step": 48
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "reduce 콜백#5",
+      "name": "acc",
+      "value": {
+        "kind": "ref",
+        "id": "Object@3"
+      },
+      "step": 49
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 6,
+      "detail": "core",
+      "frameId": "reduce 콜백#5",
+      "name": "status",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'FAIL'"
+      },
+      "step": 50
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "reduce 콜백#5",
+      "span": {
+        "startCol": 2,
+        "endCol": 39
+      },
+      "step": 51
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "reduce 콜백#5",
+      "target": "Object@3",
+      "key": "FAIL",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "step": 52
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "reduce 콜백#5",
+      "expression": "acc[status] ?? 0",
+      "substituted": "acc[status] ?? 0",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "step": 53
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "reduce 콜백#5",
+      "expression": "(acc[status] ?? 0) + 1",
+      "substituted": "0 + 1",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "span": {
+        "startCol": 16,
+        "endCol": 38
+      },
+      "step": 54
+    },
+    {
+      "type": "ITEM_WRITE",
+      "line": 7,
+      "detail": "core",
+      "frameId": "reduce 콜백#5",
+      "target": "Object@3",
+      "key": "FAIL",
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "step": 55
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "reduce 콜백#5",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@3",
+        "label": "object",
+        "entries": [
+          {
+            "key": "PASS",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "1"
+            }
+          },
+          {
+            "key": "FAIL",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "1"
+            }
+          }
+        ]
+      },
+      "step": 56
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "reduce 콜백#5",
+      "span": {
+        "startCol": 2,
+        "endCol": 13
+      },
+      "step": 57
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "reduce 콜백#5",
+      "value": {
+        "kind": "ref",
+        "id": "Object@3"
+      },
+      "toLine": 6,
+      "step": 58
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "reduce 콜백#5",
+      "step": 59
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "reduce 콜백",
+      "substituted": "reduce 콜백({PASS: 1, FAIL: 1}, 'PASS')",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "Object@3"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'PASS'"
+          }
+        }
+      ],
+      "targetFrameId": "reduce 콜백#6",
+      "span": {
+        "startCol": 31,
+        "endCol": 1
+      },
+      "step": 60
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "reduce 콜백#6",
+      "name": "reduce 콜백",
+      "callNumber": 6,
+      "parentFrameId": "global",
+      "returnLine": 6,
+      "step": 61
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "reduce 콜백#6",
+      "name": "acc",
+      "value": {
+        "kind": "ref",
+        "id": "Object@3"
+      },
+      "step": 62
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 6,
+      "detail": "core",
+      "frameId": "reduce 콜백#6",
+      "name": "status",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'PASS'"
+      },
+      "step": 63
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "reduce 콜백#6",
+      "span": {
+        "startCol": 2,
+        "endCol": 39
+      },
+      "step": 64
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "reduce 콜백#6",
+      "target": "Object@3",
+      "key": "PASS",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "step": 65
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "reduce 콜백#6",
+      "expression": "acc[status] ?? 0",
+      "substituted": "acc[status]",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "step": 66,
+      "message": "7번 줄의 `acc[status] ?? 0`에서 앞쪽 결과만으로 값이 정해져 `0`은 계산하지 않았습니다."
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "reduce 콜백#6",
+      "expression": "(acc[status] ?? 0) + 1",
+      "substituted": "1 + 1",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "span": {
+        "startCol": 16,
+        "endCol": 38
+      },
+      "step": 67
+    },
+    {
+      "type": "ITEM_WRITE",
+      "line": 7,
+      "detail": "core",
+      "frameId": "reduce 콜백#6",
+      "target": "Object@3",
+      "key": "PASS",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "step": 68
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "reduce 콜백#6",
+      "object": {
+        "kind": "mapping",
+        "id": "Object@3",
+        "label": "object",
+        "entries": [
+          {
+            "key": "PASS",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "2"
+            }
+          },
+          {
+            "key": "FAIL",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "1"
+            }
+          }
+        ]
+      },
+      "step": 69
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "reduce 콜백#6",
+      "span": {
+        "startCol": 2,
+        "endCol": 13
+      },
+      "step": 70
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "reduce 콜백#6",
+      "value": {
+        "kind": "ref",
+        "id": "Object@3"
+      },
+      "toLine": 6,
+      "step": 71
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "reduce 콜백#6",
+      "step": 72
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "name": "counts",
+      "value": {
+        "kind": "ref",
+        "id": "Object@3"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 7
+      },
+      "step": 73
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 20
+      },
+      "step": 74
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 10,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "{ PASS: 2, FAIL: 1 }",
+      "step": 75
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 56
+      },
+      "step": 76
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 12,
+      "detail": "core",
+      "frameId": "global",
+      "name": "empty",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 56
+      },
+      "step": 77
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 13,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 19
+      },
+      "step": 78
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 13,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "0",
+      "step": 79
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 13,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 80
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "16\n{ PASS: 2, FAIL: 1 }\n0\n"
+  }
+}

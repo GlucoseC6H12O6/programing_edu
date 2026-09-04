@@ -1,0 +1,726 @@
+{
+  "version": 1,
+  "lessonId": "p11-nested-loops",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "count = 0",
+      "",
+      "for row in range(1, 3):",
+      "    for column in range(2, 5):",
+      "        count += 1",
+      "        print(row, column, count)"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 9
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "count",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 9
+      }
+    },
+    {
+      "type": "LOOP_START",
+      "step": 3,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:row@3",
+      "varNames": [
+        "row"
+      ],
+      "track": [
+        "1",
+        "2"
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 33
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 4,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "row",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "range"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 5,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:row@3",
+      "index": 0
+    },
+    {
+      "type": "LOOP_START",
+      "step": 6,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:column@4",
+      "varNames": [
+        "column"
+      ],
+      "track": [
+        "2",
+        "3",
+        "4"
+      ],
+      "parentLoopId": "loop:row@3",
+      "span": {
+        "startCol": 4,
+        "endCol": 33
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 7,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "column",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "range"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 8,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:column@4",
+      "index": 0
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 9,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 10,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "name": "count",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 11,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 33
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 12,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "1 2 1"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 13,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "column",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "range"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 14,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:column@4",
+      "index": 1
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 15,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 16,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "name": "count",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 17,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 33
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 18,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "1 3 2"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 19,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "column",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "range"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 20,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:column@4",
+      "index": 2
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 21,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 22,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "name": "count",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 23,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 33
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 24,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "1 4 3"
+    },
+    {
+      "type": "LOOP_END",
+      "step": 25,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:column@4",
+      "reason": "exhausted"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 26,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "row",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "range"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 27,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:row@3",
+      "index": 1
+    },
+    {
+      "type": "LOOP_START",
+      "step": 28,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:column@4",
+      "varNames": [
+        "column"
+      ],
+      "track": [
+        "2",
+        "3",
+        "4"
+      ],
+      "parentLoopId": "loop:row@3",
+      "span": {
+        "startCol": 4,
+        "endCol": 33
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 29,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "column",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "range"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 30,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:column@4",
+      "index": 0
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 31,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 32,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "name": "count",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 33,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 33
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 34,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "2 2 4"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 35,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "column",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "range"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 36,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:column@4",
+      "index": 1
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 37,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 38,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "name": "count",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "5"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 39,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 33
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 40,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "2 3 5"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 41,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "column",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "range"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 42,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:column@4",
+      "index": 2
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 43,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 44,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "name": "count",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "5"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "6"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 45,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 33
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 46,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "2 4 6"
+    },
+    {
+      "type": "LOOP_END",
+      "step": 47,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:column@4",
+      "reason": "exhausted"
+    },
+    {
+      "type": "LOOP_END",
+      "step": 48,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:row@3",
+      "reason": "exhausted"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 49,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "1 2 1\n1 3 2\n1 4 3\n2 2 4\n2 3 5\n2 4 6\n"
+  }
+}

@@ -1,0 +1,633 @@
+{
+  "version": 1,
+  "lessonId": "j10-arrow",
+  "source": {
+    "path": "predict.js",
+    "language": "javascript",
+    "lines": [
+      "const a = (x) => x * 2;",
+      "const b = (x) => { x * 2; };",
+      "const c = (x) => { return x * 2; };",
+      "",
+      "console.log(a(3), b(3), c(3));",
+      "console.log(typeof a, typeof a(3));",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 23
+      },
+      "step": 1
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "function",
+        "id": "fn:anonymous",
+        "name": "a",
+        "params": [
+          {
+            "name": "x"
+          }
+        ],
+        "defLine": 1
+      },
+      "step": 2
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "a",
+      "heapId": "fn:anonymous",
+      "params": [
+        {
+          "name": "x"
+        }
+      ],
+      "span": {
+        "startCol": 10,
+        "endCol": 22
+      },
+      "step": 3
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 28
+      },
+      "step": 4
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "function",
+        "id": "fn:anonymous",
+        "name": "b",
+        "params": [
+          {
+            "name": "x"
+          }
+        ],
+        "defLine": 2
+      },
+      "step": 5
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "line": 2,
+      "detail": "core",
+      "frameId": "global",
+      "name": "b",
+      "heapId": "fn:anonymous",
+      "params": [
+        {
+          "name": "x"
+        }
+      ],
+      "span": {
+        "startCol": 10,
+        "endCol": 27
+      },
+      "step": 6
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 35
+      },
+      "step": 7
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "function",
+        "id": "fn:anonymous",
+        "name": "c",
+        "params": [
+          {
+            "name": "x"
+          }
+        ],
+        "defLine": 3
+      },
+      "step": 8
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "name": "c",
+      "heapId": "fn:anonymous",
+      "params": [
+        {
+          "name": "x"
+        }
+      ],
+      "span": {
+        "startCol": 10,
+        "endCol": 34
+      },
+      "step": 9
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 30
+      },
+      "step": 10
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "a",
+      "substituted": "a(3)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "3"
+          }
+        }
+      ],
+      "targetFrameId": "a#1",
+      "span": {
+        "startCol": 12,
+        "endCol": 16
+      },
+      "step": 11
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "a#1",
+      "name": "a",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 5,
+      "step": 12
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "a#1",
+      "name": "x",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "step": 13
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 1,
+      "detail": "core",
+      "frameId": "a#1",
+      "expression": "x * 2",
+      "substituted": "3 * 2",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "6"
+      },
+      "span": {
+        "startCol": 17,
+        "endCol": 22
+      },
+      "step": 14
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "a#1",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "6"
+      },
+      "toLine": 5,
+      "step": 15
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "a#1",
+      "step": 16
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "b",
+      "substituted": "b(3)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "3"
+          }
+        }
+      ],
+      "targetFrameId": "b#1",
+      "span": {
+        "startCol": 18,
+        "endCol": 22
+      },
+      "step": 17
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "b#1",
+      "name": "b",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 5,
+      "step": 18
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "b#1",
+      "name": "x",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "step": 19
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "b#1",
+      "span": {
+        "startCol": 19,
+        "endCol": 25
+      },
+      "step": 20
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "b#1",
+      "expression": "x * 2",
+      "substituted": "3 * 2",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "6"
+      },
+      "span": {
+        "startCol": 19,
+        "endCol": 24
+      },
+      "step": 21
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "b#1",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 5,
+      "step": 22
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "b#1",
+      "step": 23
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "c",
+      "substituted": "c(3)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "3"
+          }
+        }
+      ],
+      "targetFrameId": "c#1",
+      "span": {
+        "startCol": 24,
+        "endCol": 28
+      },
+      "step": 24
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "c#1",
+      "name": "c",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 5,
+      "step": 25
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 3,
+      "detail": "core",
+      "frameId": "c#1",
+      "name": "x",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "step": 26
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "c#1",
+      "span": {
+        "startCol": 19,
+        "endCol": 32
+      },
+      "step": 27
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 3,
+      "detail": "core",
+      "frameId": "c#1",
+      "expression": "x * 2",
+      "substituted": "3 * 2",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "6"
+      },
+      "span": {
+        "startCol": 26,
+        "endCol": 31
+      },
+      "step": 28
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "c#1",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "6"
+      },
+      "toLine": 5,
+      "step": 29
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "c#1",
+      "step": 30
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "6 undefined 6",
+      "step": 31
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 35
+      },
+      "step": 32
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "function",
+        "id": "fn:anonymous",
+        "name": "a",
+        "params": [
+          {
+            "name": "x"
+          }
+        ],
+        "defLine": 1
+      },
+      "step": 33
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "typeof a",
+      "substituted": "typeof <fn:anonymous>",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'function'"
+      },
+      "span": {
+        "startCol": 12,
+        "endCol": 20
+      },
+      "step": 34
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "a",
+      "substituted": "a(3)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "3"
+          }
+        }
+      ],
+      "targetFrameId": "a#2",
+      "span": {
+        "startCol": 29,
+        "endCol": 33
+      },
+      "step": 35
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "a#2",
+      "name": "a",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 6,
+      "step": 36
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "a#2",
+      "name": "x",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "3"
+      },
+      "step": 37
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 1,
+      "detail": "core",
+      "frameId": "a#2",
+      "expression": "x * 2",
+      "substituted": "3 * 2",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "6"
+      },
+      "span": {
+        "startCol": 17,
+        "endCol": 22
+      },
+      "step": 38
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "a#2",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "6"
+      },
+      "toLine": 6,
+      "step": 39
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "a#2",
+      "step": 40
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "typeof a(3)",
+      "substituted": "typeof 6",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'number'"
+      },
+      "span": {
+        "startCol": 22,
+        "endCol": 33
+      },
+      "step": 41
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "function number",
+      "step": 42
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 43
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "6 undefined 6\nfunction number\n"
+  }
+}

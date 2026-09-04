@@ -1,0 +1,312 @@
+{
+  "version": 1,
+  "lessonId": "j02-variables",
+  "source": {
+    "path": "work.js",
+    "language": "javascript",
+    "lines": [
+      "const equipment = \"EQ-01\";",
+      "let waferCount = 25;",
+      "let lastError = null;",
+      "",
+      "waferCount = waferCount - 1;",
+      "lastError = \"TILT\";",
+      "",
+      "console.log(equipment, waferCount, lastError);",
+      "console.log(typeof equipment, typeof waferCount, typeof lastError);",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 26
+      },
+      "step": 1
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "equipment",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'EQ-01'"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 26
+      },
+      "step": 2
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 20
+      },
+      "step": 3
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 2,
+      "detail": "core",
+      "frameId": "global",
+      "name": "waferCount",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "25"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 20
+      },
+      "step": 4
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 21
+      },
+      "step": 5
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "name": "lastError",
+      "value": {
+        "kind": "primitive",
+        "type": "null",
+        "repr": "null"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 21
+      },
+      "step": 6
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 28
+      },
+      "step": 7
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "waferCount - 1",
+      "substituted": "25 - 1",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "24"
+      },
+      "span": {
+        "startCol": 13,
+        "endCol": 27
+      },
+      "step": 8
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 5,
+      "detail": "core",
+      "frameId": "global",
+      "name": "waferCount",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "25"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "24"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 28
+      },
+      "step": 9
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 19
+      },
+      "step": 10
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "name": "lastError",
+      "before": {
+        "kind": "primitive",
+        "type": "null",
+        "repr": "null"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'TILT'"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 19
+      },
+      "step": 11
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 46
+      },
+      "step": 12
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 8,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "EQ-01 24 TILT",
+      "step": 13
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 67
+      },
+      "step": 14
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "typeof equipment",
+      "substituted": "typeof 'EQ-01'",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'string'"
+      },
+      "span": {
+        "startCol": 12,
+        "endCol": 28
+      },
+      "step": 15
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "typeof waferCount",
+      "substituted": "typeof 24",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'number'"
+      },
+      "span": {
+        "startCol": 30,
+        "endCol": 47
+      },
+      "step": 16
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "typeof lastError",
+      "substituted": "typeof 'TILT'",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'string'"
+      },
+      "span": {
+        "startCol": 49,
+        "endCol": 65
+      },
+      "step": 17
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 9,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "string number string",
+      "step": 18
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 9,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 19
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "EQ-01 24 TILT\nstring number string\n"
+  }
+}

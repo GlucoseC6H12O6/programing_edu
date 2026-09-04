@@ -1,0 +1,19 @@
+# 제목과 본문은 content/python-visible-textbook-p01-p24.md 가 단일 출처다.
+# 여기에는 기계가 쓰는 사실만 둔다.
+id: p18-files
+track: python
+stage: 응용 문법
+prerequisites: [p14-loop-patterns]
+code: code/predict.py
+traces:
+  # §9의 "Before: Disk report.txt: OLD" 상태에서 시작해야 w 모드가 기존 내용을
+  # 버리는 장면이 보인다. 빈 디스크로 시작하면 이 레슨의 요점이 사라진다.
+  - id: "predict"
+    file: trace.predict.golden.json
+    source: code/predict.py
+    files: { "report.txt": "OLD\n" }
+  # 빈 줄을 하나 넣어 둔다. §13 예제 A의 `if text:` 가 왜 있는지가 그 줄에서 보인다.
+  - id: "work"
+    file: trace.work.golden.json
+    source: code/work.py
+    files: { "measurements.txt": "10.1\n10.3\n\n9.8\n" }

@@ -1,0 +1,1419 @@
+{
+  "version": 1,
+  "lessonId": "j19-modules",
+  "source": {
+    "path": "work.js",
+    "language": "javascript",
+    "lines": [
+      "import { LIMIT, parseValue, judge } from \"./measurement_utils.js\";",
+      "",
+      "const raw = [\"94.2\", \"101.3\", \"N/A\"];",
+      "let ok = 0;",
+      "",
+      "for (const text of raw) {",
+      "  const value = parseValue(text);",
+      "  if (value === null) {",
+      "    console.log(text, \"→ 사용 불가\");",
+      "  } else {",
+      "    ok = ok + 1;",
+      "    console.log(text, \"→\", value, judge(value));",
+      "  }",
+      "}",
+      "",
+      "console.log(\"기준\", LIMIT, \"· 사용 가능\", ok, \"건\");",
+      ""
+    ]
+  },
+  "sources": [
+    {
+      "path": "measurement_utils.js",
+      "language": "javascript",
+      "lines": [
+        "export const LIMIT = 100.0;",
+        "",
+        "export function parseValue(text) {",
+        "  const value = Number(text);",
+        "  return Number.isFinite(value) ? value : null;",
+        "}",
+        "",
+        "export function judge(value) {",
+        "  return value > LIMIT ? \"HIGH\" : \"PASS\";",
+        "}",
+        ""
+      ]
+    }
+  ],
+  "events": [
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 1,
+      "detail": "core",
+      "frameId": "module:measurement_utils",
+      "source": "measurement_utils.js",
+      "kind": "module",
+      "name": "measurement_utils",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 1,
+      "step": 1
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "module:measurement_utils",
+      "source": "measurement_utils.js",
+      "span": {
+        "startCol": 7,
+        "endCol": 27
+      },
+      "step": 2
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "module:measurement_utils",
+      "source": "measurement_utils.js",
+      "name": "LIMIT",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "100"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 7,
+        "endCol": 27
+      },
+      "step": 3
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "module:measurement_utils",
+      "source": "measurement_utils.js",
+      "object": {
+        "kind": "function",
+        "id": "fn:parseValue",
+        "name": "parseValue",
+        "params": [
+          {
+            "name": "text"
+          }
+        ],
+        "defLine": 3
+      },
+      "step": 4
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "line": 3,
+      "detail": "core",
+      "frameId": "module:measurement_utils",
+      "source": "measurement_utils.js",
+      "name": "parseValue",
+      "heapId": "fn:parseValue",
+      "params": [
+        {
+          "name": "text"
+        }
+      ],
+      "span": {
+        "startCol": 7,
+        "endCol": 1
+      },
+      "step": 5
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "module:measurement_utils",
+      "source": "measurement_utils.js",
+      "object": {
+        "kind": "function",
+        "id": "fn:judge",
+        "name": "judge",
+        "params": [
+          {
+            "name": "value"
+          }
+        ],
+        "defLine": 8
+      },
+      "step": 6
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "line": 8,
+      "detail": "core",
+      "frameId": "module:measurement_utils",
+      "source": "measurement_utils.js",
+      "name": "judge",
+      "heapId": "fn:judge",
+      "params": [
+        {
+          "name": "value"
+        }
+      ],
+      "span": {
+        "startCol": 7,
+        "endCol": 1
+      },
+      "step": 7
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "module:measurement_utils",
+      "step": 8
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "module",
+        "id": "module:measurement_utils",
+        "name": "measurement_utils",
+        "names": [
+          {
+            "key": "LIMIT",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "100"
+            }
+          },
+          {
+            "key": "parseValue",
+            "value": {
+              "kind": "ref",
+              "id": "fn:parseValue"
+            }
+          },
+          {
+            "key": "judge",
+            "value": {
+              "kind": "ref",
+              "id": "fn:judge"
+            }
+          }
+        ]
+      },
+      "step": 9
+    },
+    {
+      "type": "MODULE_IMPORT",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "module": "measurement_utils",
+      "heapId": "module:measurement_utils",
+      "binds": [
+        "LIMIT",
+        "parseValue",
+        "judge"
+      ],
+      "names": [
+        "LIMIT",
+        "parseValue",
+        "judge"
+      ],
+      "cached": false,
+      "span": {
+        "startCol": 0,
+        "endCol": 66
+      },
+      "step": 10
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "LIMIT",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "100"
+      },
+      "origin": {
+        "kind": "import",
+        "label": "measurement_utils"
+      },
+      "step": 11
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "parseValue",
+      "value": {
+        "kind": "ref",
+        "id": "fn:parseValue"
+      },
+      "origin": {
+        "kind": "import",
+        "label": "measurement_utils"
+      },
+      "step": 12
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "judge",
+      "value": {
+        "kind": "ref",
+        "id": "fn:judge"
+      },
+      "origin": {
+        "kind": "import",
+        "label": "measurement_utils"
+      },
+      "step": 13
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 37
+      },
+      "step": 14
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@1",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'94.2'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'101.3'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'N/A'"
+          }
+        ]
+      },
+      "step": 15
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "name": "raw",
+      "value": {
+        "kind": "ref",
+        "id": "Array@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 37
+      },
+      "step": 16
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 11
+      },
+      "step": 17
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 4,
+      "detail": "core",
+      "frameId": "global",
+      "name": "ok",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 11
+      },
+      "step": 18
+    },
+    {
+      "type": "LOOP_START",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:text@6",
+      "varNames": [
+        "text"
+      ],
+      "track": [
+        "'94.2'",
+        "'101.3'",
+        "'N/A'"
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 19
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'94.2'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "raw"
+      },
+      "step": 20
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:text@6",
+      "index": 0,
+      "step": 21
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 2,
+        "endCol": 33
+      },
+      "step": 22
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 7,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "parseValue",
+      "substituted": "parseValue('94.2')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'94.2'"
+          }
+        }
+      ],
+      "targetFrameId": "parseValue#1",
+      "span": {
+        "startCol": 7,
+        "endCol": 1
+      },
+      "step": 23
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "parseValue#1",
+      "source": "measurement_utils.js",
+      "name": "parseValue",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 7,
+      "step": 24
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 3,
+      "detail": "core",
+      "frameId": "parseValue#1",
+      "source": "measurement_utils.js",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'94.2'"
+      },
+      "step": 25
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "parseValue#1",
+      "source": "measurement_utils.js",
+      "span": {
+        "startCol": 2,
+        "endCol": 29
+      },
+      "step": 26
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 4,
+      "detail": "core",
+      "frameId": "parseValue#1",
+      "source": "measurement_utils.js",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 29
+      },
+      "step": 27
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "parseValue#1",
+      "source": "measurement_utils.js",
+      "span": {
+        "startCol": 2,
+        "endCol": 47
+      },
+      "step": 28
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "parseValue#1",
+      "source": "measurement_utils.js",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "toLine": 7,
+      "step": 29
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "parseValue#1",
+      "step": 30
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 7,
+      "detail": "core",
+      "frameId": "global",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 33
+      },
+      "step": 31
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 8,
+      "detail": "core",
+      "frameId": "global",
+      "expression": "value === null",
+      "substituted": "94.2 === null",
+      "result": false,
+      "span": {
+        "startCol": 2,
+        "endCol": 3
+      },
+      "step": 32
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "label": "else",
+      "targetLine": 11,
+      "step": 33
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      },
+      "step": 34
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "ok + 1",
+      "substituted": "0 + 1",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "span": {
+        "startCol": 9,
+        "endCol": 15
+      },
+      "step": 35
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 11,
+      "detail": "core",
+      "frameId": "global",
+      "name": "ok",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      },
+      "step": 36
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 48
+      },
+      "step": 37
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 12,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "judge",
+      "substituted": "judge(94.2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "94.2"
+          }
+        }
+      ],
+      "targetFrameId": "judge#1",
+      "span": {
+        "startCol": 7,
+        "endCol": 1
+      },
+      "step": 38
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "judge#1",
+      "source": "measurement_utils.js",
+      "name": "judge",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 12,
+      "step": 39
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 8,
+      "detail": "core",
+      "frameId": "judge#1",
+      "source": "measurement_utils.js",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "step": 40
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "judge#1",
+      "source": "measurement_utils.js",
+      "span": {
+        "startCol": 2,
+        "endCol": 41
+      },
+      "step": 41
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "judge#1",
+      "source": "measurement_utils.js",
+      "expression": "value > LIMIT",
+      "substituted": "94.2 > 100",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 9,
+        "endCol": 22
+      },
+      "step": 42
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "judge#1",
+      "source": "measurement_utils.js",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'PASS'"
+      },
+      "toLine": 12,
+      "step": 43
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "judge#1",
+      "step": 44
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 12,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "94.2 → 94.2 PASS",
+      "step": 45
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "text",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'94.2'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'101.3'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "raw"
+      },
+      "step": 46
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:text@6",
+      "index": 1,
+      "step": 47
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 2,
+        "endCol": 33
+      },
+      "step": 48
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 7,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "parseValue",
+      "substituted": "parseValue('101.3')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'101.3'"
+          }
+        }
+      ],
+      "targetFrameId": "parseValue#2",
+      "span": {
+        "startCol": 7,
+        "endCol": 1
+      },
+      "step": 49
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "parseValue#2",
+      "source": "measurement_utils.js",
+      "name": "parseValue",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 7,
+      "step": 50
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 3,
+      "detail": "core",
+      "frameId": "parseValue#2",
+      "source": "measurement_utils.js",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'101.3'"
+      },
+      "step": 51
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "parseValue#2",
+      "source": "measurement_utils.js",
+      "span": {
+        "startCol": 2,
+        "endCol": 29
+      },
+      "step": 52
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 4,
+      "detail": "core",
+      "frameId": "parseValue#2",
+      "source": "measurement_utils.js",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 29
+      },
+      "step": 53
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "parseValue#2",
+      "source": "measurement_utils.js",
+      "span": {
+        "startCol": 2,
+        "endCol": 47
+      },
+      "step": 54
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "parseValue#2",
+      "source": "measurement_utils.js",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "toLine": 7,
+      "step": 55
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "parseValue#2",
+      "step": 56
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 7,
+      "detail": "core",
+      "frameId": "global",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 33
+      },
+      "step": 57
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 8,
+      "detail": "core",
+      "frameId": "global",
+      "expression": "value === null",
+      "substituted": "101.3 === null",
+      "result": false,
+      "span": {
+        "startCol": 2,
+        "endCol": 3
+      },
+      "step": 58
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "label": "else",
+      "targetLine": 11,
+      "step": 59
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      },
+      "step": 60
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "ok + 1",
+      "substituted": "1 + 1",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "span": {
+        "startCol": 9,
+        "endCol": 15
+      },
+      "step": 61
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 11,
+      "detail": "core",
+      "frameId": "global",
+      "name": "ok",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      },
+      "step": 62
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 48
+      },
+      "step": 63
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 12,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "judge",
+      "substituted": "judge(101.3)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "101.3"
+          }
+        }
+      ],
+      "targetFrameId": "judge#2",
+      "span": {
+        "startCol": 7,
+        "endCol": 1
+      },
+      "step": 64
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "judge#2",
+      "source": "measurement_utils.js",
+      "name": "judge",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 12,
+      "step": 65
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 8,
+      "detail": "core",
+      "frameId": "judge#2",
+      "source": "measurement_utils.js",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "step": 66
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "judge#2",
+      "source": "measurement_utils.js",
+      "span": {
+        "startCol": 2,
+        "endCol": 41
+      },
+      "step": 67
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "judge#2",
+      "source": "measurement_utils.js",
+      "expression": "value > LIMIT",
+      "substituted": "101.3 > 100",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 9,
+        "endCol": 22
+      },
+      "step": 68
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "judge#2",
+      "source": "measurement_utils.js",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'HIGH'"
+      },
+      "toLine": 12,
+      "step": 69
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "judge#2",
+      "step": 70
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 12,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "101.3 → 101.3 HIGH",
+      "step": 71
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "text",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'101.3'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'N/A'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "raw"
+      },
+      "step": 72
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:text@6",
+      "index": 2,
+      "step": 73
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 2,
+        "endCol": 33
+      },
+      "step": 74
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 7,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "parseValue",
+      "substituted": "parseValue('N/A')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'N/A'"
+          }
+        }
+      ],
+      "targetFrameId": "parseValue#3",
+      "span": {
+        "startCol": 7,
+        "endCol": 1
+      },
+      "step": 75
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "parseValue#3",
+      "source": "measurement_utils.js",
+      "name": "parseValue",
+      "callNumber": 3,
+      "parentFrameId": "global",
+      "returnLine": 7,
+      "step": 76
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 3,
+      "detail": "core",
+      "frameId": "parseValue#3",
+      "source": "measurement_utils.js",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'N/A'"
+      },
+      "step": 77
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "parseValue#3",
+      "source": "measurement_utils.js",
+      "span": {
+        "startCol": 2,
+        "endCol": 29
+      },
+      "step": 78
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 4,
+      "detail": "core",
+      "frameId": "parseValue#3",
+      "source": "measurement_utils.js",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "nan",
+        "repr": "NaN"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 29
+      },
+      "step": 79
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "parseValue#3",
+      "source": "measurement_utils.js",
+      "span": {
+        "startCol": 2,
+        "endCol": 47
+      },
+      "step": 80
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "parseValue#3",
+      "source": "measurement_utils.js",
+      "value": {
+        "kind": "primitive",
+        "type": "null",
+        "repr": "null"
+      },
+      "toLine": 7,
+      "step": 81
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "parseValue#3",
+      "step": 82
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 7,
+      "detail": "core",
+      "frameId": "global",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "null",
+        "repr": "null"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 33
+      },
+      "step": 83
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 8,
+      "detail": "core",
+      "frameId": "global",
+      "expression": "value === null",
+      "substituted": "null === null",
+      "result": true,
+      "span": {
+        "startCol": 2,
+        "endCol": 3
+      },
+      "step": 84
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "label": "if",
+      "targetLine": 9,
+      "step": 85
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 33
+      },
+      "step": 86
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 9,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "N/A → 사용 불가",
+      "step": 87
+    },
+    {
+      "type": "LOOP_END",
+      "line": 6,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:text@6",
+      "reason": "exhausted",
+      "step": 88
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 16,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 45
+      },
+      "step": 89
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 16,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "기준 100 · 사용 가능 2 건",
+      "step": 90
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 16,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 91
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "94.2 → 94.2 PASS\n101.3 → 101.3 HIGH\nN/A → 사용 불가\n기준 100 · 사용 가능 2 건\n"
+  }
+}

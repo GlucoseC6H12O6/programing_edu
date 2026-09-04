@@ -1,0 +1,217 @@
+{
+  "version": 1,
+  "lessonId": "p06-list-tuple",
+  "source": {
+    "path": "work.py",
+    "language": "python",
+    "lines": [
+      "measurements = [10.1, 10.2]",
+      "measurements.append(10.4)",
+      "measurements[1] = 10.3",
+      "print(measurements)  # [10.1, 10.3, 10.4]"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.1"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.2"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 3,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "measurements",
+      "value": {
+        "kind": "ref",
+        "id": "list@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 25
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 5,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "target": "list@1",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.4"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 6,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.1"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.2"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.4"
+          }
+        ]
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 7,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "ITEM_WRITE",
+      "step": 8,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "target": "list@1",
+      "key": "1",
+      "before": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.3"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 9,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.1"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.3"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.4"
+          }
+        ]
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 10,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 11,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "[10.1, 10.3, 10.4]"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 12,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "[10.1, 10.3, 10.4]\n"
+  }
+}

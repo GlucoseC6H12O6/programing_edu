@@ -1,0 +1,1558 @@
+{
+  "version": 1,
+  "lessonId": "j22-async-await",
+  "source": {
+    "path": "predict.js",
+    "language": "javascript",
+    "lines": [
+      "function delay(ms, value) {",
+      "  return new Promise((resolve) => {",
+      "    setTimeout(() => resolve(value), ms);",
+      "  });",
+      "}",
+      "",
+      "async function loadValue(id) {",
+      "  console.log(\"요청:\", id);",
+      "  const value = await delay(10, id * 10);",
+      "  console.log(\"응답:\", value);",
+      "  return value;",
+      "}",
+      "",
+      "async function main() {",
+      "  const first = await loadValue(1);",
+      "  const second = await loadValue(2);",
+      "  console.log(\"합계\", first + second);",
+      "}",
+      "",
+      "console.log(\"A 동기\");",
+      "main();",
+      "console.log(\"B 동기\");",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "function",
+        "id": "fn:delay",
+        "name": "delay",
+        "params": [
+          {
+            "name": "ms"
+          },
+          {
+            "name": "value"
+          }
+        ],
+        "defLine": 1
+      },
+      "step": 1
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "delay",
+      "heapId": "fn:delay",
+      "params": [
+        {
+          "name": "ms"
+        },
+        {
+          "name": "value"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 2
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "function",
+        "id": "fn:loadValue",
+        "name": "loadValue",
+        "params": [
+          {
+            "name": "id"
+          }
+        ],
+        "defLine": 7
+      },
+      "step": 3
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "line": 7,
+      "detail": "core",
+      "frameId": "global",
+      "name": "loadValue",
+      "heapId": "fn:loadValue",
+      "params": [
+        {
+          "name": "id"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 4
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "function",
+        "id": "fn:main",
+        "name": "main",
+        "params": [],
+        "defLine": 14
+      },
+      "step": 5
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "line": 14,
+      "detail": "core",
+      "frameId": "global",
+      "name": "main",
+      "heapId": "fn:main",
+      "params": [],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 6
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 20,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 20
+      },
+      "step": 7
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 20,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "A 동기",
+      "step": 8
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 21,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 7
+      },
+      "step": 9
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 21,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "main",
+      "substituted": "main()",
+      "args": [],
+      "targetFrameId": "main#1",
+      "span": {
+        "startCol": 0,
+        "endCol": 6
+      },
+      "step": 10
+    },
+    {
+      "type": "TASK_CREATE",
+      "line": 14,
+      "detail": "core",
+      "frameId": "global",
+      "taskId": "task1",
+      "label": "main()",
+      "step": 11
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "global",
+      "taskId": "task1",
+      "state": "pending",
+      "step": 12
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "main#1",
+      "name": "main",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 21,
+      "step": 13
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 15,
+      "detail": "expression",
+      "frameId": "main#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 35
+      },
+      "step": 14
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 15,
+      "detail": "core",
+      "frameId": "main#1",
+      "callee": "loadValue",
+      "substituted": "loadValue(1)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          }
+        }
+      ],
+      "targetFrameId": "loadValue#1",
+      "span": {
+        "startCol": 22,
+        "endCol": 34
+      },
+      "step": 15
+    },
+    {
+      "type": "TASK_CREATE",
+      "line": 7,
+      "detail": "core",
+      "frameId": "main#1",
+      "taskId": "task2",
+      "label": "loadValue()",
+      "step": 16
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "main#1",
+      "taskId": "task2",
+      "state": "pending",
+      "step": 17
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "loadValue#1",
+      "name": "loadValue",
+      "callNumber": 1,
+      "parentFrameId": "main#1",
+      "returnLine": 15,
+      "step": 18
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 7,
+      "detail": "core",
+      "frameId": "loadValue#1",
+      "name": "id",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "step": 19
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "loadValue#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 25
+      },
+      "step": 20
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 8,
+      "detail": "core",
+      "frameId": "loadValue#1",
+      "stream": "stdout",
+      "text": "요청: 1",
+      "step": 21
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "loadValue#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 41
+      },
+      "step": 22
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "loadValue#1",
+      "expression": "id * 10",
+      "substituted": "1 * 10",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "span": {
+        "startCol": 32,
+        "endCol": 39
+      },
+      "step": 23
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "loadValue#1",
+      "expression": "id * 10",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "span": {
+        "startCol": 32,
+        "endCol": 39
+      },
+      "step": 24
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 9,
+      "detail": "core",
+      "frameId": "loadValue#1",
+      "callee": "delay",
+      "substituted": "delay(10, 10)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "10"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "10"
+          }
+        }
+      ],
+      "targetFrameId": "delay#1",
+      "span": {
+        "startCol": 22,
+        "endCol": 40
+      },
+      "step": 25
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "delay#1",
+      "name": "delay",
+      "callNumber": 1,
+      "parentFrameId": "loadValue#1",
+      "returnLine": 9,
+      "step": 26
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "delay#1",
+      "name": "ms",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "step": 27
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "delay#1",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "step": 28
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "delay#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 5
+      },
+      "step": 29
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 2,
+      "detail": "core",
+      "frameId": "delay#1",
+      "callee": "콜백",
+      "substituted": "콜백(<fn:anonymous>)",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "fn:anonymous"
+          }
+        }
+      ],
+      "targetFrameId": "콜백#1",
+      "span": {
+        "startCol": 21,
+        "endCol": 3
+      },
+      "step": 30
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "콜백#1",
+      "name": "콜백",
+      "callNumber": 1,
+      "parentFrameId": "delay#1",
+      "returnLine": 2,
+      "step": 31
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "콜백#1",
+      "name": "resolve",
+      "value": {
+        "kind": "ref",
+        "id": "fn:anonymous"
+      },
+      "step": 32
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#1",
+      "span": {
+        "startCol": 4,
+        "endCol": 41
+      },
+      "step": 33
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#1",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 2,
+      "step": 34
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "delay#1",
+      "poppedFrameId": "콜백#1",
+      "step": 35
+    },
+    {
+      "type": "TASK_CREATE",
+      "line": 2,
+      "detail": "core",
+      "frameId": "delay#1",
+      "taskId": "task3",
+      "label": "new Promise",
+      "step": 36
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "delay#1",
+      "taskId": "task3",
+      "state": "pending",
+      "step": 37
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "delay#1",
+      "object": {
+        "kind": "mapping",
+        "id": "Promise@1",
+        "label": "instance",
+        "className": "Promise",
+        "entries": [
+          {
+            "key": "상태",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "pending"
+            }
+          }
+        ]
+      },
+      "step": 38
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "delay#1",
+      "value": {
+        "kind": "ref",
+        "id": "Promise@1"
+      },
+      "toLine": 9,
+      "step": 39
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "loadValue#1",
+      "poppedFrameId": "delay#1",
+      "step": 40
+    },
+    {
+      "type": "AWAIT_SUSPEND",
+      "line": 9,
+      "detail": "core",
+      "frameId": "loadValue#1",
+      "taskId": "task3",
+      "step": 41
+    },
+    {
+      "type": "AWAIT_SUSPEND",
+      "line": 15,
+      "detail": "core",
+      "frameId": "main#1",
+      "taskId": "task2",
+      "step": 42
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 22,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 20
+      },
+      "step": 43
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 22,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "B 동기",
+      "step": 44
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "콜백",
+      "substituted": "콜백()",
+      "args": [],
+      "targetFrameId": "콜백#2",
+      "span": {
+        "startCol": 15,
+        "endCol": 35
+      },
+      "step": 45
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#2",
+      "name": "콜백",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 3,
+      "step": 46
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 3,
+      "detail": "core",
+      "frameId": "콜백#2",
+      "taskId": "task3",
+      "state": "fulfilled",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "step": 47
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#2",
+      "object": {
+        "kind": "mapping",
+        "id": "Promise@1",
+        "label": "instance",
+        "className": "Promise",
+        "entries": [
+          {
+            "key": "상태",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "fulfilled"
+            }
+          },
+          {
+            "key": "값",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "10"
+            }
+          }
+        ]
+      },
+      "step": 48
+    },
+    {
+      "type": "TASK_COMPLETE",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#2",
+      "taskId": "task3",
+      "step": 49
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#2",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 3,
+      "step": 50
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "콜백#2",
+      "step": 51
+    },
+    {
+      "type": "AWAIT_RESUME",
+      "line": 9,
+      "detail": "core",
+      "frameId": "loadValue#1",
+      "taskId": "task3",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "step": 52
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 9,
+      "detail": "core",
+      "frameId": "loadValue#1",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 41
+      },
+      "step": 53
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "loadValue#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 28
+      },
+      "step": 54
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 10,
+      "detail": "core",
+      "frameId": "loadValue#1",
+      "stream": "stdout",
+      "text": "응답: 10",
+      "step": 55
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "loadValue#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 15
+      },
+      "step": 56
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "loadValue#1",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "toLine": 15,
+      "step": 57
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 15,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "loadValue#1",
+      "step": 58
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 22,
+      "detail": "core",
+      "frameId": "global",
+      "taskId": "task2",
+      "state": "fulfilled",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "step": 59
+    },
+    {
+      "type": "TASK_COMPLETE",
+      "line": 22,
+      "detail": "expression",
+      "frameId": "global",
+      "taskId": "task2",
+      "step": 60
+    },
+    {
+      "type": "AWAIT_RESUME",
+      "line": 15,
+      "detail": "core",
+      "frameId": "main#1",
+      "taskId": "task2",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "step": 61
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 15,
+      "detail": "core",
+      "frameId": "main#1",
+      "name": "first",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 35
+      },
+      "step": 62
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 16,
+      "detail": "expression",
+      "frameId": "main#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 36
+      },
+      "step": 63
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 16,
+      "detail": "core",
+      "frameId": "main#1",
+      "callee": "loadValue",
+      "substituted": "loadValue(2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          }
+        }
+      ],
+      "targetFrameId": "loadValue#2",
+      "span": {
+        "startCol": 23,
+        "endCol": 35
+      },
+      "step": 64
+    },
+    {
+      "type": "TASK_CREATE",
+      "line": 7,
+      "detail": "core",
+      "frameId": "main#1",
+      "taskId": "task4",
+      "label": "loadValue()",
+      "step": 65
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "main#1",
+      "taskId": "task4",
+      "state": "pending",
+      "step": 66
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "loadValue#2",
+      "name": "loadValue",
+      "callNumber": 2,
+      "parentFrameId": "main#1",
+      "returnLine": 16,
+      "step": 67
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 7,
+      "detail": "core",
+      "frameId": "loadValue#2",
+      "name": "id",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "step": 68
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "loadValue#2",
+      "span": {
+        "startCol": 2,
+        "endCol": 25
+      },
+      "step": 69
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 8,
+      "detail": "core",
+      "frameId": "loadValue#2",
+      "stream": "stdout",
+      "text": "요청: 2",
+      "step": 70
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "loadValue#2",
+      "span": {
+        "startCol": 2,
+        "endCol": 41
+      },
+      "step": 71
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "loadValue#2",
+      "expression": "id * 10",
+      "substituted": "2 * 10",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "20"
+      },
+      "span": {
+        "startCol": 32,
+        "endCol": 39
+      },
+      "step": 72
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "loadValue#2",
+      "expression": "id * 10",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "20"
+      },
+      "span": {
+        "startCol": 32,
+        "endCol": 39
+      },
+      "step": 73
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 9,
+      "detail": "core",
+      "frameId": "loadValue#2",
+      "callee": "delay",
+      "substituted": "delay(10, 20)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "10"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "20"
+          }
+        }
+      ],
+      "targetFrameId": "delay#2",
+      "span": {
+        "startCol": 22,
+        "endCol": 40
+      },
+      "step": 74
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "delay#2",
+      "name": "delay",
+      "callNumber": 2,
+      "parentFrameId": "loadValue#2",
+      "returnLine": 9,
+      "step": 75
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "delay#2",
+      "name": "ms",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "step": 76
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "delay#2",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "20"
+      },
+      "step": 77
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "delay#2",
+      "span": {
+        "startCol": 2,
+        "endCol": 5
+      },
+      "step": 78
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 2,
+      "detail": "core",
+      "frameId": "delay#2",
+      "callee": "콜백",
+      "substituted": "콜백(<fn:anonymous>)",
+      "args": [
+        {
+          "value": {
+            "kind": "ref",
+            "id": "fn:anonymous"
+          }
+        }
+      ],
+      "targetFrameId": "콜백#3",
+      "span": {
+        "startCol": 21,
+        "endCol": 3
+      },
+      "step": 79
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "콜백#3",
+      "name": "콜백",
+      "callNumber": 3,
+      "parentFrameId": "delay#2",
+      "returnLine": 2,
+      "step": 80
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "콜백#3",
+      "name": "resolve",
+      "value": {
+        "kind": "ref",
+        "id": "fn:anonymous"
+      },
+      "step": 81
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#3",
+      "span": {
+        "startCol": 4,
+        "endCol": 41
+      },
+      "step": 82
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#3",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 2,
+      "step": 83
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "delay#2",
+      "poppedFrameId": "콜백#3",
+      "step": 84
+    },
+    {
+      "type": "TASK_CREATE",
+      "line": 2,
+      "detail": "core",
+      "frameId": "delay#2",
+      "taskId": "task5",
+      "label": "new Promise",
+      "step": 85
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "delay#2",
+      "taskId": "task5",
+      "state": "pending",
+      "step": 86
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "delay#2",
+      "object": {
+        "kind": "mapping",
+        "id": "Promise@2",
+        "label": "instance",
+        "className": "Promise",
+        "entries": [
+          {
+            "key": "상태",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "pending"
+            }
+          }
+        ]
+      },
+      "step": 87
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "delay#2",
+      "value": {
+        "kind": "ref",
+        "id": "Promise@2"
+      },
+      "toLine": 9,
+      "step": 88
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "loadValue#2",
+      "poppedFrameId": "delay#2",
+      "step": 89
+    },
+    {
+      "type": "AWAIT_SUSPEND",
+      "line": 9,
+      "detail": "core",
+      "frameId": "loadValue#2",
+      "taskId": "task5",
+      "step": 90
+    },
+    {
+      "type": "AWAIT_SUSPEND",
+      "line": 16,
+      "detail": "core",
+      "frameId": "main#1",
+      "taskId": "task4",
+      "step": 91
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 3,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "콜백",
+      "substituted": "콜백()",
+      "args": [],
+      "targetFrameId": "콜백#4",
+      "span": {
+        "startCol": 15,
+        "endCol": 35
+      },
+      "step": 92
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#4",
+      "name": "콜백",
+      "callNumber": 4,
+      "parentFrameId": "global",
+      "returnLine": 3,
+      "step": 93
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 3,
+      "detail": "core",
+      "frameId": "콜백#4",
+      "taskId": "task5",
+      "state": "fulfilled",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "20"
+      },
+      "step": 94
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#4",
+      "object": {
+        "kind": "mapping",
+        "id": "Promise@2",
+        "label": "instance",
+        "className": "Promise",
+        "entries": [
+          {
+            "key": "상태",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "fulfilled"
+            }
+          },
+          {
+            "key": "값",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "20"
+            }
+          }
+        ]
+      },
+      "step": 95
+    },
+    {
+      "type": "TASK_COMPLETE",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#4",
+      "taskId": "task5",
+      "step": 96
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "콜백#4",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 3,
+      "step": 97
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "콜백#4",
+      "step": 98
+    },
+    {
+      "type": "AWAIT_RESUME",
+      "line": 9,
+      "detail": "core",
+      "frameId": "loadValue#2",
+      "taskId": "task5",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "20"
+      },
+      "step": 99
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 9,
+      "detail": "core",
+      "frameId": "loadValue#2",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "20"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 41
+      },
+      "step": 100
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "loadValue#2",
+      "span": {
+        "startCol": 2,
+        "endCol": 28
+      },
+      "step": 101
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 10,
+      "detail": "core",
+      "frameId": "loadValue#2",
+      "stream": "stdout",
+      "text": "응답: 20",
+      "step": 102
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "loadValue#2",
+      "span": {
+        "startCol": 2,
+        "endCol": 15
+      },
+      "step": 103
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "loadValue#2",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "20"
+      },
+      "toLine": 16,
+      "step": 104
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 16,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "loadValue#2",
+      "step": 105
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 22,
+      "detail": "core",
+      "frameId": "global",
+      "taskId": "task4",
+      "state": "fulfilled",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "20"
+      },
+      "step": 106
+    },
+    {
+      "type": "TASK_COMPLETE",
+      "line": 22,
+      "detail": "expression",
+      "frameId": "global",
+      "taskId": "task4",
+      "step": 107
+    },
+    {
+      "type": "AWAIT_RESUME",
+      "line": 16,
+      "detail": "core",
+      "frameId": "main#1",
+      "taskId": "task4",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "20"
+      },
+      "step": 108
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 16,
+      "detail": "core",
+      "frameId": "main#1",
+      "name": "second",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "20"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 36
+      },
+      "step": 109
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 17,
+      "detail": "expression",
+      "frameId": "main#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 36
+      },
+      "step": 110
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 17,
+      "detail": "expression",
+      "frameId": "main#1",
+      "expression": "first + second",
+      "substituted": "10 + 20",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "30"
+      },
+      "span": {
+        "startCol": 20,
+        "endCol": 34
+      },
+      "step": 111
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 17,
+      "detail": "core",
+      "frameId": "main#1",
+      "stream": "stdout",
+      "text": "합계 30",
+      "step": 112
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 17,
+      "detail": "expression",
+      "frameId": "main#1",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "toLine": 21,
+      "step": 113
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 21,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "main#1",
+      "step": 114
+    },
+    {
+      "type": "PROMISE_STATE",
+      "line": 22,
+      "detail": "core",
+      "frameId": "global",
+      "taskId": "task1",
+      "state": "fulfilled",
+      "value": {
+        "kind": "primitive",
+        "type": "undefined",
+        "repr": "undefined"
+      },
+      "step": 115
+    },
+    {
+      "type": "TASK_COMPLETE",
+      "line": 22,
+      "detail": "expression",
+      "frameId": "global",
+      "taskId": "task1",
+      "step": 116
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 22,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 117
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "A 동기\n요청: 1\nB 동기\n응답: 10\n요청: 2\n응답: 20\n합계 30\n"
+  }
+}

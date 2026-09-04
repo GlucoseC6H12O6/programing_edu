@@ -1,0 +1,268 @@
+{
+  "version": 1,
+  "lessonId": "p20-modules",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "import config",
+      "from config import LIMIT",
+      "print(config.LIMIT, LIMIT)"
+    ]
+  },
+  "sources": [
+    {
+      "path": "config.py",
+      "language": "python",
+      "lines": [
+        "print(\"config start\")",
+        "LIMIT = 10"
+      ]
+    }
+  ],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 13
+      }
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 2,
+      "line": 1,
+      "frameId": "module:config",
+      "detail": "core",
+      "source": "config.py",
+      "name": "config",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 1,
+      "kind": "module"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 3,
+      "line": 1,
+      "frameId": "module:config",
+      "detail": "expression",
+      "source": "config.py",
+      "span": {
+        "startCol": 0,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 4,
+      "line": 1,
+      "frameId": "module:config",
+      "detail": "core",
+      "source": "config.py",
+      "stream": "stdout",
+      "text": "config start"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 5,
+      "line": 2,
+      "frameId": "module:config",
+      "detail": "expression",
+      "source": "config.py",
+      "span": {
+        "startCol": 0,
+        "endCol": 10
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 6,
+      "line": 2,
+      "frameId": "module:config",
+      "detail": "core",
+      "source": "config.py",
+      "name": "LIMIT",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 10
+      }
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 7,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "module:config"
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 8,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "module",
+        "id": "module:config",
+        "name": "config",
+        "names": [
+          {
+            "key": "LIMIT",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "10"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "MODULE_IMPORT",
+      "step": 9,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "module": "config",
+      "heapId": "module:config",
+      "binds": [
+        "config"
+      ],
+      "cached": false,
+      "span": {
+        "startCol": 0,
+        "endCol": 13
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 10,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "config",
+      "value": {
+        "kind": "ref",
+        "id": "module:config"
+      },
+      "origin": {
+        "kind": "import",
+        "label": "config"
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 11,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "MODULE_IMPORT",
+      "step": 12,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "module": "config",
+      "heapId": "module:config",
+      "binds": [
+        "LIMIT"
+      ],
+      "names": [
+        "LIMIT"
+      ],
+      "cached": true,
+      "span": {
+        "startCol": 0,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 13,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "LIMIT",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "origin": {
+        "kind": "import",
+        "label": "config"
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 14,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "ATTR_READ",
+      "step": 15,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "module:config",
+      "attr": "LIMIT",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "10"
+      },
+      "owner": "module",
+      "span": {
+        "startCol": 6,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 16,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "10 10"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 17,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "config start\n10 10\n"
+  }
+}

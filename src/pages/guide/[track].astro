@@ -1,0 +1,64 @@
+---
+/**
+ * 교재 앞머리를 읽는 페이지.
+ *
+ * 원고에는 "이 교안의 목적 / 권장 사용법 / 시각 언어 / 학습 지도"가 처음부터
+ * 잘 쓰여 있었는데, 레슨 파서가 `# P01.`부터 잘라서 사이트에서는 한 글자도
+ * 보이지 않았다. 특히 **시각 언어 표**가 없으면 플레이어의 색과 표시가 전부
+ * 장식으로 보인다. 첫 화면에서 여기로 먼저 보낸다.
+ */
+import Base from "../../layouts/Base.astro";
+import { loadLessons } from "../../content/lessons.ts";
+import { loadIntros, type TextbookIntro } from "../../content/textbook.ts";
+
+export function getStaticPaths() {
+  const lessons = loadLessons();
+  return [...loadIntros().values()].map((intro) => ({
+    params: { track: intro.language },
+    props: {
+      intro,
+      // 학습 지도 다음에 눌러야 할 것은 하나다 — 그 트랙의 첫 레슨.
+      first: lessons.find((lesson) => lesson.track === intro.language),
+      count: lessons.filter((lesson) => lesson.track === intro.language).length,
+    },
+  }));
+}
+
+interface Props {
+  intro: TextbookIntro;
+  first?: { id: string; title: string };
+  count: number;
+}
+const { intro, first, count } = Astro.props as Props;
+---
+
+<Base title={`시작하기 — ${intro.title}`}>
+  <main class="page page-guide">
+    <p class="crumb"><a href="/">← 레슨 목록</a></p>
+
+    <header class="page-head">
+      <p class="eyebrow">시작하기 · 레슨 {count}개</p>
+      <h1>{intro.title}</h1>
+      {intro.tagline && <p class="guide-tagline" set:html={intro.tagline} />}
+    </header>
+
+    <nav class="toc" aria-label="이 문서의 차례">
+      {intro.sections.map((section) => (
+        <a href={`#g${section.n}`}>{section.title}</a>
+      ))}
+    </nav>
+
+    {intro.sections.map((section) => (
+      <section class="lesson-block" id={`g${section.n}`}>
+        <h2 class="block-title"><span class="block-n">{section.n}</span>{section.title}</h2>
+        <div class="prose" set:html={section.html} />
+      </section>
+    ))}
+
+    {first && (
+      <p class="guide-start">
+        <a class="button-lead" href={`/lessons/${first.id}`}>첫 레슨 시작 · {first.title} →</a>
+      </p>
+    )}
+  </main>
+</Base>

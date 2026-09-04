@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "lessonId": "p01-print",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "print(\"A\", \"B\", sep=\"-\")",
+      "# print(\"C\")",
+      "print(\"D\", end=\"!\")",
+      "print(\"E\")"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 24
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "A-B"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 3,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 4,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "D!"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 5,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 10
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 6,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "E"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 7,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "A-B\nD!E\n"
+  }
+}

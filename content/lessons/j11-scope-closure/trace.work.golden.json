@@ -1,0 +1,1129 @@
+{
+  "version": 1,
+  "lessonId": "j11-scope-closure",
+  "source": {
+    "path": "work.js",
+    "language": "javascript",
+    "lines": [
+      "function makeHighChecker(limit) {",
+      "  return function isHigh(value) {",
+      "    return value > limit;",
+      "  };",
+      "}",
+      "",
+      "const overSpec = makeHighChecker(100.0);",
+      "const overWarn = makeHighChecker(98.0);",
+      "const measurements = [94.2, 99.1, 104.3];",
+      "",
+      "for (const value of measurements) {",
+      "  console.log(value, overWarn(value), overSpec(value));",
+      "}",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "function",
+        "id": "fn:makeHighChecker",
+        "name": "makeHighChecker",
+        "params": [
+          {
+            "name": "limit"
+          }
+        ],
+        "defLine": 1
+      },
+      "step": 1
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "makeHighChecker",
+      "heapId": "fn:makeHighChecker",
+      "params": [
+        {
+          "name": "limit"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 2
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 40
+      },
+      "step": 3
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 7,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "makeHighChecker",
+      "substituted": "makeHighChecker(100)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "100"
+          }
+        }
+      ],
+      "targetFrameId": "makeHighChecker#1",
+      "span": {
+        "startCol": 17,
+        "endCol": 39
+      },
+      "step": 4
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "makeHighChecker#1",
+      "name": "makeHighChecker",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 7,
+      "step": 5
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "makeHighChecker#1",
+      "name": "limit",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "100"
+      },
+      "step": 6
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "makeHighChecker#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 4
+      },
+      "step": 7
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "makeHighChecker#1",
+      "object": {
+        "kind": "function",
+        "id": "fn:isHigh",
+        "name": "isHigh",
+        "params": [
+          {
+            "name": "value"
+          }
+        ],
+        "defLine": 2
+      },
+      "step": 8
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "makeHighChecker#1",
+      "value": {
+        "kind": "ref",
+        "id": "fn:isHigh"
+      },
+      "toLine": 7,
+      "step": 9
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 7,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "makeHighChecker#1",
+      "step": 10
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 7,
+      "detail": "core",
+      "frameId": "global",
+      "name": "overSpec",
+      "value": {
+        "kind": "ref",
+        "id": "fn:isHigh"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "makeHighChecker#1"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 40
+      },
+      "step": 11
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 39
+      },
+      "step": 12
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 8,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "makeHighChecker",
+      "substituted": "makeHighChecker(98)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "98"
+          }
+        }
+      ],
+      "targetFrameId": "makeHighChecker#2",
+      "span": {
+        "startCol": 17,
+        "endCol": 38
+      },
+      "step": 13
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "makeHighChecker#2",
+      "name": "makeHighChecker",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 8,
+      "step": 14
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "makeHighChecker#2",
+      "name": "limit",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "98"
+      },
+      "step": 15
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "makeHighChecker#2",
+      "span": {
+        "startCol": 2,
+        "endCol": 4
+      },
+      "step": 16
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "makeHighChecker#2",
+      "value": {
+        "kind": "ref",
+        "id": "fn:isHigh"
+      },
+      "toLine": 8,
+      "step": 17
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "makeHighChecker#2",
+      "step": 18
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 8,
+      "detail": "core",
+      "frameId": "global",
+      "name": "overWarn",
+      "value": {
+        "kind": "ref",
+        "id": "fn:isHigh"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "makeHighChecker#2"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 39
+      },
+      "step": 19
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 41
+      },
+      "step": 20
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@1",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "94.2"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "99.1"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "104.3"
+          }
+        ]
+      },
+      "step": 21
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 9,
+      "detail": "core",
+      "frameId": "global",
+      "name": "measurements",
+      "value": {
+        "kind": "ref",
+        "id": "Array@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 41
+      },
+      "step": 22
+    },
+    {
+      "type": "LOOP_START",
+      "line": 11,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:value@11",
+      "varNames": [
+        "value"
+      ],
+      "track": [
+        "94.2",
+        "99.1",
+        "104.3"
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 23
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "measurements"
+      },
+      "step": 24
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 11,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:value@11",
+      "index": 0,
+      "step": 25
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 2,
+        "endCol": 55
+      },
+      "step": 26
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 12,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "isHigh",
+      "substituted": "isHigh(94.2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "94.2"
+          }
+        }
+      ],
+      "targetFrameId": "isHigh#1",
+      "span": {
+        "startCol": 9,
+        "endCol": 3
+      },
+      "step": 27
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "isHigh#1",
+      "name": "isHigh",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 12,
+      "step": 28
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "isHigh#1",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "step": 29
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "isHigh#1",
+      "span": {
+        "startCol": 4,
+        "endCol": 25
+      },
+      "step": 30
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 3,
+      "detail": "core",
+      "frameId": "isHigh#1",
+      "expression": "value > limit",
+      "substituted": "94.2 > 98",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 24
+      },
+      "step": 31
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "isHigh#1",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "toLine": 12,
+      "step": 32
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "isHigh#1",
+      "step": 33
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 12,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "isHigh",
+      "substituted": "isHigh(94.2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "94.2"
+          }
+        }
+      ],
+      "targetFrameId": "isHigh#2",
+      "span": {
+        "startCol": 9,
+        "endCol": 3
+      },
+      "step": 34
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "isHigh#2",
+      "name": "isHigh",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 12,
+      "step": 35
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "isHigh#2",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "step": 36
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "isHigh#2",
+      "span": {
+        "startCol": 4,
+        "endCol": 25
+      },
+      "step": 37
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 3,
+      "detail": "core",
+      "frameId": "isHigh#2",
+      "expression": "value > limit",
+      "substituted": "94.2 > 100",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 24
+      },
+      "step": 38
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "isHigh#2",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "toLine": 12,
+      "step": 39
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "isHigh#2",
+      "step": 40
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 12,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "94.2 false false",
+      "step": 41
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "99.1"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "measurements"
+      },
+      "step": 42
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 11,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:value@11",
+      "index": 1,
+      "step": 43
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 2,
+        "endCol": 55
+      },
+      "step": 44
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 12,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "isHigh",
+      "substituted": "isHigh(99.1)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "99.1"
+          }
+        }
+      ],
+      "targetFrameId": "isHigh#3",
+      "span": {
+        "startCol": 9,
+        "endCol": 3
+      },
+      "step": 45
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "isHigh#3",
+      "name": "isHigh",
+      "callNumber": 3,
+      "parentFrameId": "global",
+      "returnLine": 12,
+      "step": 46
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "isHigh#3",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "99.1"
+      },
+      "step": 47
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "isHigh#3",
+      "span": {
+        "startCol": 4,
+        "endCol": 25
+      },
+      "step": 48
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 3,
+      "detail": "core",
+      "frameId": "isHigh#3",
+      "expression": "value > limit",
+      "substituted": "99.1 > 98",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 24
+      },
+      "step": 49
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "isHigh#3",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "toLine": 12,
+      "step": 50
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "isHigh#3",
+      "step": 51
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 12,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "isHigh",
+      "substituted": "isHigh(99.1)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "99.1"
+          }
+        }
+      ],
+      "targetFrameId": "isHigh#4",
+      "span": {
+        "startCol": 9,
+        "endCol": 3
+      },
+      "step": 52
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "isHigh#4",
+      "name": "isHigh",
+      "callNumber": 4,
+      "parentFrameId": "global",
+      "returnLine": 12,
+      "step": 53
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "isHigh#4",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "99.1"
+      },
+      "step": 54
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "isHigh#4",
+      "span": {
+        "startCol": 4,
+        "endCol": 25
+      },
+      "step": 55
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 3,
+      "detail": "core",
+      "frameId": "isHigh#4",
+      "expression": "value > limit",
+      "substituted": "99.1 > 100",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 24
+      },
+      "step": 56
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "isHigh#4",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "toLine": 12,
+      "step": 57
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "isHigh#4",
+      "step": 58
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 12,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "99.1 true false",
+      "step": 59
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "99.1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "104.3"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "measurements"
+      },
+      "step": 60
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 11,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:value@11",
+      "index": 2,
+      "step": 61
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 2,
+        "endCol": 55
+      },
+      "step": 62
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 12,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "isHigh",
+      "substituted": "isHigh(104.3)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "104.3"
+          }
+        }
+      ],
+      "targetFrameId": "isHigh#5",
+      "span": {
+        "startCol": 9,
+        "endCol": 3
+      },
+      "step": 63
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "isHigh#5",
+      "name": "isHigh",
+      "callNumber": 5,
+      "parentFrameId": "global",
+      "returnLine": 12,
+      "step": 64
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "isHigh#5",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "104.3"
+      },
+      "step": 65
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "isHigh#5",
+      "span": {
+        "startCol": 4,
+        "endCol": 25
+      },
+      "step": 66
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 3,
+      "detail": "core",
+      "frameId": "isHigh#5",
+      "expression": "value > limit",
+      "substituted": "104.3 > 98",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 24
+      },
+      "step": 67
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "isHigh#5",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "toLine": 12,
+      "step": 68
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "isHigh#5",
+      "step": 69
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 12,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "isHigh",
+      "substituted": "isHigh(104.3)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "104.3"
+          }
+        }
+      ],
+      "targetFrameId": "isHigh#6",
+      "span": {
+        "startCol": 9,
+        "endCol": 3
+      },
+      "step": 70
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "isHigh#6",
+      "name": "isHigh",
+      "callNumber": 6,
+      "parentFrameId": "global",
+      "returnLine": 12,
+      "step": 71
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "isHigh#6",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "104.3"
+      },
+      "step": 72
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "isHigh#6",
+      "span": {
+        "startCol": 4,
+        "endCol": 25
+      },
+      "step": 73
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 3,
+      "detail": "core",
+      "frameId": "isHigh#6",
+      "expression": "value > limit",
+      "substituted": "104.3 > 100",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 24
+      },
+      "step": 74
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "isHigh#6",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "toLine": 12,
+      "step": 75
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 12,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "isHigh#6",
+      "step": 76
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 12,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "104.3 true true",
+      "step": 77
+    },
+    {
+      "type": "LOOP_END",
+      "line": 11,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:value@11",
+      "reason": "exhausted",
+      "step": 78
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 11,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 79
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "94.2 false false\n99.1 true false\n104.3 true true\n"
+  }
+}

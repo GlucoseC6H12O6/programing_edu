@@ -1,0 +1,1396 @@
+{
+  "version": 1,
+  "lessonId": "j20-classes",
+  "source": {
+    "path": "predict.js",
+    "language": "javascript",
+    "lines": [
+      "class Wafer {",
+      "  constructor(id, measurement) {",
+      "    this.id = id;",
+      "    this.measurement = measurement;",
+      "    this.status = \"UNKNOWN\";",
+      "  }",
+      "",
+      "  judge(limit) {",
+      "    this.status = this.measurement > limit ? \"HIGH\" : \"PASS\";",
+      "    return this.status;",
+      "  }",
+      "",
+      "  label() {",
+      "    return `${this.id}:${this.status}`;",
+      "  }",
+      "}",
+      "",
+      "const first = new Wafer(\"W01\", 94.2);",
+      "const second = new Wafer(\"W02\", 101.3);",
+      "",
+      "console.log(first.judge(100.0), second.judge(100.0));",
+      "console.log(first.label(), second.label());",
+      "console.log(first === second, first.judge === second.judge);",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "class",
+        "id": "class:Wafer",
+        "name": "Wafer",
+        "methods": [
+          {
+            "name": "judge",
+            "params": [
+              "limit"
+            ]
+          },
+          {
+            "name": "label",
+            "params": []
+          }
+        ],
+        "attributes": [],
+        "initRule": [
+          "id",
+          "measurement",
+          "status"
+        ]
+      },
+      "step": 1
+    },
+    {
+      "type": "CLASS_DEFINE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "Wafer",
+      "heapId": "class:Wafer",
+      "methods": [
+        "judge",
+        "label"
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 2
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 18,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 37
+      },
+      "step": 3
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 18,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "new Wafer",
+      "substituted": "new Wafer('W01', 94.2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W01'"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "94.2"
+          }
+        }
+      ],
+      "targetFrameId": "Wafer#1",
+      "span": {
+        "startCol": 14,
+        "endCol": 36
+      },
+      "step": 4
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "Wafer#1",
+      "name": "Wafer.constructor",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 18,
+      "step": 5
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "Wafer#1",
+      "name": "id",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W01'"
+      },
+      "step": 6
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "Wafer#1",
+      "name": "measurement",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "step": 7
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "Wafer#1",
+      "span": {
+        "startCol": 4,
+        "endCol": 17
+      },
+      "step": 8
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "Wafer#1",
+      "object": {
+        "kind": "mapping",
+        "id": "Wafer@1",
+        "label": "instance",
+        "className": "Wafer",
+        "entries": []
+      },
+      "step": 9
+    },
+    {
+      "type": "ITEM_WRITE",
+      "line": 3,
+      "detail": "core",
+      "frameId": "Wafer#1",
+      "target": "Wafer@1",
+      "key": "id",
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W01'"
+      },
+      "step": 10
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "Wafer#1",
+      "object": {
+        "kind": "mapping",
+        "id": "Wafer@1",
+        "label": "instance",
+        "className": "Wafer",
+        "entries": [
+          {
+            "key": "id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W01'"
+            }
+          }
+        ]
+      },
+      "step": 11
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "Wafer#1",
+      "span": {
+        "startCol": 4,
+        "endCol": 35
+      },
+      "step": 12
+    },
+    {
+      "type": "ITEM_WRITE",
+      "line": 4,
+      "detail": "core",
+      "frameId": "Wafer#1",
+      "target": "Wafer@1",
+      "key": "measurement",
+      "after": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "step": 13
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "Wafer#1",
+      "object": {
+        "kind": "mapping",
+        "id": "Wafer@1",
+        "label": "instance",
+        "className": "Wafer",
+        "entries": [
+          {
+            "key": "id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W01'"
+            }
+          },
+          {
+            "key": "measurement",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "94.2"
+            }
+          }
+        ]
+      },
+      "step": 14
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "Wafer#1",
+      "span": {
+        "startCol": 4,
+        "endCol": 28
+      },
+      "step": 15
+    },
+    {
+      "type": "ITEM_WRITE",
+      "line": 5,
+      "detail": "core",
+      "frameId": "Wafer#1",
+      "target": "Wafer@1",
+      "key": "status",
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'UNKNOWN'"
+      },
+      "step": 16
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "Wafer#1",
+      "object": {
+        "kind": "mapping",
+        "id": "Wafer@1",
+        "label": "instance",
+        "className": "Wafer",
+        "entries": [
+          {
+            "key": "id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W01'"
+            }
+          },
+          {
+            "key": "measurement",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "94.2"
+            }
+          },
+          {
+            "key": "status",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'UNKNOWN'"
+            }
+          }
+        ]
+      },
+      "step": 17
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "Wafer#1",
+      "value": {
+        "kind": "ref",
+        "id": "Wafer@1"
+      },
+      "toLine": 18,
+      "step": 18
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 18,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "Wafer#1",
+      "step": 19
+    },
+    {
+      "type": "INSTANCE_CREATE",
+      "line": 18,
+      "detail": "expression",
+      "frameId": "global",
+      "heapId": "Wafer@1",
+      "className": "Wafer",
+      "classHeapId": "class:Wafer",
+      "step": 20
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 18,
+      "detail": "core",
+      "frameId": "global",
+      "name": "first",
+      "value": {
+        "kind": "ref",
+        "id": "Wafer@1"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 37
+      },
+      "step": 21
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 19,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 39
+      },
+      "step": 22
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 19,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "new Wafer",
+      "substituted": "new Wafer('W02', 101.3)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'W02'"
+          }
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "101.3"
+          }
+        }
+      ],
+      "targetFrameId": "Wafer#2",
+      "span": {
+        "startCol": 15,
+        "endCol": 38
+      },
+      "step": 23
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "Wafer#2",
+      "name": "Wafer.constructor",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 19,
+      "step": 24
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "Wafer#2",
+      "name": "id",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W02'"
+      },
+      "step": 25
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 2,
+      "detail": "core",
+      "frameId": "Wafer#2",
+      "name": "measurement",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "step": 26
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "Wafer#2",
+      "span": {
+        "startCol": 4,
+        "endCol": 17
+      },
+      "step": 27
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "Wafer#2",
+      "object": {
+        "kind": "mapping",
+        "id": "Wafer@2",
+        "label": "instance",
+        "className": "Wafer",
+        "entries": []
+      },
+      "step": 28
+    },
+    {
+      "type": "ITEM_WRITE",
+      "line": 3,
+      "detail": "core",
+      "frameId": "Wafer#2",
+      "target": "Wafer@2",
+      "key": "id",
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W02'"
+      },
+      "step": 29
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "Wafer#2",
+      "object": {
+        "kind": "mapping",
+        "id": "Wafer@2",
+        "label": "instance",
+        "className": "Wafer",
+        "entries": [
+          {
+            "key": "id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W02'"
+            }
+          }
+        ]
+      },
+      "step": 30
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "Wafer#2",
+      "span": {
+        "startCol": 4,
+        "endCol": 35
+      },
+      "step": 31
+    },
+    {
+      "type": "ITEM_WRITE",
+      "line": 4,
+      "detail": "core",
+      "frameId": "Wafer#2",
+      "target": "Wafer@2",
+      "key": "measurement",
+      "after": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "step": 32
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "Wafer#2",
+      "object": {
+        "kind": "mapping",
+        "id": "Wafer@2",
+        "label": "instance",
+        "className": "Wafer",
+        "entries": [
+          {
+            "key": "id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W02'"
+            }
+          },
+          {
+            "key": "measurement",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "101.3"
+            }
+          }
+        ]
+      },
+      "step": 33
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "Wafer#2",
+      "span": {
+        "startCol": 4,
+        "endCol": 28
+      },
+      "step": 34
+    },
+    {
+      "type": "ITEM_WRITE",
+      "line": 5,
+      "detail": "core",
+      "frameId": "Wafer#2",
+      "target": "Wafer@2",
+      "key": "status",
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'UNKNOWN'"
+      },
+      "step": 35
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "Wafer#2",
+      "object": {
+        "kind": "mapping",
+        "id": "Wafer@2",
+        "label": "instance",
+        "className": "Wafer",
+        "entries": [
+          {
+            "key": "id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W02'"
+            }
+          },
+          {
+            "key": "measurement",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "101.3"
+            }
+          },
+          {
+            "key": "status",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'UNKNOWN'"
+            }
+          }
+        ]
+      },
+      "step": 36
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 5,
+      "detail": "expression",
+      "frameId": "Wafer#2",
+      "value": {
+        "kind": "ref",
+        "id": "Wafer@2"
+      },
+      "toLine": 19,
+      "step": 37
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 19,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "Wafer#2",
+      "step": 38
+    },
+    {
+      "type": "INSTANCE_CREATE",
+      "line": 19,
+      "detail": "expression",
+      "frameId": "global",
+      "heapId": "Wafer@2",
+      "className": "Wafer",
+      "classHeapId": "class:Wafer",
+      "step": 39
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 19,
+      "detail": "core",
+      "frameId": "global",
+      "name": "second",
+      "value": {
+        "kind": "ref",
+        "id": "Wafer@2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 39
+      },
+      "step": 40
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 21,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 53
+      },
+      "step": 41
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 21,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "Wafer.judge",
+      "substituted": "Wafer.judge(100)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "100"
+          }
+        }
+      ],
+      "targetFrameId": "Wafer.judge#1",
+      "span": {
+        "startCol": 7,
+        "endCol": 3
+      },
+      "step": 42
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "Wafer.judge#1",
+      "name": "Wafer.judge",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 21,
+      "step": 43
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 8,
+      "detail": "core",
+      "frameId": "Wafer.judge#1",
+      "name": "limit",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "100"
+      },
+      "step": 44
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "Wafer.judge#1",
+      "span": {
+        "startCol": 4,
+        "endCol": 61
+      },
+      "step": 45
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "Wafer.judge#1",
+      "target": "Wafer@1",
+      "key": "measurement",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "step": 46
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "Wafer.judge#1",
+      "expression": "this.measurement > limit",
+      "substituted": "94.2 > 100",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 18,
+        "endCol": 42
+      },
+      "step": 47
+    },
+    {
+      "type": "ITEM_WRITE",
+      "line": 9,
+      "detail": "core",
+      "frameId": "Wafer.judge#1",
+      "target": "Wafer@1",
+      "key": "status",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'UNKNOWN'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'PASS'"
+      },
+      "step": 48
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "Wafer.judge#1",
+      "object": {
+        "kind": "mapping",
+        "id": "Wafer@1",
+        "label": "instance",
+        "className": "Wafer",
+        "entries": [
+          {
+            "key": "id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W01'"
+            }
+          },
+          {
+            "key": "measurement",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "94.2"
+            }
+          },
+          {
+            "key": "status",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'PASS'"
+            }
+          }
+        ]
+      },
+      "step": 49
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "Wafer.judge#1",
+      "span": {
+        "startCol": 4,
+        "endCol": 23
+      },
+      "step": 50
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "Wafer.judge#1",
+      "target": "Wafer@1",
+      "key": "status",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'PASS'"
+      },
+      "step": 51
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "Wafer.judge#1",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'PASS'"
+      },
+      "toLine": 21,
+      "step": 52
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 21,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "Wafer.judge#1",
+      "step": 53
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 21,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "Wafer.judge",
+      "substituted": "Wafer.judge(100)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "100"
+          }
+        }
+      ],
+      "targetFrameId": "Wafer.judge#2",
+      "span": {
+        "startCol": 7,
+        "endCol": 3
+      },
+      "step": 54
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 8,
+      "detail": "expression",
+      "frameId": "Wafer.judge#2",
+      "name": "Wafer.judge",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 21,
+      "step": 55
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 8,
+      "detail": "core",
+      "frameId": "Wafer.judge#2",
+      "name": "limit",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "100"
+      },
+      "step": 56
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "Wafer.judge#2",
+      "span": {
+        "startCol": 4,
+        "endCol": 61
+      },
+      "step": 57
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "Wafer.judge#2",
+      "target": "Wafer@2",
+      "key": "measurement",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "101.3"
+      },
+      "step": 58
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "Wafer.judge#2",
+      "expression": "this.measurement > limit",
+      "substituted": "101.3 > 100",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 18,
+        "endCol": 42
+      },
+      "step": 59
+    },
+    {
+      "type": "ITEM_WRITE",
+      "line": 9,
+      "detail": "core",
+      "frameId": "Wafer.judge#2",
+      "target": "Wafer@2",
+      "key": "status",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'UNKNOWN'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'HIGH'"
+      },
+      "step": 60
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "Wafer.judge#2",
+      "object": {
+        "kind": "mapping",
+        "id": "Wafer@2",
+        "label": "instance",
+        "className": "Wafer",
+        "entries": [
+          {
+            "key": "id",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'W02'"
+            }
+          },
+          {
+            "key": "measurement",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "101.3"
+            }
+          },
+          {
+            "key": "status",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'HIGH'"
+            }
+          }
+        ]
+      },
+      "step": 61
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "Wafer.judge#2",
+      "span": {
+        "startCol": 4,
+        "endCol": 23
+      },
+      "step": 62
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "Wafer.judge#2",
+      "target": "Wafer@2",
+      "key": "status",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'HIGH'"
+      },
+      "step": 63
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 10,
+      "detail": "expression",
+      "frameId": "Wafer.judge#2",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'HIGH'"
+      },
+      "toLine": 21,
+      "step": 64
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 21,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "Wafer.judge#2",
+      "step": 65
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 21,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "PASS HIGH",
+      "step": 66
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 22,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 43
+      },
+      "step": 67
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 22,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "Wafer.label",
+      "substituted": "Wafer.label()",
+      "args": [],
+      "targetFrameId": "Wafer.label#1",
+      "span": {
+        "startCol": 7,
+        "endCol": 3
+      },
+      "step": 68
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 13,
+      "detail": "expression",
+      "frameId": "Wafer.label#1",
+      "name": "Wafer.label",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 22,
+      "step": 69
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "Wafer.label#1",
+      "span": {
+        "startCol": 4,
+        "endCol": 39
+      },
+      "step": 70
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "Wafer.label#1",
+      "target": "Wafer@1",
+      "key": "id",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W01'"
+      },
+      "step": 71
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "Wafer.label#1",
+      "target": "Wafer@1",
+      "key": "status",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'PASS'"
+      },
+      "step": 72
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "Wafer.label#1",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W01:PASS'"
+      },
+      "toLine": 22,
+      "step": 73
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 22,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "Wafer.label#1",
+      "step": 74
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 22,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "Wafer.label",
+      "substituted": "Wafer.label()",
+      "args": [],
+      "targetFrameId": "Wafer.label#2",
+      "span": {
+        "startCol": 7,
+        "endCol": 3
+      },
+      "step": 75
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 13,
+      "detail": "expression",
+      "frameId": "Wafer.label#2",
+      "name": "Wafer.label",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 22,
+      "step": 76
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "Wafer.label#2",
+      "span": {
+        "startCol": 4,
+        "endCol": 39
+      },
+      "step": 77
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "Wafer.label#2",
+      "target": "Wafer@2",
+      "key": "id",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W02'"
+      },
+      "step": 78
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "Wafer.label#2",
+      "target": "Wafer@2",
+      "key": "status",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'HIGH'"
+      },
+      "step": 79
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 14,
+      "detail": "expression",
+      "frameId": "Wafer.label#2",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'W02:HIGH'"
+      },
+      "toLine": 22,
+      "step": 80
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 22,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "Wafer.label#2",
+      "step": 81
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 22,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "W01:PASS W02:HIGH",
+      "step": 82
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 60
+      },
+      "step": 83
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "first === second",
+      "substituted": "{id: 'W01', measurement: 94.2, status: 'PASS'} === {id: 'W02', measurement: 101.3, status: 'HIGH'}",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "false"
+      },
+      "span": {
+        "startCol": 12,
+        "endCol": 28
+      },
+      "step": 84
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "Wafer@1",
+      "key": "judge",
+      "value": {
+        "kind": "ref",
+        "id": "fn:judge"
+      },
+      "step": 85
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "Wafer@2",
+      "key": "judge",
+      "value": {
+        "kind": "ref",
+        "id": "fn:judge"
+      },
+      "step": 86
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 23,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "first.judge === second.judge",
+      "substituted": "<fn:judge> === <fn:judge>",
+      "result": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "true"
+      },
+      "span": {
+        "startCol": 30,
+        "endCol": 58
+      },
+      "step": 87
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 23,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "false true",
+      "step": 88
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 23,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 89
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "PASS HIGH\nW01:PASS W02:HIGH\nfalse true\n"
+  }
+}

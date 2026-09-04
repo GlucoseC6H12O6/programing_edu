@@ -1,0 +1,211 @@
+{
+  "version": 1,
+  "lessonId": "p18-files",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "with open(\"report.txt\", \"w\", encoding=\"utf-8\") as file:",
+      "    file.write(\"A\")",
+      "    file.write(\"B\\n\")",
+      "",
+      "with open(\"report.txt\", \"a\", encoding=\"utf-8\") as file:",
+      "    file.write(\"C\\n\")"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {
+    "report.txt": "OLD\n"
+  },
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "FILE_OPEN",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "path": "report.txt",
+      "mode": "w",
+      "encoding": "utf-8",
+      "cursor": 0,
+      "content": "",
+      "discarded": "OLD\n"
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 3,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "file",
+      "value": {
+        "kind": "primitive",
+        "type": "file",
+        "repr": "<report.txt 통로, w 모드>"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 19
+      }
+    },
+    {
+      "type": "FILE_WRITE",
+      "step": 5,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "path": "report.txt",
+      "text": "A",
+      "cursor": 1,
+      "content": "A"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 6,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "FILE_WRITE",
+      "step": 7,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "path": "report.txt",
+      "text": "B\n",
+      "cursor": 3,
+      "content": "AB\n"
+    },
+    {
+      "type": "FILE_CLOSE",
+      "step": 8,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "path": "report.txt",
+      "content": "AB\n"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 9,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "FILE_OPEN",
+      "step": 10,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "path": "report.txt",
+      "mode": "a",
+      "encoding": "utf-8",
+      "cursor": 3,
+      "content": "AB\n"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 11,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "name": "file",
+      "before": {
+        "kind": "primitive",
+        "type": "file",
+        "repr": "<report.txt 통로, w 모드>"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "file",
+        "repr": "<report.txt 통로, a 모드>"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 12,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "FILE_WRITE",
+      "step": 13,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "path": "report.txt",
+      "text": "C\n",
+      "cursor": 5,
+      "content": "AB\nC\n"
+    },
+    {
+      "type": "FILE_CLOSE",
+      "step": 14,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "path": "report.txt",
+      "content": "AB\nC\n"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 15,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": ""
+  }
+}

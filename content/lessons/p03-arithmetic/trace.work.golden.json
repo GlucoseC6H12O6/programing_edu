@@ -1,0 +1,230 @@
+{
+  "version": 1,
+  "lessonId": "p03-arithmetic",
+  "source": {
+    "path": "work.py",
+    "language": "python",
+    "lines": [
+      "m1 = 10.2",
+      "m2 = 10.6",
+      "m3 = 10.4",
+      "average = (m1 + m2 + m3) / 3",
+      "print(average)  # 10.4"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 9
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "m1",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 9
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 3,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 9
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "name": "m2",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.6"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 9
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 5,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 9
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 6,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "name": "m3",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.4"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 9
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 7,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 8,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "m1 + m2",
+      "substituted": "10.2 + 10.6",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "20.799999999999997"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 9,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "m1 + m2 + m3",
+      "substituted": "20.799999999999997 + 10.4",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "31.199999999999996"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 23
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 10,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "(m1 + m2 + m3) / 3",
+      "substituted": "31.199999999999996 / 3",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.399999999999999"
+      },
+      "span": {
+        "startCol": 10,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 11,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "name": "average",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.399999999999999"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 12,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 14
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 13,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "10.399999999999999"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 14,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "10.399999999999999\n"
+  }
+}

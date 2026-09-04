@@ -1,0 +1,276 @@
+{
+  "version": 1,
+  "lessonId": "p19-exceptions",
+  "source": {
+    "path": "predict.py",
+    "language": "python",
+    "lines": [
+      "events = []",
+      "",
+      "try:",
+      "    events.append(\"try-start\")",
+      "    number = int(\"x\")",
+      "    events.append(\"try-end\")",
+      "except ValueError:",
+      "    events.append(\"except\")",
+      "else:",
+      "    events.append(\"else\")",
+      "finally:",
+      "    events.append(\"finally\")",
+      "",
+      "print(events)"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 11
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": []
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 3,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "events",
+      "value": {
+        "kind": "ref",
+        "id": "list@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 11
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 4,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 30
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 5,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "target": "list@1",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'try-start'"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 6,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'try-start'"
+          }
+        ]
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 7,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 21
+      }
+    },
+    {
+      "type": "ERROR_THROW",
+      "step": 8,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "name": "ValueError",
+      "message": "invalid literal for int() with base 10: 'x'"
+    },
+    {
+      "type": "ERROR_CATCH",
+      "step": 9,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "handlerLine": 7
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 10,
+      "line": 8,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 27
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 11,
+      "line": 8,
+      "frameId": "global",
+      "detail": "core",
+      "target": "list@1",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'except'"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 12,
+      "line": 8,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'try-start'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'except'"
+          }
+        ]
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 13,
+      "line": 12,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 14,
+      "line": 12,
+      "frameId": "global",
+      "detail": "core",
+      "target": "list@1",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'finally'"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 15,
+      "line": 12,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'try-start'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'except'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'finally'"
+          }
+        ]
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 16,
+      "line": 14,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 13
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 17,
+      "line": 14,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "['try-start', 'except', 'finally']"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 18,
+      "line": 14,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "['try-start', 'except', 'finally']\n"
+  }
+}

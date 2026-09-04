@@ -1,0 +1,162 @@
+{
+  "version": 1,
+  "lessonId": "p02-variables",
+  "source": {
+    "path": "work.py",
+    "language": "python",
+    "lines": [
+      "raw_value = 10.2",
+      "offset = 0.3",
+      "corrected_value = raw_value + offset",
+      "print(corrected_value)  # 10.5"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "raw_value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.2"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 3,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 12
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "name": "offset",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "0.3"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 12
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 5,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 36
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 6,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "raw_value + offset",
+      "substituted": "10.2 + 0.3",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.5"
+      },
+      "span": {
+        "startCol": 18,
+        "endCol": 36
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 7,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "name": "corrected_value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.5"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 36
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 8,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 22
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 9,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "10.5"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 10,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "10.5\n"
+  }
+}

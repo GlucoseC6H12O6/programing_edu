@@ -1,0 +1,601 @@
+{
+  "version": 1,
+  "lessonId": "p14-loop-patterns",
+  "source": {
+    "path": "work.py",
+    "language": "python",
+    "lines": [
+      "micrometers = [0.010, 0.012, -0.001]",
+      "nanometers = []",
+      "",
+      "for value in micrometers:",
+      "    converted = value * 1000",
+      "    if converted >= 0:",
+      "        nanometers.append(converted)",
+      "",
+      "print(nanometers)  # [10.0, 12.0]"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 36
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "-0.001",
+      "substituted": "-0.001",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "-0.001"
+      },
+      "span": {
+        "startCol": 29,
+        "endCol": 35
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 3,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@1",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "0.01"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "0.012"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "-0.001"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 4,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "micrometers",
+      "value": {
+        "kind": "ref",
+        "id": "list@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 36
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 5,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 15
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 6,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@2",
+        "label": "list",
+        "items": []
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 7,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "name": "nanometers",
+      "value": {
+        "kind": "ref",
+        "id": "list@2"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 15
+      }
+    },
+    {
+      "type": "LOOP_START",
+      "step": 8,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:value@4",
+      "varNames": [
+        "value"
+      ],
+      "track": [
+        "0.01",
+        "0.012",
+        "-0.001"
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 36
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 9,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "0.01"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "micrometers"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 10,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:value@4",
+      "index": 0
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 11,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 12,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value * 1000",
+      "substituted": "0.01 * 1000",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.0"
+      },
+      "span": {
+        "startCol": 16,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 13,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "name": "converted",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.0"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 14,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "converted >= 0",
+      "substituted": "10.0 >= 0",
+      "result": true,
+      "span": {
+        "startCol": 4,
+        "endCol": 36
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 15,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 7
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 16,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 36
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 17,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "target": "list@2",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.0"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 18,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@2",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.0"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 19,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "0.01"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "0.012"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "micrometers"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 20,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:value@4",
+      "index": 1
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 21,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 22,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value * 1000",
+      "substituted": "0.012 * 1000",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "12.0"
+      },
+      "span": {
+        "startCol": 16,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 23,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "name": "converted",
+      "before": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "12.0"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 24,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "converted >= 0",
+      "substituted": "12.0 >= 0",
+      "result": true,
+      "span": {
+        "startCol": 4,
+        "endCol": 36
+      }
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "step": 25,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "label": "if",
+      "targetLine": 7
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 26,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 36
+      }
+    },
+    {
+      "type": "ITEM_APPEND",
+      "step": 27,
+      "line": 7,
+      "frameId": "global",
+      "detail": "core",
+      "target": "list@2",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "12.0"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 28,
+      "line": 7,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "sequence",
+        "id": "list@2",
+        "label": "list",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "10.0"
+          },
+          {
+            "kind": "primitive",
+            "type": "float",
+            "repr": "12.0"
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 29,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "value",
+      "before": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "0.012"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "-0.001"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "micrometers"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 30,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:value@4",
+      "index": 2
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 31,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 32,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "value * 1000",
+      "substituted": "-0.001 * 1000",
+      "result": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "-1.0"
+      },
+      "span": {
+        "startCol": 16,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 33,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "name": "converted",
+      "before": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "12.0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "-1.0"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 4,
+        "endCol": 28
+      }
+    },
+    {
+      "type": "BRANCH_TEST",
+      "step": 34,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "expression": "converted >= 0",
+      "substituted": "-1.0 >= 0",
+      "result": false,
+      "span": {
+        "startCol": 4,
+        "endCol": 36
+      }
+    },
+    {
+      "type": "LOOP_END",
+      "step": 35,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:value@4",
+      "reason": "exhausted"
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 36,
+      "line": 9,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 17
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 37,
+      "line": 9,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "[10.0, 12.0]"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 38,
+      "line": 9,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "[10.0, 12.0]\n"
+  }
+}

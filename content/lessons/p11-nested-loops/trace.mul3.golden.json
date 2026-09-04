@@ -1,0 +1,2333 @@
+{
+  "version": 1,
+  "lessonId": "p11-nested-loops",
+  "source": {
+    "path": "mul_3x3.py",
+    "language": "python",
+    "lines": [
+      "def mul(a, b):",
+      "    return a * b",
+      "",
+      "for i in range(0, 3):",
+      "    for k in range(0, 3):",
+      "        result = mul(i, k)"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "FUNCTION_DEFINE",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "mul",
+      "heapId": "fn:mul",
+      "params": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "b"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 16
+      },
+      "message": "1번 줄에서 함수 `mul`이 정의됩니다. 본문(2번 줄)은 아직 실행되지 않습니다."
+    },
+    {
+      "type": "LOOP_START",
+      "step": 2,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:i@4",
+      "varNames": [
+        "i"
+      ],
+      "track": [
+        "0",
+        "1",
+        "2"
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 26
+      },
+      "message": "4번 줄의 `range(0, 3)`가 만드는 값은 0, 1, 2입니다. 끝값 3은 포함되지 않습니다."
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 3,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "i",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "range"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 4,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:i@4",
+      "index": 0,
+      "message": "바깥 반복의 첫 회차가 시작되고 `i`는 0입니다."
+    },
+    {
+      "type": "LOOP_START",
+      "step": 5,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:k@5",
+      "varNames": [
+        "k"
+      ],
+      "track": [
+        "0",
+        "1",
+        "2"
+      ],
+      "parentLoopId": "loop:i@4",
+      "span": {
+        "startCol": 4,
+        "endCol": 26
+      },
+      "message": "`i`는 0으로 고정된 채 `k` 반복이 0부터 새로 시작합니다."
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 6,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "k",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "range"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 7,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:k@5",
+      "index": 0,
+      "message": "현재 조합은 (0, 0)입니다."
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 8,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 9,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "i",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "span": {
+        "startCol": 21,
+        "endCol": 22
+      },
+      "message": "인수 자리의 `i`를 읽어 0을 얻습니다."
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 10,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "k",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "span": {
+        "startCol": 24,
+        "endCol": 25
+      },
+      "message": "인수 자리의 `k`를 읽어 0을 얻습니다."
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 11,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "mul",
+      "substituted": "mul(0, 0)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "0"
+          },
+          "from": "global.i"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "0"
+          },
+          "from": "global.k"
+        }
+      ],
+      "targetFrameId": "mul#1",
+      "span": {
+        "startCol": 17,
+        "endCol": 26
+      },
+      "message": "`mul(i, k)`를 현재 값으로 치환하면 `mul(0, 0)`입니다."
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 12,
+      "line": 1,
+      "frameId": "mul#1",
+      "detail": "expression",
+      "name": "mul",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 6
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 13,
+      "line": 1,
+      "frameId": "mul#1",
+      "detail": "expression",
+      "name": "a",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "from": "global.i"
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 14,
+      "line": 1,
+      "frameId": "mul#1",
+      "detail": "core",
+      "name": "b",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "from": "global.k",
+      "message": "새 프레임 mul#1이 만들어지고 인수가 매개변수로 연결됩니다: a=0, b=0. 같은 함수라도 호출마다 별도 프레임입니다."
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 15,
+      "line": 2,
+      "frameId": "mul#1",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 16,
+      "line": 2,
+      "frameId": "mul#1",
+      "detail": "core",
+      "expression": "a * b",
+      "substituted": "0 * 0",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 16
+      },
+      "message": "mul#1의 지역 변수로 `0 * 0`을 계산해 0을 얻습니다."
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 17,
+      "line": 2,
+      "frameId": "mul#1",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "toLine": 6
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 18,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "mul#1"
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 19,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "name": "result",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "mul#1"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      },
+      "message": "반환값 0이 6번 줄의 호출 위치로 돌아와 `result`에 저장되고, mul#1의 `a`, `b`는 사라집니다."
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 20,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "k",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "range"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 21,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:k@5",
+      "index": 1,
+      "message": "현재 조합은 (0, 1)입니다."
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 22,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 23,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "i",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "span": {
+        "startCol": 21,
+        "endCol": 22
+      },
+      "message": "인수 자리의 `i`를 읽어 0을 얻습니다."
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 24,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "k",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "span": {
+        "startCol": 24,
+        "endCol": 25
+      },
+      "message": "인수 자리의 `k`를 읽어 1을 얻습니다."
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 25,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "mul",
+      "substituted": "mul(0, 1)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "0"
+          },
+          "from": "global.i"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          "from": "global.k"
+        }
+      ],
+      "targetFrameId": "mul#2",
+      "span": {
+        "startCol": 17,
+        "endCol": 26
+      },
+      "message": "`mul(i, k)`를 현재 값으로 치환하면 `mul(0, 1)`입니다."
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 26,
+      "line": 1,
+      "frameId": "mul#2",
+      "detail": "expression",
+      "name": "mul",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 6
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 27,
+      "line": 1,
+      "frameId": "mul#2",
+      "detail": "expression",
+      "name": "a",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "from": "global.i"
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 28,
+      "line": 1,
+      "frameId": "mul#2",
+      "detail": "core",
+      "name": "b",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "from": "global.k",
+      "message": "새 프레임 mul#2이 만들어지고 인수가 매개변수로 연결됩니다: a=0, b=1. 같은 함수라도 호출마다 별도 프레임입니다."
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 29,
+      "line": 2,
+      "frameId": "mul#2",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 30,
+      "line": 2,
+      "frameId": "mul#2",
+      "detail": "core",
+      "expression": "a * b",
+      "substituted": "0 * 1",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 16
+      },
+      "message": "mul#2의 지역 변수로 `0 * 1`을 계산해 0을 얻습니다."
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 31,
+      "line": 2,
+      "frameId": "mul#2",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "toLine": 6
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 32,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "mul#2"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 33,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "name": "result",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "mul#2"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      },
+      "message": "반환값 0이 6번 줄의 호출 위치로 돌아와 `result`에 저장되고, mul#2의 `a`, `b`는 사라집니다."
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 34,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "k",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "range"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 35,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:k@5",
+      "index": 2,
+      "message": "현재 조합은 (0, 2)입니다."
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 36,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 37,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "i",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "span": {
+        "startCol": 21,
+        "endCol": 22
+      },
+      "message": "인수 자리의 `i`를 읽어 0을 얻습니다."
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 38,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "k",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "span": {
+        "startCol": 24,
+        "endCol": 25
+      },
+      "message": "인수 자리의 `k`를 읽어 2을 얻습니다."
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 39,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "mul",
+      "substituted": "mul(0, 2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "0"
+          },
+          "from": "global.i"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          },
+          "from": "global.k"
+        }
+      ],
+      "targetFrameId": "mul#3",
+      "span": {
+        "startCol": 17,
+        "endCol": 26
+      },
+      "message": "`mul(i, k)`를 현재 값으로 치환하면 `mul(0, 2)`입니다."
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 40,
+      "line": 1,
+      "frameId": "mul#3",
+      "detail": "expression",
+      "name": "mul",
+      "callNumber": 3,
+      "parentFrameId": "global",
+      "returnLine": 6
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 41,
+      "line": 1,
+      "frameId": "mul#3",
+      "detail": "expression",
+      "name": "a",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "from": "global.i"
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 42,
+      "line": 1,
+      "frameId": "mul#3",
+      "detail": "core",
+      "name": "b",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "from": "global.k",
+      "message": "새 프레임 mul#3이 만들어지고 인수가 매개변수로 연결됩니다: a=0, b=2. 같은 함수라도 호출마다 별도 프레임입니다."
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 43,
+      "line": 2,
+      "frameId": "mul#3",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 44,
+      "line": 2,
+      "frameId": "mul#3",
+      "detail": "core",
+      "expression": "a * b",
+      "substituted": "0 * 2",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 16
+      },
+      "message": "mul#3의 지역 변수로 `0 * 2`를 계산해 0을 얻습니다."
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 45,
+      "line": 2,
+      "frameId": "mul#3",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "toLine": 6
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 46,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "mul#3"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 47,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "name": "result",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "mul#3"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      },
+      "message": "반환값 0이 6번 줄의 호출 위치로 돌아와 `result`에 저장되고, mul#3의 `a`, `b`는 사라집니다."
+    },
+    {
+      "type": "LOOP_END",
+      "step": 48,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:k@5",
+      "reason": "exhausted",
+      "message": "`k`가 2까지 모두 소진되어 안쪽 반복이 끝났습니다. 이제 바깥 반복으로 돌아갑니다."
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 49,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "i",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "range"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 50,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:i@4",
+      "index": 1,
+      "message": "안쪽 반복이 끝난 뒤에야 바깥 `i`가 1로 증가합니다."
+    },
+    {
+      "type": "LOOP_START",
+      "step": 51,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:k@5",
+      "varNames": [
+        "k"
+      ],
+      "track": [
+        "0",
+        "1",
+        "2"
+      ],
+      "parentLoopId": "loop:i@4",
+      "span": {
+        "startCol": 4,
+        "endCol": 26
+      },
+      "message": "`i`는 1로 고정된 채 `k` 반복이 0부터 새로 시작합니다."
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 52,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "k",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "range"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 53,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:k@5",
+      "index": 0,
+      "message": "현재 조합은 (1, 0)입니다."
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 54,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 55,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "i",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "span": {
+        "startCol": 21,
+        "endCol": 22
+      },
+      "message": "인수 자리의 `i`를 읽어 1을 얻습니다."
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 56,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "k",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "span": {
+        "startCol": 24,
+        "endCol": 25
+      },
+      "message": "인수 자리의 `k`를 읽어 0을 얻습니다."
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 57,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "mul",
+      "substituted": "mul(1, 0)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          "from": "global.i"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "0"
+          },
+          "from": "global.k"
+        }
+      ],
+      "targetFrameId": "mul#4",
+      "span": {
+        "startCol": 17,
+        "endCol": 26
+      },
+      "message": "`mul(i, k)`를 현재 값으로 치환하면 `mul(1, 0)`입니다."
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 58,
+      "line": 1,
+      "frameId": "mul#4",
+      "detail": "expression",
+      "name": "mul",
+      "callNumber": 4,
+      "parentFrameId": "global",
+      "returnLine": 6
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 59,
+      "line": 1,
+      "frameId": "mul#4",
+      "detail": "expression",
+      "name": "a",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "from": "global.i"
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 60,
+      "line": 1,
+      "frameId": "mul#4",
+      "detail": "core",
+      "name": "b",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "from": "global.k",
+      "message": "새 프레임 mul#4이 만들어지고 인수가 매개변수로 연결됩니다: a=1, b=0. 같은 함수라도 호출마다 별도 프레임입니다."
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 61,
+      "line": 2,
+      "frameId": "mul#4",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 62,
+      "line": 2,
+      "frameId": "mul#4",
+      "detail": "core",
+      "expression": "a * b",
+      "substituted": "1 * 0",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 16
+      },
+      "message": "mul#4의 지역 변수로 `1 * 0`을 계산해 0을 얻습니다."
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 63,
+      "line": 2,
+      "frameId": "mul#4",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "toLine": 6
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 64,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "mul#4"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 65,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "name": "result",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "mul#4"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      },
+      "message": "반환값 0이 6번 줄의 호출 위치로 돌아와 `result`에 저장되고, mul#4의 `a`, `b`는 사라집니다."
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 66,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "k",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "range"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 67,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:k@5",
+      "index": 1,
+      "message": "현재 조합은 (1, 1)입니다."
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 68,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 69,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "i",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "span": {
+        "startCol": 21,
+        "endCol": 22
+      },
+      "message": "인수 자리의 `i`를 읽어 1을 얻습니다."
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 70,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "k",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "span": {
+        "startCol": 24,
+        "endCol": 25
+      },
+      "message": "인수 자리의 `k`를 읽어 1을 얻습니다."
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 71,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "mul",
+      "substituted": "mul(1, 1)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          "from": "global.i"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          "from": "global.k"
+        }
+      ],
+      "targetFrameId": "mul#5",
+      "span": {
+        "startCol": 17,
+        "endCol": 26
+      },
+      "message": "`mul(i, k)`를 현재 값으로 치환하면 `mul(1, 1)`입니다."
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 72,
+      "line": 1,
+      "frameId": "mul#5",
+      "detail": "expression",
+      "name": "mul",
+      "callNumber": 5,
+      "parentFrameId": "global",
+      "returnLine": 6
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 73,
+      "line": 1,
+      "frameId": "mul#5",
+      "detail": "expression",
+      "name": "a",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "from": "global.i"
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 74,
+      "line": 1,
+      "frameId": "mul#5",
+      "detail": "core",
+      "name": "b",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "from": "global.k",
+      "message": "새 프레임 mul#5이 만들어지고 인수가 매개변수로 연결됩니다: a=1, b=1. 같은 함수라도 호출마다 별도 프레임입니다."
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 75,
+      "line": 2,
+      "frameId": "mul#5",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 76,
+      "line": 2,
+      "frameId": "mul#5",
+      "detail": "core",
+      "expression": "a * b",
+      "substituted": "1 * 1",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 16
+      },
+      "message": "mul#5의 지역 변수로 `1 * 1`을 계산해 1을 얻습니다."
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 77,
+      "line": 2,
+      "frameId": "mul#5",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "toLine": 6
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 78,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "mul#5"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 79,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "name": "result",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "mul#5"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      },
+      "message": "반환값 1이 6번 줄의 호출 위치로 돌아와 `result`에 저장되고, mul#5의 `a`, `b`는 사라집니다."
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 80,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "k",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "range"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 81,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:k@5",
+      "index": 2,
+      "message": "현재 조합은 (1, 2)입니다."
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 82,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 83,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "i",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "span": {
+        "startCol": 21,
+        "endCol": 22
+      },
+      "message": "인수 자리의 `i`를 읽어 1을 얻습니다."
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 84,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "k",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "span": {
+        "startCol": 24,
+        "endCol": 25
+      },
+      "message": "인수 자리의 `k`를 읽어 2을 얻습니다."
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 85,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "mul",
+      "substituted": "mul(1, 2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          "from": "global.i"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          },
+          "from": "global.k"
+        }
+      ],
+      "targetFrameId": "mul#6",
+      "span": {
+        "startCol": 17,
+        "endCol": 26
+      },
+      "message": "`mul(i, k)`를 현재 값으로 치환하면 `mul(1, 2)`입니다."
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 86,
+      "line": 1,
+      "frameId": "mul#6",
+      "detail": "expression",
+      "name": "mul",
+      "callNumber": 6,
+      "parentFrameId": "global",
+      "returnLine": 6
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 87,
+      "line": 1,
+      "frameId": "mul#6",
+      "detail": "expression",
+      "name": "a",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "from": "global.i"
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 88,
+      "line": 1,
+      "frameId": "mul#6",
+      "detail": "core",
+      "name": "b",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "from": "global.k",
+      "message": "새 프레임 mul#6이 만들어지고 인수가 매개변수로 연결됩니다: a=1, b=2. 같은 함수라도 호출마다 별도 프레임입니다."
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 89,
+      "line": 2,
+      "frameId": "mul#6",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 90,
+      "line": 2,
+      "frameId": "mul#6",
+      "detail": "core",
+      "expression": "a * b",
+      "substituted": "1 * 2",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 16
+      },
+      "message": "mul#6의 지역 변수로 `1 * 2`를 계산해 2를 얻습니다."
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 91,
+      "line": 2,
+      "frameId": "mul#6",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "toLine": 6
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 92,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "mul#6"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 93,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "name": "result",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "mul#6"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      },
+      "message": "반환값 2가 6번 줄의 호출 위치로 돌아와 `result`에 저장되고, mul#6의 `a`, `b`는 사라집니다."
+    },
+    {
+      "type": "LOOP_END",
+      "step": 94,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:k@5",
+      "reason": "exhausted",
+      "message": "`k`가 2까지 모두 소진되어 안쪽 반복이 끝났습니다. 이제 바깥 반복으로 돌아갑니다."
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 95,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "i",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "range"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 96,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:i@4",
+      "index": 2,
+      "message": "안쪽 반복이 끝난 뒤에야 바깥 `i`가 2로 증가합니다."
+    },
+    {
+      "type": "LOOP_START",
+      "step": 97,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:k@5",
+      "varNames": [
+        "k"
+      ],
+      "track": [
+        "0",
+        "1",
+        "2"
+      ],
+      "parentLoopId": "loop:i@4",
+      "span": {
+        "startCol": 4,
+        "endCol": 26
+      },
+      "message": "`i`는 2로 고정된 채 `k` 반복이 0부터 새로 시작합니다."
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 98,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "k",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "range"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 99,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:k@5",
+      "index": 0,
+      "message": "현재 조합은 (2, 0)입니다."
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 100,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 101,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "i",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "span": {
+        "startCol": 21,
+        "endCol": 22
+      },
+      "message": "인수 자리의 `i`를 읽어 2을 얻습니다."
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 102,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "k",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "span": {
+        "startCol": 24,
+        "endCol": 25
+      },
+      "message": "인수 자리의 `k`를 읽어 0을 얻습니다."
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 103,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "mul",
+      "substituted": "mul(2, 0)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          },
+          "from": "global.i"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "0"
+          },
+          "from": "global.k"
+        }
+      ],
+      "targetFrameId": "mul#7",
+      "span": {
+        "startCol": 17,
+        "endCol": 26
+      },
+      "message": "`mul(i, k)`를 현재 값으로 치환하면 `mul(2, 0)`입니다."
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 104,
+      "line": 1,
+      "frameId": "mul#7",
+      "detail": "expression",
+      "name": "mul",
+      "callNumber": 7,
+      "parentFrameId": "global",
+      "returnLine": 6
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 105,
+      "line": 1,
+      "frameId": "mul#7",
+      "detail": "expression",
+      "name": "a",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "from": "global.i"
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 106,
+      "line": 1,
+      "frameId": "mul#7",
+      "detail": "core",
+      "name": "b",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "from": "global.k",
+      "message": "새 프레임 mul#7이 만들어지고 인수가 매개변수로 연결됩니다: a=2, b=0. 같은 함수라도 호출마다 별도 프레임입니다."
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 107,
+      "line": 2,
+      "frameId": "mul#7",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 108,
+      "line": 2,
+      "frameId": "mul#7",
+      "detail": "core",
+      "expression": "a * b",
+      "substituted": "2 * 0",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 16
+      },
+      "message": "mul#7의 지역 변수로 `2 * 0`을 계산해 0을 얻습니다."
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 109,
+      "line": 2,
+      "frameId": "mul#7",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "toLine": 6
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 110,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "mul#7"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 111,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "name": "result",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "mul#7"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      },
+      "message": "반환값 0이 6번 줄의 호출 위치로 돌아와 `result`에 저장되고, mul#7의 `a`, `b`는 사라집니다."
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 112,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "k",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "range"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 113,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:k@5",
+      "index": 1,
+      "message": "현재 조합은 (2, 1)입니다."
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 114,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 115,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "i",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "span": {
+        "startCol": 21,
+        "endCol": 22
+      },
+      "message": "인수 자리의 `i`를 읽어 2을 얻습니다."
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 116,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "k",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "span": {
+        "startCol": 24,
+        "endCol": 25
+      },
+      "message": "인수 자리의 `k`를 읽어 1을 얻습니다."
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 117,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "mul",
+      "substituted": "mul(2, 1)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          },
+          "from": "global.i"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "1"
+          },
+          "from": "global.k"
+        }
+      ],
+      "targetFrameId": "mul#8",
+      "span": {
+        "startCol": 17,
+        "endCol": 26
+      },
+      "message": "`mul(i, k)`를 현재 값으로 치환하면 `mul(2, 1)`입니다."
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 118,
+      "line": 1,
+      "frameId": "mul#8",
+      "detail": "expression",
+      "name": "mul",
+      "callNumber": 8,
+      "parentFrameId": "global",
+      "returnLine": 6
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 119,
+      "line": 1,
+      "frameId": "mul#8",
+      "detail": "expression",
+      "name": "a",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "from": "global.i"
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 120,
+      "line": 1,
+      "frameId": "mul#8",
+      "detail": "core",
+      "name": "b",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "from": "global.k",
+      "message": "새 프레임 mul#8이 만들어지고 인수가 매개변수로 연결됩니다: a=2, b=1. 같은 함수라도 호출마다 별도 프레임입니다."
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 121,
+      "line": 2,
+      "frameId": "mul#8",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 122,
+      "line": 2,
+      "frameId": "mul#8",
+      "detail": "core",
+      "expression": "a * b",
+      "substituted": "2 * 1",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 16
+      },
+      "message": "mul#8의 지역 변수로 `2 * 1`을 계산해 2를 얻습니다."
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 123,
+      "line": 2,
+      "frameId": "mul#8",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "toLine": 6
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 124,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "mul#8"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 125,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "name": "result",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "0"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "mul#8"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      },
+      "message": "반환값 2가 6번 줄의 호출 위치로 돌아와 `result`에 저장되고, mul#8의 `a`, `b`는 사라집니다."
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 126,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "name": "k",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "1"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "range"
+      }
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "step": 127,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:k@5",
+      "index": 2,
+      "message": "현재 조합은 (2, 2)입니다."
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 128,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 129,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "i",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "span": {
+        "startCol": 21,
+        "endCol": 22
+      },
+      "message": "인수 자리의 `i`를 읽어 2을 얻습니다."
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 130,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "expression": "k",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "span": {
+        "startCol": 24,
+        "endCol": 25
+      },
+      "message": "인수 자리의 `k`를 읽어 2을 얻습니다."
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "step": 131,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "callee": "mul",
+      "substituted": "mul(2, 2)",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          },
+          "from": "global.i"
+        },
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "int",
+            "repr": "2"
+          },
+          "from": "global.k"
+        }
+      ],
+      "targetFrameId": "mul#9",
+      "span": {
+        "startCol": 17,
+        "endCol": 26
+      },
+      "message": "`mul(i, k)`를 현재 값으로 치환하면 `mul(2, 2)`입니다."
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "step": 132,
+      "line": 1,
+      "frameId": "mul#9",
+      "detail": "expression",
+      "name": "mul",
+      "callNumber": 9,
+      "parentFrameId": "global",
+      "returnLine": 6
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 133,
+      "line": 1,
+      "frameId": "mul#9",
+      "detail": "expression",
+      "name": "a",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "from": "global.i"
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "step": 134,
+      "line": 1,
+      "frameId": "mul#9",
+      "detail": "core",
+      "name": "b",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "from": "global.k",
+      "message": "새 프레임 mul#9이 만들어지고 인수가 매개변수로 연결됩니다: a=2, b=2. 같은 함수라도 호출마다 별도 프레임입니다."
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 135,
+      "line": 2,
+      "frameId": "mul#9",
+      "detail": "expression",
+      "span": {
+        "startCol": 4,
+        "endCol": 16
+      }
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "step": 136,
+      "line": 2,
+      "frameId": "mul#9",
+      "detail": "core",
+      "expression": "a * b",
+      "substituted": "2 * 2",
+      "result": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "span": {
+        "startCol": 11,
+        "endCol": 16
+      },
+      "message": "mul#9의 지역 변수로 `2 * 2`를 계산해 4를 얻습니다."
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "step": 137,
+      "line": 2,
+      "frameId": "mul#9",
+      "detail": "expression",
+      "value": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "toLine": 6
+    },
+    {
+      "type": "FRAME_POP",
+      "step": 138,
+      "line": 6,
+      "frameId": "global",
+      "detail": "expression",
+      "poppedFrameId": "mul#9"
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "step": 139,
+      "line": 6,
+      "frameId": "global",
+      "detail": "core",
+      "name": "result",
+      "before": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "2"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "int",
+        "repr": "4"
+      },
+      "origin": {
+        "kind": "return",
+        "from": "mul#9"
+      },
+      "span": {
+        "startCol": 8,
+        "endCol": 26
+      },
+      "message": "반환값 4가 6번 줄의 호출 위치로 돌아와 `result`에 저장되고, mul#9의 `a`, `b`는 사라집니다."
+    },
+    {
+      "type": "LOOP_END",
+      "step": 140,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:k@5",
+      "reason": "exhausted",
+      "message": "`k`가 2까지 모두 소진되어 안쪽 반복이 끝났습니다. 이제 바깥 반복으로 돌아갑니다."
+    },
+    {
+      "type": "LOOP_END",
+      "step": 141,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "loopId": "loop:i@4",
+      "reason": "exhausted"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 142,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "message": "프로그램이 끝났습니다. `mul`은 모두 9번 호출되었습니다."
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": ""
+  }
+}

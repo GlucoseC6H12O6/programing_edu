@@ -1,0 +1,176 @@
+{
+  "version": 1,
+  "lessonId": "p05-boolean",
+  "source": {
+    "path": "work.py",
+    "language": "python",
+    "lines": [
+      "measurement = 9.8",
+      "lower_limit = 9.5",
+      "upper_limit = 10.5",
+      "is_pass = lower_limit <= measurement <= upper_limit",
+      "print(is_pass)  # True"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 17
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "measurement",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.8"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 17
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 3,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 17
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "name": "lower_limit",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "9.5"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 17
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 5,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 6,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "name": "upper_limit",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "10.5"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 18
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 7,
+      "line": 4,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 51
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 8,
+      "line": 4,
+      "frameId": "global",
+      "detail": "core",
+      "name": "is_pass",
+      "value": {
+        "kind": "primitive",
+        "type": "bool",
+        "repr": "True"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 51
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 9,
+      "line": 5,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 14
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 10,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "True"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 11,
+      "line": 5,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "True\n"
+  }
+}

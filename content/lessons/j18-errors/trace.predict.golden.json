@@ -1,0 +1,661 @@
+{
+  "version": 1,
+  "lessonId": "j18-errors",
+  "source": {
+    "path": "predict.js",
+    "language": "javascript",
+    "lines": [
+      "function parseValue(text) {",
+      "  const value = Number(text);",
+      "  if (!Number.isFinite(value)) {",
+      "    throw new RangeError(`숫자가 아닙니다: ${text}`);",
+      "  }",
+      "  return value;",
+      "}",
+      "",
+      "const inputs = [\"94.2\", \"N/A\"];",
+      "",
+      "for (const text of inputs) {",
+      "  try {",
+      "    console.log(\"값:\", parseValue(text));",
+      "  } catch (error) {",
+      "    console.log(\"실패:\", error.name, error.message);",
+      "  } finally {",
+      "    console.log(\"정리:\", text);",
+      "  }",
+      "}",
+      ""
+    ]
+  },
+  "events": [
+    {
+      "type": "HEAP_ALLOC",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "function",
+        "id": "fn:parseValue",
+        "name": "parseValue",
+        "params": [
+          {
+            "name": "text"
+          }
+        ],
+        "defLine": 1
+      },
+      "step": 1
+    },
+    {
+      "type": "FUNCTION_DEFINE",
+      "line": 1,
+      "detail": "core",
+      "frameId": "global",
+      "name": "parseValue",
+      "heapId": "fn:parseValue",
+      "params": [
+        {
+          "name": "text"
+        }
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 2
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 0,
+        "endCol": 31
+      },
+      "step": 3
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 9,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "sequence",
+        "id": "Array@1",
+        "label": "array",
+        "items": [
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'94.2'"
+          },
+          {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'N/A'"
+          }
+        ]
+      },
+      "step": 4
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 9,
+      "detail": "core",
+      "frameId": "global",
+      "name": "inputs",
+      "value": {
+        "kind": "ref",
+        "id": "Array@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 31
+      },
+      "step": 5
+    },
+    {
+      "type": "LOOP_START",
+      "line": 11,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:text@11",
+      "varNames": [
+        "text"
+      ],
+      "track": [
+        "'94.2'",
+        "'N/A'"
+      ],
+      "span": {
+        "startCol": 0,
+        "endCol": 1
+      },
+      "step": 6
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'94.2'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "inputs"
+      },
+      "step": 7
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 11,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:text@11",
+      "index": 0,
+      "step": 8
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 13,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 40
+      },
+      "step": 9
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 13,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "text",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'94.2'"
+      },
+      "span": {
+        "startCol": 33,
+        "endCol": 37
+      },
+      "step": 10
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 13,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "parseValue",
+      "substituted": "parseValue('94.2')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'94.2'"
+          },
+          "from": "global.text"
+        }
+      ],
+      "targetFrameId": "parseValue#1",
+      "span": {
+        "startCol": 22,
+        "endCol": 38
+      },
+      "step": 11
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "parseValue#1",
+      "name": "parseValue",
+      "callNumber": 1,
+      "parentFrameId": "global",
+      "returnLine": 13,
+      "step": 12
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "parseValue#1",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'94.2'"
+      },
+      "from": "global.text",
+      "step": 13
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "parseValue#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 29
+      },
+      "step": 14
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 2,
+      "detail": "core",
+      "frameId": "parseValue#1",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 29
+      },
+      "step": 15
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 3,
+      "detail": "core",
+      "frameId": "parseValue#1",
+      "expression": "!Number.isFinite(value)",
+      "substituted": "!true",
+      "result": false,
+      "span": {
+        "startCol": 2,
+        "endCol": 3
+      },
+      "step": 16
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "parseValue#1",
+      "span": {
+        "startCol": 2,
+        "endCol": 15
+      },
+      "step": 17
+    },
+    {
+      "type": "FUNCTION_RETURN",
+      "line": 6,
+      "detail": "expression",
+      "frameId": "parseValue#1",
+      "value": {
+        "kind": "primitive",
+        "type": "float",
+        "repr": "94.2"
+      },
+      "toLine": 13,
+      "step": 18
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 13,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "parseValue#1",
+      "step": 19
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 13,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "값: 94.2",
+      "step": 20
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 17,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 29
+      },
+      "step": 21
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 17,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "정리: 94.2",
+      "step": 22
+    },
+    {
+      "type": "VARIABLE_UPDATE",
+      "line": 11,
+      "detail": "expression",
+      "frameId": "global",
+      "name": "text",
+      "before": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'94.2'"
+      },
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'N/A'"
+      },
+      "origin": {
+        "kind": "iteration",
+        "label": "inputs"
+      },
+      "step": 23
+    },
+    {
+      "type": "LOOP_ITERATION",
+      "line": 11,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:text@11",
+      "index": 1,
+      "step": 24
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 13,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 40
+      },
+      "step": 25
+    },
+    {
+      "type": "EXPRESSION_EVAL",
+      "line": 13,
+      "detail": "expression",
+      "frameId": "global",
+      "expression": "text",
+      "result": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'N/A'"
+      },
+      "span": {
+        "startCol": 33,
+        "endCol": 37
+      },
+      "step": 26
+    },
+    {
+      "type": "FUNCTION_CALL",
+      "line": 13,
+      "detail": "core",
+      "frameId": "global",
+      "callee": "parseValue",
+      "substituted": "parseValue('N/A')",
+      "args": [
+        {
+          "value": {
+            "kind": "primitive",
+            "type": "str",
+            "repr": "'N/A'"
+          },
+          "from": "global.text"
+        }
+      ],
+      "targetFrameId": "parseValue#2",
+      "span": {
+        "startCol": 22,
+        "endCol": 38
+      },
+      "step": 27
+    },
+    {
+      "type": "FUNCTION_ENTER",
+      "line": 1,
+      "detail": "expression",
+      "frameId": "parseValue#2",
+      "name": "parseValue",
+      "callNumber": 2,
+      "parentFrameId": "global",
+      "returnLine": 13,
+      "step": 28
+    },
+    {
+      "type": "PARAMETER_BIND",
+      "line": 1,
+      "detail": "core",
+      "frameId": "parseValue#2",
+      "name": "text",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'N/A'"
+      },
+      "from": "global.text",
+      "step": 29
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 2,
+      "detail": "expression",
+      "frameId": "parseValue#2",
+      "span": {
+        "startCol": 2,
+        "endCol": 29
+      },
+      "step": 30
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "line": 2,
+      "detail": "core",
+      "frameId": "parseValue#2",
+      "name": "value",
+      "value": {
+        "kind": "primitive",
+        "type": "nan",
+        "repr": "NaN"
+      },
+      "origin": {
+        "kind": "expression"
+      },
+      "span": {
+        "startCol": 2,
+        "endCol": 29
+      },
+      "step": 31
+    },
+    {
+      "type": "BRANCH_TEST",
+      "line": 3,
+      "detail": "core",
+      "frameId": "parseValue#2",
+      "expression": "!Number.isFinite(value)",
+      "substituted": "!false",
+      "result": true,
+      "span": {
+        "startCol": 2,
+        "endCol": 3
+      },
+      "step": 32
+    },
+    {
+      "type": "BRANCH_TAKEN",
+      "line": 3,
+      "detail": "expression",
+      "frameId": "parseValue#2",
+      "label": "if",
+      "targetLine": 4,
+      "step": 33
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "parseValue#2",
+      "span": {
+        "startCol": 4,
+        "endCol": 46
+      },
+      "step": 34
+    },
+    {
+      "type": "ERROR_THROW",
+      "line": 4,
+      "detail": "core",
+      "frameId": "parseValue#2",
+      "name": "RangeError",
+      "message": "숫자가 아닙니다: N/A",
+      "step": 35
+    },
+    {
+      "type": "ERROR_PROPAGATE",
+      "line": 4,
+      "detail": "expression",
+      "frameId": "parseValue#2",
+      "fromFrameId": "parseValue#2",
+      "toFrameId": "global",
+      "step": 36
+    },
+    {
+      "type": "FRAME_POP",
+      "line": 13,
+      "detail": "expression",
+      "frameId": "global",
+      "poppedFrameId": "parseValue#2",
+      "step": 37
+    },
+    {
+      "type": "ERROR_CATCH",
+      "line": 14,
+      "detail": "core",
+      "frameId": "global",
+      "handlerLine": 14,
+      "step": 38
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 15,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 50
+      },
+      "step": 39
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "line": 15,
+      "detail": "expression",
+      "frameId": "global",
+      "object": {
+        "kind": "mapping",
+        "id": "RangeError@2",
+        "label": "instance",
+        "className": "RangeError",
+        "entries": []
+      },
+      "step": 40
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 15,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "RangeError@2",
+      "key": "name",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'RangeError'"
+      },
+      "step": 41
+    },
+    {
+      "type": "ITEM_READ",
+      "line": 15,
+      "detail": "expression",
+      "frameId": "global",
+      "target": "RangeError@2",
+      "key": "message",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'숫자가 아닙니다: N/A'"
+      },
+      "step": 42
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 15,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "실패: RangeError 숫자가 아닙니다: N/A",
+      "step": 43
+    },
+    {
+      "type": "LINE_ENTER",
+      "line": 17,
+      "detail": "expression",
+      "frameId": "global",
+      "span": {
+        "startCol": 4,
+        "endCol": 29
+      },
+      "step": 44
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "line": 17,
+      "detail": "core",
+      "frameId": "global",
+      "stream": "stdout",
+      "text": "정리: N/A",
+      "step": 45
+    },
+    {
+      "type": "LOOP_END",
+      "line": 11,
+      "detail": "core",
+      "frameId": "global",
+      "loopId": "loop:text@11",
+      "reason": "exhausted",
+      "step": 46
+    },
+    {
+      "type": "PROGRAM_END",
+      "line": 11,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal",
+      "step": 47
+    }
+  ],
+  "meta": {
+    "generator": "javascript-tracer/1",
+    "truncated": false,
+    "stdout": "값: 94.2\n정리: 94.2\n실패: RangeError 숫자가 아닙니다: N/A\n정리: N/A\n"
+  }
+}

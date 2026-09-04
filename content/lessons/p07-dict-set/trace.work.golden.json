@@ -1,0 +1,217 @@
+{
+  "version": 1,
+  "lessonId": "p07-dict-set",
+  "source": {
+    "path": "work.py",
+    "language": "python",
+    "lines": [
+      "measurement = {\"lot\": \"L04\", \"wafer\": 2, \"value\": 10.7}",
+      "measurement[\"status\"] = \"REVIEW\"",
+      "print(f\"{measurement['lot']} {measurement['status']}\")"
+    ]
+  },
+  "sources": [],
+  "initialFiles": {},
+  "events": [
+    {
+      "type": "LINE_ENTER",
+      "step": 1,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 55
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 2,
+      "line": 1,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "dict@1",
+        "label": "dict",
+        "entries": [
+          {
+            "key": "lot",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'L04'"
+            }
+          },
+          {
+            "key": "wafer",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "2"
+            }
+          },
+          {
+            "key": "value",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "10.7"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "VARIABLE_CREATE",
+      "step": 3,
+      "line": 1,
+      "frameId": "global",
+      "detail": "core",
+      "name": "measurement",
+      "value": {
+        "kind": "ref",
+        "id": "dict@1"
+      },
+      "origin": {
+        "kind": "literal"
+      },
+      "span": {
+        "startCol": 0,
+        "endCol": 55
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 4,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 32
+      }
+    },
+    {
+      "type": "ITEM_WRITE",
+      "step": 5,
+      "line": 2,
+      "frameId": "global",
+      "detail": "core",
+      "target": "dict@1",
+      "key": "status",
+      "after": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'REVIEW'"
+      }
+    },
+    {
+      "type": "HEAP_ALLOC",
+      "step": 6,
+      "line": 2,
+      "frameId": "global",
+      "detail": "expression",
+      "object": {
+        "kind": "mapping",
+        "id": "dict@1",
+        "label": "dict",
+        "entries": [
+          {
+            "key": "lot",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'L04'"
+            }
+          },
+          {
+            "key": "wafer",
+            "value": {
+              "kind": "primitive",
+              "type": "int",
+              "repr": "2"
+            }
+          },
+          {
+            "key": "value",
+            "value": {
+              "kind": "primitive",
+              "type": "float",
+              "repr": "10.7"
+            }
+          },
+          {
+            "key": "status",
+            "value": {
+              "kind": "primitive",
+              "type": "str",
+              "repr": "'REVIEW'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "LINE_ENTER",
+      "step": 7,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "span": {
+        "startCol": 0,
+        "endCol": 54
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 8,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "dict@1",
+      "key": "lot",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'L04'"
+      }
+    },
+    {
+      "type": "ITEM_READ",
+      "step": 9,
+      "line": 3,
+      "frameId": "global",
+      "detail": "expression",
+      "target": "dict@1",
+      "key": "status",
+      "value": {
+        "kind": "primitive",
+        "type": "str",
+        "repr": "'REVIEW'"
+      }
+    },
+    {
+      "type": "OUTPUT_APPEND",
+      "step": 10,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "stream": "stdout",
+      "text": "L04 REVIEW"
+    },
+    {
+      "type": "PROGRAM_END",
+      "step": 11,
+      "line": 3,
+      "frameId": "global",
+      "detail": "core",
+      "reason": "normal"
+    }
+  ],
+  "meta": {
+    "generator": "python-tracer/1",
+    "truncated": false,
+    "stdout": "L04 REVIEW\n"
+  }
+}
